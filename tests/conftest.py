@@ -17,10 +17,11 @@ os.environ.update(
 )
 
 
-def pytest_asyncio_loop_factories(
-    config: pytest.Config, item: pytest.Item
-) -> Mapping[str, Callable[[], asyncio.AbstractEventLoop]] | None:
-    """The PostgreSQL driver cannot run on Windows' default event loop."""
-    if sys.platform == "win32":
+if sys.platform == "win32":
+    # Defined only on Windows: elsewhere pytest-asyncio's default loop is right, and the
+    # hook must not return an empty answer.
+    def pytest_asyncio_loop_factories(
+        config: pytest.Config, item: pytest.Item
+    ) -> Mapping[str, Callable[[], asyncio.AbstractEventLoop]]:
+        """The PostgreSQL driver cannot run on Windows' default event loop."""
         return {"selector": asyncio.SelectorEventLoop}
-    return None
