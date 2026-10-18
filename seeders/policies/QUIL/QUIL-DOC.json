@@ -1,0 +1,33 @@
+{
+  "policy_id": "QUIL-DOC",
+  "payer_id": "QUIL",
+  "title": "Documentation Requirements",
+  "effective_from": "2026-01-01",
+  "clauses": [
+    {
+      "clause_id": "QUIL-DOC-1.1",
+      "section_heading": "Time to supply documentation",
+      "text": "After a denial with reason code 252, the documentation named in the remittance remark must be received within 30 days of the denial date."
+    },
+    {
+      "clause_id": "QUIL-DOC-1.2",
+      "section_heading": "Acceptable documentation",
+      "text": "Documentation must be dated, must identify its author and must have been written at the time of the service. A later addendum must be labelled as such and may clarify, but not add, clinical findings."
+    },
+    {
+      "clause_id": "QUIL-DOC-2.1",
+      "section_heading": "Positive airway pressure devices",
+      "text": "A positive airway pressure device (E0601) requires a sleep study report with an apnea-hypopnea index (AHI) of 15 or more events per hour; or an AHI from 5 to 14 with at least one of the following documented: excessive daytime sleepiness, impaired cognition, mood disorder, insomnia, hypertension, ischaemic heart disease or a history of stroke."
+    },
+    {
+      "clause_id": "QUIL-DOC-2.2",
+      "section_heading": "Hyaluronan injection of the knee",
+      "text": "Hyaluronan injection of the knee (J7325) requires radiographic evidence of knee osteoarthritis, and at least 6 months of conservative treatment that included both analgesic medication and supervised physical therapy, without adequate relief."
+    },
+    {
+      "clause_id": "QUIL-DOC-3.1",
+      "section_heading": "When the documentation does not exist",
+      "text": "If the required documentation was never created, the requirement is not met and the denial stands. A statement written from memory after the denial does not meet the requirement."
+    }
+  ]
+}

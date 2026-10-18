@@ -1,0 +1,75 @@
+{
+  "case_id": "LOCK-017",
+  "split": "locked",
+  "scenario": "side-wrong-2",
+  "tags": [],
+  "as_of_date": "2026-08-03",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-415752",
+      "payer_id": "QUIL",
+      "member_id": "QUIL-25767334",
+      "patient_id": "PT-324325",
+      "patient_date_of_birth": "1975-02-02",
+      "billing_provider_npi": "1442844878",
+      "place_of_service": "11",
+      "submitted_date": "2026-07-06",
+      "diagnosis_codes": [
+        "M17.12"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-06-26",
+          "procedure_code": "20610",
+          "modifiers": [
+            "RT"
+          ],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "140.00"
+        }
+      ],
+      "total_charge": "140.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-415752",
+      "payer_id": "QUIL",
+      "group_code": "CO",
+      "carc_code": "4",
+      "rarc_codes": [],
+      "denial_date": "2026-07-24",
+      "denied_line_numbers": [],
+      "denied_amount": "140.00",
+      "payer_remark": "Required modifier missing, or modifier inconsistent with the procedure."
+    },
+    "visit_note": {
+      "encounter_date": "2026-06-26",
+      "text": "Date of visit: 2026-06-26\nPatient: 51-year-old woman, established patient.\nChief complaint: left knee pain\nHistory: osteoarthritis of the left knee; pain wakes the patient at night.\nExamination: crepitus and a small effusion.\nProcedure: left knee aspirated and injected with corticosteroid.\nPlan: review in six weeks.\nSigned: treating clinician. 2026-06-26."
+    }
+  },
+  "expected": {
+    "action": "CORRECT_AND_RESUBMIT",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "QUIL-MOD-2.1",
+      "QUIL-MOD-2.2",
+      "QUIL-MOD-3.1"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "NOTE",
+        "line_number": 4
+      },
+      {
+        "document_id": "NOTE",
+        "line_number": 6
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": "Replace modifier RT with LT on line 1 and send a corrected claim.",
+    "rationale": "The claim was billed with RT, but the note consistently describes the left knee, and the diagnosis code agrees with the note."
+  }
+}

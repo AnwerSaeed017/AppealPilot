@@ -1,0 +1,64 @@
+{
+  "case_id": "DEV-037",
+  "split": "dev",
+  "scenario": "filing-earlier-limit-1",
+  "tags": [
+    "effective_date"
+  ],
+  "as_of_date": "2026-08-07",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-917003",
+      "payer_id": "TESS",
+      "member_id": "TESS-22595735",
+      "patient_id": "PT-079895",
+      "patient_date_of_birth": "1977-10-05",
+      "billing_provider_npi": "1432251944",
+      "place_of_service": "11",
+      "submitted_date": "2026-07-16",
+      "diagnosis_codes": [
+        "I10"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2025-11-06",
+          "procedure_code": "99213",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "135.00"
+        }
+      ],
+      "total_charge": "135.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-917003",
+      "payer_id": "TESS",
+      "group_code": "CO",
+      "carc_code": "29",
+      "rarc_codes": [],
+      "denial_date": "2026-07-27",
+      "denied_line_numbers": [],
+      "denied_amount": "135.00",
+      "payer_remark": "The time limit for filing has expired."
+    },
+    "visit_note": {
+      "encounter_date": "2025-11-06",
+      "text": "Date of visit: 2025-11-06\nPatient: 48-year-old woman, established patient.\nChief complaint: blood pressure follow-up\nHistory: hypertension, taking lisinopril daily. No headaches.\nExamination: blood pressure 130/88.\nAssessment: essential hypertension.\nPlan: continue current dose; review in three months.\nElectronically signed by the treating clinician, 2025-11-06."
+    }
+  },
+  "expected": {
+    "action": "APPEAL_WITH_EVIDENCE",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "TESS-TF-1.2"
+    ],
+    "supporting_evidence": [],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "The service was in 2025, so the 365-day limit applies, not the 180-day one. The claim was received 252 days after the service, which is on time. The dates on the claim are the evidence."
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "planted_id": "PLANT-028",
+  "case_id": "DEV-041",
+  "selected_clause_ids": [
+    "TESS-MOD-2.1",
+    "TESS-MOD-2.2",
+    "TESS-MOD-4.1"
+  ],
+  "draft": {
+    "action": "CORRECT_AND_RESUBMIT",
+    "summary": "Draft for DEV-041.",
+    "assertions": [
+      {
+        "text": "The policy states: A procedure performed on one of a pair of joints or limbs must carry modifier RT or LT.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-MOD-2.1",
+            "quote": "A procedure performed on one of a pair of joints or limbs must carry modifier RT or LT."
+          }
+        ]
+      },
+      {
+        "text": "The policy states: A line denied under clause TESS-MOD-2.1 may be corrected and resubmitted when the record for the date of service states the side treated.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-MOD-2.2",
+            "quote": "A line denied under clause TESS-MOD-2.1 may be corrected and resubmitted when the record for the date of service states the side treated."
+          }
+        ]
+      },
+      {
+        "text": "The policy states: A corrected claim under this policy must be submitted as a replacement of the original claim and must be received within 90 days of the remittance date of the denial.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-MOD-4.1",
+            "quote": "A corrected claim under this policy must be submitted as a replacement of the original claim and must be received within 90 days of the remittance date of the denial."
+          }
+        ]
+      },
+      {
+        "text": "The record states: History: osteoarthritis of the right knee; pain worse on stairs.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "History: osteoarthritis of the right knee; pain worse on stairs."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Procedure: right knee aspirated and injected with corticosteroid.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Procedure: right knee aspirated and injected with corticosteroid."
+          }
+        ]
+      }
+    ],
+    "correction": "Replace modifier LT with RT on line 1 and send a corrected claim.",
+    "missing_evidence": []
+  },
+  "error": null,
+  "planted_assertion_index": null
+}

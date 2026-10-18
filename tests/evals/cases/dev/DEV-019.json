@@ -1,0 +1,62 @@
+{
+  "case_id": "DEV-019",
+  "split": "dev",
+  "scenario": "invalid-denial-claim-1",
+  "tags": [
+    "invalid_input"
+  ],
+  "as_of_date": "2026-06-23",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-793741",
+      "payer_id": "TESS",
+      "member_id": "TESS-31667126",
+      "patient_id": "PT-769909",
+      "patient_date_of_birth": "1973-08-11",
+      "billing_provider_npi": "1800836730",
+      "place_of_service": "11",
+      "submitted_date": "2026-06-01",
+      "diagnosis_codes": [
+        "M17.12"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-05-29",
+          "procedure_code": "20610",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "140.00"
+        }
+      ],
+      "total_charge": "140.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-083135",
+      "payer_id": "TESS",
+      "group_code": "CO",
+      "carc_code": "4",
+      "rarc_codes": [],
+      "denial_date": "2026-06-11",
+      "denied_line_numbers": [],
+      "denied_amount": "140.00",
+      "payer_remark": "Required modifier missing, or modifier inconsistent with the procedure."
+    },
+    "visit_note": {
+      "encounter_date": "2026-05-29",
+      "text": "Date of visit: 2026-05-29\nPatient: 52-year-old woman, established patient.\nChief complaint: left knee pain\nHistory: osteoarthritis of the left knee; pain wakes the patient at night.\nExamination: crepitus and a small effusion.\nProcedure: corticosteroid injection into the left knee joint after aspiration.\nPlan: review in six weeks.\nElectronically signed by the treating clinician, 2026-05-29."
+    }
+  },
+  "expected": {
+    "action": null,
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [],
+    "supporting_evidence": [],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "The denial refers to a different claim number from the claim submitted. The case must stop at validation, with no model call."
+  }
+}

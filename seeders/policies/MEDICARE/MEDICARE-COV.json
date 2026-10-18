@@ -1,0 +1,50 @@
+{
+  "policy_id": "MEDICARE-COV",
+  "payer_id": "MEDICARE",
+  "title": "Bone Mass Measurements",
+  "effective_from": "2007-01-01",
+  "clauses": [
+    {
+      "clause_id": "MEDICARE-COV-1.1",
+      "section_heading": "42 CFR 410.31(b)(1) Conditions for coverage",
+      "text": "(b) Conditions for coverage. (1) Medicare covers a medically necessary bone mass measurement if the following conditions are met: (i) Following an evaluation of the beneficiary's need for the measurement, including a determination as to the medically appropriate procedure to be used for the beneficiary, it is ordered by the physician or a qualified nonphysician practitioner (as these terms are defined in § 410.32(a)) treating the beneficiary. (ii) It is performed under the appropriate level of supervision of a physician (as set forth in § 410.32(b)). (iii) It is reasonable and necessary for diagnosing and treating the Condition of a beneficiary who meets the conditions described in paragraph (d) of this section.",
+      "source_url": "https://www.ecfr.gov/current/title-42/section-410.31"
+    },
+    {
+      "clause_id": "MEDICARE-COV-1.2",
+      "section_heading": "42 CFR 410.31(c) Standards on frequency of coverage",
+      "text": "(c) Standards on frequency of coverage —(1) General rule. Except as allowed under paragraph (c)(2) of this section, Medicare may cover a bone mass measurement for a beneficiary if at least 23 months have passed since the month the last bone mass measurement was performed. (2) Exception. If medically necessary, Medicare may cover a bone mass measurement for a beneficiary more frequently than allowed under paragraph (c)(1) of this section. Examples of situations where more frequent bone mass measurement procedures may be medically necessary include, but are not limited to the following medical circumstances: (i) Monitoring beneficiaries on long-term glucocorticoid (steroid) therapy of more than 3 months. (ii) Allowing for a confirmatory baseline measurement to permit monitoring of beneficiaries in the future if the requirements of paragraph (b)(3) of this section are met.",
+      "source_url": "https://www.ecfr.gov/current/title-42/section-410.31"
+    },
+    {
+      "clause_id": "MEDICARE-COV-1.3",
+      "section_heading": "42 CFR 410.31(d) Beneficiaries who may be covered",
+      "text": "(d) Beneficiaries who may be covered. The following categories of beneficiaries may receive Medicare coverage for a medically necessary bone mass measurement: (1) A woman who has been determined by the physician (or a qualified nonphysician practitioner) treating her to be estrogen-deficient and at clinical risk for osteoporosis, based on her medical history and other findings. (2) An individual with vertebral abnormalities as demonstrated by an x-ray to be indicative of osteoporosis, osteopenia, or vertebral fracture. (3) An individual receiving (or expecting to receive) glucocorticoid (steroid) therapy equivalent to an average of 5.0 mg of prednisone, or greater, per day for more than 3 months. (4) An individual with primary hyperparathyroidism. (5) An individual being monitored to assess the response to or efficacy of an FDA-approved osteoporosis drug therapy.",
+      "source_url": "https://www.ecfr.gov/current/title-42/section-410.31"
+    },
+    {
+      "clause_id": "MEDICARE-COV-1.4",
+      "section_heading": "42 CFR 410.31(e) Denial as not reasonable and necessary",
+      "text": "(e) Denial as not reasonable and necessary. If CMS determines that a bone mass measurement does not meet the conditions for coverage in paragraphs (b) or (d) of this section, or the standards on frequency of coverage in paragraph (c) of this section, it is excluded from Medicare coverage as not “reasonable” and “necessary” under section 1862(a)(1)(A) of the Act and § 411.15(k) of this chapter.",
+      "source_url": "https://www.ecfr.gov/current/title-42/section-410.31"
+    },
+    {
+      "clause_id": "MEDICARE-COV-2.1",
+      "section_heading": "Medicare Benefit Policy Manual, Chapter 15, §80.5.5 Frequency Standards",
+      "text": "Medicare pays for a screening BMM once every 2 years (at least 23 months have passed since the month the last covered BMM was performed).\nWhen medically necessary, Medicare may pay for more frequent BMMs. Examples include, but are not limited to, the following medical circumstances:\n• Monitoring beneficiaries on long-term glucocorticoid (steroid) therapy of more than 3 months.\n• Confirming baseline BMMs to permit monitoring of beneficiaries in the future.",
+      "source_url": "https://www.cms.gov/Regulations-and-Guidance/Guidance/Manuals/downloads/bp102c15.pdf"
+    },
+    {
+      "clause_id": "MEDICARE-COV-2.2",
+      "section_heading": "Medicare Benefit Policy Manual, Chapter 15, §80.5.6 Beneficiaries Who May be Covered",
+      "text": "To be covered, a beneficiary must meet at least one of the five conditions listed below:\n1. A woman who has been determined by the physician or qualified nonphysician practitioner treating her to be estrogen-deficient and at clinical risk for osteoporosis, based on her medical history and other findings.\nNOTE: Since not every woman who has been prescribed estrogen replacement therapy (ERT) may be receiving an \"adequate\" dose of the therapy, the fact that a woman is receiving ERT should not preclude her treating physician or other qualified treating nonphysician practitioner from ordering a bone mass measurement for her. If a BMM is ordered for a woman following a careful evaluation of her medical need, however, it is expected that the ordering treating physician (or other qualified treating nonphysician practitioner) will document in her medical record why he or she believes that the woman is estrogen-deficient and at clinical risk for osteoporosis.\n2. An individual with vertebral abnormalities as demonstrated by an x-ray to be indicative of osteoporosis, osteopenia, or vertebral fracture.\n3. An individual receiving (or expecting to receive) glucocorticoid (steroid) therapy equivalent to an average of 5.0 mg of prednisone, or greater, per day, for more than 3 months.\n4. An individual with primary hyperparathyroidism.\n5. An individual being monitored to assess the response to or efficacy of an FDA-approved osteoporosis drug therapy.",
+      "source_url": "https://www.cms.gov/Regulations-and-Guidance/Guidance/Manuals/downloads/bp102c15.pdf"
+    },
+    {
+      "clause_id": "MEDICARE-COV-3.1",
+      "section_heading": "Medicare Claims Processing Manual, Chapter 13, §140.2 Denial Messages for Noncovered Bone Mass Measurements",
+      "text": "The contractor shall use the following remittance advice messages and associated codes when rejecting/denying claims under the conditions described in 140.1. This CARC/RARC combination is compliant with CAQH CORE Business Scenario Three.\nGroup Code: PR (if claim is received with a GA modifier) otherwise CO CARC: 50 RARC: Alert M38 (if ABN was issued) or M27 (if ABN was not issued) MSN: 16.10 and 36.1 (if ABN was issued) or 36.2 (if ABN was not issued)\nNOTE: A/B MACs (A) are not to include MSN 16.10.",
+      "source_url": "https://www.cms.gov/Regulations-and-Guidance/Guidance/Manuals/downloads/clm104c13.pdf"
+    }
+  ]
+}

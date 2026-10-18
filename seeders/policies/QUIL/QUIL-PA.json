@@ -1,0 +1,43 @@
+{
+  "policy_id": "QUIL-PA",
+  "payer_id": "QUIL",
+  "title": "Prior Authorization",
+  "effective_from": "2026-01-01",
+  "clauses": [
+    {
+      "clause_id": "QUIL-PA-1.1",
+      "section_heading": "Services that require prior authorization",
+      "text": "Prior authorization is required for: MRI of the spine (including procedure code 72148); hyaluronan injection of the knee (J7325); arthroscopic knee surgery (29881); attended sleep studies (95810); and therapeutic exercise (97110) after the 20th visit in a calendar year. MRI of a joint of the arm or leg, including procedure code 73721, does not require prior authorization."
+    },
+    {
+      "clause_id": "QUIL-PA-1.2",
+      "section_heading": "Authorization number on the claim",
+      "text": "A claim for a service listed in clause QUIL-PA-1.1 must carry the authorization number. A claim without one is denied with reason code 197."
+    },
+    {
+      "clause_id": "QUIL-PA-2.1",
+      "section_heading": "Validity",
+      "text": "An authorization is valid for 90 days from its issue date, for the member and the procedure code named on it. A service performed outside that period is not covered by the authorization."
+    },
+    {
+      "clause_id": "QUIL-PA-2.2",
+      "section_heading": "Authorization number left off the claim",
+      "text": "When a valid authorization was issued before the date of service but its number was not entered on the claim, the provider should send a corrected claim with the number. This is a correction, not an appeal."
+    },
+    {
+      "clause_id": "QUIL-PA-3.1",
+      "section_heading": "Urgent services",
+      "text": "For an urgent service, the provider may request authorization after the service, within 14 calendar days of the date of service. The request must include the part of the record that shows why the service could not wait."
+    },
+    {
+      "clause_id": "QUIL-PA-3.2",
+      "section_heading": "Services that were not urgent",
+      "text": "No authorization is issued after the date of service for a service that was not urgent. The denial stands and the member may not be billed."
+    },
+    {
+      "clause_id": "QUIL-PA-4.1",
+      "section_heading": "Appeal when an authorization was issued but not found",
+      "text": "A provider whose claim was denied although an authorization had been issued may appeal. The appeal must state the authorization or call reference number and the date it was issued. An appeal that says only that authorization was obtained, with no reference number, is returned without a decision."
+    }
+  ]
+}

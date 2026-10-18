@@ -1,0 +1,244 @@
+[
+  {
+    "sample_id": "bone-density-repeat-on-steroids",
+    "title": "Bone density scan repeated within 23 months",
+    "summary": "Medicare denied a DXA scan as too frequent (CO-151, N386): it was taken 16 months after the last covered scan. The patient has been on daily prednisone for over seven months, which the frequency rule allows for.",
+    "as_of_date": "2026-10-16",
+    "input": {
+      "claim": {
+        "claim_id": "MC-2026-0714-1123",
+        "payer_id": "MEDICARE",
+        "member_id": "5QR2GE8MA61",
+        "patient_id": "PT-318640",
+        "patient_date_of_birth": "1950-11-09",
+        "billing_provider_npi": "1686505383",
+        "place_of_service": "11",
+        "submitted_date": "2026-07-16",
+        "prior_authorization_number": null,
+        "original_claim_id": null,
+        "diagnosis_codes": [
+          "Z79.52",
+          "M35.3"
+        ],
+        "lines": [
+          {
+            "line_number": 1,
+            "service_date": "2026-07-14",
+            "procedure_code": "77080",
+            "modifiers": [],
+            "diagnosis_pointers": [
+              1,
+              2
+            ],
+            "units": 1,
+            "charge_amount": "112.00"
+          }
+        ],
+        "total_charge": "112.00"
+      },
+      "denial": {
+        "claim_id": "MC-2026-0714-1123",
+        "payer_id": "MEDICARE",
+        "group_code": "CO",
+        "carc_code": "151",
+        "rarc_codes": [
+          "N386"
+        ],
+        "denial_date": "2026-08-04",
+        "denied_line_numbers": [],
+        "denied_amount": "112.00",
+        "payer_remark": "Bone mass measurement billed less than 23 months after the last covered measurement."
+      },
+      "visit_note": {
+        "encounter_date": "2026-07-14",
+        "text": "Date of visit: 2026-07-14\nPatient: 75-year-old woman, established patient of the rheumatology clinic.\nReason for visit: bone density measurement ordered to monitor bone loss on long-term glucocorticoid therapy.\nHistory: polymyalgia rheumatica diagnosed 2025-12-02. Prednisone 15 mg daily started 2025-12-02, reduced to 12.5 mg daily on 2026-02-10 and to 10 mg daily on 2026-04-21; she remains on 10 mg daily today. Continuous glucocorticoid therapy for more than seven months, with every daily dose 10 mg or more.\nPrior testing: baseline DXA on 2025-03-11 showed a lumbar spine T-score of -1.8 and a left femoral neck T-score of -1.6 (osteopenia). That scan was done before steroids were started.\nIndication: glucocorticoid therapy of more than 3 months at 5 mg or more of prednisone a day raises fracture risk and requires monitoring of bone density, whatever the interval since the last scan.\nProcedure: DXA of the lumbar spine and left hip, axial skeleton. Performed and interpreted by the treating physician.\nPlan: review the result with the patient; start calcium and vitamin D; consider osteoporosis drug therapy if the T-score has fallen.\nSigned: treating physician. 2026-07-14."
+      },
+      "supporting_documents": [
+        {
+          "document_id": "DXA-REPORT",
+          "kind": "DIAGNOSTIC_REPORT",
+          "document_date": "2026-07-14",
+          "text": "Bone densitometry report. Date of study: 2026-07-14.\nIndication: long-term glucocorticoid therapy (prednisone 10 mg daily since 2025-12-02, previously 15 mg and 12.5 mg); polymyalgia rheumatica.\nTechnique: dual-energy X-ray absorptiometry, axial skeleton, same scanner as the prior study.\nResults: lumbar spine L1-L4 T-score -2.6; left femoral neck T-score -2.1; left total hip T-score -1.9.\nComparison with 2025-03-11: lumbar spine bone mineral density down 5.9%, femoral neck down 4.2%. Both changes exceed the least significant change for this scanner.\nImpression: osteoporosis of the lumbar spine with significant bone loss since starting glucocorticoids."
+        },
+        {
+          "document_id": "RX-HISTORY",
+          "kind": "OTHER",
+          "document_date": "2026-07-14",
+          "text": "Pharmacy fill history, prednisone tablets.\n2025-12-02: prednisone 5 mg, 3 tablets daily (15 mg), 30-day supply.\n2026-01-02: prednisone 5 mg, 3 tablets daily (15 mg), 30-day supply.\n2026-02-10: prednisone 2.5 mg, 5 tablets daily (12.5 mg), 30-day supply.\n2026-03-12: prednisone 2.5 mg, 5 tablets daily (12.5 mg), 40-day supply.\n2026-04-21: prednisone 10 mg, 1 tablet daily, 30-day supply.\n2026-05-21: prednisone 10 mg, 1 tablet daily, 30-day supply.\n2026-06-20: prednisone 10 mg, 1 tablet daily, 30-day supply.\nNo gaps in supply between fills."
+        }
+      ],
+      "prior_claims": [
+        {
+          "claim_id": "MC-2025-0311-0870",
+          "received_date": "2025-03-13",
+          "outcome": "PAID",
+          "carc_code": null,
+          "lines": [
+            {
+              "line_number": 1,
+              "service_date": "2025-03-11",
+              "procedure_code": "77080",
+              "modifiers": [],
+              "diagnosis_pointers": [
+                1
+              ],
+              "units": 1,
+              "charge_amount": "108.00"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "sample_id": "claim-filed-after-one-year",
+    "title": "Claim filed more than a year after the visit",
+    "summary": "Medicare denied an office visit as filed too late (CO-29, N211). The claim was first sent 13 months after the visit, and the billing file shows no exception that would extend the deadline.",
+    "as_of_date": "2026-10-16",
+    "input": {
+      "claim": {
+        "claim_id": "MC-2025-0805-0312",
+        "payer_id": "MEDICARE",
+        "member_id": "8VF9XJ4KP27",
+        "patient_id": "PT-552907",
+        "patient_date_of_birth": "1948-06-30",
+        "billing_provider_npi": "1935258339",
+        "place_of_service": "11",
+        "submitted_date": "2026-09-01",
+        "prior_authorization_number": null,
+        "original_claim_id": null,
+        "diagnosis_codes": [
+          "J44.1",
+          "I10"
+        ],
+        "lines": [
+          {
+            "line_number": 1,
+            "service_date": "2025-08-05",
+            "procedure_code": "99213",
+            "modifiers": [],
+            "diagnosis_pointers": [
+              1,
+              2
+            ],
+            "units": 1,
+            "charge_amount": "112.00"
+          }
+        ],
+        "total_charge": "112.00"
+      },
+      "denial": {
+        "claim_id": "MC-2025-0805-0312",
+        "payer_id": "MEDICARE",
+        "group_code": "CO",
+        "carc_code": "29",
+        "rarc_codes": [
+          "N211"
+        ],
+        "denial_date": "2026-09-15",
+        "denied_line_numbers": [],
+        "denied_amount": "112.00",
+        "payer_remark": null
+      },
+      "visit_note": {
+        "encounter_date": "2025-08-05",
+        "text": "Date of visit: 2025-08-05\nPatient: 77-year-old man, established patient.\nReason for visit: four days of increased breathlessness and cough with more sputum, now yellow.\nHistory: COPD, former smoker (40 pack-years, quit 2015). Uses tiotropium daily and albuterol as needed, now four times a day.\nExamination: temperature 37.6 C, respiratory rate 22, oxygen saturation 92% on room air. Scattered wheeze, no focal crackles. Blood pressure 138/84.\nAssessment: acute exacerbation of COPD; hypertension controlled on lisinopril.\nPlan: prednisone 40 mg daily for 5 days; doxycycline 100 mg twice daily for 5 days; continue tiotropium. Return or go to the emergency department if breathing worsens. Review in two weeks.\nSigned: treating physician. 2025-08-05."
+      },
+      "supporting_documents": [
+        {
+          "document_id": "BILLING-LOG",
+          "kind": "BILLING_NOTE",
+          "document_date": "2026-09-16",
+          "text": "Billing review for the visit of 2025-08-05.\nThe charge was found on the unbilled-encounters report during the month-end review on 2026-08-28. It had been held since 2025-08-06 by a practice-management edit for a missing diagnosis pointer, and the edit was never worked.\nClearinghouse acceptance report: first and only submission on 2026-09-01. No earlier submission of this claim is on file with the clearinghouse or the Medicare contractor.\nEligibility check on 2026-09-01: Medicare Part B entitlement effective 2013-07-01, with no retroactive change. No Medicare Advantage enrollment during 2025.\nNo correspondence from the Medicare contractor about this claim before the denial."
+        }
+      ],
+      "prior_claims": []
+    }
+  },
+  {
+    "sample_id": "visit-without-modifier-25",
+    "title": "Office visit bundled into a same-day knee injection",
+    "summary": "Medicare denied the office visit (CO-97, M144) as part of a same-day knee injection. The visit line has no modifier 25, but the note documents separate diabetes and blood pressure management.",
+    "as_of_date": "2026-10-16",
+    "input": {
+      "claim": {
+        "claim_id": "MC-2026-0818-0457",
+        "payer_id": "MEDICARE",
+        "member_id": "3TK7WN2HD48",
+        "patient_id": "PT-204871",
+        "patient_date_of_birth": "1953-04-22",
+        "billing_provider_npi": "1494594405",
+        "place_of_service": "11",
+        "submitted_date": "2026-08-20",
+        "prior_authorization_number": null,
+        "original_claim_id": null,
+        "diagnosis_codes": [
+          "M17.11",
+          "E11.65",
+          "I10"
+        ],
+        "lines": [
+          {
+            "line_number": 1,
+            "service_date": "2026-08-18",
+            "procedure_code": "99214",
+            "modifiers": [],
+            "diagnosis_pointers": [
+              2,
+              3,
+              1
+            ],
+            "units": 1,
+            "charge_amount": "168.00"
+          },
+          {
+            "line_number": 2,
+            "service_date": "2026-08-18",
+            "procedure_code": "20610",
+            "modifiers": [
+              "RT"
+            ],
+            "diagnosis_pointers": [
+              1
+            ],
+            "units": 1,
+            "charge_amount": "126.00"
+          },
+          {
+            "line_number": 3,
+            "service_date": "2026-08-18",
+            "procedure_code": "J3301",
+            "modifiers": [],
+            "diagnosis_pointers": [
+              1
+            ],
+            "units": 4,
+            "charge_amount": "22.00"
+          }
+        ],
+        "total_charge": "316.00"
+      },
+      "denial": {
+        "claim_id": "MC-2026-0818-0457",
+        "payer_id": "MEDICARE",
+        "group_code": "CO",
+        "carc_code": "97",
+        "rarc_codes": [
+          "M144"
+        ],
+        "denial_date": "2026-09-03",
+        "denied_line_numbers": [
+          1
+        ],
+        "denied_amount": "168.00",
+        "payer_remark": null
+      },
+      "visit_note": {
+        "encounter_date": "2026-08-18",
+        "text": "Date of visit: 2026-08-18\nPatient: 73-year-old man, established patient.\nReason for visit: follow-up of type 2 diabetes and hypertension; right knee pain for three months.\nDiabetes: home glucose readings 180-240 mg/dL before breakfast. HbA1c 8.4% today, up from 7.6% in 2026-04. Taking metformin 1000 mg twice daily; no hypoglycemia.\nHypertension: blood pressure 152/94 and 148/92 on repeat. Taking lisinopril 20 mg daily. No chest pain or headache.\nRight knee: medial joint line tenderness, crepitus, small effusion, no warmth. Standing X-ray on 2026-05-20 showed medial joint space narrowing and osteophytes. Pain 7/10 despite acetaminophen and a home exercise program.\nAssessment and plan:\n1. Type 2 diabetes with hyperglycemia, above target. Start empagliflozin 10 mg daily; reviewed genital hygiene and hydration. Basic metabolic panel and urine albumin-to-creatinine ratio ordered. Recheck HbA1c in three months.\n2. Essential hypertension, not at goal. Add amlodipine 5 mg daily. Home blood pressure log; recheck in four weeks.\n3. Primary osteoarthritis of the right knee. Intra-articular corticosteroid injection performed today.\nProcedure: right knee intra-articular injection. Consent obtained. Sterile preparation, lateral suprapatellar approach. Triamcinolone acetonide 40 mg with 1% lidocaine 4 mL injected. No complications; patient tolerated well.\nSigned: treating physician. 2026-08-18."
+      },
+      "supporting_documents": [],
+      "prior_claims": []
+    }
+  }
+]

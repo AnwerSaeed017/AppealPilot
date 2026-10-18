@@ -1,0 +1,79 @@
+{
+  "planted_id": "PLANT-011",
+  "case_id": "DEV-025",
+  "selected_clause_ids": [
+    "TESS-COV-1.1",
+    "TESS-COV-1.2",
+    "TESS-COV-2.3"
+  ],
+  "draft": {
+    "action": "CORRECT_AND_RESUBMIT",
+    "summary": "Draft for DEV-025.",
+    "assertions": [
+      {
+        "text": "The policy states: A service is payable only when a diagnosis linked to its claim line supports it.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-COV-1.1",
+            "quote": "A service is payable only when a diagnosis linked to its claim line supports it."
+          }
+        ]
+      },
+      {
+        "text": "The policy states: When the record for the date of service documents a supporting diagnosis that was left off the claim or not linked to the line, the provider may submit a corrected claim.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-COV-1.2",
+            "quote": "When the record for the date of service documents a supporting diagnosis that was left off the claim or not linked to the line, the provider may submit a corrected claim."
+          }
+        ]
+      },
+      {
+        "text": "The policy states: Aspiration or injection of a large joint (20640) is supported by osteoarthritis, inflammatory arthritis, crystal arthropathy or an effusion of that joint.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-COV-2.3",
+            "quote": "Aspiration or injection of a large joint (20610) is supported by osteoarthritis, inflammatory arthritis, crystal arthropathy or an effusion of that joint."
+          }
+        ]
+      },
+      {
+        "text": "The record states: History: osteoarthritis of the right knee, pain worse over two months.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "History: osteoarthritis of the right knee, pain worse over two months."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Examination: crepitus and a small effusion.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Examination: crepitus and a small effusion."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Assessment: primary osteoarthritis, right knee, with effusion.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Assessment: primary osteoarthritis, right knee, with effusion."
+          }
+        ]
+      }
+    ],
+    "correction": "Change the diagnosis pointer on line 1 so that M17.11 is the first diagnosis, and send a corrected claim.",
+    "missing_evidence": []
+  },
+  "error": "NUMBER_CHANGED_IN_ASSERTION",
+  "planted_assertion_index": 2
+}

@@ -1,0 +1,87 @@
+{
+  "case_id": "DEV-003",
+  "split": "dev",
+  "scenario": "pa-no-record-2",
+  "tags": [],
+  "as_of_date": "2026-05-07",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-640107",
+      "payer_id": "QUIL",
+      "member_id": "QUIL-55372162",
+      "patient_id": "PT-395529",
+      "patient_date_of_birth": "1977-10-12",
+      "billing_provider_npi": "1786890537",
+      "place_of_service": "11",
+      "submitted_date": "2026-04-13",
+      "diagnosis_codes": [
+        "M17.12"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-04-04",
+          "procedure_code": "J7325",
+          "modifiers": [
+            "LT"
+          ],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "480.00"
+        }
+      ],
+      "total_charge": "480.00",
+      "prior_authorization_number": "AU-830162"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-640107",
+      "payer_id": "QUIL",
+      "group_code": "CO",
+      "carc_code": "197",
+      "rarc_codes": [],
+      "denial_date": "2026-05-02",
+      "denied_line_numbers": [],
+      "denied_amount": "480.00",
+      "payer_remark": "Authorization or precertification absent."
+    },
+    "visit_note": {
+      "encounter_date": "2026-04-04",
+      "text": "Date of visit: 2026-04-04\nPatient: 48-year-old woman, established patient.\nChief complaint: left knee pain from osteoarthritis\nHistory: osteoarthritis of the left knee, confirmed on radiograph. Pain persists despite regular analgesics and a course of physical therapy.\nExamination: crepitus, small effusion, reduced flexion.\nAssessment: primary osteoarthritis, left knee.\nProcedure: hyaluronan injected into the left knee.\nElectronically signed by the treating clinician, 2026-04-04."
+    },
+    "supporting_documents": [
+      {
+        "document_id": "AUTH",
+        "kind": "AUTHORIZATION_RECORD",
+        "document_date": "2026-03-26",
+        "text": "Quillon Mutual: authorization confirmation\nAuthorization number: AU-830162\nIssued: 2026-03-26\nMember: QUIL-55372162\nService: procedure code J7325, hyaluronan injection of the left knee"
+      }
+    ]
+  },
+  "expected": {
+    "action": "APPEAL_WITH_EVIDENCE",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "QUIL-PA-4.1",
+      "QUIL-PA-2.1"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "AUTH",
+        "line_number": 2
+      },
+      {
+        "document_id": "AUTH",
+        "line_number": 3
+      },
+      {
+        "document_id": "AUTH",
+        "line_number": 5
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "The claim already carried the authorization number, so there is nothing to correct. The practice holds the number, the issue date and the service authorized, which is what the policy requires for an appeal."
+  }
+}

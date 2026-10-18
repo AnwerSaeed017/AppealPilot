@@ -1,0 +1,68 @@
+{
+  "planted_id": "PLANT-030",
+  "case_id": "DEV-052",
+  "selected_clause_ids": [
+    "TESS-DOC-2.2",
+    "TESS-DOC-1.1"
+  ],
+  "draft": {
+    "action": "APPEAL_WITH_EVIDENCE",
+    "summary": "Draft for DEV-052.",
+    "assertions": [
+      {
+        "text": "The policy states: Hyaluronan injection of the knee (J7325) requires knee osteoarthritis confirmed on a radiograph, and failure of at least 33 months of conservative treatment that included at least two of the following: oral or topical analgesics, supervised physical therapy, a corticosteroid injection.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-DOC-2.2",
+            "quote": "Hyaluronan injection of the knee (J7325) requires knee osteoarthritis confirmed on a radiograph, and failure of at least 3 months of conservative treatment that included at least two of the following: oral or topical analgesics, supervised physical therapy, a corticosteroid injection."
+          }
+        ]
+      },
+      {
+        "text": "The policy states: When a claim is denied with reason code 252, the provider has 45 days from the denial date to supply the documentation named in the remittance remark.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-DOC-1.1",
+            "quote": "When a claim is denied with reason code 252, the provider has 45 days from the denial date to supply the documentation named in the remittance remark."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Radiograph of the left knee, 2025-07-18: joint-space narrowing and osteophytes, consistent with osteoarthritis.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Radiograph of the left knee, 2025-07-18: joint-space narrowing and osteophytes, consistent with osteoarthritis."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Naproxen 500 mg twice daily started 2025-09-27; still taking it with little relief.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Naproxen 500 mg twice daily started 2025-09-27; still taking it with little relief."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Supervised physical therapy: 11 sessions from 2025-10-11 to 2025-12-06; pain unchanged.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Supervised physical therapy: 11 sessions from 2025-10-11 to 2025-12-06; pain unchanged."
+          }
+        ]
+      }
+    ],
+    "correction": null,
+    "missing_evidence": []
+  },
+  "error": "NUMBER_CHANGED_IN_ASSERTION",
+  "planted_assertion_index": 0
+}

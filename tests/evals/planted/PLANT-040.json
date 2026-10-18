@@ -1,0 +1,39 @@
+{
+  "planted_id": "PLANT-040",
+  "case_id": "DEV-048",
+  "selected_clause_ids": [
+    "QUIL-MOD-2.2"
+  ],
+  "draft": {
+    "action": "REQUEST_DOCUMENTATION",
+    "summary": "Draft for DEV-048.",
+    "assertions": [
+      {
+        "text": "Under this clause the payer is required to pay this claim in full.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "QUIL-MOD-2.2",
+            "quote": "A line denied under clause QUIL-MOD-2.1 may be corrected and resubmitted when the record for the date of service names the side."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Procedure: knee aspirated and injected with corticosteroid.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Procedure: knee aspirated and injected with corticosteroid."
+          }
+        ]
+      }
+    ],
+    "correction": null,
+    "missing_evidence": [
+      "dated addendum from the treating clinician stating which knee was injected"
+    ]
+  },
+  "error": "CONCLUSION_ADDED",
+  "planted_assertion_index": 0
+}

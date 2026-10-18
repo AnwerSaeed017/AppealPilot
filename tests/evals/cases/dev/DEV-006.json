@@ -1,0 +1,83 @@
+{
+  "case_id": "DEV-006",
+  "split": "dev",
+  "scenario": "filing-exceeded-2",
+  "tags": [
+    "threshold",
+    "payer_difference"
+  ],
+  "as_of_date": "2026-11-02",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-598131",
+      "payer_id": "QUIL",
+      "member_id": "QUIL-37641338",
+      "patient_id": "PT-664782",
+      "patient_date_of_birth": "1978-09-20",
+      "billing_provider_npi": "1874979945",
+      "place_of_service": "11",
+      "submitted_date": "2026-10-07",
+      "diagnosis_codes": [
+        "I10"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-06-14",
+          "procedure_code": "99213",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "135.00"
+        }
+      ],
+      "total_charge": "135.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-598131",
+      "payer_id": "QUIL",
+      "group_code": "CO",
+      "carc_code": "29",
+      "rarc_codes": [],
+      "denial_date": "2026-10-26",
+      "denied_line_numbers": [],
+      "denied_amount": "135.00",
+      "payer_remark": "The time limit for filing has expired."
+    },
+    "visit_note": {
+      "encounter_date": "2026-06-14",
+      "text": "Date of visit: 2026-06-14\nPatient: 47-year-old man, established patient.\nChief complaint: blood pressure follow-up\nHistory: hypertension, taking lisinopril daily. No headaches.\nExamination: blood pressure 136/78.\nAssessment: essential hypertension.\nPlan: continue current dose; review in three months.\nElectronically signed by the treating clinician, 2026-06-14."
+    },
+    "supporting_documents": [
+      {
+        "document_id": "BILL",
+        "kind": "BILLING_NOTE",
+        "document_date": "2026-11-02",
+        "text": "Billing note, 2026-11-02\nFirst submission of this claim: 2026-10-07.\nThe claim sat in a work queue after a staffing change.\nThe patient has no other insurance on file."
+      }
+    ]
+  },
+  "expected": {
+    "action": "NO_ACTION",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "QUIL-TF-1.1",
+      "QUIL-TF-3.1"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "BILL",
+        "line_number": 2
+      },
+      {
+        "document_id": "BILL",
+        "line_number": 3
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "The claim was first submitted 115 days after the service and this payer's limit is 90. The delay was the practice's own, no listed exception applies, and there is no earlier filing to prove."
+  }
+}

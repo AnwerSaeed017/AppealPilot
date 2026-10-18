@@ -1,0 +1,91 @@
+{
+  "case_id": "DEV-014",
+  "split": "dev",
+  "scenario": "knee-mri-late-addendum-1",
+  "tags": [
+    "late_entry"
+  ],
+  "as_of_date": "2026-06-06",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-950250",
+      "payer_id": "TESS",
+      "member_id": "TESS-84372579",
+      "patient_id": "PT-796301",
+      "patient_date_of_birth": "1972-08-27",
+      "billing_provider_npi": "1664278979",
+      "place_of_service": "11",
+      "submitted_date": "2026-05-13",
+      "diagnosis_codes": [
+        "M25.561"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-05-03",
+          "procedure_code": "73721",
+          "modifiers": [
+            "RT"
+          ],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "620.00"
+        }
+      ],
+      "total_charge": "620.00",
+      "prior_authorization_number": "AU-972705"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-950250",
+      "payer_id": "TESS",
+      "group_code": "CO",
+      "carc_code": "50",
+      "rarc_codes": [],
+      "denial_date": "2026-05-23",
+      "denied_line_numbers": [],
+      "denied_amount": "620.00",
+      "payer_remark": "Service not deemed medically necessary on the information submitted."
+    },
+    "visit_note": {
+      "encounter_date": "2026-05-03",
+      "text": "Date of visit: 2026-05-03\nPatient: 53-year-old man, established patient.\nChief complaint: right knee pain\nHistory: right knee pain for 3 weeks. No injury recalled.\nExamination: mild tenderness. Ligaments stable.\nAssessment: knee pain.\nPlan: MRI of the right knee without contrast.\nElectronically signed by the treating clinician, 2026-05-03."
+    },
+    "supporting_documents": [
+      {
+        "document_id": "ADD",
+        "kind": "ADDENDUM",
+        "document_date": "2026-05-26",
+        "text": "Late entry, added 2026-05-26.\nAt the visit on 2026-05-03 the McMurray test was positive."
+      }
+    ]
+  },
+  "expected": {
+    "action": "ESCALATE_TO_HUMAN",
+    "acceptable_alternatives": [
+      "NO_ACTION"
+    ],
+    "relevant_clause_ids": [
+      "TESS-COV-2.1",
+      "TESS-DOC-1.2"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "NOTE",
+        "line_number": 5
+      },
+      {
+        "document_id": "ADD",
+        "line_number": 1
+      },
+      {
+        "document_id": "ADD",
+        "line_number": 2
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "The original note has no finding that supports the scan. The positive McMurray test appears only in an addendum written after the denial, and the policy rejects late entries that add findings. Building an appeal on it is a compliance question for a person."
+  }
+}

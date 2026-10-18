@@ -1,0 +1,58 @@
+{
+  "planted_id": "PLANT-009",
+  "case_id": "DEV-026",
+  "selected_clause_ids": [
+    "TESS-MOD-1.1",
+    "TESS-MOD-1.3"
+  ],
+  "draft": {
+    "action": "NO_ACTION",
+    "summary": "Draft for DEV-026.",
+    "assertions": [
+      {
+        "text": "The policy states: The plan will pay such claims in full when the provider asks.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-MOD-1.1",
+            "quote": "The plan will pay such claims in full when the provider asks."
+          }
+        ]
+      },
+      {
+        "text": "The policy states: Modifier 25 must not be added when the visit consisted only of the decision to perform a procedure that had already been planned, or of the usual care before and after the procedure.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-MOD-1.3",
+            "quote": "Modifier 25 must not be added when the visit consisted only of the decision to perform a procedure that had already been planned, or of the usual care before and after the procedure."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Returns for the knee injection arranged at the last visit.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Returns for the knee injection arranged at the last visit."
+          }
+        ]
+      },
+      {
+        "text": "The record states: No new complaints. No change in medication.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "No new complaints. No change in medication."
+          }
+        ]
+      }
+    ],
+    "correction": null,
+    "missing_evidence": []
+  },
+  "error": "FABRICATED_QUOTE",
+  "planted_assertion_index": 0
+}

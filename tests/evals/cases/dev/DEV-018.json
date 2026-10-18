@@ -1,0 +1,62 @@
+{
+  "case_id": "DEV-018",
+  "split": "dev",
+  "scenario": "invalid-diagnosis-1",
+  "tags": [
+    "invalid_input"
+  ],
+  "as_of_date": "2026-07-25",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-544254",
+      "payer_id": "QUIL",
+      "member_id": "QUIL-59207586",
+      "patient_id": "PT-723369",
+      "patient_date_of_birth": "1966-10-07",
+      "billing_provider_npi": "1211640580",
+      "place_of_service": "11",
+      "submitted_date": "2026-07-03",
+      "diagnosis_codes": [
+        "M1712"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-06-27",
+          "procedure_code": "20610",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "140.00"
+        }
+      ],
+      "total_charge": "140.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-544254",
+      "payer_id": "QUIL",
+      "group_code": "CO",
+      "carc_code": "4",
+      "rarc_codes": [],
+      "denial_date": "2026-07-13",
+      "denied_line_numbers": [],
+      "denied_amount": "140.00",
+      "payer_remark": "Required modifier missing, or modifier inconsistent with the procedure."
+    },
+    "visit_note": {
+      "encounter_date": "2026-06-27",
+      "text": "Date of visit: 2026-06-27\nPatient: 59-year-old woman, established patient.\nChief complaint: left knee pain\nHistory: osteoarthritis of the left knee; pain wakes the patient at night.\nExamination: crepitus and a small effusion.\nProcedure: corticosteroid injection into the left knee joint after aspiration.\nPlan: review in six weeks.\nSigned: treating clinician. 2026-06-27."
+    }
+  },
+  "expected": {
+    "action": null,
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [],
+    "supporting_evidence": [],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "A diagnosis code is written without its decimal point. The case must stop at validation, with no model call."
+  }
+}

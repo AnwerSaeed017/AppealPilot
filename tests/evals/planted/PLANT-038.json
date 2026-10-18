@@ -1,0 +1,68 @@
+{
+  "planted_id": "PLANT-038",
+  "case_id": "DEV-005",
+  "selected_clause_ids": [
+    "TESS-COV-2.1",
+    "TESS-APL-3.1"
+  ],
+  "draft": {
+    "action": "APPEAL_WITH_EVIDENCE",
+    "summary": "Draft for DEV-005.",
+    "assertions": [
+      {
+        "text": "The policy states: MRI of the knee (73721) is supported by a suspected meniscal or ligament tear with a positive examination finding, such as joint-line tenderness with a positive McMurray test, locking or instability; or by knee pain that has persisted after at least 6 weeks of conservative treatment.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-COV-2.1",
+            "quote": "MRI of the knee (73721) is supported by a suspected meniscal or ligament tear with a positive examination finding, such as joint-line tenderness with a positive McMurray test, locking or instability; or by knee pain that has persisted after at least 6 weeks of conservative treatment."
+          }
+        ]
+      },
+      {
+        "text": "The policy states: An appeal of a denial with reason code 50 is decided by a plan clinician.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-APL-3.1",
+            "quote": "An appeal of a denial with reason code 50 is decided by a plan clinician."
+          }
+        ]
+      },
+      {
+        "text": "The record states: History: twisted the left knee 10 days ago; it has locked twice since.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "History: twisted the left knee 10 days ago; it has locked twice since."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Examination: medial joint-line tenderness with a positive McMurray test; ligaments stable.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Examination: medial joint-line tenderness with a positive McMurray test; ligaments stable."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Assessment: confirmed medial meniscal tear.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Assessment: suspected medial meniscal tear."
+          }
+        ]
+      }
+    ],
+    "correction": null,
+    "missing_evidence": []
+  },
+  "error": "HEDGE_REMOVED",
+  "planted_assertion_index": 4
+}

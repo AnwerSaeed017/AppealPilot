@@ -1,0 +1,95 @@
+{
+  "case_id": "DEV-004",
+  "split": "dev",
+  "scenario": "modifier-25-supported-2",
+  "tags": [
+    "pair:modifier-25"
+  ],
+  "as_of_date": "2026-07-02",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-064864",
+      "payer_id": "QUIL",
+      "member_id": "QUIL-51033943",
+      "patient_id": "PT-625633",
+      "patient_date_of_birth": "1955-04-04",
+      "billing_provider_npi": "1475713008",
+      "place_of_service": "11",
+      "submitted_date": "2026-06-14",
+      "diagnosis_codes": [
+        "M17.11",
+        "E11.9"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-06-04",
+          "procedure_code": "99214",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            2,
+            1
+          ],
+          "units": 1,
+          "charge_amount": "185.00"
+        },
+        {
+          "line_number": 2,
+          "service_date": "2026-06-04",
+          "procedure_code": "20610",
+          "modifiers": [
+            "RT"
+          ],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "140.00"
+        }
+      ],
+      "total_charge": "325.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-064864",
+      "payer_id": "QUIL",
+      "group_code": "CO",
+      "carc_code": "4",
+      "rarc_codes": [],
+      "denial_date": "2026-06-24",
+      "denied_line_numbers": [
+        1
+      ],
+      "denied_amount": "185.00",
+      "payer_remark": "Required modifier missing, or modifier inconsistent with the procedure."
+    },
+    "visit_note": {
+      "encounter_date": "2026-06-04",
+      "text": "Date of visit: 2026-06-04\nPatient: 71-year-old woman, established patient.\nChief complaint: diabetes review; right knee pain\nDiabetes review: fasting glucose readings 180 to 220 over the past three weeks; increased thirst.\nExamination: feet checked, sensation intact, pulses present; weight up 2 kg since last visit.\nDecision: metformin increased to 1000 mg twice daily; HbA1c ordered.\nProcedure: right knee aspirated and injected with corticosteroid.\nSigned: treating clinician. 2026-06-04."
+    }
+  },
+  "expected": {
+    "action": "CORRECT_AND_RESUBMIT",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "QUIL-MOD-1.1",
+      "QUIL-MOD-1.2"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "NOTE",
+        "line_number": 4
+      },
+      {
+        "document_id": "NOTE",
+        "line_number": 5
+      },
+      {
+        "document_id": "NOTE",
+        "line_number": 6
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": "Add modifier 25 to line 1 and send a corrected claim.",
+    "rationale": "Alongside the knee injection, the note records a history, an examination and a treatment change for a different problem. That is a separately identifiable evaluation, so modifier 25 is supported."
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "case_id": "LOCK-001",
+  "split": "locked",
+  "scenario": "airway-pressure-report-1",
+  "tags": [],
+  "as_of_date": "2026-04-08",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-359889",
+      "payer_id": "QUIL",
+      "member_id": "QUIL-37481928",
+      "patient_id": "PT-180328",
+      "patient_date_of_birth": "1969-10-19",
+      "billing_provider_npi": "1147569762",
+      "place_of_service": "11",
+      "submitted_date": "2026-03-12",
+      "diagnosis_codes": [
+        "G47.33"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-03-04",
+          "procedure_code": "E0601",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "95.00"
+        }
+      ],
+      "total_charge": "95.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-359889",
+      "payer_id": "QUIL",
+      "group_code": "CO",
+      "carc_code": "252",
+      "rarc_codes": [],
+      "denial_date": "2026-03-30",
+      "denied_line_numbers": [],
+      "denied_amount": "95.00",
+      "payer_remark": "Sleep study report is required."
+    },
+    "visit_note": {
+      "encounter_date": "2026-03-04",
+      "text": "Date of visit: 2026-03-04\nPatient: 56-year-old woman, established patient.\nChief complaint: follow-up after sleep study\nInitial evaluation 2026-01-26: loud snoring, witnessed pauses in breathing, daytime sleepiness.\nSleep study 2026-02-18: positive for obstructive sleep apnea.\nPlan: start positive airway pressure therapy; device ordered today.\nSigned: treating clinician. 2026-03-04."
+    },
+    "supporting_documents": [
+      {
+        "document_id": "SLEEP",
+        "kind": "DIAGNOSTIC_REPORT",
+        "document_date": "2026-02-18",
+        "text": "Attended polysomnography report\nStudy date: 2026-02-18\nApnea-hypopnea index (AHI): 30 events per hour\nImpression: obstructive sleep apnea."
+      }
+    ]
+  },
+  "expected": {
+    "action": "APPEAL_WITH_EVIDENCE",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "QUIL-DOC-2.1",
+      "QUIL-DOC-1.1"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "SLEEP",
+        "line_number": 3
+      },
+      {
+        "document_id": "NOTE",
+        "line_number": 4
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "The report on file gives an index of 30, above the threshold of 15, and the note records a clinical evaluation before the study. The documentation the payer asked for exists and can be sent within the deadline."
+  }
+}

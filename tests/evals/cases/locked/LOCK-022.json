@@ -1,0 +1,64 @@
+{
+  "case_id": "LOCK-022",
+  "split": "locked",
+  "scenario": "invalid-denied-line-1",
+  "tags": [
+    "invalid_input"
+  ],
+  "as_of_date": "2026-06-10",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-251430",
+      "payer_id": "TESS",
+      "member_id": "TESS-35396620",
+      "patient_id": "PT-769216",
+      "patient_date_of_birth": "1965-07-26",
+      "billing_provider_npi": "1803689425",
+      "place_of_service": "11",
+      "submitted_date": "2026-05-20",
+      "diagnosis_codes": [
+        "M17.11"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-05-12",
+          "procedure_code": "20610",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "140.00"
+        }
+      ],
+      "total_charge": "140.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-251430",
+      "payer_id": "TESS",
+      "group_code": "CO",
+      "carc_code": "4",
+      "rarc_codes": [],
+      "denial_date": "2026-05-31",
+      "denied_line_numbers": [
+        9
+      ],
+      "denied_amount": "140.00",
+      "payer_remark": "Required modifier missing, or modifier inconsistent with the procedure."
+    },
+    "visit_note": {
+      "encounter_date": "2026-05-12",
+      "text": "Date of visit: 2026-05-12\nPatient: 60-year-old man, established patient.\nChief complaint: right knee pain\nHistory: osteoarthritis of the right knee; pain worse on stairs.\nExamination: crepitus and a small effusion.\nProcedure: right knee aspirated and injected with corticosteroid.\nPlan: review in six weeks.\nElectronically signed by the treating clinician, 2026-05-12."
+    }
+  },
+  "expected": {
+    "action": null,
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [],
+    "supporting_evidence": [],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "The denial names line 9, which is not on the claim. The case must stop at validation, with no model call."
+  }
+}

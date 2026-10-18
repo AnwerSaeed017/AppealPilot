@@ -1,0 +1,88 @@
+{
+  "case_id": "DEV-015",
+  "split": "dev",
+  "scenario": "duplicate-repeat-1",
+  "tags": [],
+  "as_of_date": "2026-06-09",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-675686",
+      "payer_id": "TESS",
+      "member_id": "TESS-73468835",
+      "patient_id": "PT-116692",
+      "patient_date_of_birth": "1949-11-12",
+      "billing_provider_npi": "1051779068",
+      "place_of_service": "11",
+      "submitted_date": "2026-05-11",
+      "diagnosis_codes": [
+        "R00.2"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-05-03",
+          "procedure_code": "93000",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "55.00"
+        },
+        {
+          "line_number": 2,
+          "service_date": "2026-05-03",
+          "procedure_code": "93000",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "55.00"
+        }
+      ],
+      "total_charge": "110.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-675686",
+      "payer_id": "TESS",
+      "group_code": "CO",
+      "carc_code": "18",
+      "rarc_codes": [],
+      "denial_date": "2026-05-27",
+      "denied_line_numbers": [
+        2
+      ],
+      "denied_amount": "55.00",
+      "payer_remark": "Exact duplicate of a claim or service already processed."
+    },
+    "visit_note": {
+      "encounter_date": "2026-05-03",
+      "text": "Date of visit: 2026-05-03\nPatient: 76-year-old woman, established patient.\nChief complaint: palpitations\nHistory: two episodes of palpitations this morning.\n09:10 ECG: sinus rhythm, rate 78, no acute changes.\n10:40 Palpitations returned while waiting; patient light-headed.\n10:45 Repeat ECG: narrow-complex tachycardia, rate 164.\nPlan: vagal manoeuvres effective; cardiology referral.\nElectronically signed by the treating clinician, 2026-05-03."
+    }
+  },
+  "expected": {
+    "action": "CORRECT_AND_RESUBMIT",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "TESS-DUP-2.1"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "NOTE",
+        "line_number": 5
+      },
+      {
+        "document_id": "NOTE",
+        "line_number": 6
+      },
+      {
+        "document_id": "NOTE",
+        "line_number": 7
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": "Add modifier 76 to line 2 and send a corrected claim.",
+    "rationale": "The note records two ECGs at different times with different findings, so the second is a repeat and not a duplicate. The policy asks for modifier 76 on the repeat line, which is all that is missing."
+  }
+}

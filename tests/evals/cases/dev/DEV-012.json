@@ -1,0 +1,78 @@
+{
+  "case_id": "DEV-012",
+  "split": "dev",
+  "scenario": "pa-never-requested-1",
+  "tags": [],
+  "as_of_date": "2026-06-12",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-573908",
+      "payer_id": "TESS",
+      "member_id": "TESS-68004782",
+      "patient_id": "PT-123842",
+      "patient_date_of_birth": "1988-06-24",
+      "billing_provider_npi": "1003427105",
+      "place_of_service": "11",
+      "submitted_date": "2026-05-26",
+      "diagnosis_codes": [
+        "M25.561"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-05-21",
+          "procedure_code": "73721",
+          "modifiers": [
+            "RT"
+          ],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "620.00"
+        }
+      ],
+      "total_charge": "620.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-573908",
+      "payer_id": "TESS",
+      "group_code": "CO",
+      "carc_code": "197",
+      "rarc_codes": [],
+      "denial_date": "2026-06-05",
+      "denied_line_numbers": [],
+      "denied_amount": "620.00",
+      "payer_remark": "Authorization or precertification absent."
+    },
+    "visit_note": {
+      "encounter_date": "2026-05-21",
+      "text": "Date of visit: 2026-05-21\nPatient: 37-year-old woman, established patient.\nChief complaint: right knee pain\nHistory: right knee pain for 5 weeks after a twisting injury. The knee has locked several times.\nExamination: medial joint-line tenderness, positive McMurray test, no effusion.\nAssessment: suspected medial meniscal tear.\nPlan: MRI of the right knee without contrast.\nSigned: treating clinician. 2026-05-21."
+    },
+    "supporting_documents": [
+      {
+        "document_id": "BILL",
+        "kind": "BILLING_NOTE",
+        "document_date": "2026-06-12",
+        "text": "Billing note, 2026-06-12\nNo authorization request is on file for this service.\nThe appointment was booked directly from clinic."
+      }
+    ]
+  },
+  "expected": {
+    "action": "NO_ACTION",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "TESS-PA-1.1",
+      "TESS-PA-3.3"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "BILL",
+        "line_number": 2
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "The service is on the payer's authorization list, none was requested, and nothing in the record suggests it was urgent. The policy says the denial stands, however reasonable the service was clinically."
+  }
+}

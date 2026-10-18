@@ -1,0 +1,38 @@
+{
+  "policy_id": "QUIL-COV",
+  "payer_id": "QUIL",
+  "title": "Diagnosis Support and Coverage",
+  "effective_from": "2026-01-01",
+  "clauses": [
+    {
+      "clause_id": "QUIL-COV-1.1",
+      "section_heading": "Diagnosis must support the service",
+      "text": "Each claim line is assessed against the first diagnosis its pointers reference. If that diagnosis does not support the service, the line is denied with reason code 11."
+    },
+    {
+      "clause_id": "QUIL-COV-1.2",
+      "section_heading": "Correcting the diagnosis on a claim",
+      "text": "A corrected claim may link or add a supporting diagnosis only when the record for the date of service documents that diagnosis. A diagnosis recorded only at a later visit may not be used."
+    },
+    {
+      "clause_id": "QUIL-COV-2.1",
+      "section_heading": "MRI of the knee",
+      "text": "MRI of the knee (73721) is supported by examination findings that suggest a meniscal or ligament injury, such as a positive McMurray or Lachman test, mechanical locking or giving way; or by knee pain that continues after at least 4 weeks of conservative treatment."
+    },
+    {
+      "clause_id": "QUIL-COV-2.2",
+      "section_heading": "MRI of the lumbar spine",
+      "text": "MRI of the lumbar spine (72148) is supported by low back pain with a neurological deficit, bowel or bladder dysfunction, a history of cancer, fever or suspected infection, or significant trauma; or by low back pain that continues after at least 6 weeks of conservative treatment."
+    },
+    {
+      "clause_id": "QUIL-COV-2.3",
+      "section_heading": "Aspiration or injection of a large joint",
+      "text": "Aspiration or injection of a large joint (20610) is supported by a diagnosis of arthritis or effusion of the joint treated. It is not supported by a diagnosis that does not concern that joint."
+    },
+    {
+      "clause_id": "QUIL-COV-3.1",
+      "section_heading": "Medical necessity denials",
+      "text": "A denial with reason code 50 reflects a clinical judgement by the plan. It may be challenged only by an appeal under policy QUIL-APL, which a plan clinician decides."
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "case_id": "LOCK-002",
+  "split": "locked",
+  "scenario": "knee-mri-undated-2",
+  "tags": [],
+  "as_of_date": "2026-06-26",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-650989",
+      "payer_id": "TESS",
+      "member_id": "TESS-67814945",
+      "patient_id": "PT-986852",
+      "patient_date_of_birth": "1952-06-15",
+      "billing_provider_npi": "1032867974",
+      "place_of_service": "11",
+      "submitted_date": "2026-05-29",
+      "diagnosis_codes": [
+        "M25.561"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-05-22",
+          "procedure_code": "73721",
+          "modifiers": [
+            "RT"
+          ],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "620.00"
+        }
+      ],
+      "total_charge": "620.00",
+      "prior_authorization_number": "AU-135046"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-650989",
+      "payer_id": "TESS",
+      "group_code": "CO",
+      "carc_code": "50",
+      "rarc_codes": [],
+      "denial_date": "2026-06-16",
+      "denied_line_numbers": [],
+      "denied_amount": "620.00",
+      "payer_remark": "Service not deemed medically necessary on the information submitted."
+    },
+    "visit_note": {
+      "encounter_date": "2026-05-22",
+      "text": "Date of visit: 2026-05-22\nPatient: 73-year-old man, established patient.\nChief complaint: right knee pain\nHistory: longstanding knee pain. Has failed conservative management.\nExamination: mild medial tenderness; full range of movement; ligaments stable.\nAssessment: knee pain, cause unclear.\nPlan: MRI of the right knee without contrast.\nElectronically signed by the treating clinician, 2026-05-22."
+    }
+  },
+  "expected": {
+    "action": "REQUEST_DOCUMENTATION",
+    "acceptable_alternatives": [
+      "ESCALATE_TO_HUMAN"
+    ],
+    "relevant_clause_ids": [
+      "TESS-COV-2.1"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "NOTE",
+        "line_number": 4
+      }
+    ],
+    "missing_evidence": [
+      "dates and duration of the conservative treatment already tried"
+    ],
+    "expected_correction": null,
+    "rationale": "No examination finding in the note meets the first criterion, so the case rests on at least 6 weeks of conservative treatment. The note asserts failure of treatment without saying what or for how long."
+  }
+}

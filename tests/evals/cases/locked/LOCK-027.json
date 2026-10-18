@@ -1,0 +1,76 @@
+{
+  "case_id": "LOCK-027",
+  "split": "locked",
+  "scenario": "side-contradiction-2",
+  "tags": [
+    "contradictory_record"
+  ],
+  "as_of_date": "2026-04-25",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-827828",
+      "payer_id": "QUIL",
+      "member_id": "QUIL-89600769",
+      "patient_id": "PT-848776",
+      "patient_date_of_birth": "1984-09-21",
+      "billing_provider_npi": "1508829763",
+      "place_of_service": "11",
+      "submitted_date": "2026-04-01",
+      "diagnosis_codes": [
+        "M17.10"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-03-29",
+          "procedure_code": "20610",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "140.00"
+        }
+      ],
+      "total_charge": "140.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-827828",
+      "payer_id": "QUIL",
+      "group_code": "CO",
+      "carc_code": "4",
+      "rarc_codes": [],
+      "denial_date": "2026-04-15",
+      "denied_line_numbers": [],
+      "denied_amount": "140.00",
+      "payer_remark": "Required modifier missing, or modifier inconsistent with the procedure."
+    },
+    "visit_note": {
+      "encounter_date": "2026-03-29",
+      "text": "Date of visit: 2026-03-29\nPatient: 41-year-old man, established patient.\nChief complaint: left knee pain\nHistory: osteoarthritis of the left knee; pain worse on stairs.\nExamination: crepitus and a small effusion.\nProcedure: corticosteroid injection into the right knee joint after aspiration.\nPlan: review in six weeks.\nElectronically signed by the treating clinician, 2026-03-29."
+    }
+  },
+  "expected": {
+    "action": "ESCALATE_TO_HUMAN",
+    "acceptable_alternatives": [
+      "REQUEST_DOCUMENTATION"
+    ],
+    "relevant_clause_ids": [
+      "QUIL-MOD-2.1",
+      "QUIL-MOD-2.2"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "NOTE",
+        "line_number": 4
+      },
+      {
+        "document_id": "NOTE",
+        "line_number": 6
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "The history describes the left knee and the procedure line the right knee. Picking either would put a guess on a claim, so the clinician has to resolve it."
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "case_id": "LOCK-012",
+  "split": "locked",
+  "scenario": "invalid-group-code-1",
+  "tags": [
+    "invalid_input"
+  ],
+  "as_of_date": "2026-06-26",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-050730",
+      "payer_id": "QUIL",
+      "member_id": "QUIL-82416389",
+      "patient_id": "PT-847311",
+      "patient_date_of_birth": "1980-06-15",
+      "billing_provider_npi": "1833290178",
+      "place_of_service": "11",
+      "submitted_date": "2026-06-01",
+      "diagnosis_codes": [
+        "M17.11"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-05-23",
+          "procedure_code": "20610",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "140.00"
+        }
+      ],
+      "total_charge": "140.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-050730",
+      "payer_id": "QUIL",
+      "group_code": "ZZ",
+      "carc_code": "4",
+      "rarc_codes": [],
+      "denial_date": "2026-06-18",
+      "denied_line_numbers": [],
+      "denied_amount": "140.00",
+      "payer_remark": "Required modifier missing, or modifier inconsistent with the procedure."
+    },
+    "visit_note": {
+      "encounter_date": "2026-05-23",
+      "text": "Date of visit: 2026-05-23\nPatient: 45-year-old woman, established patient.\nChief complaint: right knee pain\nHistory: osteoarthritis of the right knee; pain worse on stairs.\nExamination: crepitus and a small effusion.\nProcedure: corticosteroid injection into the right knee joint after aspiration.\nPlan: review in six weeks.\nSigned: treating clinician. 2026-05-23."
+    }
+  },
+  "expected": {
+    "action": null,
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [],
+    "supporting_evidence": [],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "The denial's group code is not one of CO, PR, OA or PI. The case must stop at validation, with no model call."
+  }
+}

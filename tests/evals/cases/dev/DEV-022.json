@@ -1,0 +1,62 @@
+{
+  "case_id": "DEV-022",
+  "split": "dev",
+  "scenario": "invalid-pointer-1",
+  "tags": [
+    "invalid_input"
+  ],
+  "as_of_date": "2026-05-26",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-240451",
+      "payer_id": "QUIL",
+      "member_id": "QUIL-52310835",
+      "patient_id": "PT-612626",
+      "patient_date_of_birth": "1956-09-16",
+      "billing_provider_npi": "1738226327",
+      "place_of_service": "11",
+      "submitted_date": "2026-04-24",
+      "diagnosis_codes": [
+        "M17.12"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-04-17",
+          "procedure_code": "20610",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            4
+          ],
+          "units": 1,
+          "charge_amount": "140.00"
+        }
+      ],
+      "total_charge": "140.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-240451",
+      "payer_id": "QUIL",
+      "group_code": "CO",
+      "carc_code": "4",
+      "rarc_codes": [],
+      "denial_date": "2026-05-11",
+      "denied_line_numbers": [],
+      "denied_amount": "140.00",
+      "payer_remark": "Required modifier missing, or modifier inconsistent with the procedure."
+    },
+    "visit_note": {
+      "encounter_date": "2026-04-17",
+      "text": "Date of visit: 2026-04-17\nPatient: 69-year-old man, established patient.\nChief complaint: left knee pain\nHistory: osteoarthritis of the left knee; pain worse on stairs.\nExamination: crepitus and a small effusion.\nProcedure: corticosteroid injection into the left knee joint after aspiration.\nPlan: review in six weeks.\nSigned: treating clinician. 2026-04-17."
+    }
+  },
+  "expected": {
+    "action": null,
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [],
+    "supporting_evidence": [],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "A line points to a fourth diagnosis, but the claim lists only one. The case must stop at validation, with no model call."
+  }
+}

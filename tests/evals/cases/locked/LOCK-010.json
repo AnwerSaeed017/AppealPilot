@@ -1,0 +1,78 @@
+{
+  "case_id": "LOCK-010",
+  "split": "locked",
+  "scenario": "lumbar-mri-equivocal-2",
+  "tags": [
+    "ambiguous",
+    "hedged_finding"
+  ],
+  "as_of_date": "2026-03-23",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-511459",
+      "payer_id": "TESS",
+      "member_id": "TESS-69775792",
+      "patient_id": "PT-580403",
+      "patient_date_of_birth": "1958-04-29",
+      "billing_provider_npi": "1097125128",
+      "place_of_service": "11",
+      "submitted_date": "2026-03-02",
+      "diagnosis_codes": [
+        "M54.50"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-02-20",
+          "procedure_code": "72148",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "710.00"
+        }
+      ],
+      "total_charge": "710.00",
+      "prior_authorization_number": "AU-380738"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-511459",
+      "payer_id": "TESS",
+      "group_code": "CO",
+      "carc_code": "50",
+      "rarc_codes": [],
+      "denial_date": "2026-03-14",
+      "denied_line_numbers": [],
+      "denied_amount": "710.00",
+      "payer_remark": "Service not deemed medically necessary on the information submitted."
+    },
+    "visit_note": {
+      "encounter_date": "2026-02-20",
+      "text": "Date of visit: 2026-02-20\nPatient: 67-year-old woman, established patient.\nChief complaint: low back pain\nHistory: low back pain for 5 weeks. Ibuprofen and home exercises for 5 weeks with partial relief.\nExamination: possible mild weakness of ankle dorsiflexion, limited by pain; reflexes symmetric; sensation intact.\nAssessment: low back pain, possible early nerve root irritation.\nPlan: MRI of the lumbar spine without contrast.\nElectronically signed by the treating clinician, 2026-02-20."
+    }
+  },
+  "expected": {
+    "action": "ESCALATE_TO_HUMAN",
+    "acceptable_alternatives": [
+      "REQUEST_DOCUMENTATION"
+    ],
+    "relevant_clause_ids": [
+      "TESS-COV-2.2",
+      "TESS-APL-3.1"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "NOTE",
+        "line_number": 4
+      },
+      {
+        "document_id": "NOTE",
+        "line_number": 5
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "Five weeks of treatment is short of the six the policy asks for, so the case depends on a neurological deficit. The note says 'possible' weakness 'limited by pain'. Calling that a deficit would overstate the record; whether it is one is a clinical judgement."
+  }
+}

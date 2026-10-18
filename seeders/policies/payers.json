@@ -1,0 +1,175 @@
+[
+  {
+    "payer_id": "TESS",
+    "name": "Tessaly Health Plan",
+    "rules": {
+      "filing_limit_days": 180,
+      "filing_limit_clause": "TESS-TF-1.1",
+      "earlier_filing_limit": {
+        "service_before": "2026-01-01",
+        "days": 365,
+        "clause_id": "TESS-TF-1.2"
+      },
+      "corrected_claim_days": 90,
+      "corrected_claim_clause": "TESS-TF-1.3",
+      "appeal_days": 180,
+      "appeal_clause": "TESS-APL-1.1",
+      "authorization_codes": [
+        "72148",
+        "73721",
+        "J7325",
+        "29881",
+        "95810"
+      ],
+      "authorization_clause": "TESS-PA-1.1",
+      "authorization_number_clause": "TESS-PA-1.2",
+      "authorization_exempt_places": [
+        "23"
+      ],
+      "authorization_exempt_clause": "TESS-PA-3.2",
+      "side_modifier_codes": [
+        "20610",
+        "29881",
+        "73721",
+        "J7325"
+      ],
+      "side_modifier_clause": "TESS-MOD-2.1",
+      "modifier_25_clause": "TESS-MOD-1.1",
+      "repeat_modifier_clause": "TESS-DUP-2.1",
+      "duplicate_paid_clause": "TESS-DUP-1.2",
+      "duplicate_replacement_clause": "TESS-DUP-2.2",
+      "duplicate_denied_clause": "TESS-DUP-3.1",
+      "procedure_clauses": {
+        "73721": "TESS-COV-2.1",
+        "72148": "TESS-COV-2.2",
+        "20610": "TESS-COV-2.3",
+        "17110": "TESS-COV-3.1",
+        "E0601": "TESS-DOC-2.1",
+        "J7325": "TESS-DOC-2.2",
+        "97110": "TESS-DOC-2.3"
+      }
+    }
+  },
+  {
+    "payer_id": "QUIL",
+    "name": "Quillon Mutual",
+    "rules": {
+      "filing_limit_days": 90,
+      "filing_limit_clause": "QUIL-TF-1.1",
+      "corrected_claim_days": 60,
+      "corrected_claim_clause": "QUIL-TF-1.2",
+      "appeal_days": 120,
+      "appeal_clause": "QUIL-APL-1.1",
+      "authorization_codes": [
+        "72148",
+        "J7325",
+        "29881",
+        "95810"
+      ],
+      "authorization_clause": "QUIL-PA-1.1",
+      "authorization_number_clause": "QUIL-PA-1.2",
+      "side_modifier_codes": [
+        "20610",
+        "29881",
+        "73721",
+        "J7325"
+      ],
+      "side_modifier_clause": "QUIL-MOD-2.1",
+      "modifier_25_clause": "QUIL-MOD-1.1",
+      "repeat_modifier_clause": "QUIL-DUP-2.1",
+      "duplicate_paid_clause": "QUIL-DUP-1.2",
+      "duplicate_replacement_clause": "QUIL-DUP-2.2",
+      "procedure_clauses": {
+        "73721": "QUIL-COV-2.1",
+        "72148": "QUIL-COV-2.2",
+        "20610": "QUIL-COV-2.3",
+        "E0601": "QUIL-DOC-2.1",
+        "J7325": "QUIL-DOC-2.2"
+      }
+    }
+  },
+  {
+    "payer_id": "MEDICARE",
+    "name": "Medicare Part B (Original Medicare)",
+    "rules": {
+      "filing_limit_days": 365,
+      "filing_limit_clause": "MEDICARE-TF-1.1",
+      "corrected_claim_days": 365,
+      "corrected_claim_clause": "MEDICARE-APL-2.2",
+      "appeal_days": 120,
+      "appeal_clause": "MEDICARE-APL-1.1",
+      "authorization_codes": [
+        "15820",
+        "15821",
+        "15822",
+        "15823",
+        "67900",
+        "67901",
+        "67902",
+        "67903",
+        "67904",
+        "67906",
+        "67908",
+        "64612",
+        "64615",
+        "J0585",
+        "J0586",
+        "J0587",
+        "J0588",
+        "15830",
+        "15847",
+        "15877",
+        "20912",
+        "21210",
+        "30400",
+        "30410",
+        "30420",
+        "30430",
+        "30435",
+        "30450",
+        "30460",
+        "30462",
+        "30465",
+        "30520",
+        "36473",
+        "36474",
+        "36475",
+        "36476",
+        "36478",
+        "36479",
+        "36482",
+        "36483",
+        "22551",
+        "22552",
+        "63650",
+        "64490",
+        "64491",
+        "64493",
+        "64494",
+        "64633",
+        "64634",
+        "64635",
+        "64636"
+      ],
+      "authorization_clause": "MEDICARE-PA-1.1",
+      "authorization_number_clause": "MEDICARE-PA-2.1",
+      "authorization_exempt_places": [
+        "11",
+        "24"
+      ],
+      "authorization_exempt_clause": "MEDICARE-PA-3.1",
+      "side_modifier_codes": [],
+      "side_modifier_clause": "MEDICARE-DUP-1.2",
+      "modifier_25_clause": "MEDICARE-MOD-1.1",
+      "repeat_modifier_clause": "MEDICARE-DUP-1.2",
+      "duplicate_paid_clause": "MEDICARE-DUP-2.1",
+      "duplicate_replacement_clause": "MEDICARE-APL-2.1",
+      "duplicate_denied_clause": "MEDICARE-DUP-3.1",
+      "correction_route_clause": "MEDICARE-APL-2.3",
+      "procedure_clauses": {
+        "77080": "MEDICARE-COV-1.2",
+        "77085": "MEDICARE-COV-1.2"
+      }
+    }
+  }
+]

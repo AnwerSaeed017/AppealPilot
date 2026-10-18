@@ -1,0 +1,85 @@
+{
+  "case_id": "DEV-021",
+  "split": "dev",
+  "scenario": "pa-no-record-1",
+  "tags": [],
+  "as_of_date": "2026-03-17",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-349939",
+      "payer_id": "TESS",
+      "member_id": "TESS-91419880",
+      "patient_id": "PT-347893",
+      "patient_date_of_birth": "1967-07-12",
+      "billing_provider_npi": "1628129060",
+      "place_of_service": "11",
+      "submitted_date": "2026-02-19",
+      "diagnosis_codes": [
+        "M54.16"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-02-13",
+          "procedure_code": "72148",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "710.00"
+        }
+      ],
+      "total_charge": "710.00",
+      "prior_authorization_number": "AU-767685"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-349939",
+      "payer_id": "TESS",
+      "group_code": "CO",
+      "carc_code": "197",
+      "rarc_codes": [],
+      "denial_date": "2026-03-11",
+      "denied_line_numbers": [],
+      "denied_amount": "710.00",
+      "payer_remark": "Authorization or precertification absent."
+    },
+    "visit_note": {
+      "encounter_date": "2026-02-13",
+      "text": "Date of visit: 2026-02-13\nPatient: 58-year-old woman, established patient.\nChief complaint: low back pain radiating to the leg\nHistory: low back pain for 8 weeks, radiating below the knee. Naproxen and a home exercise programme for 7 weeks without improvement.\nExamination: straight-leg raise positive; ankle reflex reduced on the affected side.\nAssessment: lumbar radiculopathy.\nPlan: MRI of the lumbar spine without contrast.\nSigned: treating clinician. 2026-02-13."
+    },
+    "supporting_documents": [
+      {
+        "document_id": "AUTH",
+        "kind": "AUTHORIZATION_RECORD",
+        "document_date": "2026-02-03",
+        "text": "Tessaly Health Plan: authorization confirmation\nAuthorization number: AU-767685\nIssued: 2026-02-03\nMember: TESS-91419880\nService: procedure code 72148, MRI of the lumbar spine without contrast"
+      }
+    ]
+  },
+  "expected": {
+    "action": "APPEAL_WITH_EVIDENCE",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "TESS-PA-4.1",
+      "TESS-PA-2.1"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "AUTH",
+        "line_number": 2
+      },
+      {
+        "document_id": "AUTH",
+        "line_number": 3
+      },
+      {
+        "document_id": "AUTH",
+        "line_number": 5
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "The claim already carried the authorization number, so there is nothing to correct. The practice holds the number, the issue date and the service authorized, which is what the policy requires for an appeal."
+  }
+}

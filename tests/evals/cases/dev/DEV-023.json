@@ -1,0 +1,89 @@
+{
+  "case_id": "DEV-023",
+  "split": "dev",
+  "scenario": "therapy-progress-1",
+  "tags": [],
+  "as_of_date": "2026-03-07",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-762812",
+      "payer_id": "TESS",
+      "member_id": "TESS-36394740",
+      "patient_id": "PT-622010",
+      "patient_date_of_birth": "1956-08-22",
+      "billing_provider_npi": "1855126615",
+      "place_of_service": "11",
+      "submitted_date": "2026-02-08",
+      "diagnosis_codes": [
+        "M54.50"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-02-05",
+          "procedure_code": "97110",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 2,
+          "charge_amount": "90.00"
+        }
+      ],
+      "total_charge": "90.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-762812",
+      "payer_id": "TESS",
+      "group_code": "CO",
+      "carc_code": "252",
+      "rarc_codes": [],
+      "denial_date": "2026-02-28",
+      "denied_line_numbers": [],
+      "denied_amount": "90.00",
+      "payer_remark": "Plan of care and progress note are required for extended therapy."
+    },
+    "visit_note": {
+      "encounter_date": "2026-02-05",
+      "text": "Date of visit: 2026-02-05\nPatient: 69-year-old woman, established patient.\nChief complaint: low back pain, physical therapy session\nPhysical therapy visit 13 of this calendar year.\nSession: therapeutic exercise, 30 minutes: core stabilisation and stretches.\nPatient reports feeling stronger and wishes to continue.\nElectronically signed by the treating clinician, 2026-02-05."
+    },
+    "supporting_documents": [
+      {
+        "document_id": "POC",
+        "kind": "PLAN_OF_CARE",
+        "document_date": "2025-12-22",
+        "text": "Physical therapy plan of care\nWritten: 2025-12-22\nGoal 1: lumbar flexion from 40 to 60 degrees within 8 weeks.\nGoal 2: sit for 45 minutes without pain within 8 weeks."
+      }
+    ]
+  },
+  "expected": {
+    "action": "REQUEST_DOCUMENTATION",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "TESS-DOC-2.3"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "NOTE",
+        "line_number": 4
+      },
+      {
+        "document_id": "NOTE",
+        "line_number": 6
+      },
+      {
+        "document_id": "POC",
+        "line_number": 3
+      },
+      {
+        "document_id": "POC",
+        "line_number": 4
+      }
+    ],
+    "missing_evidence": [
+      "progress note with objective measurements since the plan of care was written"
+    ],
+    "expected_correction": null,
+    "rationale": "Visit 13 is past the 12-visit threshold. The plan of care with measurable goals exists, but the only sign of progress is the patient's own report, and the policy asks for objective improvement."
+  }
+}

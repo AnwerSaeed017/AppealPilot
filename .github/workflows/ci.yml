@@ -1,0 +1,113 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: appealpilot
+          POSTGRES_PASSWORD: appealpilot
+          POSTGRES_DB: appealpilot
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U appealpilot"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      # A throwaway database that exists only for this run.
+      POSTGRES_URL: postgresql://appealpilot:appealpilot@localhost:5432/appealpilot
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Install
+        run: uv sync --locked --all-packages
+
+      - name: Format
+        run: uv run ruff format --check .
+
+      - name: Lint
+        run: uv run ruff check .
+
+      - name: Types
+        run: uv run mypy
+
+      - name: Migrations apply and match the models
+        run: uv run alembic upgrade head && uv run alembic check
+        env:
+          DATABASE_URL: ${{ env.POSTGRES_URL }}
+
+      # Tests use the mock LLM only; no provider key is needed or read. The integration
+      # tests run against the database migrated above.
+      - name: Tests
+        run: uv run pytest
+        env:
+          TEST_POSTGRES_URL: ${{ env.POSTGRES_URL }}
+
+  web:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Install
+        run: |
+          npm ci
+          (cd .. && uv sync --locked --all-packages)
+
+      # The web app's types and test fixtures are generated from the API. Regenerating
+      # them must change nothing, or the two have drifted apart.
+      - name: API contract is current
+        run: |
+          (cd .. && uv run python -m scripts.export_openapi && uv run python -m scripts.build_web_fixtures)
+          npm run api:types
+          git diff --exit-code -- openapi.json src/lib/api/schema.d.ts tests/fixtures
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Types
+        run: npm run typecheck
+
+      - name: Unit tests
+        run: npm test
+
+      - name: End-to-end tests
+        run: |
+          npx playwright install --with-deps chromium
+          npm run test:e2e
+
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report
+          path: web/playwright-report
+          retention-days: 7

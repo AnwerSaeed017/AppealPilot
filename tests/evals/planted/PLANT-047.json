@@ -1,0 +1,58 @@
+{
+  "planted_id": "PLANT-047",
+  "case_id": "DEV-020",
+  "selected_clause_ids": [
+    "TESS-MOD-2.1",
+    "TESS-MOD-2.2"
+  ],
+  "draft": {
+    "action": "ESCALATE_TO_HUMAN",
+    "summary": "Draft for DEV-020.",
+    "assertions": [
+      {
+        "text": "The policy states: A procedure performed on one of a pair of joints or limbs must carry modifier RT or LT.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-MOD-2.1",
+            "quote": "A procedure performed on one of a pair of joints or limbs must carry modifier RT or LT."
+          }
+        ]
+      },
+      {
+        "text": "The policy states: A line denied under clause TESS-MOD-32.1 may be corrected and resubmitted when the record for the date of service states the side treated.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-MOD-2.2",
+            "quote": "A line denied under clause TESS-MOD-32.1 may be corrected and resubmitted when the record for the date of service states the side treated."
+          }
+        ]
+      },
+      {
+        "text": "The record states: History: osteoarthritis of the left knee; pain wakes the patient at night.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "History: osteoarthritis of the left knee; pain wakes the patient at night."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Procedure: right knee aspirated and injected with corticosteroid.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Procedure: right knee aspirated and injected with corticosteroid."
+          }
+        ]
+      }
+    ],
+    "correction": null,
+    "missing_evidence": []
+  },
+  "error": "NUMBER_CHANGED_IN_QUOTE",
+  "planted_assertion_index": 1
+}

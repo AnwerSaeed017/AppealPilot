@@ -1,0 +1,43 @@
+{
+  "policy_id": "TESS-COV",
+  "payer_id": "TESS",
+  "title": "Diagnosis Support and Coverage",
+  "effective_from": "2026-01-01",
+  "clauses": [
+    {
+      "clause_id": "TESS-COV-1.1",
+      "section_heading": "Diagnosis must support the service",
+      "text": "A service is payable only when a diagnosis linked to its claim line supports it. The plan reads the diagnoses in the order of the line's diagnosis pointers, and the first pointer must be the condition the service treated or investigated. A line whose first diagnosis does not support the service is denied with reason code 11."
+    },
+    {
+      "clause_id": "TESS-COV-1.2",
+      "section_heading": "Correcting the diagnosis on a claim",
+      "text": "When the record for the date of service documents a supporting diagnosis that was left off the claim or not linked to the line, the provider may submit a corrected claim. A diagnosis must not be added unless the record for that date documents it."
+    },
+    {
+      "clause_id": "TESS-COV-2.1",
+      "section_heading": "MRI of the knee",
+      "text": "MRI of the knee (73721) is supported by a suspected meniscal or ligament tear with a positive examination finding, such as joint-line tenderness with a positive McMurray test, locking or instability; or by knee pain that has persisted after at least 6 weeks of conservative treatment. It is not supported by osteoarthritis alone without one of those findings."
+    },
+    {
+      "clause_id": "TESS-COV-2.2",
+      "section_heading": "MRI of the lumbar spine",
+      "text": "MRI of the lumbar spine (72148) is supported by low back pain with a neurological deficit, suspected cauda equina syndrome, a history of cancer, or suspected infection or fracture; or by low back pain that has persisted after at least 6 weeks of conservative treatment. It is not supported by low back pain of shorter duration without one of those findings."
+    },
+    {
+      "clause_id": "TESS-COV-2.3",
+      "section_heading": "Aspiration or injection of a large joint",
+      "text": "Aspiration or injection of a large joint (20610) is supported by osteoarthritis, inflammatory arthritis, crystal arthropathy or an effusion of that joint. It is not supported when a systemic condition, such as diabetes, is linked as the first diagnosis."
+    },
+    {
+      "clause_id": "TESS-COV-3.1",
+      "section_heading": "Benign skin lesions",
+      "text": "Destruction of benign skin lesions (17110) is covered when the record documents that the lesion was painful, bleeding, inflamed or obstructing function. Removal for appearance alone is excluded from coverage and the denial is not appealable."
+    },
+    {
+      "clause_id": "TESS-COV-4.1",
+      "section_heading": "Medical necessity denials",
+      "text": "A denial with reason code 50 means the plan judged the service not medically necessary on the information submitted. Such a denial is reviewed by a plan clinician on appeal under policy TESS-APL."
+    }
+  ]
+}

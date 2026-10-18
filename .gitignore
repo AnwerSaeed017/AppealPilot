@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# Local secrets and state: nothing under env/ is ever committed.
+env/
+*.db
+*.db-journal
+.cache/
+
+# Node
+node_modules/
+.next/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Evaluation runs: large, and tied to one machine's models and quotas.
+tests/evals/results/
+
+# Not published: internal docs and instructions for AI coding agents.
+docs/
+CLAUDE.md
+AGENTS.md
+.claude/
+
+# Web test and build output
+web/test-results/
+web/playwright-report/
+web/blob-report/
+*.tsbuildinfo

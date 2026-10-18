@@ -1,0 +1,79 @@
+{
+  "planted_id": "PLANT-005",
+  "case_id": "DEV-016",
+  "selected_clause_ids": [
+    "TESS-PA-1.2",
+    "TESS-PA-2.1",
+    "TESS-PA-3.1"
+  ],
+  "draft": {
+    "action": "CORRECT_AND_RESUBMIT",
+    "summary": "Draft for DEV-016.",
+    "assertions": [
+      {
+        "text": "The policy states: The authorization number must be entered on the claim.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-PA-1.2",
+            "quote": "The authorization number must be entered on the claim."
+          }
+        ]
+      },
+      {
+        "text": "The policy states: An authorization is valid for 60 days from its issue date, and only for the member, the procedure code and the body site named on it.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-PA-2.1",
+            "quote": "An authorization is valid for 60 days from its issue date, and only for the member, the procedure code and the body site named on it."
+          }
+        ]
+      },
+      {
+        "text": "The policy states: When an authorization was issued before the date of service and is valid for the service billed, but its number was left off the claim, the provider should submit a corrected claim that includes the number.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-PA-3.1",
+            "quote": "When an authorization was issued before the date of service and is valid for the service billed, but its number was left off the claim, the provider should submit a corrected claim that includes the number."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Authorization number: AU-431117",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "AUTH",
+            "quote": "Authorization number: AU-431117"
+          }
+        ]
+      },
+      {
+        "text": "The record states: Issued: 2026-05-27",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "AUTH",
+            "quote": "Issued: 2026-05-27"
+          }
+        ]
+      },
+      {
+        "text": "The record states: Service: procedure code 73721, MRI of the left knee without contrast",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "AUTH",
+            "quote": "Service: procedure code 73721, MRI of the left knee without contrast"
+          }
+        ]
+      }
+    ],
+    "correction": "Add authorization number AU-431117 to the claim and send a corrected claim.",
+    "missing_evidence": []
+  },
+  "error": null,
+  "planted_assertion_index": null
+}

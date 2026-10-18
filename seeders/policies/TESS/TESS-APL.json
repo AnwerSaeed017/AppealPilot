@@ -1,0 +1,33 @@
+{
+  "policy_id": "TESS-APL",
+  "payer_id": "TESS",
+  "title": "Appeals",
+  "effective_from": "2026-01-01",
+  "clauses": [
+    {
+      "clause_id": "TESS-APL-1.1",
+      "section_heading": "Time limit",
+      "text": "A first-level appeal must be received within 180 days of the denial date."
+    },
+    {
+      "clause_id": "TESS-APL-1.2",
+      "section_heading": "Contents of an appeal",
+      "text": "An appeal must identify the claim, state the denial reason being disputed, cite the policy clause the provider relies on, and include the parts of the record that support each statement."
+    },
+    {
+      "clause_id": "TESS-APL-2.1",
+      "section_heading": "Corrections are not appeals",
+      "text": "A change to claim data, such as a modifier, a diagnosis pointer or an authorization number, is a corrected claim and not an appeal. Corrected claims follow the limits in policy TESS-TF."
+    },
+    {
+      "clause_id": "TESS-APL-3.1",
+      "section_heading": "Medical necessity appeals",
+      "text": "An appeal of a denial with reason code 50 is decided by a plan clinician. The treating clinician may request a peer-to-peer discussion within 14 days of the denial date."
+    },
+    {
+      "clause_id": "TESS-APL-3.2",
+      "section_heading": "Appeals without new evidence",
+      "text": "An appeal that restates the claim without new evidence is dismissed."
+    }
+  ]
+}

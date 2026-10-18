@@ -1,0 +1,71 @@
+{
+  "case_id": "LOCK-026",
+  "split": "locked",
+  "scenario": "pa-emergency-1",
+  "tags": [],
+  "as_of_date": "2026-03-19",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-675663",
+      "payer_id": "TESS",
+      "member_id": "TESS-20761434",
+      "patient_id": "PT-573325",
+      "patient_date_of_birth": "1962-06-16",
+      "billing_provider_npi": "1823599059",
+      "place_of_service": "23",
+      "submitted_date": "2026-02-16",
+      "diagnosis_codes": [
+        "M54.16"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-02-13",
+          "procedure_code": "72148",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "710.00"
+        }
+      ],
+      "total_charge": "710.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-675663",
+      "payer_id": "TESS",
+      "group_code": "CO",
+      "carc_code": "197",
+      "rarc_codes": [],
+      "denial_date": "2026-03-06",
+      "denied_line_numbers": [],
+      "denied_amount": "710.00",
+      "payer_remark": "Authorization or precertification absent."
+    },
+    "visit_note": {
+      "encounter_date": "2026-02-13",
+      "text": "Date of visit: 2026-02-13\nPatient: 63-year-old man, established patient.\nChief complaint: sudden severe low back pain with leg weakness\nSeen in the emergency department.\nHistory: pain began this morning; new difficulty passing urine and numbness around the saddle area.\nExamination: reduced perineal sensation; weakness in both legs.\nAssessment: suspected cauda equina syndrome.\nPlan: emergency MRI of the lumbar spine, carried out in the department.\nElectronically signed by the treating clinician, 2026-02-13."
+    }
+  },
+  "expected": {
+    "action": "APPEAL_WITH_EVIDENCE",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "TESS-PA-3.2"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "NOTE",
+        "line_number": 4
+      },
+      {
+        "document_id": "NOTE",
+        "line_number": 8
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "The claim's place of service is 23 and the note records that the scan was done in the emergency department, where the policy requires no authorization."
+  }
+}

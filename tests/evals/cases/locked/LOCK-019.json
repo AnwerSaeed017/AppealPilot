@@ -1,0 +1,85 @@
+{
+  "case_id": "LOCK-019",
+  "split": "locked",
+  "scenario": "filing-sent-only-2",
+  "tags": [],
+  "as_of_date": "2026-09-03",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-811998",
+      "payer_id": "QUIL",
+      "member_id": "QUIL-88100877",
+      "patient_id": "PT-481461",
+      "patient_date_of_birth": "1986-08-07",
+      "billing_provider_npi": "1608190611",
+      "place_of_service": "11",
+      "submitted_date": "2026-08-09",
+      "diagnosis_codes": [
+        "I10"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-03-29",
+          "procedure_code": "99213",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "135.00"
+        }
+      ],
+      "total_charge": "135.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-811998",
+      "payer_id": "QUIL",
+      "group_code": "CO",
+      "carc_code": "29",
+      "rarc_codes": [],
+      "denial_date": "2026-08-28",
+      "denied_line_numbers": [],
+      "denied_amount": "135.00",
+      "payer_remark": "The time limit for filing has expired."
+    },
+    "visit_note": {
+      "encounter_date": "2026-03-29",
+      "text": "Date of visit: 2026-03-29\nPatient: 39-year-old woman, established patient.\nChief complaint: blood pressure follow-up\nHistory: hypertension, taking lisinopril daily. No headaches.\nExamination: blood pressure 143/82.\nAssessment: essential hypertension.\nPlan: continue current dose; review in three months.\nSigned: treating clinician. 2026-03-29."
+    },
+    "supporting_documents": [
+      {
+        "document_id": "BILL",
+        "kind": "BILLING_NOTE",
+        "document_date": "2026-09-03",
+        "text": "Billing system claim history (screen print)\nClaim: CLM-2026-811998\nSent: 2026-04-10\nStatus: Sent\nNo payer acknowledgement on file."
+      }
+    ]
+  },
+  "expected": {
+    "action": "REQUEST_DOCUMENTATION",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "QUIL-TF-2.2"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "BILL",
+        "line_number": 3
+      },
+      {
+        "document_id": "BILL",
+        "line_number": 4
+      },
+      {
+        "document_id": "BILL",
+        "line_number": 5
+      }
+    ],
+    "missing_evidence": [
+      "clearinghouse or plan acceptance report showing the claim was accepted within the filing limit"
+    ],
+    "expected_correction": null,
+    "rationale": "The billing system shows the claim was sent on time, but the policy accepts only a report that the payer accepted it. The screen print cannot carry an appeal; the clearinghouse report has to be obtained first."
+  }
+}

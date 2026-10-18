@@ -1,0 +1,81 @@
+{
+  "sample_id": "visit-without-modifier-25",
+  "title": "Office visit bundled into a same-day knee injection",
+  "summary": "Medicare denied the office visit (CO-97, M144) as part of a same-day knee injection. The visit line has no modifier 25, but the note documents separate diabetes and blood pressure management.",
+  "as_of_date": "2026-10-16",
+  "input": {
+    "claim": {
+      "claim_id": "MC-2026-0818-0457",
+      "payer_id": "MEDICARE",
+      "member_id": "3TK7WN2HD48",
+      "patient_id": "PT-204871",
+      "patient_date_of_birth": "1953-04-22",
+      "billing_provider_npi": "1494594405",
+      "place_of_service": "11",
+      "submitted_date": "2026-08-20",
+      "diagnosis_codes": [
+        "M17.11",
+        "E11.65",
+        "I10"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-08-18",
+          "procedure_code": "99214",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            2,
+            3,
+            1
+          ],
+          "units": 1,
+          "charge_amount": "168.00"
+        },
+        {
+          "line_number": 2,
+          "service_date": "2026-08-18",
+          "procedure_code": "20610",
+          "modifiers": [
+            "RT"
+          ],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "126.00"
+        },
+        {
+          "line_number": 3,
+          "service_date": "2026-08-18",
+          "procedure_code": "J3301",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 4,
+          "charge_amount": "22.00"
+        }
+      ],
+      "total_charge": "316.00"
+    },
+    "denial": {
+      "claim_id": "MC-2026-0818-0457",
+      "payer_id": "MEDICARE",
+      "group_code": "CO",
+      "carc_code": "97",
+      "rarc_codes": [
+        "M144"
+      ],
+      "denial_date": "2026-09-03",
+      "denied_line_numbers": [
+        1
+      ],
+      "denied_amount": "168.00"
+    },
+    "visit_note": {
+      "encounter_date": "2026-08-18",
+      "text": "Date of visit: 2026-08-18\nPatient: 73-year-old man, established patient.\nReason for visit: follow-up of type 2 diabetes and hypertension; right knee pain for three months.\nDiabetes: home glucose readings 180-240 mg/dL before breakfast. HbA1c 8.4% today, up from 7.6% in 2026-04. Taking metformin 1000 mg twice daily; no hypoglycemia.\nHypertension: blood pressure 152/94 and 148/92 on repeat. Taking lisinopril 20 mg daily. No chest pain or headache.\nRight knee: medial joint line tenderness, crepitus, small effusion, no warmth. Standing X-ray on 2026-05-20 showed medial joint space narrowing and osteophytes. Pain 7/10 despite acetaminophen and a home exercise program.\nAssessment and plan:\n1. Type 2 diabetes with hyperglycemia, above target. Start empagliflozin 10 mg daily; reviewed genital hygiene and hydration. Basic metabolic panel and urine albumin-to-creatinine ratio ordered. Recheck HbA1c in three months.\n2. Essential hypertension, not at goal. Add amlodipine 5 mg daily. Home blood pressure log; recheck in four weeks.\n3. Primary osteoarthritis of the right knee. Intra-articular corticosteroid injection performed today.\nProcedure: right knee intra-articular injection. Consent obtained. Sterile preparation, lateral suprapatellar approach. Triamcinolone acetonide 40 mg with 1% lidocaine 4 mL injected. No complications; patient tolerated well.\nSigned: treating physician. 2026-08-18."
+    }
+  }
+}

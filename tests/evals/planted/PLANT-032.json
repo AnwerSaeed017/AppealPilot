@@ -1,0 +1,48 @@
+{
+  "planted_id": "PLANT-032",
+  "case_id": "DEV-030",
+  "selected_clause_ids": [
+    "QUIL-PA-1.1",
+    "QUIL-PA-3.2"
+  ],
+  "draft": {
+    "action": "NO_ACTION",
+    "summary": "Draft for DEV-030.",
+    "assertions": [
+      {
+        "text": "The policy states: Prior authorization is required for: MRI of the spine (including procedure code 72148); hyaluronan injection of the knee (J7325); arthroscopic knee surgery (29881); attended sleep studies (95810); and therapeutic exercise (97110) after the 20th visit in a calendar year.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "QUIL-PA-1.1",
+            "quote": "Prior authorization is required for: MRI of the spine (including procedure code 72148); hyaluronan injection of the knee (J7325); arthroscopic knee surgery (29881); attended sleep studies (95810); and therapeutic exercise (97110) after the 20th visit in a calendar year."
+          }
+        ]
+      },
+      {
+        "text": "The policy states: No authorization is issued after the date of service for a service that was not urgent.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "QUIL-PA-3.2",
+            "quote": "No authorization is issued after the date of service for a service that was not urgent."
+          }
+        ]
+      },
+      {
+        "text": "The record states: No authorization request is on file for this service.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "BILL",
+            "quote": "No authorization request is on file for this service."
+          }
+        ]
+      }
+    ],
+    "correction": null,
+    "missing_evidence": []
+  },
+  "error": null,
+  "planted_assertion_index": null
+}

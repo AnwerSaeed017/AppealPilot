@@ -1,0 +1,75 @@
+{
+  "case_id": "DEV-024",
+  "split": "dev",
+  "scenario": "cosmetic-removal-1",
+  "tags": [],
+  "as_of_date": "2026-06-23",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-460005",
+      "payer_id": "TESS",
+      "member_id": "TESS-63920524",
+      "patient_id": "PT-792487",
+      "patient_date_of_birth": "1963-09-30",
+      "billing_provider_npi": "1372023196",
+      "place_of_service": "11",
+      "submitted_date": "2026-05-22",
+      "diagnosis_codes": [
+        "L82.1"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-05-15",
+          "procedure_code": "17110",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "160.00"
+        }
+      ],
+      "total_charge": "160.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-460005",
+      "payer_id": "TESS",
+      "group_code": "CO",
+      "carc_code": "50",
+      "rarc_codes": [],
+      "denial_date": "2026-06-10",
+      "denied_line_numbers": [],
+      "denied_amount": "160.00",
+      "payer_remark": "Service not deemed medically necessary on the information submitted."
+    },
+    "visit_note": {
+      "encounter_date": "2026-05-15",
+      "text": "Date of visit: 2026-05-15\nPatient: 62-year-old woman, established patient.\nChief complaint: skin lesions on the back\nHistory: several raised brown lesions on the back for years. Not painful; no bleeding or itching.\nThe patient dislikes their appearance and asks for removal.\nExamination: six seborrhoeic keratoses, none inflamed.\nProcedure: six lesions treated with cryotherapy.\nElectronically signed by the treating clinician, 2026-05-15."
+    }
+  },
+  "expected": {
+    "action": "NO_ACTION",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "TESS-COV-3.1"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "NOTE",
+        "line_number": 4
+      },
+      {
+        "document_id": "NOTE",
+        "line_number": 5
+      },
+      {
+        "document_id": "NOTE",
+        "line_number": 6
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "The note says the lesions caused no pain, bleeding or inflammation and were removed because the patient disliked how they looked. The policy excludes removal for appearance and says the denial is not appealable."
+  }
+}

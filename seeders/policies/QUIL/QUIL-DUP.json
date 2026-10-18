@@ -1,0 +1,28 @@
+{
+  "policy_id": "QUIL-DUP",
+  "payer_id": "QUIL",
+  "title": "Duplicate Claims",
+  "effective_from": "2026-01-01",
+  "clauses": [
+    {
+      "clause_id": "QUIL-DUP-1.1",
+      "section_heading": "Definition",
+      "text": "A line is a duplicate when it matches a line already processed for the same member, billing provider, date of service, procedure code, modifiers and units."
+    },
+    {
+      "clause_id": "QUIL-DUP-1.2",
+      "section_heading": "Duplicate of a paid line",
+      "text": "If the earlier line was paid, the duplicate denial is correct. No resubmission or appeal should be made."
+    },
+    {
+      "clause_id": "QUIL-DUP-2.1",
+      "section_heading": "Repeated services",
+      "text": "A service performed again on the same day must be billed with modifier 76 when the same clinician repeated it, or 77 when a different clinician did. The record must show each performance separately."
+    },
+    {
+      "clause_id": "QUIL-DUP-2.2",
+      "section_heading": "Replacement claims",
+      "text": "A claim that changes one already processed must be sent as a replacement that gives the original claim number. If it is sent as a new claim it is denied as a duplicate, and the provider should send it again as a replacement."
+    }
+  ]
+}

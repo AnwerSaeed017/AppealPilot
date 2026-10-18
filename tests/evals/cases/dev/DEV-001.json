@@ -1,0 +1,90 @@
+{
+  "case_id": "DEV-001",
+  "split": "dev",
+  "scenario": "pa-conflict-1",
+  "tags": [
+    "conflicting_clauses"
+  ],
+  "as_of_date": "2026-04-16",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-730216",
+      "payer_id": "QUIL",
+      "member_id": "QUIL-45288959",
+      "patient_id": "PT-570908",
+      "patient_date_of_birth": "1949-05-09",
+      "billing_provider_npi": "1822205492",
+      "place_of_service": "11",
+      "submitted_date": "2026-03-26",
+      "diagnosis_codes": [
+        "M54.16"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-03-23",
+          "procedure_code": "72148",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "710.00"
+        }
+      ],
+      "total_charge": "710.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-730216",
+      "payer_id": "QUIL",
+      "group_code": "CO",
+      "carc_code": "197",
+      "rarc_codes": [],
+      "denial_date": "2026-04-07",
+      "denied_line_numbers": [],
+      "denied_amount": "710.00",
+      "payer_remark": "Authorization or precertification absent."
+    },
+    "visit_note": {
+      "encounter_date": "2026-03-23",
+      "text": "Date of visit: 2026-03-23\nPatient: 76-year-old woman, established patient.\nChief complaint: worsening leg weakness with low back pain\nHistory: low back pain for a week; foot drop developing over the last 48 hours.\nExamination: ankle dorsiflexion 2/5, clearly weaker than two days ago.\nAssessment: progressive motor deficit, lumbar nerve root compression suspected.\nPlan: MRI of the lumbar spine this afternoon. Because the weakness is progressing, imaging could not be delayed.\nElectronically signed by the treating clinician, 2026-03-23."
+    },
+    "supporting_documents": [
+      {
+        "document_id": "BILL",
+        "kind": "BILLING_NOTE",
+        "document_date": "2026-04-16",
+        "text": "Billing note, 2026-04-16\nClaim submitted 2026-03-26.\nAuthorization request for the urgent service sent 2026-04-02, with the clinic note.\nThe plan declined to accept the request because a claim was already on file."
+      }
+    ]
+  },
+  "expected": {
+    "action": "ESCALATE_TO_HUMAN",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "QUIL-PA-3.1",
+      "QUIL-APL-2.2"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "NOTE",
+        "line_number": 7
+      },
+      {
+        "document_id": "BILL",
+        "line_number": 2
+      },
+      {
+        "document_id": "BILL",
+        "line_number": 3
+      },
+      {
+        "document_id": "BILL",
+        "line_number": 4
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "One clause allows a request within 14 days of an urgent service, and this one was made in time. Another refuses any request once a claim is on file, and the claim went in first. The policies do not say which prevails, so a person decides."
+  }
+}

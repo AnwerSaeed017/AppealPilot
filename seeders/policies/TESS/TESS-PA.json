@@ -1,0 +1,43 @@
+{
+  "policy_id": "TESS-PA",
+  "payer_id": "TESS",
+  "title": "Prior Authorization",
+  "effective_from": "2026-01-01",
+  "clauses": [
+    {
+      "clause_id": "TESS-PA-1.1",
+      "section_heading": "Services that require authorization",
+      "text": "Authorization is required before the following outpatient services are performed: magnetic resonance imaging of the spine or of a joint (including procedure codes 72148 and 73721); hyaluronan injection of the knee (J7325); arthroscopic knee surgery (29881); and attended sleep studies (95810). Office visits, joint injections billed under 20610 and plain radiographs do not require authorization."
+    },
+    {
+      "clause_id": "TESS-PA-1.2",
+      "section_heading": "Authorization number on the claim",
+      "text": "The authorization number must be entered on the claim. A claim for a service listed in clause TESS-PA-1.1 that carries no authorization number is denied with reason code 197."
+    },
+    {
+      "clause_id": "TESS-PA-2.1",
+      "section_heading": "Validity",
+      "text": "An authorization is valid for 60 days from its issue date, and only for the member, the procedure code and the body site named on it. A service performed after the validity period, or a different procedure, is treated as not authorized."
+    },
+    {
+      "clause_id": "TESS-PA-3.1",
+      "section_heading": "Authorization number left off the claim",
+      "text": "When an authorization was issued before the date of service and is valid for the service billed, but its number was left off the claim, the provider should submit a corrected claim that includes the number. An appeal is not required."
+    },
+    {
+      "clause_id": "TESS-PA-3.2",
+      "section_heading": "Emergency and urgent services",
+      "text": "Authorization is not required for services rendered in an emergency department (place of service 23). For any other urgent service the provider must notify the plan within 2 business days of the date of service, and the record must document why the service could not be delayed."
+    },
+    {
+      "clause_id": "TESS-PA-3.3",
+      "section_heading": "No authorization after the service",
+      "text": "The plan does not issue an authorization after the date of service except under clause TESS-PA-3.2. When no authorization was requested before the service and no exception applies, the denial stands. The amount is a provider write-off and the member may not be billed."
+    },
+    {
+      "clause_id": "TESS-PA-4.1",
+      "section_heading": "Appeal when the plan has no record of an authorization",
+      "text": "A provider who requested and received an authorization, but whose claim was denied because the plan has no record of it, may appeal. The appeal must give the authorization or call reference number, the date it was issued and the service it covered. A statement that authorization was obtained, without a reference number, is not sufficient."
+    }
+  ]
+}

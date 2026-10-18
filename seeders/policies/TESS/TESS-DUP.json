@@ -1,0 +1,33 @@
+{
+  "policy_id": "TESS-DUP",
+  "payer_id": "TESS",
+  "title": "Duplicate Claims",
+  "effective_from": "2026-01-01",
+  "clauses": [
+    {
+      "clause_id": "TESS-DUP-1.1",
+      "section_heading": "Definition",
+      "text": "A claim line is a duplicate when the member, the billing provider, the date of service, the procedure code, the modifiers and the units all match a line the plan has already processed."
+    },
+    {
+      "clause_id": "TESS-DUP-1.2",
+      "section_heading": "Duplicate of a paid line",
+      "text": "When the earlier line was paid, the duplicate denial is correct and no further action is needed. The provider should not resubmit or appeal."
+    },
+    {
+      "clause_id": "TESS-DUP-2.1",
+      "section_heading": "Services performed more than once",
+      "text": "A service that was in fact performed more than once on the same day is not a duplicate. The repeat line must carry modifier 76 (same clinician) or 77 (different clinician), and the record must document each performance separately, with times or distinct findings."
+    },
+    {
+      "clause_id": "TESS-DUP-2.2",
+      "section_heading": "Changes to a processed claim",
+      "text": "A change to a claim that has already been processed must be sent as a replacement claim that references the original claim number. A changed claim sent as a new claim is denied as a duplicate; the provider should resubmit it as a replacement."
+    },
+    {
+      "clause_id": "TESS-DUP-3.1",
+      "section_heading": "Duplicate of a denied line",
+      "text": "When the earlier line was itself denied, the duplicate denial does not decide the matter. The provider should act on the reason for the earlier denial."
+    }
+  ]
+}

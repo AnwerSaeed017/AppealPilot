@@ -1,0 +1,90 @@
+{
+  "case_id": "LOCK-008",
+  "split": "locked",
+  "scenario": "duplicate-sent-as-new-2",
+  "tags": [],
+  "as_of_date": "2026-04-07",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-444639",
+      "payer_id": "QUIL",
+      "member_id": "QUIL-40951320",
+      "patient_id": "PT-854521",
+      "patient_date_of_birth": "1978-11-23",
+      "billing_provider_npi": "1444201937",
+      "place_of_service": "11",
+      "submitted_date": "2026-03-17",
+      "diagnosis_codes": [
+        "M17.12"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-02-15",
+          "procedure_code": "20610",
+          "modifiers": [
+            "LT"
+          ],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "140.00"
+        }
+      ],
+      "total_charge": "140.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-444639",
+      "payer_id": "QUIL",
+      "group_code": "CO",
+      "carc_code": "18",
+      "rarc_codes": [],
+      "denial_date": "2026-03-29",
+      "denied_line_numbers": [],
+      "denied_amount": "140.00",
+      "payer_remark": "Exact duplicate of a claim or service already processed."
+    },
+    "visit_note": {
+      "encounter_date": "2026-02-15",
+      "text": "Date of visit: 2026-02-15\nPatient: 47-year-old man, established patient.\nChief complaint: left knee pain\nHistory: osteoarthritis of the left knee; pain limits walking to one block.\nExamination: crepitus and a small effusion.\nAssessment: primary osteoarthritis, left knee.\nProcedure: left knee aspirated and injected with corticosteroid.\nElectronically signed by the treating clinician, 2026-02-15."
+    },
+    "prior_claims": [
+      {
+        "claim_id": "CLM-2026-813211",
+        "received_date": "2026-02-25",
+        "outcome": "DENIED",
+        "lines": [
+          {
+            "line_number": 1,
+            "service_date": "2026-02-15",
+            "procedure_code": "20610",
+            "modifiers": [],
+            "diagnosis_pointers": [
+              1
+            ],
+            "units": 1,
+            "charge_amount": "140.00"
+          }
+        ],
+        "carc_code": "4"
+      }
+    ]
+  },
+  "expected": {
+    "action": "CORRECT_AND_RESUBMIT",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "QUIL-DUP-2.2"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "NOTE",
+        "line_number": 7
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": "Send the claim again as a replacement that references original claim CLM-2026-813211.",
+    "rationale": "The earlier claim was denied for a missing side modifier. The practice added the modifier but sent the result as a new claim, which the payer treats as a duplicate. The content is right; it has to go in as a replacement."
+  }
+}

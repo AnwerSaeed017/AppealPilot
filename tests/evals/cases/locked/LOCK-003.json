@@ -1,0 +1,80 @@
+{
+  "case_id": "LOCK-003",
+  "split": "locked",
+  "scenario": "hyaluronan-short-1",
+  "tags": [
+    "threshold",
+    "payer_difference"
+  ],
+  "as_of_date": "2026-07-16",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-200414",
+      "payer_id": "QUIL",
+      "member_id": "QUIL-35256044",
+      "patient_id": "PT-055487",
+      "patient_date_of_birth": "1952-12-26",
+      "billing_provider_npi": "1259365835",
+      "place_of_service": "11",
+      "submitted_date": "2026-06-19",
+      "diagnosis_codes": [
+        "M17.11"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-06-12",
+          "procedure_code": "J7325",
+          "modifiers": [
+            "RT"
+          ],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "480.00"
+        }
+      ],
+      "total_charge": "480.00",
+      "prior_authorization_number": "AU-515531"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-200414",
+      "payer_id": "QUIL",
+      "group_code": "CO",
+      "carc_code": "252",
+      "rarc_codes": [],
+      "denial_date": "2026-07-05",
+      "denied_line_numbers": [],
+      "denied_amount": "480.00",
+      "payer_remark": "Records of conservative treatment are required."
+    },
+    "visit_note": {
+      "encounter_date": "2026-06-12",
+      "text": "Date of visit: 2026-06-12\nPatient: 73-year-old woman, established patient.\nChief complaint: right knee pain from osteoarthritis\nRadiograph of the right knee, 2025-11-24: joint-space narrowing and osteophytes, consistent with osteoarthritis.\nNaproxen 500 mg twice daily started 2026-01-31; still taking it with little relief.\nSupervised physical therapy: 12 sessions from 2026-02-14 to 2026-04-11; pain unchanged.\nExamination: crepitus, small effusion, flexion limited to 100 degrees.\nProcedure: hyaluronan injected into the right knee.\nElectronically signed by the treating clinician, 2026-06-12."
+    }
+  },
+  "expected": {
+    "action": "NO_ACTION",
+    "acceptable_alternatives": [
+      "ESCALATE_TO_HUMAN"
+    ],
+    "relevant_clause_ids": [
+      "QUIL-DOC-2.2",
+      "QUIL-DOC-3.1"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "NOTE",
+        "line_number": 5
+      },
+      {
+        "document_id": "NOTE",
+        "line_number": 6
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "The record is complete and shows about 4 months of treatment, but this payer requires 6. Sending the records would document that the requirement was not met. The same record would satisfy the other payer."
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "case_id": "DEV-046",
+  "split": "dev",
+  "scenario": "knee-mri-undated-1",
+  "tags": [],
+  "as_of_date": "2026-04-12",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-789801",
+      "payer_id": "QUIL",
+      "member_id": "QUIL-19075871",
+      "patient_id": "PT-452545",
+      "patient_date_of_birth": "1971-03-02",
+      "billing_provider_npi": "1496769351",
+      "place_of_service": "11",
+      "submitted_date": "2026-03-24",
+      "diagnosis_codes": [
+        "M25.562"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-03-15",
+          "procedure_code": "73721",
+          "modifiers": [
+            "LT"
+          ],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "620.00"
+        }
+      ],
+      "total_charge": "620.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-789801",
+      "payer_id": "QUIL",
+      "group_code": "CO",
+      "carc_code": "50",
+      "rarc_codes": [],
+      "denial_date": "2026-04-03",
+      "denied_line_numbers": [],
+      "denied_amount": "620.00",
+      "payer_remark": "Service not deemed medically necessary on the information submitted."
+    },
+    "visit_note": {
+      "encounter_date": "2026-03-15",
+      "text": "Date of visit: 2026-03-15\nPatient: 55-year-old woman, established patient.\nChief complaint: left knee pain\nHistory: longstanding knee pain. Has failed conservative management.\nExamination: mild medial tenderness; full range of movement; ligaments stable.\nAssessment: knee pain, cause unclear.\nPlan: MRI of the left knee without contrast.\nElectronically signed by the treating clinician, 2026-03-15."
+    }
+  },
+  "expected": {
+    "action": "REQUEST_DOCUMENTATION",
+    "acceptable_alternatives": [
+      "ESCALATE_TO_HUMAN"
+    ],
+    "relevant_clause_ids": [
+      "QUIL-COV-2.1"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "NOTE",
+        "line_number": 4
+      }
+    ],
+    "missing_evidence": [
+      "dates and duration of the conservative treatment already tried"
+    ],
+    "expected_correction": null,
+    "rationale": "No examination finding in the note meets the first criterion, so the case rests on at least 4 weeks of conservative treatment. The note asserts failure of treatment without saying what or for how long."
+  }
+}

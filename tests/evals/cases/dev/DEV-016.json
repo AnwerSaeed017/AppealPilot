@@ -1,0 +1,87 @@
+{
+  "case_id": "DEV-016",
+  "split": "dev",
+  "scenario": "pa-number-omitted-1",
+  "tags": [],
+  "as_of_date": "2026-07-08",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-711659",
+      "payer_id": "TESS",
+      "member_id": "TESS-61223271",
+      "patient_id": "PT-079055",
+      "patient_date_of_birth": "1968-05-08",
+      "billing_provider_npi": "1739437600",
+      "place_of_service": "11",
+      "submitted_date": "2026-06-08",
+      "diagnosis_codes": [
+        "M25.562"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-06-03",
+          "procedure_code": "73721",
+          "modifiers": [
+            "LT"
+          ],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "620.00"
+        }
+      ],
+      "total_charge": "620.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-711659",
+      "payer_id": "TESS",
+      "group_code": "CO",
+      "carc_code": "197",
+      "rarc_codes": [],
+      "denial_date": "2026-06-28",
+      "denied_line_numbers": [],
+      "denied_amount": "620.00",
+      "payer_remark": "Authorization or precertification absent."
+    },
+    "visit_note": {
+      "encounter_date": "2026-06-03",
+      "text": "Date of visit: 2026-06-03\nPatient: 58-year-old man, established patient.\nChief complaint: left knee pain\nHistory: left knee pain for 3 weeks after a twisting injury. The knee has locked several times.\nExamination: medial joint-line tenderness, positive McMurray test, no effusion.\nAssessment: suspected medial meniscal tear.\nPlan: MRI of the left knee without contrast.\nSigned: treating clinician. 2026-06-03."
+    },
+    "supporting_documents": [
+      {
+        "document_id": "AUTH",
+        "kind": "AUTHORIZATION_RECORD",
+        "document_date": "2026-05-27",
+        "text": "Tessaly Health Plan: authorization confirmation\nAuthorization number: AU-431117\nIssued: 2026-05-27\nMember: TESS-61223271\nService: procedure code 73721, MRI of the left knee without contrast"
+      }
+    ]
+  },
+  "expected": {
+    "action": "CORRECT_AND_RESUBMIT",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "TESS-PA-1.2",
+      "TESS-PA-2.1",
+      "TESS-PA-3.1"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "AUTH",
+        "line_number": 2
+      },
+      {
+        "document_id": "AUTH",
+        "line_number": 3
+      },
+      {
+        "document_id": "AUTH",
+        "line_number": 5
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": "Add authorization number AU-431117 to the claim and send a corrected claim.",
+    "rationale": "The authorization was issued 7 days before the service, inside the 60-day validity period, for the procedure billed. Only the number is missing from the claim, which the policy treats as a correction."
+  }
+}

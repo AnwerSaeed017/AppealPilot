@@ -1,0 +1,59 @@
+{
+  "planted_id": "PLANT-056",
+  "case_id": "DEV-038",
+  "selected_clause_ids": [
+    "TESS-TF-2.2"
+  ],
+  "draft": {
+    "action": "REQUEST_DOCUMENTATION",
+    "summary": "Draft for DEV-038.",
+    "assertions": [
+      {
+        "text": "The policy states: Proof that a claim was filed on time is an electronic acceptance report, from the plan or from a clearinghouse, showing that the plan accepted the claim within the limit.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-TF-2.2",
+            "quote": "Proof that a claim was filed on time is an electronic acceptance report, from the plan or from a clearinghouse, showing that the plan accepted the claim within the limit."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Sent: 2026-04-29",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "BILL",
+            "quote": "Sent: 2026-04-29"
+          }
+        ]
+      },
+      {
+        "text": "The record states: Status: Sent",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "BILL",
+            "quote": "Status: Sent"
+          }
+        ]
+      },
+      {
+        "text": "The record states: No payer acknowledgement on file.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "BILL",
+            "quote": "No payer acknowledgement on file."
+          }
+        ]
+      }
+    ],
+    "correction": null,
+    "missing_evidence": [
+      "clearinghouse or plan acceptance report showing the claim was accepted within the filing limit"
+    ]
+  },
+  "error": null,
+  "planted_assertion_index": null
+}

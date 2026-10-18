@@ -1,0 +1,60 @@
+{
+  "planted_id": "PLANT-023",
+  "case_id": "DEV-017",
+  "selected_clause_ids": [
+    "TESS-PA-4.1"
+  ],
+  "draft": {
+    "action": "REQUEST_DOCUMENTATION",
+    "summary": "Draft for DEV-017.",
+    "assertions": [
+      {
+        "text": "The policy states: A provider who requested and received an authorization, but whose claim was denied because the plan has no record of it, may appeal.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-PA-4.1",
+            "quote": "A provider who requested and received an authorization, but whose claim was denied because the plan has no record of it, may appeal."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Scheduler recalls calling the plan and being told the service was approved.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "BILL",
+            "quote": "Scheduler recalls calling the plan and being told the service was approved."
+          }
+        ]
+      },
+      {
+        "text": "The record states: No authorization or call reference number was recorded.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "BILL",
+            "quote": "No authorization or call reference number was recorded."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Assessment: confirmed medial meniscal tear.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Assessment: suspected medial meniscal tear."
+          }
+        ]
+      }
+    ],
+    "correction": null,
+    "missing_evidence": [
+      "authorization or call reference number",
+      "date the authorization was issued"
+    ]
+  },
+  "error": "HEDGE_REMOVED",
+  "planted_assertion_index": 3
+}

@@ -1,0 +1,69 @@
+{
+  "case_id": "DEV-039",
+  "split": "dev",
+  "scenario": "side-not-recorded-1",
+  "tags": [],
+  "as_of_date": "2026-06-12",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-648714",
+      "payer_id": "TESS",
+      "member_id": "TESS-74572847",
+      "patient_id": "PT-268879",
+      "patient_date_of_birth": "1960-09-02",
+      "billing_provider_npi": "1507482663",
+      "place_of_service": "11",
+      "submitted_date": "2026-05-22",
+      "diagnosis_codes": [
+        "M17.10"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-05-13",
+          "procedure_code": "20610",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "140.00"
+        }
+      ],
+      "total_charge": "140.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-648714",
+      "payer_id": "TESS",
+      "group_code": "CO",
+      "carc_code": "4",
+      "rarc_codes": [],
+      "denial_date": "2026-06-06",
+      "denied_line_numbers": [],
+      "denied_amount": "140.00",
+      "payer_remark": "Required modifier missing, or modifier inconsistent with the procedure."
+    },
+    "visit_note": {
+      "encounter_date": "2026-05-13",
+      "text": "Date of visit: 2026-05-13\nPatient: 65-year-old man, established patient.\nChief complaint: knee pain\nHistory: osteoarthritis of the knee; pain worse on stairs.\nExamination: crepitus and a small effusion.\nProcedure: knee aspirated and injected with corticosteroid.\nPlan: review in six weeks.\nElectronically signed by the treating clinician, 2026-05-13."
+    }
+  },
+  "expected": {
+    "action": "REQUEST_DOCUMENTATION",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "TESS-MOD-2.2"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "NOTE",
+        "line_number": 6
+      }
+    ],
+    "missing_evidence": [
+      "dated addendum from the treating clinician stating which knee was injected"
+    ],
+    "expected_correction": null,
+    "rationale": "A side modifier is required, but the note never says which knee and the diagnosis code is the unspecified-side one. The policy forbids guessing: an addendum from the clinician comes first."
+  }
+}

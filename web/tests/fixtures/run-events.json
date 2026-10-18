@@ -1,0 +1,115 @@
+[
+  {
+    "sequence": 1,
+    "event": {
+      "step": "rules",
+      "at": "2026-10-16T14:02:11Z",
+      "summary": "Rule findings: VISIT_WITHOUT_MODIFIER_25.",
+      "llm_call": null
+    }
+  },
+  {
+    "sequence": 2,
+    "event": {
+      "step": "retrieval",
+      "at": "2026-10-16T14:02:12Z",
+      "summary": "Selected 4 clauses: MEDICARE-MOD-1.1, MEDICARE-MOD-1.2, MEDICARE-APL-2.1, MEDICARE-APL-2.2.",
+      "llm_call": null
+    }
+  },
+  {
+    "sequence": 3,
+    "event": {
+      "step": "intake",
+      "at": "2026-10-16T14:02:20Z",
+      "summary": "Extracted 3 facts from the record.",
+      "llm_call": {
+        "provider": "groq",
+        "model": "openai/gpt-oss-120b",
+        "input_tokens": 2794,
+        "output_tokens": 612,
+        "latency_ms": 7380.0,
+        "cached": false,
+        "attempts": 1
+      }
+    }
+  },
+  {
+    "sequence": 4,
+    "event": {
+      "step": "record_checks",
+      "at": "2026-10-16T14:02:20Z",
+      "summary": "No contradiction in the record that code can see.",
+      "llm_call": null
+    }
+  },
+  {
+    "sequence": 5,
+    "event": {
+      "step": "document_retrieval",
+      "at": "2026-10-16T14:02:20Z",
+      "summary": "No supporting documents; nothing added.",
+      "llm_call": null
+    }
+  },
+  {
+    "sequence": 6,
+    "event": {
+      "step": "triage",
+      "at": "2026-10-16T14:02:25Z",
+      "summary": "Action: CORRECT_AND_RESUBMIT (confidence 0.86).",
+      "llm_call": {
+        "provider": "groq",
+        "model": "openai/gpt-oss-120b",
+        "input_tokens": 3311,
+        "output_tokens": 402,
+        "latency_ms": 4912.0,
+        "cached": false,
+        "attempts": 1
+      }
+    }
+  },
+  {
+    "sequence": 7,
+    "event": {
+      "step": "writer",
+      "at": "2026-10-16T14:02:37Z",
+      "summary": "Draft 1 with 5 assertions.",
+      "llm_call": {
+        "provider": "groq",
+        "model": "openai/gpt-oss-120b",
+        "input_tokens": 4120,
+        "output_tokens": 1180,
+        "latency_ms": 11204.0,
+        "cached": false,
+        "attempts": 2
+      }
+    }
+  },
+  {
+    "sequence": 8,
+    "event": {
+      "step": "verifier",
+      "at": "2026-10-16T14:02:42Z",
+      "summary": "All 5 assertions verified.",
+      "llm_call": {
+        "provider": "gemini",
+        "model": "gemini-3.1-flash-lite",
+        "input_tokens": 2210,
+        "output_tokens": 310,
+        "latency_ms": 4420.0,
+        "cached": false,
+        "attempts": 1
+      }
+    }
+  },
+  {
+    "sequence": 9,
+    "event": {
+      "step": "review",
+      "at": "2026-10-16T14:02:42Z",
+      "summary": "Sent for approval with a verified draft.",
+      "llm_call": null
+    }
+  }
+]

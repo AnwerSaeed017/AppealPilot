@@ -1,0 +1,61 @@
+{
+  "sample_id": "claim-filed-after-one-year",
+  "title": "Claim filed more than a year after the visit",
+  "summary": "Medicare denied an office visit as filed too late (CO-29, N211). The claim was first sent 13 months after the visit, and the billing file shows no exception that would extend the deadline.",
+  "as_of_date": "2026-10-16",
+  "input": {
+    "claim": {
+      "claim_id": "MC-2025-0805-0312",
+      "payer_id": "MEDICARE",
+      "member_id": "8VF9XJ4KP27",
+      "patient_id": "PT-552907",
+      "patient_date_of_birth": "1948-06-30",
+      "billing_provider_npi": "1935258339",
+      "place_of_service": "11",
+      "submitted_date": "2026-09-01",
+      "diagnosis_codes": [
+        "J44.1",
+        "I10"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2025-08-05",
+          "procedure_code": "99213",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1,
+            2
+          ],
+          "units": 1,
+          "charge_amount": "112.00"
+        }
+      ],
+      "total_charge": "112.00"
+    },
+    "denial": {
+      "claim_id": "MC-2025-0805-0312",
+      "payer_id": "MEDICARE",
+      "group_code": "CO",
+      "carc_code": "29",
+      "rarc_codes": [
+        "N211"
+      ],
+      "denial_date": "2026-09-15",
+      "denied_line_numbers": [],
+      "denied_amount": "112.00"
+    },
+    "visit_note": {
+      "encounter_date": "2025-08-05",
+      "text": "Date of visit: 2025-08-05\nPatient: 77-year-old man, established patient.\nReason for visit: four days of increased breathlessness and cough with more sputum, now yellow.\nHistory: COPD, former smoker (40 pack-years, quit 2015). Uses tiotropium daily and albuterol as needed, now four times a day.\nExamination: temperature 37.6 C, respiratory rate 22, oxygen saturation 92% on room air. Scattered wheeze, no focal crackles. Blood pressure 138/84.\nAssessment: acute exacerbation of COPD; hypertension controlled on lisinopril.\nPlan: prednisone 40 mg daily for 5 days; doxycycline 100 mg twice daily for 5 days; continue tiotropium. Return or go to the emergency department if breathing worsens. Review in two weeks.\nSigned: treating physician. 2025-08-05."
+    },
+    "supporting_documents": [
+      {
+        "document_id": "BILLING-LOG",
+        "kind": "BILLING_NOTE",
+        "document_date": "2026-09-16",
+        "text": "Billing review for the visit of 2025-08-05.\nThe charge was found on the unbilled-encounters report during the month-end review on 2026-08-28. It had been held since 2025-08-06 by a practice-management edit for a missing diagnosis pointer, and the edit was never worked.\nClearinghouse acceptance report: first and only submission on 2026-09-01. No earlier submission of this claim is on file with the clearinghouse or the Medicare contractor.\nEligibility check on 2026-09-01: Medicare Part B entitlement effective 2013-07-01, with no retroactive change. No Medicare Advantage enrollment during 2025.\nNo correspondence from the Medicare contractor about this claim before the denial."
+      }
+    ]
+  }
+}

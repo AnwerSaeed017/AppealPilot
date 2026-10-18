@@ -1,0 +1,86 @@
+{
+  "case_id": "LOCK-011",
+  "split": "locked",
+  "scenario": "pa-number-omitted-3",
+  "tags": [],
+  "as_of_date": "2026-06-09",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-395174",
+      "payer_id": "TESS",
+      "member_id": "TESS-76591620",
+      "patient_id": "PT-903889",
+      "patient_date_of_birth": "1983-07-25",
+      "billing_provider_npi": "1328899657",
+      "place_of_service": "11",
+      "submitted_date": "2026-05-08",
+      "diagnosis_codes": [
+        "G47.10",
+        "R06.83"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-05-02",
+          "procedure_code": "95810",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "980.00"
+        }
+      ],
+      "total_charge": "980.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-395174",
+      "payer_id": "TESS",
+      "group_code": "CO",
+      "carc_code": "197",
+      "rarc_codes": [],
+      "denial_date": "2026-05-28",
+      "denied_line_numbers": [],
+      "denied_amount": "980.00",
+      "payer_remark": "Authorization or precertification absent."
+    },
+    "visit_note": {
+      "encounter_date": "2026-05-02",
+      "text": "Date of visit: 2026-05-02\nPatient: 42-year-old man, established patient.\nChief complaint: daytime sleepiness and loud snoring\nHistory: partner reports loud snoring and pauses in breathing. Falls asleep at work most afternoons.\nExamination: crowded oropharynx; neck circumference 44 cm.\nAssessment: suspected obstructive sleep apnea.\nPlan: attended overnight sleep study.\nElectronically signed by the treating clinician, 2026-05-02."
+    },
+    "supporting_documents": [
+      {
+        "document_id": "AUTH",
+        "kind": "AUTHORIZATION_RECORD",
+        "document_date": "2026-04-08",
+        "text": "Tessaly Health Plan: authorization confirmation\nAuthorization number: AU-288948\nIssued: 2026-04-08\nMember: TESS-76591620\nService: procedure code 95810, attended sleep study"
+      }
+    ]
+  },
+  "expected": {
+    "action": "CORRECT_AND_RESUBMIT",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "TESS-PA-1.2",
+      "TESS-PA-2.1",
+      "TESS-PA-3.1"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "AUTH",
+        "line_number": 2
+      },
+      {
+        "document_id": "AUTH",
+        "line_number": 3
+      },
+      {
+        "document_id": "AUTH",
+        "line_number": 5
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": "Add authorization number AU-288948 to the claim and send a corrected claim.",
+    "rationale": "The authorization was issued 24 days before the service, inside the 60-day validity period, for the procedure billed. Only the number is missing from the claim, which the policy treats as a correction."
+  }
+}

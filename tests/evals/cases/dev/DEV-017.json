@@ -1,0 +1,84 @@
+{
+  "case_id": "DEV-017",
+  "split": "dev",
+  "scenario": "pa-statement-only-1",
+  "tags": [],
+  "as_of_date": "2026-03-17",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-159702",
+      "payer_id": "TESS",
+      "member_id": "TESS-50467675",
+      "patient_id": "PT-634069",
+      "patient_date_of_birth": "1947-05-06",
+      "billing_provider_npi": "1010717159",
+      "place_of_service": "11",
+      "submitted_date": "2026-02-28",
+      "diagnosis_codes": [
+        "M25.562"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-02-21",
+          "procedure_code": "73721",
+          "modifiers": [
+            "LT"
+          ],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "620.00"
+        }
+      ],
+      "total_charge": "620.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-159702",
+      "payer_id": "TESS",
+      "group_code": "CO",
+      "carc_code": "197",
+      "rarc_codes": [],
+      "denial_date": "2026-03-12",
+      "denied_line_numbers": [],
+      "denied_amount": "620.00",
+      "payer_remark": "Authorization or precertification absent."
+    },
+    "visit_note": {
+      "encounter_date": "2026-02-21",
+      "text": "Date of visit: 2026-02-21\nPatient: 78-year-old man, established patient.\nChief complaint: left knee pain\nHistory: left knee pain for 2 weeks after a twisting injury. Reports the knee catching and briefly locking.\nExamination: medial joint-line tenderness, positive McMurray test, no effusion.\nAssessment: suspected medial meniscal tear.\nPlan: MRI of the left knee without contrast.\nSigned: treating clinician. 2026-02-21."
+    },
+    "supporting_documents": [
+      {
+        "document_id": "BILL",
+        "kind": "BILLING_NOTE",
+        "document_date": "2026-03-17",
+        "text": "Billing note, 2026-03-17\nScheduler recalls calling the plan and being told the service was approved.\nNo authorization or call reference number was recorded."
+      }
+    ]
+  },
+  "expected": {
+    "action": "REQUEST_DOCUMENTATION",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "TESS-PA-4.1"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "BILL",
+        "line_number": 2
+      },
+      {
+        "document_id": "BILL",
+        "line_number": 3
+      }
+    ],
+    "missing_evidence": [
+      "authorization or call reference number",
+      "date the authorization was issued"
+    ],
+    "expected_correction": null,
+    "rationale": "The policy says a statement that authorization was obtained is not enough without a reference number. An appeal now would rest on recollection, so the reference has to be found first."
+  }
+}

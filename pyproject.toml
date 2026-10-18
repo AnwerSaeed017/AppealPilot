@@ -1,0 +1,71 @@
+[project]
+name = "appealpilot"
+version = "0.1.0"
+description = "Verification and evaluation layer for payer-facing documents. Prototype on synthetic data."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "aiosqlite>=0.20",
+    "alembic>=1.13",
+    "dependency-injector>=4.42",
+    "fastapi>=0.115",
+    "httpx>=0.27",
+    "langgraph>=0.2",
+    "langgraph-checkpoint-postgres>=2.0",
+    "psycopg[binary,pool]>=3.2",
+    "pydantic>=2.9",
+    "pydantic-settings>=2.5",
+    "sqlalchemy[asyncio]>=2.0.35",
+    "uvicorn[standard]>=0.30",
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.13",
+    "pre-commit>=4.0",
+    "pytest>=8.3",
+    "pytest-asyncio>=0.24",
+    "ruff>=0.7",
+]
+
+# Only for scripts/benchmarks. Not installed by default and not used by the app.
+bench = [
+    "fastembed>=0.4",
+    "psutil>=6.0",
+]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = ["alembic/versions"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "N", "SIM", "C4", "PT", "RUF", "ASYNC"]
+
+[tool.ruff.lint.per-file-ignores]
+# Tests inspect small temporary directories directly; blocking the loop there is fine.
+"**/tests/**" = ["ASYNC240"]
+# SQLAlchemy reads `__table_args__` as a plain class attribute.
+"app/models/*" = ["RUF012"]
+
+[tool.ruff.lint.flake8-bugbear]
+extend-immutable-calls = ["fastapi.Depends", "dependency_injector.wiring.Provide"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["app", "tests"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+plugins = ["pydantic.mypy"]
+files = ["app", "tests"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+addopts = ["--import-mode=importlib", "--strict-markers", "-ra"]

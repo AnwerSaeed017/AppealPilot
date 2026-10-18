@@ -1,0 +1,68 @@
+{
+  "planted_id": "PLANT-043",
+  "case_id": "DEV-003",
+  "selected_clause_ids": [
+    "QUIL-PA-4.1",
+    "QUIL-PA-2.1"
+  ],
+  "draft": {
+    "action": "APPEAL_WITH_EVIDENCE",
+    "summary": "Draft for DEV-003.",
+    "assertions": [
+      {
+        "text": "The policy states: A provider whose claim was denied although an authorization had been issued may appeal.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "QUIL-PA-4.1",
+            "quote": "A provider whose claim was denied although an authorization had been issued may appeal."
+          }
+        ]
+      },
+      {
+        "text": "The policy states: An authorization is valid for 90 days from its issue date, for the member and the procedure code named on it.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "QUIL-PA-2.1",
+            "quote": "An authorization is valid for 90 days from its issue date, for the member and the procedure code named on it."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Authorization number: AU-830162",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "AUTH",
+            "quote": "Authorization number: AU-830162"
+          }
+        ]
+      },
+      {
+        "text": "The record states: Issued: 2026-03-26",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "AUTH",
+            "quote": "Issued: 2026-03-26"
+          }
+        ]
+      },
+      {
+        "text": "The record states: Service: procedure code J7325, hyaluronan injection of the left knee",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "AUTH",
+            "quote": "Service: procedure code J7325, hyaluronan injection of the left knee"
+          }
+        ]
+      }
+    ],
+    "correction": null,
+    "missing_evidence": []
+  },
+  "error": null,
+  "planted_assertion_index": null
+}

@@ -1,0 +1,38 @@
+{
+  "policy_id": "TESS-TF",
+  "payer_id": "TESS",
+  "title": "Timely Filing",
+  "effective_from": "2026-01-01",
+  "clauses": [
+    {
+      "clause_id": "TESS-TF-1.1",
+      "section_heading": "Filing limit",
+      "text": "For dates of service on or after 1 January 2026, a claim must be received by the plan within 180 days of the date of service."
+    },
+    {
+      "clause_id": "TESS-TF-1.2",
+      "section_heading": "Filing limit for earlier dates of service",
+      "text": "For dates of service before 1 January 2026, a claim must be received by the plan within 365 days of the date of service."
+    },
+    {
+      "clause_id": "TESS-TF-1.3",
+      "section_heading": "Corrected and replacement claims",
+      "text": "A corrected or replacement claim must be received within 90 days of the remittance date of the original decision. This limit applies even when the limit in clause TESS-TF-1.1 has already passed."
+    },
+    {
+      "clause_id": "TESS-TF-2.1",
+      "section_heading": "Situations that extend the limit",
+      "text": "The filing limit is extended only in these situations: (a) the plan caused the delay, as shown by plan correspondence; (b) the member's coverage was added retroactively, in which case the limit runs from the date the plan notified the provider of eligibility; (c) another payer was billed first as primary, in which case the claim must be received within 90 days of the date on the primary payer's explanation of benefits."
+    },
+    {
+      "clause_id": "TESS-TF-2.2",
+      "section_heading": "Proof of timely filing",
+      "text": "Proof that a claim was filed on time is an electronic acceptance report, from the plan or from a clearinghouse, showing that the plan accepted the claim within the limit. A report showing only that the provider sent the claim, a screen print from the provider's billing system, or a report of a rejected claim is not proof."
+    },
+    {
+      "clause_id": "TESS-TF-3.1",
+      "section_heading": "Final denials",
+      "text": "A claim denied with reason code 29 is final when no situation in clause TESS-TF-2.1 applies and no proof under clause TESS-TF-2.2 exists. The amount is a provider write-off and the member may not be billed."
+    }
+  ]
+}

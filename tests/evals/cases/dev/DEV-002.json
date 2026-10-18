@@ -1,0 +1,90 @@
+{
+  "case_id": "DEV-002",
+  "split": "dev",
+  "scenario": "duplicate-sent-as-new-1",
+  "tags": [],
+  "as_of_date": "2026-08-25",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-918831",
+      "payer_id": "TESS",
+      "member_id": "TESS-30195103",
+      "patient_id": "PT-728116",
+      "patient_date_of_birth": "1954-11-26",
+      "billing_provider_npi": "1511335592",
+      "place_of_service": "11",
+      "submitted_date": "2026-07-24",
+      "diagnosis_codes": [
+        "M17.12"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-06-16",
+          "procedure_code": "20610",
+          "modifiers": [
+            "LT"
+          ],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "140.00"
+        }
+      ],
+      "total_charge": "140.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-918831",
+      "payer_id": "TESS",
+      "group_code": "CO",
+      "carc_code": "18",
+      "rarc_codes": [],
+      "denial_date": "2026-08-10",
+      "denied_line_numbers": [],
+      "denied_amount": "140.00",
+      "payer_remark": "Exact duplicate of a claim or service already processed."
+    },
+    "visit_note": {
+      "encounter_date": "2026-06-16",
+      "text": "Date of visit: 2026-06-16\nPatient: 71-year-old man, established patient.\nChief complaint: left knee pain\nHistory: osteoarthritis of the left knee; pain worse on stairs.\nExamination: crepitus and a small effusion.\nAssessment: primary osteoarthritis, left knee.\nProcedure: left knee aspirated and injected with corticosteroid.\nSigned: treating clinician. 2026-06-16."
+    },
+    "prior_claims": [
+      {
+        "claim_id": "CLM-2026-828089",
+        "received_date": "2026-07-04",
+        "outcome": "DENIED",
+        "lines": [
+          {
+            "line_number": 1,
+            "service_date": "2026-06-16",
+            "procedure_code": "20610",
+            "modifiers": [],
+            "diagnosis_pointers": [
+              1
+            ],
+            "units": 1,
+            "charge_amount": "140.00"
+          }
+        ],
+        "carc_code": "4"
+      }
+    ]
+  },
+  "expected": {
+    "action": "CORRECT_AND_RESUBMIT",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "TESS-DUP-2.2"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "NOTE",
+        "line_number": 7
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": "Send the claim again as a replacement that references original claim CLM-2026-828089.",
+    "rationale": "The earlier claim was denied for a missing side modifier. The practice added the modifier but sent the result as a new claim, which the payer treats as a duplicate. The content is right; it has to go in as a replacement."
+  }
+}

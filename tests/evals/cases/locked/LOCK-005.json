@@ -1,0 +1,82 @@
+{
+  "case_id": "LOCK-005",
+  "split": "locked",
+  "scenario": "pa-statement-only-2",
+  "tags": [],
+  "as_of_date": "2026-05-05",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-488527",
+      "payer_id": "QUIL",
+      "member_id": "QUIL-62010400",
+      "patient_id": "PT-112011",
+      "patient_date_of_birth": "1991-09-10",
+      "billing_provider_npi": "1923603090",
+      "place_of_service": "11",
+      "submitted_date": "2026-04-08",
+      "diagnosis_codes": [
+        "M54.16"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-04-03",
+          "procedure_code": "72148",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "710.00"
+        }
+      ],
+      "total_charge": "710.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-488527",
+      "payer_id": "QUIL",
+      "group_code": "CO",
+      "carc_code": "197",
+      "rarc_codes": [],
+      "denial_date": "2026-04-26",
+      "denied_line_numbers": [],
+      "denied_amount": "710.00",
+      "payer_remark": "Authorization or precertification absent."
+    },
+    "visit_note": {
+      "encounter_date": "2026-04-03",
+      "text": "Date of visit: 2026-04-03\nPatient: 34-year-old man, established patient.\nChief complaint: low back pain radiating to the leg\nHistory: low back pain for 10 weeks, radiating below the knee. Naproxen and a home exercise programme for 9 weeks without improvement.\nExamination: straight-leg raise positive; ankle reflex reduced on the affected side.\nAssessment: lumbar radiculopathy.\nPlan: MRI of the lumbar spine without contrast.\nElectronically signed by the treating clinician, 2026-04-03."
+    },
+    "supporting_documents": [
+      {
+        "document_id": "BILL",
+        "kind": "BILLING_NOTE",
+        "document_date": "2026-05-05",
+        "text": "Billing note, 2026-05-05\nFront desk reports that authorization was obtained by telephone before the visit.\nNo authorization or call reference number was recorded."
+      }
+    ]
+  },
+  "expected": {
+    "action": "REQUEST_DOCUMENTATION",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "QUIL-PA-4.1"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "BILL",
+        "line_number": 2
+      },
+      {
+        "document_id": "BILL",
+        "line_number": 3
+      }
+    ],
+    "missing_evidence": [
+      "authorization or call reference number",
+      "date the authorization was issued"
+    ],
+    "expected_correction": null,
+    "rationale": "The policy says a statement that authorization was obtained is not enough without a reference number. An appeal now would rest on recollection, so the reference has to be found first."
+  }
+}

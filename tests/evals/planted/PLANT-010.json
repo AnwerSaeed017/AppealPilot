@@ -1,0 +1,58 @@
+{
+  "planted_id": "PLANT-010",
+  "case_id": "DEV-006",
+  "selected_clause_ids": [
+    "QUIL-TF-1.1",
+    "QUIL-TF-3.1"
+  ],
+  "draft": {
+    "action": "NO_ACTION",
+    "summary": "Draft for DEV-006.",
+    "assertions": [
+      {
+        "text": "The policy states: A claim must be received within 90 days of the date of service.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "QUIL-TF-99.9",
+            "quote": "A claim must be received within 90 days of the date of service."
+          }
+        ]
+      },
+      {
+        "text": "The policy states: Where no exception in clause QUIL-TF-2.1 applies and there is no proof under clause QUIL-TF-2.2, a denial with reason code 29 is final.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "QUIL-TF-3.1",
+            "quote": "Where no exception in clause QUIL-TF-2.1 applies and there is no proof under clause QUIL-TF-2.2, a denial with reason code 29 is final."
+          }
+        ]
+      },
+      {
+        "text": "The record states: First submission of this claim: 2026-10-07.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "BILL",
+            "quote": "First submission of this claim: 2026-10-07."
+          }
+        ]
+      },
+      {
+        "text": "The record states: The claim sat in a work queue after a staffing change.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "BILL",
+            "quote": "The claim sat in a work queue after a staffing change."
+          }
+        ]
+      }
+    ],
+    "correction": null,
+    "missing_evidence": []
+  },
+  "error": "INVENTED_CLAUSE",
+  "planted_assertion_index": 0
+}

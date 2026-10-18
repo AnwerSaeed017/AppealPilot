@@ -1,0 +1,48 @@
+{
+  "planted_id": "PLANT-042",
+  "case_id": "DEV-031",
+  "selected_clause_ids": [
+    "TESS-PA-2.1",
+    "TESS-PA-3.3"
+  ],
+  "draft": {
+    "action": "NO_ACTION",
+    "summary": "Draft for DEV-031.",
+    "assertions": [
+      {
+        "text": "The policy states: An authorization is valid for 90 days from its issue date, and only for the member, the procedure code and the body site named on it.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-PA-2.1",
+            "quote": "An authorization is valid for 90 days from its issue date, and only for the member, the procedure code and the body site named on it."
+          }
+        ]
+      },
+      {
+        "text": "The policy states: The plan does not issue an authorization after the date of service except under clause TESS-PA-3.2.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-PA-3.3",
+            "quote": "The plan does not issue an authorization after the date of service except under clause TESS-PA-3.2."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Issued: 2026-01-09",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "AUTH",
+            "quote": "Issued: 2026-01-09"
+          }
+        ]
+      }
+    ],
+    "correction": null,
+    "missing_evidence": []
+  },
+  "error": "NUMBER_CHANGED_IN_QUOTE",
+  "planted_assertion_index": 0
+}

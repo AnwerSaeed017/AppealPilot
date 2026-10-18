@@ -1,0 +1,83 @@
+{
+  "case_id": "LOCK-023",
+  "split": "locked",
+  "scenario": "pa-urgent-no-notice-1",
+  "tags": [],
+  "as_of_date": "2026-05-21",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-678318",
+      "payer_id": "TESS",
+      "member_id": "TESS-62011797",
+      "patient_id": "PT-341366",
+      "patient_date_of_birth": "1965-07-03",
+      "billing_provider_npi": "1969134794",
+      "place_of_service": "11",
+      "submitted_date": "2026-04-18",
+      "diagnosis_codes": [
+        "M54.16"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-04-10",
+          "procedure_code": "72148",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "710.00"
+        }
+      ],
+      "total_charge": "710.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-678318",
+      "payer_id": "TESS",
+      "group_code": "CO",
+      "carc_code": "197",
+      "rarc_codes": [],
+      "denial_date": "2026-05-07",
+      "denied_line_numbers": [],
+      "denied_amount": "710.00",
+      "payer_remark": "Authorization or precertification absent."
+    },
+    "visit_note": {
+      "encounter_date": "2026-04-10",
+      "text": "Date of visit: 2026-04-10\nPatient: 60-year-old woman, established patient.\nChief complaint: worsening leg weakness with low back pain\nHistory: low back pain for a week; foot drop developing over the last 48 hours.\nExamination: ankle dorsiflexion 2/5, clearly weaker than two days ago.\nAssessment: progressive motor deficit, lumbar nerve root compression suspected.\nPlan: MRI of the lumbar spine this afternoon. Because the weakness is progressing, imaging could not be delayed.\nSigned: treating clinician. 2026-04-10."
+    },
+    "supporting_documents": [
+      {
+        "document_id": "BILL",
+        "kind": "BILLING_NOTE",
+        "document_date": "2026-05-21",
+        "text": "Billing note, 2026-05-21\nAuthorization was not requested before the scan because of the urgency.\nNo record found of a notification to the plan after the scan."
+      }
+    ]
+  },
+  "expected": {
+    "action": "REQUEST_DOCUMENTATION",
+    "acceptable_alternatives": [
+      "ESCALATE_TO_HUMAN"
+    ],
+    "relevant_clause_ids": [
+      "TESS-PA-3.2"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "NOTE",
+        "line_number": 7
+      },
+      {
+        "document_id": "BILL",
+        "line_number": 3
+      }
+    ],
+    "missing_evidence": [
+      "record that the plan was notified within 2 business days of the service"
+    ],
+    "expected_correction": null,
+    "rationale": "The note documents why the scan could not wait, which is half of what the urgent-service clause requires. The other half, notifying the plan within 2 business days, is not shown either way, so the appeal cannot be written yet."
+  }
+}

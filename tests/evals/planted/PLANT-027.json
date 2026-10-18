@@ -1,0 +1,57 @@
+{
+  "planted_id": "PLANT-027",
+  "case_id": "DEV-015",
+  "selected_clause_ids": [
+    "TESS-DUP-2.1"
+  ],
+  "draft": {
+    "action": "CORRECT_AND_RESUBMIT",
+    "summary": "Draft for DEV-015.",
+    "assertions": [
+      {
+        "text": "The policy states: A service that was in fact performed more than once on the same day is not a duplicate.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-DUP-2.1",
+            "quote": "A service that was in fact performed more than once on the same day is not a duplicate."
+          }
+        ]
+      },
+      {
+        "text": "The record states: 09:10 ECG: sinus rhythm, rate 78, no acute changes.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "09:10 ECG: sinus rhythm, rate 78, no acute changes."
+          }
+        ]
+      },
+      {
+        "text": "The record states: 10:40 Palpitations returned while waiting; patient light-headed.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "10:40 Palpitations returned while waiting; patient light-headed."
+          }
+        ]
+      },
+      {
+        "text": "The record states: 10:45 Repeat ECG: narrow-complex tachycardia, rate 164.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "10:45 Repeat ECG: narrow-complex tachycardia, rate 164."
+          }
+        ]
+      }
+    ],
+    "correction": "Add modifier 76 to line 2 and send a corrected claim.",
+    "missing_evidence": []
+  },
+  "error": null,
+  "planted_assertion_index": null
+}

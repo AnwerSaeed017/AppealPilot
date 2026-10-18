@@ -1,0 +1,62 @@
+{
+  "case_id": "DEV-047",
+  "split": "dev",
+  "scenario": "invalid-npi-1",
+  "tags": [
+    "invalid_input"
+  ],
+  "as_of_date": "2026-05-11",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-084282",
+      "payer_id": "TESS",
+      "member_id": "TESS-33841806",
+      "patient_id": "PT-474660",
+      "patient_date_of_birth": "1982-03-06",
+      "billing_provider_npi": "1296254779",
+      "place_of_service": "11",
+      "submitted_date": "2026-04-11",
+      "diagnosis_codes": [
+        "M17.12"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-04-04",
+          "procedure_code": "20610",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "140.00"
+        }
+      ],
+      "total_charge": "140.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-084282",
+      "payer_id": "TESS",
+      "group_code": "CO",
+      "carc_code": "4",
+      "rarc_codes": [],
+      "denial_date": "2026-04-30",
+      "denied_line_numbers": [],
+      "denied_amount": "140.00",
+      "payer_remark": "Required modifier missing, or modifier inconsistent with the procedure."
+    },
+    "visit_note": {
+      "encounter_date": "2026-04-04",
+      "text": "Date of visit: 2026-04-04\nPatient: 44-year-old woman, established patient.\nChief complaint: left knee pain\nHistory: osteoarthritis of the left knee; pain worse on stairs.\nExamination: crepitus and a small effusion.\nProcedure: left knee aspirated and injected with corticosteroid.\nPlan: review in six weeks.\nElectronically signed by the treating clinician, 2026-04-04."
+    }
+  },
+  "expected": {
+    "action": null,
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [],
+    "supporting_evidence": [],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "The billing provider NPI has ten digits but its check digit is wrong. The case must stop at validation, with no model call."
+  }
+}

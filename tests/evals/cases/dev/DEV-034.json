@@ -1,0 +1,71 @@
+{
+  "case_id": "DEV-034",
+  "split": "dev",
+  "scenario": "pa-not-required-1",
+  "tags": [
+    "payer_difference"
+  ],
+  "as_of_date": "2026-06-17",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-044217",
+      "payer_id": "TESS",
+      "member_id": "TESS-54004900",
+      "patient_id": "PT-541563",
+      "patient_date_of_birth": "1960-07-03",
+      "billing_provider_npi": "1980894772",
+      "place_of_service": "11",
+      "submitted_date": "2026-05-20",
+      "diagnosis_codes": [
+        "M17.12"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-05-12",
+          "procedure_code": "20610",
+          "modifiers": [
+            "LT"
+          ],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "140.00"
+        }
+      ],
+      "total_charge": "140.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-044217",
+      "payer_id": "TESS",
+      "group_code": "CO",
+      "carc_code": "197",
+      "rarc_codes": [],
+      "denial_date": "2026-06-05",
+      "denied_line_numbers": [],
+      "denied_amount": "140.00",
+      "payer_remark": "Authorization or precertification absent."
+    },
+    "visit_note": {
+      "encounter_date": "2026-05-12",
+      "text": "Date of visit: 2026-05-12\nPatient: 65-year-old woman, established patient.\nChief complaint: left knee pain\nHistory: osteoarthritis of the left knee; pain worse on stairs.\nExamination: crepitus and a small effusion.\nAssessment: primary osteoarthritis, left knee.\nProcedure: left knee aspirated and injected with corticosteroid.\nElectronically signed by the treating clinician, 2026-05-12."
+    }
+  },
+  "expected": {
+    "action": "APPEAL_WITH_EVIDENCE",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "TESS-PA-1.1"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "NOTE",
+        "line_number": 7
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "Procedure code 20610 is named in the policy as a service that does not require authorization for this payer, so the denial is wrong on its face."
+  }
+}

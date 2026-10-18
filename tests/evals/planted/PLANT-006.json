@@ -1,0 +1,68 @@
+{
+  "planted_id": "PLANT-006",
+  "case_id": "DEV-004",
+  "selected_clause_ids": [
+    "QUIL-MOD-1.1",
+    "QUIL-MOD-1.2"
+  ],
+  "draft": {
+    "action": "CORRECT_AND_RESUBMIT",
+    "summary": "Draft for DEV-004.",
+    "assertions": [
+      {
+        "text": "The policy states: An appeal must be received within 120 days of the denial date.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "QUIL-APL-1.1",
+            "quote": "An appeal must be received within 120 days of the denial date."
+          }
+        ]
+      },
+      {
+        "text": "The policy states: The record must describe the evaluation separately from the procedure.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "QUIL-MOD-1.2",
+            "quote": "The record must describe the evaluation separately from the procedure."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Diabetes review: fasting glucose readings 180 to 220 over the past three weeks; increased thirst.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Diabetes review: fasting glucose readings 180 to 220 over the past three weeks; increased thirst."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Examination: feet checked, sensation intact, pulses present; weight up 2 kg since last visit.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Examination: feet checked, sensation intact, pulses present; weight up 2 kg since last visit."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Decision: metformin increased to 1000 mg twice daily; HbA1c ordered.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Decision: metformin increased to 1000 mg twice daily; HbA1c ordered."
+          }
+        ]
+      }
+    ],
+    "correction": "Add modifier 25 to line 1 and send a corrected claim.",
+    "missing_evidence": []
+  },
+  "error": "CLAUSE_NOT_SELECTED",
+  "planted_assertion_index": 0
+}

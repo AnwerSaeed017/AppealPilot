@@ -1,0 +1,33 @@
+{
+  "policy_id": "QUIL-TF",
+  "payer_id": "QUIL",
+  "title": "Timely Filing",
+  "effective_from": "2026-01-01",
+  "clauses": [
+    {
+      "clause_id": "QUIL-TF-1.1",
+      "section_heading": "Filing limit",
+      "text": "A claim must be received within 90 days of the date of service."
+    },
+    {
+      "clause_id": "QUIL-TF-1.2",
+      "section_heading": "Corrected claims",
+      "text": "A corrected claim must be received within 60 days of the remittance date of the original decision."
+    },
+    {
+      "clause_id": "QUIL-TF-2.1",
+      "section_heading": "Exceptions",
+      "text": "The filing limit is extended only where: (a) coverage was added retroactively, in which case the claim must be received within 90 days of the date the provider was notified; (b) another payer was primary, in which case the claim must be received within 60 days of the date on the primary payer's explanation of benefits; or (c) the delay was caused by the plan, as shown by plan correspondence."
+    },
+    {
+      "clause_id": "QUIL-TF-2.2",
+      "section_heading": "Proof of timely filing",
+      "text": "The plan accepts as proof of timely filing only an acceptance report from the plan or a clearinghouse that shows the claim was accepted by the plan within the limit. Records from the provider's own billing system are not accepted."
+    },
+    {
+      "clause_id": "QUIL-TF-3.1",
+      "section_heading": "Final denials",
+      "text": "Where no exception in clause QUIL-TF-2.1 applies and there is no proof under clause QUIL-TF-2.2, a denial with reason code 29 is final. The member may not be billed."
+    }
+  ]
+}

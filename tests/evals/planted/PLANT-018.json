@@ -1,0 +1,68 @@
+{
+  "planted_id": "PLANT-018",
+  "case_id": "DEV-021",
+  "selected_clause_ids": [
+    "TESS-PA-4.1",
+    "TESS-PA-2.1"
+  ],
+  "draft": {
+    "action": "APPEAL_WITH_EVIDENCE",
+    "summary": "Draft for DEV-021.",
+    "assertions": [
+      {
+        "text": "The policy states: A provider who requested and received an authorization, but whose claim was denied because the plan has no record of it, may appeal.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-PA-4.1",
+            "quote": "A provider who requested and received an authorization, but whose claim was denied because the plan has no record of it, may appeal."
+          }
+        ]
+      },
+      {
+        "text": "The policy states: An authorization is valid for 90 days from its issue date, and only for the member, the procedure code and the body site named on it.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-PA-2.1",
+            "quote": "An authorization is valid for 90 days from its issue date, and only for the member, the procedure code and the body site named on it."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Authorization number: AU-767685",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "AUTH",
+            "quote": "Authorization number: AU-767685"
+          }
+        ]
+      },
+      {
+        "text": "The record states: Issued: 2026-02-03",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "AUTH",
+            "quote": "Issued: 2026-02-03"
+          }
+        ]
+      },
+      {
+        "text": "The record states: Service: procedure code 72148, MRI of the lumbar spine without contrast",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "AUTH",
+            "quote": "Service: procedure code 72148, MRI of the lumbar spine without contrast"
+          }
+        ]
+      }
+    ],
+    "correction": null,
+    "missing_evidence": []
+  },
+  "error": "NUMBER_CHANGED_IN_QUOTE",
+  "planted_assertion_index": 1
+}

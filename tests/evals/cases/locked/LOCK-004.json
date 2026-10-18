@@ -1,0 +1,80 @@
+{
+  "case_id": "LOCK-004",
+  "split": "locked",
+  "scenario": "filing-accepted-2",
+  "tags": [],
+  "as_of_date": "2026-09-25",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-509059",
+      "payer_id": "QUIL",
+      "member_id": "QUIL-95345457",
+      "patient_id": "PT-267070",
+      "patient_date_of_birth": "1959-01-01",
+      "billing_provider_npi": "1636402509",
+      "place_of_service": "11",
+      "submitted_date": "2026-08-31",
+      "diagnosis_codes": [
+        "I10"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-05-01",
+          "procedure_code": "99213",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "135.00"
+        }
+      ],
+      "total_charge": "135.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-509059",
+      "payer_id": "QUIL",
+      "group_code": "CO",
+      "carc_code": "29",
+      "rarc_codes": [],
+      "denial_date": "2026-09-11",
+      "denied_line_numbers": [],
+      "denied_amount": "135.00",
+      "payer_remark": "The time limit for filing has expired."
+    },
+    "visit_note": {
+      "encounter_date": "2026-05-01",
+      "text": "Date of visit: 2026-05-01\nPatient: 67-year-old woman, established patient.\nChief complaint: blood pressure follow-up\nHistory: hypertension, taking lisinopril daily. No headaches.\nExamination: blood pressure 143/81.\nAssessment: essential hypertension.\nPlan: continue current dose; review in three months.\nElectronically signed by the treating clinician, 2026-05-01."
+    },
+    "supporting_documents": [
+      {
+        "document_id": "CLR",
+        "kind": "CLEARINGHOUSE_REPORT",
+        "document_date": "2026-05-22",
+        "text": "Clearinghouse claim status report\nClaim: CLM-2026-509059\nAccepted by payer (Quillon Mutual): 2026-05-22\nStatus: Accepted"
+      }
+    ]
+  },
+  "expected": {
+    "action": "APPEAL_WITH_EVIDENCE",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "QUIL-TF-1.1",
+      "QUIL-TF-2.2"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "CLR",
+        "line_number": 3
+      },
+      {
+        "document_id": "CLR",
+        "line_number": 4
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "The submission on the claim record is a later resend. The clearinghouse report shows the payer accepted the claim 21 days after the service, inside the limit, and that report is the proof the policy names."
+  }
+}

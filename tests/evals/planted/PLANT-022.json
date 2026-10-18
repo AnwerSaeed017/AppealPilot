@@ -1,0 +1,39 @@
+{
+  "planted_id": "PLANT-022",
+  "case_id": "DEV-046",
+  "selected_clause_ids": [
+    "QUIL-COV-2.1"
+  ],
+  "draft": {
+    "action": "REQUEST_DOCUMENTATION",
+    "summary": "Draft for DEV-046.",
+    "assertions": [
+      {
+        "text": "Under this clause the payer is required to pay this claim in full.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "QUIL-COV-2.1",
+            "quote": "MRI of the knee (73721) is supported by examination findings that suggest a meniscal or ligament injury, such as a positive McMurray or Lachman test, mechanical locking or giving way; or by knee pain that continues after at least 4 weeks of conservative treatment."
+          }
+        ]
+      },
+      {
+        "text": "The record states: History: longstanding knee pain. Has failed conservative management.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "History: longstanding knee pain. Has failed conservative management."
+          }
+        ]
+      }
+    ],
+    "correction": null,
+    "missing_evidence": [
+      "dates and duration of the conservative treatment already tried"
+    ]
+  },
+  "error": "CONCLUSION_ADDED",
+  "planted_assertion_index": 0
+}

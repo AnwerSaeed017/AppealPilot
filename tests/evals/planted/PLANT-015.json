@@ -1,0 +1,58 @@
+{
+  "planted_id": "PLANT-015",
+  "case_id": "DEV-027",
+  "selected_clause_ids": [
+    "TESS-TF-1.1",
+    "TESS-TF-3.1"
+  ],
+  "draft": {
+    "action": "NO_ACTION",
+    "summary": "Draft for DEV-027.",
+    "assertions": [
+      {
+        "text": "Under this clause the payer is required to pay this claim in full.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-TF-1.1",
+            "quote": "For dates of service on or after 1 January 2026, a claim must be received by the plan within 180 days of the date of service."
+          }
+        ]
+      },
+      {
+        "text": "The policy states: A claim denied with reason code 29 is final when no situation in clause TESS-TF-2.1 applies and no proof under clause TESS-TF-2.2 exists.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-TF-3.1",
+            "quote": "A claim denied with reason code 29 is final when no situation in clause TESS-TF-2.1 applies and no proof under clause TESS-TF-2.2 exists."
+          }
+        ]
+      },
+      {
+        "text": "The record states: First submission of this claim: 2026-12-29.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "BILL",
+            "quote": "First submission of this claim: 2026-12-29."
+          }
+        ]
+      },
+      {
+        "text": "The record states: The charge was entered late after a coding backlog.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "BILL",
+            "quote": "The charge was entered late after a coding backlog."
+          }
+        ]
+      }
+    ],
+    "correction": null,
+    "missing_evidence": []
+  },
+  "error": "CONCLUSION_ADDED",
+  "planted_assertion_index": 0
+}

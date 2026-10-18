@@ -1,0 +1,32 @@
+{
+  "policy_id": "MEDICARE-DUP",
+  "payer_id": "MEDICARE",
+  "title": "Detection of Duplicate Claims",
+  "effective_from": "2013-04-29",
+  "clauses": [
+    {
+      "clause_id": "MEDICARE-DUP-1.1",
+      "section_heading": "Medicare Claims Processing Manual, Chapter 1, §120.1 Overview",
+      "text": "The claims processing systems contain edits which identify exact duplicate claims and suspect duplicate claims. All exact duplicate claims or claim lines are auto-denied or rejected (absent appropriate modifiers). Suspect duplicate claims and claim lines are suspended and reviewed by the claims administration contractors to make a determination to pay or deny the claim or claim line.",
+      "source_url": "https://www.cms.gov/Regulations-and-Guidance/Guidance/Manuals/downloads/clm104c01.pdf"
+    },
+    {
+      "clause_id": "MEDICARE-DUP-1.2",
+      "section_heading": "Medicare Claims Processing Manual, Chapter 1, §120.1 Modifiers that show a line is not a duplicate",
+      "text": "Some claims that appear to be duplicates are actually claims or claim lines that contain an item or service, or multiple instances of an item or service, for which Medicare payment may be made. Correct coding rules applicable to all billers of health care claims encourage the appropriate use of condition codes or modifiers to identify claims that may appear to be duplicates, but, in fact, are not.\nFor example, there are some HCPCS modifiers that are appropriate to be appended to some services and can indicate that a claim line is not a duplicate of a previous line on the claim. Level I modifiers would typically be used by a biller to indicate that a potential duplicate claim or claim line is not, in fact, a duplicate. Level II modifiers may also be used. The Level II modifiers \"RT\" and \"LT\", for example, indicate that a service was performed on the right and left side of the body, respectively.\nHowever, not every HCPCS code has an associated modifier to indicate that a claim line is not a duplicate. In that case, the claims and claim lines are reviewed by Medicare contactors' local software modules for a determination or they suspend for contractor review.",
+      "source_url": "https://www.cms.gov/Regulations-and-Guidance/Guidance/Manuals/downloads/clm104c01.pdf"
+    },
+    {
+      "clause_id": "MEDICARE-DUP-2.1",
+      "section_heading": "Medicare Claims Processing Manual, Chapter 1, §120.2.B Exact duplicates: claims submitted by physicians, practitioners, and other suppliers",
+      "text": "Claims or claim lines that have been determined to be exact duplicates of another claim or claim line are denied. However, such denials may be appealed. An exact duplicate for physician and other supplier claims submitted to a MAC or carrier is a claim or claim line that exactly matches another claim or claim line with respect to the following elements:\n• Medicare beneficiary identifier;\n• Provider Number;\n• From Date of Service;\n• Through Date of Service;\n• Type of Service;\n• Procedure Code;\n• Place of Service; and\n• Billed Amount.",
+      "source_url": "https://www.cms.gov/Regulations-and-Guidance/Guidance/Manuals/downloads/clm104c01.pdf"
+    },
+    {
+      "clause_id": "MEDICARE-DUP-3.1",
+      "section_heading": "Medicare Claims Processing Manual, Chapter 1, §70.8 A duplicate of a claim previously denied",
+      "text": "A claim that is a duplicate of a claim previously denied is treated as a new claim if there is no indication that the claim is a resubmittal of a previous claim with additional information, or there is no indication on the second claim that the beneficiary is protesting the previous determination.",
+      "source_url": "https://www.cms.gov/Regulations-and-Guidance/Guidance/Manuals/downloads/clm104c01.pdf"
+    }
+  ]
+}

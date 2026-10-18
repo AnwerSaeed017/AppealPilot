@@ -1,0 +1,50 @@
+{
+  "planted_id": "PLANT-036",
+  "case_id": "DEV-011",
+  "selected_clause_ids": [
+    "TESS-DOC-2.2"
+  ],
+  "draft": {
+    "action": "REQUEST_DOCUMENTATION",
+    "summary": "Draft for DEV-011.",
+    "assertions": [
+      {
+        "text": "Under this clause the payer is required to pay this claim in full.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-DOC-2.2",
+            "quote": "Hyaluronan injection of the knee (J7325) requires knee osteoarthritis confirmed on a radiograph, and failure of at least 3 months of conservative treatment that included at least two of the following: oral or topical analgesics, supervised physical therapy, a corticosteroid injection."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Radiograph of the right knee, 2025-07-18: joint-space narrowing and osteophytes, consistent with osteoarthritis.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Radiograph of the right knee, 2025-07-18: joint-space narrowing and osteophytes, consistent with osteoarthritis."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Has tried anti-inflammatory tablets and physiotherapy in the past without lasting benefit.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Has tried anti-inflammatory tablets and physiotherapy in the past without lasting benefit."
+          }
+        ]
+      }
+    ],
+    "correction": null,
+    "missing_evidence": [
+      "start date and duration of analgesic treatment",
+      "physical therapy records with session dates"
+    ]
+  },
+  "error": "CONCLUSION_ADDED",
+  "planted_assertion_index": 0
+}

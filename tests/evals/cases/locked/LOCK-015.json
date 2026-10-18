@@ -1,0 +1,89 @@
+{
+  "case_id": "LOCK-015",
+  "split": "locked",
+  "scenario": "modifier-25-unsupported-2",
+  "tags": [
+    "pair:modifier-25",
+    "upcoding_risk"
+  ],
+  "as_of_date": "2026-04-17",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-551398",
+      "payer_id": "QUIL",
+      "member_id": "QUIL-81525590",
+      "patient_id": "PT-672863",
+      "patient_date_of_birth": "1949-10-06",
+      "billing_provider_npi": "1771408345",
+      "place_of_service": "11",
+      "submitted_date": "2026-03-17",
+      "diagnosis_codes": [
+        "I10",
+        "B07.9"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-03-12",
+          "procedure_code": "99213",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "135.00"
+        },
+        {
+          "line_number": 2,
+          "service_date": "2026-03-12",
+          "procedure_code": "17110",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            2
+          ],
+          "units": 1,
+          "charge_amount": "160.00"
+        }
+      ],
+      "total_charge": "295.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-551398",
+      "payer_id": "QUIL",
+      "group_code": "CO",
+      "carc_code": "4",
+      "rarc_codes": [],
+      "denial_date": "2026-04-05",
+      "denied_line_numbers": [
+        1
+      ],
+      "denied_amount": "135.00",
+      "payer_remark": "Required modifier missing, or modifier inconsistent with the procedure."
+    },
+    "visit_note": {
+      "encounter_date": "2026-03-12",
+      "text": "Date of visit: 2026-03-12\nPatient: 76-year-old man, established patient.\nChief complaint: here for planned wart treatment\nReturns for the wart treatment arranged at the last visit.\nNo new complaints. No change in medication.\nProcedure: three common warts on the right hand treated with cryotherapy.\nTolerated well. Usual aftercare advice given.\nSigned: treating clinician. 2026-03-12."
+    }
+  },
+  "expected": {
+    "action": "NO_ACTION",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "QUIL-MOD-1.1",
+      "QUIL-MOD-1.2"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "NOTE",
+        "line_number": 4
+      },
+      {
+        "document_id": "NOTE",
+        "line_number": 5
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "The claim looks like the supported cases, but the note shows only a procedure that was already planned, with no separate evaluation. The policy says the visit is included in the procedure, so the denial of line 1 is correct. Adding modifier 25 here would misrepresent the visit."
+  }
+}

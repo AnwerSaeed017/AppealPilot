@@ -1,0 +1,44 @@
+{
+  "policy_id": "MEDICARE-APL",
+  "payer_id": "MEDICARE",
+  "title": "Appeals and Reopenings of Initial Determinations",
+  "effective_from": "2005-05-01",
+  "clauses": [
+    {
+      "clause_id": "MEDICARE-APL-1.1",
+      "section_heading": "42 CFR 405.942(a) Time frame for filing a request for a redetermination",
+      "text": "(a) Time frame for filing a request. Except as provided in paragraph (b) of this section, any request for redetermination must be filed within 120 calendar days from the date a party receives the notice of the initial determination. (1) For purposes of this section, the date of receipt of the initial determination will be presumed to be 5 calendar days after the date of the notice of initial determination, unless there is evidence to the contrary. (2) The request is considered as filed on the date it is received by the contractor.",
+      "source_url": "https://www.ecfr.gov/current/title-42/section-405.942"
+    },
+    {
+      "clause_id": "MEDICARE-APL-1.2",
+      "section_heading": "42 CFR 405.942(b) Extending the time frame for filing a request",
+      "text": "(b) Extending the time frame for filing a request. General rule. If the 120 calendar day period in which to file a request for a redetermination has expired and a party shows good cause, the contractor may extend the time frame for filing a request for redetermination.",
+      "source_url": "https://www.ecfr.gov/current/title-42/section-405.942"
+    },
+    {
+      "clause_id": "MEDICARE-APL-2.1",
+      "section_heading": "42 CFR 405.980(a)(3) Clerical errors are processed as reopenings",
+      "text": "(3) Notwithstanding paragraph (a)(4) of this section, a contractor must process clerical errors (which includes minor errors and omissions) as reopenings, instead of as redeterminations as specified in § 405.940. If the contractor receives a request for reopening and disagrees that the issue is a clerical error, the contractor must dismiss the reopening request and advise the party of any appeal rights, provided the timeframe to request an appeal on the original denial has not expired. For purposes of this section, clerical error includes human or mechanical errors on the part of the party or the contractor such as— (i) Mathematical or computational mistakes; (ii) Inaccurate data entry; or (iii) Denials of claims as duplicates.",
+      "source_url": "https://www.ecfr.gov/current/title-42/section-405.980"
+    },
+    {
+      "clause_id": "MEDICARE-APL-2.2",
+      "section_heading": "42 CFR 405.980(c) Reopening of initial determinations requested by a party",
+      "text": "(c) Time frame and requirements for reopening initial determinations and redeterminations requested by a party. (1) A party may request that a contractor reopen its initial determination or redetermination within 1 year from the date of the initial determination or redetermination for any reason. (2) A party may request that a contractor reopen its initial determination or redetermination within 4 years from the date of the initial determination or redetermination for good cause in accordance with § 405.986. (3) A party may request that a contractor reopen its initial determination at any time if the initial determination is unfavorable, in whole or in part, to the party thereto, but only for the purpose of correcting a clerical error on which that determination was based. Third party payer error does not constitute clerical error. See § 405.986(c).",
+      "source_url": "https://www.ecfr.gov/current/title-42/section-405.980"
+    },
+    {
+      "clause_id": "MEDICARE-APL-2.3",
+      "section_heading": "Medicare Claims Processing Manual, Chapter 34, §10.4 Reopenings Based on Clerical or Minor Errors and Omissions",
+      "text": "Section 937 of the Medicare Modernization Act (MMA) required CMS to establish a process, separate from appeals, whereby providers, physicians and suppliers could correct minor errors or omissions. We equate the MMA's minor error or omission to fall under our definition of clerical error, located in 42 CFR 405.980(a)(3). We believe that it is neither cost efficient nor necessary for contractors to correct clerical errors through the appeal process. Thus, 42 CFR 405.927 and 405.980(a)(3) require that clerical errors be processed as reopenings rather than appeals. CMS defines clerical errors (including minor errors or omissions) as human or mechanical errors on the part of the party or the contractor, such as:\n• Mathematical or computational mistakes;\n• Transposed procedure or diagnostic codes;\n• Inaccurate data entry;\n• Misapplication of a fee schedule;\n• Computer errors; or,\n• Denial of claims as duplicates which the party believes were incorrectly identified as a duplicate.\n• Incorrect data items, such as provider number, use of a modifier or date of service.\nNote that clerical errors or minor errors are limited to errors in form and content, and that omissions do not include failure to bill for certain items or services. A contractor shall not grant a reopening to add items or services that were not previously billed, with the exception of a few limited items that cannot be filed on a claim alone (e.g., G0369, G0370, G0371 and G0374). Third party payer errors do not constitute clerical errors.\nThe law provides that reopenings may be done to correct minor errors or omissions, that is, clerical errors. The contractor has discretion in determining what meets this definition and therefore, what could be corrected through a reopening.",
+      "source_url": "https://www.cms.gov/Regulations-and-Guidance/Guidance/Manuals/downloads/clm104c34.pdf"
+    },
+    {
+      "clause_id": "MEDICARE-APL-3.1",
+      "section_heading": "42 CFR 405.926(n) Actions that are not initial determinations",
+      "text": "Actions that are not initial determinations and are not appealable under this subpart include, but are not limited to the following: (n) Determinations that a provider or supplier failed to submit a claim timely or failed to submit a timely claim despite being requested to do so by the beneficiary or the beneficiary's subrogee.",
+      "source_url": "https://www.ecfr.gov/current/title-42/section-405.926"
+    }
+  ]
+}

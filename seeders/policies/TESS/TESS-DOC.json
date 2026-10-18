@@ -1,0 +1,38 @@
+{
+  "policy_id": "TESS-DOC",
+  "payer_id": "TESS",
+  "title": "Documentation Requirements",
+  "effective_from": "2026-01-01",
+  "clauses": [
+    {
+      "clause_id": "TESS-DOC-1.1",
+      "section_heading": "Time to supply documentation",
+      "text": "When a claim is denied with reason code 252, the provider has 45 days from the denial date to supply the documentation named in the remittance remark."
+    },
+    {
+      "clause_id": "TESS-DOC-1.2",
+      "section_heading": "Acceptable documentation",
+      "text": "Documentation must have been created at or near the time of service, be dated, and identify the clinician. An addendum written after the denial date is accepted only when it is labelled as a late entry and does not introduce findings that were not recorded at the time."
+    },
+    {
+      "clause_id": "TESS-DOC-2.1",
+      "section_heading": "Positive airway pressure devices",
+      "text": "A positive airway pressure device (E0601) requires a sleep study report showing either an apnea-hypopnea index (AHI) of 15 or more events per hour, or an AHI from 5 to 14 together with documented excessive daytime sleepiness, hypertension or a history of stroke. In either case the record must also show a clinical evaluation by the treating clinician before the study."
+    },
+    {
+      "clause_id": "TESS-DOC-2.2",
+      "section_heading": "Hyaluronan injection of the knee",
+      "text": "Hyaluronan injection of the knee (J7325) requires knee osteoarthritis confirmed on a radiograph, and failure of at least 3 months of conservative treatment that included at least two of the following: oral or topical analgesics, supervised physical therapy, a corticosteroid injection."
+    },
+    {
+      "clause_id": "TESS-DOC-2.3",
+      "section_heading": "Extended physical therapy",
+      "text": "Therapeutic exercise (97110) beyond 12 visits in a calendar year requires a plan of care with measurable functional goals, and a progress note showing objective improvement since the plan of care was written."
+    },
+    {
+      "clause_id": "TESS-DOC-3.1",
+      "section_heading": "When the documentation does not exist",
+      "text": "When the documentation required by this policy exists, the provider submits it with the claim number. When it does not exist, the provider must not appeal on the basis of the clinician's recollection, and the denial stands."
+    }
+  ]
+}

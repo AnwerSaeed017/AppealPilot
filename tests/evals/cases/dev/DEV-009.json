@@ -1,0 +1,62 @@
+{
+  "case_id": "DEV-009",
+  "split": "dev",
+  "scenario": "invalid-dates-1",
+  "tags": [
+    "invalid_input"
+  ],
+  "as_of_date": "2026-07-20",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-051271",
+      "payer_id": "QUIL",
+      "member_id": "QUIL-35125691",
+      "patient_id": "PT-279909",
+      "patient_date_of_birth": "1977-08-28",
+      "billing_provider_npi": "1619422102",
+      "place_of_service": "11",
+      "submitted_date": "2026-06-14",
+      "diagnosis_codes": [
+        "M17.11"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-06-17",
+          "procedure_code": "20610",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "140.00"
+        }
+      ],
+      "total_charge": "140.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-051271",
+      "payer_id": "QUIL",
+      "group_code": "CO",
+      "carc_code": "4",
+      "rarc_codes": [],
+      "denial_date": "2026-07-07",
+      "denied_line_numbers": [],
+      "denied_amount": "140.00",
+      "payer_remark": "Required modifier missing, or modifier inconsistent with the procedure."
+    },
+    "visit_note": {
+      "encounter_date": "2026-06-17",
+      "text": "Date of visit: 2026-06-17\nPatient: 48-year-old man, established patient.\nChief complaint: right knee pain\nHistory: osteoarthritis of the right knee; pain worse on stairs.\nExamination: crepitus and a small effusion.\nProcedure: right knee aspirated and injected with corticosteroid.\nPlan: review in six weeks.\nSigned: treating clinician. 2026-06-17."
+    }
+  },
+  "expected": {
+    "action": null,
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [],
+    "supporting_evidence": [],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "The claim is dated as submitted before the service took place. The case must stop at validation, with no model call."
+  }
+}

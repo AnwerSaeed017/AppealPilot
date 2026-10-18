@@ -1,0 +1,77 @@
+{
+  "case_id": "DEV-005",
+  "split": "dev",
+  "scenario": "knee-mri-findings-1",
+  "tags": [],
+  "as_of_date": "2026-06-06",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-624813",
+      "payer_id": "TESS",
+      "member_id": "TESS-86534029",
+      "patient_id": "PT-325035",
+      "patient_date_of_birth": "1965-02-06",
+      "billing_provider_npi": "1209028780",
+      "place_of_service": "11",
+      "submitted_date": "2026-05-11",
+      "diagnosis_codes": [
+        "M25.562"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-05-04",
+          "procedure_code": "73721",
+          "modifiers": [
+            "LT"
+          ],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "620.00"
+        }
+      ],
+      "total_charge": "620.00",
+      "prior_authorization_number": "AU-385298"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-624813",
+      "payer_id": "TESS",
+      "group_code": "CO",
+      "carc_code": "50",
+      "rarc_codes": [],
+      "denial_date": "2026-05-23",
+      "denied_line_numbers": [],
+      "denied_amount": "620.00",
+      "payer_remark": "Service not deemed medically necessary on the information submitted."
+    },
+    "visit_note": {
+      "encounter_date": "2026-05-04",
+      "text": "Date of visit: 2026-05-04\nPatient: 61-year-old man, established patient.\nChief complaint: left knee pain after an injury\nHistory: twisted the left knee 10 days ago; it has locked twice since.\nExamination: medial joint-line tenderness with a positive McMurray test; ligaments stable.\nAssessment: suspected medial meniscal tear.\nPlan: MRI of the left knee without contrast.\nSigned: treating clinician. 2026-05-04."
+    }
+  },
+  "expected": {
+    "action": "APPEAL_WITH_EVIDENCE",
+    "acceptable_alternatives": [
+      "ESCALATE_TO_HUMAN"
+    ],
+    "relevant_clause_ids": [
+      "TESS-COV-2.1",
+      "TESS-APL-3.1"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "NOTE",
+        "line_number": 4
+      },
+      {
+        "document_id": "NOTE",
+        "line_number": 5
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "The policy supports a knee MRI for a suspected meniscal tear with a positive examination finding. The note records locking, joint-line tenderness and a positive McMurray test, so the criterion is met without relying on duration."
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "policy_id": "MEDICARE-PA",
+  "payer_id": "MEDICARE",
+  "title": "Prior Authorization for Certain Hospital Outpatient Department Services",
+  "effective_from": "2024-08-16",
+  "clauses": [
+    {
+      "clause_id": "MEDICARE-PA-1.1",
+      "section_heading": "42 CFR 419.83(a) List of hospital outpatient department services requiring prior authorization",
+      "text": "(a) Service categories for the list of hospital outpatient department services requiring prior authorization. (1) The following service categories comprise the list of hospital outpatient department services requiring prior authorization beginning for service dates on or after July 1, 2020: (i) Blepharoplasty. (ii) Botulinum toxin injections. (iii) Panniculectomy. (iv) Rhinoplasty. (v) Vein ablation. (2) The following service categories comprise the list of hospital outpatient department services requiring prior authorization beginning for service dates on or after July 1, 2021: (i) Cervical Fusion with Disc Removal. (ii) Implanted Spinal Neurostimulators. (3) The Facet Joint Interventions service category requires prior authorization beginning for service dates on or after July 1, 2023.",
+      "source_url": "https://www.ecfr.gov/current/title-42/section-419.83"
+    },
+    {
+      "clause_id": "MEDICARE-PA-1.2",
+      "section_heading": "42 CFR 419.82(a)-(b)(1) Prior authorization as a condition of payment; denial of claim",
+      "text": "(a) Prior authorization as condition of payment. As a condition of Medicare payment for the services in the categories of services on the list of hospital outpatient department services requiring prior authorization as specified in § 419.83(a), a provider must submit to CMS or its contractors a prior authorization request in accordance with the requirements of paragraph (c) of this section. (b) Denial of claim. (1) CMS or its contractors will deny a claim for a service that requires prior authorization if the provider has not received a provisional affirmation of coverage on the claim from CMS or its contractor unless the provider is exempt under § 419.83(c).",
+      "source_url": "https://www.ecfr.gov/current/title-42/section-419.82"
+    },
+    {
+      "clause_id": "MEDICARE-PA-2.1",
+      "section_heading": "CMS OPD Prior Authorization FAQ, Q31 Unique Tracking Number on the claim",
+      "text": "31. Q: Will there be a tracking number for each prior authorization decision?\nA: Yes. MACs will list the prior authorization UTN on the decision notice. The UTN must be submitted on the claim in order to receive payment.",
+      "source_url": "https://www.cms.gov/files/document/opd-frequently-asked-questions.pdf"
+    },
+    {
+      "clause_id": "MEDICARE-PA-3.1",
+      "section_heading": "CMS OPD Prior Authorization FAQ, Q12 Provider types that require prior authorization",
+      "text": "12. Q: What provider types require prior authorization for these services?\nA: Only hospital OPD services require prior authorization as part of this program. Other facility/provider types, such as physician's offices, critical access hospitals, or ambulatory surgery centers that submit claims other than type of bill 13X are not required to submit prior authorization requests.",
+      "source_url": "https://www.cms.gov/files/document/opd-frequently-asked-questions.pdf"
+    },
+    {
+      "clause_id": "MEDICARE-PA-3.2",
+      "section_heading": "CMS OPD Prior Authorization FAQ, Q45-Q46 Physician and other related services",
+      "text": "45. Q: Are physicians and other associated providers required to submit the UTN on their claims?\nA: No. Only the hospital OPD is required to include the UTN on their claim, as the prior authorization process is only applicable to hospital OPD services. The physician and other billing practitioners should submit their claims as usual; however, claims related to/associated with services that require prior authorization as a condition of payment will not be paid if the service requiring prior authorization is not eligible for payment.\n46. Q: Are associated/related services, such as a physician service billed under the Physician Fee Schedule, payable if the procedure requiring prior authorization is not payable?\nA: No. Associated/related services, such as physician services performed in hospital OPDs, will not be paid for services that require prior authorization as a condition of payment for hospital OPD claims if the service requiring prior authorization is not eligible for payment. Claims from other places of service are not affected.",
+      "source_url": "https://www.cms.gov/files/document/opd-frequently-asked-questions.pdf"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "planted_id": "PLANT-008",
+  "case_id": "DEV-024",
+  "selected_clause_ids": [
+    "TESS-COV-3.1"
+  ],
+  "draft": {
+    "action": "NO_ACTION",
+    "summary": "Draft for DEV-024.",
+    "assertions": [
+      {
+        "text": "The policy states: The plan will pay such claims in full when the provider asks.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-COV-3.1",
+            "quote": "The plan will pay such claims in full when the provider asks."
+          }
+        ]
+      },
+      {
+        "text": "The record states: History: several raised brown lesions on the back for years. Not painful; no bleeding or itching.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "History: several raised brown lesions on the back for years. Not painful; no bleeding or itching."
+          }
+        ]
+      },
+      {
+        "text": "The record states: The patient dislikes their appearance and asks for removal.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "The patient dislikes their appearance and asks for removal."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Examination: six seborrhoeic keratoses, none inflamed.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Examination: six seborrhoeic keratoses, none inflamed."
+          }
+        ]
+      }
+    ],
+    "correction": null,
+    "missing_evidence": []
+  },
+  "error": "FABRICATED_QUOTE",
+  "planted_assertion_index": 0
+}

@@ -1,0 +1,90 @@
+{
+  "case_id": "LOCK-024",
+  "split": "locked",
+  "scenario": "duplicate-of-denied-1",
+  "tags": [
+    "missing_history"
+  ],
+  "as_of_date": "2026-08-21",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-561330",
+      "payer_id": "TESS",
+      "member_id": "TESS-67901818",
+      "patient_id": "PT-255434",
+      "patient_date_of_birth": "1966-12-19",
+      "billing_provider_npi": "1120659630",
+      "place_of_service": "11",
+      "submitted_date": "2026-07-28",
+      "diagnosis_codes": [
+        "M17.12"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-06-24",
+          "procedure_code": "20610",
+          "modifiers": [
+            "LT"
+          ],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "140.00"
+        }
+      ],
+      "total_charge": "140.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-561330",
+      "payer_id": "TESS",
+      "group_code": "CO",
+      "carc_code": "18",
+      "rarc_codes": [],
+      "denial_date": "2026-08-12",
+      "denied_line_numbers": [],
+      "denied_amount": "140.00",
+      "payer_remark": "Exact duplicate of a claim or service already processed."
+    },
+    "visit_note": {
+      "encounter_date": "2026-06-24",
+      "text": "Date of visit: 2026-06-24\nPatient: 59-year-old woman, established patient.\nChief complaint: left knee pain\nHistory: osteoarthritis of the left knee; pain worse on stairs.\nExamination: crepitus and a small effusion.\nAssessment: primary osteoarthritis, left knee.\nProcedure: left knee aspirated and injected with corticosteroid.\nElectronically signed by the treating clinician, 2026-06-24."
+    },
+    "prior_claims": [
+      {
+        "claim_id": "CLM-2026-047402",
+        "received_date": "2026-07-08",
+        "outcome": "DENIED",
+        "lines": [
+          {
+            "line_number": 1,
+            "service_date": "2026-06-24",
+            "procedure_code": "20610",
+            "modifiers": [
+              "LT"
+            ],
+            "diagnosis_pointers": [
+              1
+            ],
+            "units": 1,
+            "charge_amount": "140.00"
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "action": "ESCALATE_TO_HUMAN",
+    "acceptable_alternatives": [
+      "REQUEST_DOCUMENTATION"
+    ],
+    "relevant_clause_ids": [
+      "TESS-DUP-3.1"
+    ],
+    "supporting_evidence": [],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "The policy says a duplicate of a denied line is settled by the reason for the earlier denial, but prior claim CLM-2026-047402 has no reason on file. Without it there is no basis for choosing a correction, an appeal or nothing."
+  }
+}

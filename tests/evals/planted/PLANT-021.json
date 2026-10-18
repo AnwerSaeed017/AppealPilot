@@ -1,0 +1,68 @@
+{
+  "planted_id": "PLANT-021",
+  "case_id": "DEV-036",
+  "selected_clause_ids": [
+    "QUIL-COV-2.2",
+    "QUIL-APL-3.1"
+  ],
+  "draft": {
+    "action": "ESCALATE_TO_HUMAN",
+    "summary": "Draft for DEV-036.",
+    "assertions": [
+      {
+        "text": "The policy states: MRI of the lumbar spine (72148) is supported by low back pain with a neurological deficit, bowel or bladder dysfunction, a history of cancer, fever or suspected infection, or significant trauma; or by low back pain that continues after at least 6 weeks of conservative treatment.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "QUIL-COV-2.2",
+            "quote": "MRI of the lumbar spine (72148) is supported by low back pain with a neurological deficit, bowel or bladder dysfunction, a history of cancer, fever or suspected infection, or significant trauma; or by low back pain that continues after at least 6 weeks of conservative treatment."
+          }
+        ]
+      },
+      {
+        "text": "The policy states: An appeal of a denial with reason code 50 is decided by a plan clinician.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "QUIL-APL-3.1",
+            "quote": "An appeal of a denial with reason code 50 is decided by a plan clinician."
+          }
+        ]
+      },
+      {
+        "text": "The record states: History: low back pain for 5 weeks. Ibuprofen and home exercises for 5 weeks with partial relief.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "History: low back pain for 5 weeks. Ibuprofen and home exercises for 5 weeks with partial relief."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Examination: possible mild weakness of ankle dorsiflexion, limited by pain; reflexes symmetric; sensation intact.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Examination: possible mild weakness of ankle dorsiflexion, limited by pain; reflexes symmetric; sensation intact."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Examination: confirmed mild weakness of ankle dorsiflexion, limited by pain; reflexes symmetric; sensation intact.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Examination: possible mild weakness of ankle dorsiflexion, limited by pain; reflexes symmetric; sensation intact."
+          }
+        ]
+      }
+    ],
+    "correction": null,
+    "missing_evidence": []
+  },
+  "error": "HEDGE_REMOVED",
+  "planted_assertion_index": 4
+}

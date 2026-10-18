@@ -1,0 +1,82 @@
+{
+  "case_id": "DEV-033",
+  "split": "dev",
+  "scenario": "filing-primary-payer-1",
+  "tags": [
+    "threshold"
+  ],
+  "as_of_date": "2026-07-29",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-576036",
+      "payer_id": "QUIL",
+      "member_id": "QUIL-93689570",
+      "patient_id": "PT-474544",
+      "patient_date_of_birth": "1951-09-27",
+      "billing_provider_npi": "1351431469",
+      "place_of_service": "11",
+      "submitted_date": "2026-07-06",
+      "diagnosis_codes": [
+        "I10"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-03-05",
+          "procedure_code": "99213",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "135.00"
+        }
+      ],
+      "total_charge": "135.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-576036",
+      "payer_id": "QUIL",
+      "group_code": "CO",
+      "carc_code": "29",
+      "rarc_codes": [],
+      "denial_date": "2026-07-16",
+      "denied_line_numbers": [],
+      "denied_amount": "135.00",
+      "payer_remark": "The time limit for filing has expired."
+    },
+    "visit_note": {
+      "encounter_date": "2026-03-05",
+      "text": "Date of visit: 2026-03-05\nPatient: 74-year-old man, established patient.\nChief complaint: blood pressure follow-up\nHistory: hypertension, taking lisinopril daily. No headaches.\nExamination: blood pressure 136/83.\nAssessment: essential hypertension.\nPlan: continue current dose; review in three months.\nElectronically signed by the treating clinician, 2026-03-05."
+    },
+    "supporting_documents": [
+      {
+        "document_id": "EOB",
+        "kind": "PRIMARY_PAYER_EOB",
+        "document_date": "2026-06-24",
+        "text": "Explanation of benefits from the primary payer\nStatement date: 2026-06-24\nPatient account: PT-474544\nDate of service: 2026-03-05\nPrimary payment made; remaining balance forwarded to the secondary payer."
+      }
+    ]
+  },
+  "expected": {
+    "action": "APPEAL_WITH_EVIDENCE",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "QUIL-TF-2.1",
+      "QUIL-TF-1.1"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "EOB",
+        "line_number": 2
+      },
+      {
+        "document_id": "EOB",
+        "line_number": 4
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "The claim missed the ordinary limit, but it was received 12 days after the primary payer's explanation of benefits, and this payer allows 60 days from that date."
+  }
+}

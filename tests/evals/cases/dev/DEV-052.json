@@ -1,0 +1,82 @@
+{
+  "case_id": "DEV-052",
+  "split": "dev",
+  "scenario": "hyaluronan-met-1",
+  "tags": [
+    "threshold",
+    "payer_difference"
+  ],
+  "as_of_date": "2026-03-03",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-945621",
+      "payer_id": "TESS",
+      "member_id": "TESS-18989695",
+      "patient_id": "PT-650044",
+      "patient_date_of_birth": "1954-03-24",
+      "billing_provider_npi": "1614203473",
+      "place_of_service": "11",
+      "submitted_date": "2026-02-08",
+      "diagnosis_codes": [
+        "M17.12"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-02-03",
+          "procedure_code": "J7325",
+          "modifiers": [
+            "LT"
+          ],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "480.00"
+        }
+      ],
+      "total_charge": "480.00",
+      "prior_authorization_number": "AU-913267"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-945621",
+      "payer_id": "TESS",
+      "group_code": "CO",
+      "carc_code": "252",
+      "rarc_codes": [],
+      "denial_date": "2026-02-24",
+      "denied_line_numbers": [],
+      "denied_amount": "480.00",
+      "payer_remark": "Records of conservative treatment are required."
+    },
+    "visit_note": {
+      "encounter_date": "2026-02-03",
+      "text": "Date of visit: 2026-02-03\nPatient: 71-year-old woman, established patient.\nChief complaint: left knee pain from osteoarthritis\nRadiograph of the left knee, 2025-07-18: joint-space narrowing and osteophytes, consistent with osteoarthritis.\nNaproxen 500 mg twice daily started 2025-09-27; still taking it with little relief.\nSupervised physical therapy: 11 sessions from 2025-10-11 to 2025-12-06; pain unchanged.\nExamination: crepitus, small effusion, flexion limited to 100 degrees.\nProcedure: hyaluronan injected into the left knee.\nSigned: treating clinician. 2026-02-03."
+    }
+  },
+  "expected": {
+    "action": "APPEAL_WITH_EVIDENCE",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "TESS-DOC-2.2",
+      "TESS-DOC-1.1"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "NOTE",
+        "line_number": 4
+      },
+      {
+        "document_id": "NOTE",
+        "line_number": 5
+      },
+      {
+        "document_id": "NOTE",
+        "line_number": 6
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "The note has a confirming radiograph, and dated analgesic treatment and physical therapy running about 4 months before the injection. This payer requires 3 months, so the requested records exist and meet the clause."
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "planted_id": "PLANT-044",
+  "case_id": "DEV-045",
+  "selected_clause_ids": [
+    "TESS-MOD-2.2"
+  ],
+  "draft": {
+    "action": "ESCALATE_TO_HUMAN",
+    "summary": "Draft for DEV-045.",
+    "assertions": [
+      {
+        "text": "The policy states: A line denied under clause TESS-MOD-32.1 may be corrected and resubmitted when the record for the date of service states the side treated.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-MOD-2.2",
+            "quote": "A line denied under clause TESS-MOD-32.1 may be corrected and resubmitted when the record for the date of service states the side treated."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Patient: 7-year-old boy, new patient.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Patient: 7-year-old boy, new patient."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Chief complaint: ear pain and fever for two days.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Chief complaint: ear pain and fever for two days."
+          }
+        ]
+      }
+    ],
+    "correction": null,
+    "missing_evidence": []
+  },
+  "error": "NUMBER_CHANGED_IN_QUOTE",
+  "planted_assertion_index": 0
+}

@@ -1,0 +1,80 @@
+{
+  "case_id": "DEV-032",
+  "split": "dev",
+  "scenario": "diagnosis-pointer-2",
+  "tags": [],
+  "as_of_date": "2026-05-17",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-419826",
+      "payer_id": "QUIL",
+      "member_id": "QUIL-52919849",
+      "patient_id": "PT-251490",
+      "patient_date_of_birth": "1988-10-03",
+      "billing_provider_npi": "1365053341",
+      "place_of_service": "11",
+      "submitted_date": "2026-04-29",
+      "diagnosis_codes": [
+        "E11.9",
+        "M17.11"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-04-25",
+          "procedure_code": "20610",
+          "modifiers": [
+            "RT"
+          ],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "140.00"
+        }
+      ],
+      "total_charge": "140.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-419826",
+      "payer_id": "QUIL",
+      "group_code": "CO",
+      "carc_code": "11",
+      "rarc_codes": [],
+      "denial_date": "2026-05-11",
+      "denied_line_numbers": [],
+      "denied_amount": "140.00",
+      "payer_remark": "Diagnosis is inconsistent with the procedure."
+    },
+    "visit_note": {
+      "encounter_date": "2026-04-25",
+      "text": "Date of visit: 2026-04-25\nPatient: 37-year-old woman, established patient.\nChief complaint: right knee pain\nHistory: osteoarthritis of the right knee, pain worse over two months.\nType 2 diabetes: stable on metformin, no changes today.\nExamination: crepitus and a small effusion.\nAssessment: primary osteoarthritis, right knee, with effusion.\nProcedure: right knee aspirated and injected with corticosteroid.\nSigned: treating clinician. 2026-04-25."
+    }
+  },
+  "expected": {
+    "action": "CORRECT_AND_RESUBMIT",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "QUIL-COV-1.1",
+      "QUIL-COV-1.2",
+      "QUIL-COV-2.3"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "NOTE",
+        "line_number": 4
+      },
+      {
+        "document_id": "NOTE",
+        "line_number": 6
+      },
+      {
+        "document_id": "NOTE",
+        "line_number": 7
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": "Change the diagnosis pointer on line 1 so that M17.11 is the first diagnosis, and send a corrected claim.",
+    "rationale": "The injection line points only at diabetes, which does not support a joint injection. The note for the same date documents knee osteoarthritis with an effusion, and that diagnosis is already on the claim, so the pointer is wrong."
+  }
+}

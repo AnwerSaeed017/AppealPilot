@@ -1,0 +1,2351 @@
+[
+  {
+    "summary": {
+      "case_id": "case-modifier-25",
+      "claim_id": "MC-2026-0818-0457",
+      "payer_id": "MEDICARE",
+      "carc_code": "97",
+      "as_of": "2026-10-16",
+      "status": "AWAITING_APPROVAL",
+      "action": "CORRECT_AND_RESUBMIT",
+      "verified": true,
+      "created_at": "2026-10-16T14:02:11Z",
+      "updated_at": "2026-10-16T14:02:51Z"
+    },
+    "state": {
+      "case_id": "case-modifier-25",
+      "as_of": "2026-10-16",
+      "case_input": {
+        "claim": {
+          "claim_id": "MC-2026-0818-0457",
+          "payer_id": "MEDICARE",
+          "member_id": "3TK7WN2HD48",
+          "patient_id": "PT-204871",
+          "patient_date_of_birth": "1953-04-22",
+          "billing_provider_npi": "1494594405",
+          "place_of_service": "11",
+          "submitted_date": "2026-08-20",
+          "prior_authorization_number": null,
+          "original_claim_id": null,
+          "diagnosis_codes": [
+            "M17.11",
+            "E11.65",
+            "I10"
+          ],
+          "lines": [
+            {
+              "line_number": 1,
+              "service_date": "2026-08-18",
+              "procedure_code": "99214",
+              "modifiers": [],
+              "diagnosis_pointers": [
+                2,
+                3,
+                1
+              ],
+              "units": 1,
+              "charge_amount": "168.00"
+            },
+            {
+              "line_number": 2,
+              "service_date": "2026-08-18",
+              "procedure_code": "20610",
+              "modifiers": [
+                "RT"
+              ],
+              "diagnosis_pointers": [
+                1
+              ],
+              "units": 1,
+              "charge_amount": "126.00"
+            },
+            {
+              "line_number": 3,
+              "service_date": "2026-08-18",
+              "procedure_code": "J3301",
+              "modifiers": [],
+              "diagnosis_pointers": [
+                1
+              ],
+              "units": 4,
+              "charge_amount": "22.00"
+            }
+          ],
+          "total_charge": "316.00"
+        },
+        "denial": {
+          "claim_id": "MC-2026-0818-0457",
+          "payer_id": "MEDICARE",
+          "group_code": "CO",
+          "carc_code": "97",
+          "rarc_codes": [
+            "M144"
+          ],
+          "denial_date": "2026-09-03",
+          "denied_line_numbers": [
+            1
+          ],
+          "denied_amount": "168.00",
+          "payer_remark": null
+        },
+        "visit_note": {
+          "encounter_date": "2026-08-18",
+          "text": "Date of visit: 2026-08-18\nPatient: 73-year-old man, established patient.\nReason for visit: follow-up of type 2 diabetes and hypertension; right knee pain for three months.\nDiabetes: home glucose readings 180-240 mg/dL before breakfast. HbA1c 8.4% today, up from 7.6% in 2026-04. Taking metformin 1000 mg twice daily; no hypoglycemia.\nHypertension: blood pressure 152/94 and 148/92 on repeat. Taking lisinopril 20 mg daily. No chest pain or headache.\nRight knee: medial joint line tenderness, crepitus, small effusion, no warmth. Standing X-ray on 2026-05-20 showed medial joint space narrowing and osteophytes. Pain 7/10 despite acetaminophen and a home exercise program.\nAssessment and plan:\n1. Type 2 diabetes with hyperglycemia, above target. Start empagliflozin 10 mg daily; reviewed genital hygiene and hydration. Basic metabolic panel and urine albumin-to-creatinine ratio ordered. Recheck HbA1c in three months.\n2. Essential hypertension, not at goal. Add amlodipine 5 mg daily. Home blood pressure log; recheck in four weeks.\n3. Primary osteoarthritis of the right knee. Intra-articular corticosteroid injection performed today.\nProcedure: right knee intra-articular injection. Consent obtained. Sterile preparation, lateral suprapatellar approach. Triamcinolone acetonide 40 mg with 1% lidocaine 4 mL injected. No complications; patient tolerated well.\nSigned: treating physician. 2026-08-18."
+        },
+        "supporting_documents": [],
+        "prior_claims": []
+      },
+      "status": "AWAITING_APPROVAL",
+      "findings": [
+        {
+          "code": "VISIT_WITHOUT_MODIFIER_25",
+          "message": "A visit is billed on the same day as a procedure without modifier 25. Whether the record supports the modifier needs review.",
+          "clause_ids": [
+            "MEDICARE-MOD-1.1"
+          ],
+          "line_numbers": [
+            1
+          ]
+        }
+      ],
+      "clauses": [
+        {
+          "clause": {
+            "clause_id": "MEDICARE-MOD-1.1",
+            "policy_id": "MEDICARE-MOD",
+            "payer_id": "MEDICARE",
+            "policy_title": "Evaluation and Management Services on the Day of a Procedure",
+            "section_heading": "Medicare Claims Processing Manual, Chapter 12, §30.6.6.B CPT Modifier -25: Significant Evaluation and Management Service by Same Physician on Date of Global Procedure",
+            "text": "Medicare requires that Current Procedural Terminology (CPT) modifier -25 should only be used on claims for evaluation and management (E/M) services, and only when these services are provided by the same physician (or same qualified nonphysician practitioner) to the same patient on the same day as another procedure or other service. A/B MACs (B) pay for an E/M service provided on the day of a procedure with a global fee period if the physician indicates that the service is for a significant, separately identifiable E/M service that is above and beyond the usual pre- and post-operative work of the procedure. Different diagnoses are not required for reporting the E/M service on the same date as the procedure or other service. Modifier -25 is added to the E/M code on the claim.\nBoth the medically necessary E/M service and the procedure must be appropriately and sufficiently documented by the physician or qualified nonphysician practitioner in the patient's medical record to support the claim for these services, even though the documentation is not required to be submitted with the claim.\nIf the physician bills the service with the CPT modifier \"-25,\" A/B MACs (B) pay for the service in addition to the global fee without any other requirement for documentation unless one of the following conditions is met:\n• When inpatient dialysis services are billed (CPT codes 90935, 90945, 90947, and 93937), the physician must document that the service was unrelated to the dialysis and could not be performed during the dialysis procedure;\n• When preoperative critical care codes are being billed on the date of the procedure, the diagnosis must support that the service is unrelated to the performance of the procedure; or\n• When an A/B MAC (B) has conducted a specific medical review process and determined, after reviewing the data, that an individual or a group has high use of modifier \"-25\" compared to other physicians, has done a case-by-case review of the records to verify that the use of modifier was inappropriate, and has educated the individual or group, the A/B MAC (B) may impose prepayment screens or documentation requirements for that provider or group. When a A/B MAC (B) has completed a review and determined that a high usage rate of modifier \"-57,\" the A/B MAC (B) must complete a case-by-case review of the records. Based upon this review, the A/B MAC (B) will educate providers regarding the appropriate use of modifier \"-57.\" If high usage rates continue, the A/B MAC (B) may impose prepayment screens or documentation requirements for that provider or group.\nA/B MACs (B) may not permit the use of CPT modifier \"-25\" to generate payment for multiple evaluation and management services on the same day by the same physician, notwithstanding the CPT definition of the modifier.",
+            "effective_from": "2006-06-01",
+            "effective_to": null,
+            "source_url": "https://www.cms.gov/Regulations-and-Guidance/Guidance/Manuals/downloads/clm104c12.pdf"
+          },
+          "rank": 1,
+          "origin": "RULE"
+        },
+        {
+          "clause": {
+            "clause_id": "MEDICARE-MOD-1.2",
+            "policy_id": "MEDICARE-MOD",
+            "payer_id": "MEDICARE",
+            "policy_title": "Evaluation and Management Services on the Day of a Procedure",
+            "section_heading": "Medicare Claims Processing Manual, Chapter 12, §40.1.C Minor Surgeries and Endoscopies",
+            "text": "Visits by the same physician on the same day as a minor surgery or endoscopy are included in the payment for the procedure, unless a significant, separately identifiable service is also performed. For example, a visit on the same day could be properly billed in addition to suturing a scalp wound if a full neurological examination is made for a patient with head trauma. Billing for a visit would not be appropriate if the physician only identified the need for sutures and confirmed allergy and immunization status.",
+            "effective_from": "2006-06-01",
+            "effective_to": null,
+            "source_url": "https://www.cms.gov/Regulations-and-Guidance/Guidance/Manuals/downloads/clm104c12.pdf"
+          },
+          "rank": 2,
+          "origin": "SEARCH"
+        },
+        {
+          "clause": {
+            "clause_id": "MEDICARE-APL-2.1",
+            "policy_id": "MEDICARE-APL",
+            "payer_id": "MEDICARE",
+            "policy_title": "Appeals and Reopenings of Initial Determinations",
+            "section_heading": "42 CFR 405.980(a)(3) Clerical errors are processed as reopenings",
+            "text": "(3) Notwithstanding paragraph (a)(4) of this section, a contractor must process clerical errors (which includes minor errors and omissions) as reopenings, instead of as redeterminations as specified in § 405.940. If the contractor receives a request for reopening and disagrees that the issue is a clerical error, the contractor must dismiss the reopening request and advise the party of any appeal rights, provided the timeframe to request an appeal on the original denial has not expired. For purposes of this section, clerical error includes human or mechanical errors on the part of the party or the contractor such as— (i) Mathematical or computational mistakes; (ii) Inaccurate data entry; or (iii) Denials of claims as duplicates.",
+            "effective_from": "2005-05-01",
+            "effective_to": null,
+            "source_url": "https://www.ecfr.gov/current/title-42/section-405.980"
+          },
+          "rank": 3,
+          "origin": "SEARCH"
+        },
+        {
+          "clause": {
+            "clause_id": "MEDICARE-APL-2.2",
+            "policy_id": "MEDICARE-APL",
+            "payer_id": "MEDICARE",
+            "policy_title": "Appeals and Reopenings of Initial Determinations",
+            "section_heading": "42 CFR 405.980(c) Reopening of initial determinations requested by a party",
+            "text": "(c) Time frame and requirements for reopening initial determinations and redeterminations requested by a party. (1) A party may request that a contractor reopen its initial determination or redetermination within 1 year from the date of the initial determination or redetermination for any reason. (2) A party may request that a contractor reopen its initial determination or redetermination within 4 years from the date of the initial determination or redetermination for good cause in accordance with § 405.986. (3) A party may request that a contractor reopen its initial determination at any time if the initial determination is unfavorable, in whole or in part, to the party thereto, but only for the purpose of correcting a clerical error on which that determination was based. Third party payer error does not constitute clerical error. See § 405.986(c).",
+            "effective_from": "2005-05-01",
+            "effective_to": null,
+            "source_url": "https://www.ecfr.gov/current/title-42/section-405.980"
+          },
+          "rank": 4,
+          "origin": "NEIGHBOUR"
+        }
+      ],
+      "note_facts": [
+        {
+          "statement": "HbA1c rose to 8.4% and empagliflozin was started.",
+          "document_id": "NOTE",
+          "line_number": 4,
+          "quote": "HbA1c 8.4% today, up from 7.6% in 2026-04.",
+          "hedged": false
+        },
+        {
+          "statement": "Blood pressure was above goal and amlodipine was added.",
+          "document_id": "NOTE",
+          "line_number": 11,
+          "quote": "Essential hypertension, not at goal. Add amlodipine 5 mg daily.",
+          "hedged": false
+        },
+        {
+          "statement": "A corticosteroid injection was given into the right knee.",
+          "document_id": "NOTE",
+          "line_number": 13,
+          "quote": "Procedure: right knee intra-articular injection.",
+          "hedged": false
+        }
+      ],
+      "triage": {
+        "action": "CORRECT_AND_RESUBMIT",
+        "confidence": 0.86,
+        "reasons": [
+          "The visit line lacks modifier 25, which Medicare requires for a separate evaluation on the day of a procedure.",
+          "The note documents diabetes and hypertension management beyond the injection, so the modifier is supported.",
+          "A missing modifier is a clerical omission, corrected by reopening."
+        ]
+      },
+      "draft": {
+        "action": "CORRECT_AND_RESUBMIT",
+        "summary": "Request a reopening of the initial determination to add modifier 25 to line 1 (99214). The visit managed uncontrolled type 2 diabetes and hypertension, with medication changes, separately from the right knee injection billed on line 2.",
+        "assertions": [
+          {
+            "text": "Medicare pays for a same-day visit when it is a significant, separately identifiable service and modifier 25 is on the visit code.",
+            "citations": [
+              {
+                "kind": "CLAUSE",
+                "source_id": "MEDICARE-MOD-1.1",
+                "quote": "Modifier -25 is added to the E/M code on the claim."
+              }
+            ]
+          },
+          {
+            "text": "The visit adjusted diabetes treatment after a raised HbA1c.",
+            "citations": [
+              {
+                "kind": "DOCUMENT",
+                "source_id": "NOTE",
+                "quote": "Start empagliflozin 10 mg daily"
+              }
+            ]
+          },
+          {
+            "text": "The visit adjusted blood pressure treatment.",
+            "citations": [
+              {
+                "kind": "DOCUMENT",
+                "source_id": "NOTE",
+                "quote": "Add amlodipine 5 mg daily."
+              }
+            ]
+          },
+          {
+            "text": "A visit on the day of a minor procedure is separately payable when it is separately identifiable.",
+            "citations": [
+              {
+                "kind": "CLAUSE",
+                "source_id": "MEDICARE-MOD-1.2",
+                "quote": "unless a significant, separately identifiable service is also performed"
+              }
+            ]
+          },
+          {
+            "text": "A missing modifier is corrected through a reopening, not a redetermination.",
+            "citations": [
+              {
+                "kind": "CLAUSE",
+                "source_id": "MEDICARE-APL-2.1",
+                "quote": "a contractor must process clerical errors (which includes minor errors and omissions) as reopenings"
+              }
+            ]
+          }
+        ],
+        "correction": "Line 1: 99214 → 99214-25. No other line changes.",
+        "missing_evidence": []
+      },
+      "verification": {
+        "verdicts": [
+          {
+            "assertion_index": 0,
+            "supported": true,
+            "problems": []
+          },
+          {
+            "assertion_index": 1,
+            "supported": true,
+            "problems": []
+          },
+          {
+            "assertion_index": 2,
+            "supported": true,
+            "problems": []
+          },
+          {
+            "assertion_index": 3,
+            "supported": true,
+            "problems": []
+          },
+          {
+            "assertion_index": 4,
+            "supported": true,
+            "problems": []
+          }
+        ]
+      },
+      "writer_attempts": 1,
+      "human_decision": null,
+      "audit": [
+        {
+          "step": "rules",
+          "at": "2026-10-16T14:02:11Z",
+          "summary": "Rule findings: VISIT_WITHOUT_MODIFIER_25.",
+          "llm_call": null
+        },
+        {
+          "step": "retrieval",
+          "at": "2026-10-16T14:02:12Z",
+          "summary": "Selected 4 clauses: MEDICARE-MOD-1.1, MEDICARE-MOD-1.2, MEDICARE-APL-2.1, MEDICARE-APL-2.2.",
+          "llm_call": null
+        },
+        {
+          "step": "intake",
+          "at": "2026-10-16T14:02:20Z",
+          "summary": "Extracted 3 facts from the record.",
+          "llm_call": {
+            "provider": "groq",
+            "model": "openai/gpt-oss-120b",
+            "input_tokens": 2794,
+            "output_tokens": 612,
+            "latency_ms": 7380.0,
+            "cached": false,
+            "attempts": 1
+          }
+        },
+        {
+          "step": "record_checks",
+          "at": "2026-10-16T14:02:20Z",
+          "summary": "No contradiction in the record that code can see.",
+          "llm_call": null
+        },
+        {
+          "step": "document_retrieval",
+          "at": "2026-10-16T14:02:20Z",
+          "summary": "No supporting documents; nothing added.",
+          "llm_call": null
+        },
+        {
+          "step": "triage",
+          "at": "2026-10-16T14:02:25Z",
+          "summary": "Action: CORRECT_AND_RESUBMIT (confidence 0.86).",
+          "llm_call": {
+            "provider": "groq",
+            "model": "openai/gpt-oss-120b",
+            "input_tokens": 3311,
+            "output_tokens": 402,
+            "latency_ms": 4912.0,
+            "cached": false,
+            "attempts": 1
+          }
+        },
+        {
+          "step": "writer",
+          "at": "2026-10-16T14:02:37Z",
+          "summary": "Draft 1 with 5 assertions.",
+          "llm_call": {
+            "provider": "groq",
+            "model": "openai/gpt-oss-120b",
+            "input_tokens": 4120,
+            "output_tokens": 1180,
+            "latency_ms": 11204.0,
+            "cached": false,
+            "attempts": 2
+          }
+        },
+        {
+          "step": "verifier",
+          "at": "2026-10-16T14:02:42Z",
+          "summary": "All 5 assertions verified.",
+          "llm_call": {
+            "provider": "gemini",
+            "model": "gemini-3.1-flash-lite",
+            "input_tokens": 2210,
+            "output_tokens": 310,
+            "latency_ms": 4420.0,
+            "cached": false,
+            "attempts": 1
+          }
+        },
+        {
+          "step": "review",
+          "at": "2026-10-16T14:02:42Z",
+          "summary": "Sent for approval with a verified draft.",
+          "llm_call": null
+        }
+      ]
+    }
+  },
+  {
+    "summary": {
+      "case_id": "case-bone-density-unverified",
+      "claim_id": "MC-2026-0714-1123",
+      "payer_id": "MEDICARE",
+      "carc_code": "151",
+      "as_of": "2026-10-16",
+      "status": "AWAITING_APPROVAL",
+      "action": "APPEAL_WITH_EVIDENCE",
+      "verified": false,
+      "created_at": "2026-10-16T13:55:11Z",
+      "updated_at": "2026-10-16T13:55:51Z"
+    },
+    "state": {
+      "case_id": "case-bone-density-unverified",
+      "as_of": "2026-10-16",
+      "case_input": {
+        "claim": {
+          "claim_id": "MC-2026-0714-1123",
+          "payer_id": "MEDICARE",
+          "member_id": "5QR2GE8MA61",
+          "patient_id": "PT-318640",
+          "patient_date_of_birth": "1950-11-09",
+          "billing_provider_npi": "1686505383",
+          "place_of_service": "11",
+          "submitted_date": "2026-07-16",
+          "prior_authorization_number": null,
+          "original_claim_id": null,
+          "diagnosis_codes": [
+            "Z79.52",
+            "M35.3"
+          ],
+          "lines": [
+            {
+              "line_number": 1,
+              "service_date": "2026-07-14",
+              "procedure_code": "77080",
+              "modifiers": [],
+              "diagnosis_pointers": [
+                1,
+                2
+              ],
+              "units": 1,
+              "charge_amount": "112.00"
+            }
+          ],
+          "total_charge": "112.00"
+        },
+        "denial": {
+          "claim_id": "MC-2026-0714-1123",
+          "payer_id": "MEDICARE",
+          "group_code": "CO",
+          "carc_code": "151",
+          "rarc_codes": [
+            "N386"
+          ],
+          "denial_date": "2026-08-04",
+          "denied_line_numbers": [],
+          "denied_amount": "112.00",
+          "payer_remark": "Bone mass measurement billed less than 23 months after the last covered measurement."
+        },
+        "visit_note": {
+          "encounter_date": "2026-07-14",
+          "text": "Date of visit: 2026-07-14\nPatient: 75-year-old woman, established patient of the rheumatology clinic.\nReason for visit: bone density measurement ordered to monitor bone loss on long-term glucocorticoid therapy.\nHistory: polymyalgia rheumatica diagnosed 2025-12-02. Prednisone 15 mg daily started 2025-12-02, reduced to 12.5 mg daily on 2026-02-10 and to 10 mg daily on 2026-04-21; she remains on 10 mg daily today. Continuous glucocorticoid therapy for more than seven months, with every daily dose 10 mg or more.\nPrior testing: baseline DXA on 2025-03-11 showed a lumbar spine T-score of -1.8 and a left femoral neck T-score of -1.6 (osteopenia). That scan was done before steroids were started.\nIndication: glucocorticoid therapy of more than 3 months at 5 mg or more of prednisone a day raises fracture risk and requires monitoring of bone density, whatever the interval since the last scan.\nProcedure: DXA of the lumbar spine and left hip, axial skeleton. Performed and interpreted by the treating physician.\nPlan: review the result with the patient; start calcium and vitamin D; consider osteoporosis drug therapy if the T-score has fallen.\nSigned: treating physician. 2026-07-14."
+        },
+        "supporting_documents": [
+          {
+            "document_id": "DXA-REPORT",
+            "kind": "DIAGNOSTIC_REPORT",
+            "document_date": "2026-07-14",
+            "text": "Bone densitometry report. Date of study: 2026-07-14.\nIndication: long-term glucocorticoid therapy (prednisone 10 mg daily since 2025-12-02, previously 15 mg and 12.5 mg); polymyalgia rheumatica.\nTechnique: dual-energy X-ray absorptiometry, axial skeleton, same scanner as the prior study.\nResults: lumbar spine L1-L4 T-score -2.6; left femoral neck T-score -2.1; left total hip T-score -1.9.\nComparison with 2025-03-11: lumbar spine bone mineral density down 5.9%, femoral neck down 4.2%. Both changes exceed the least significant change for this scanner.\nImpression: osteoporosis of the lumbar spine with significant bone loss since starting glucocorticoids."
+          },
+          {
+            "document_id": "RX-HISTORY",
+            "kind": "OTHER",
+            "document_date": "2026-07-14",
+            "text": "Pharmacy fill history, prednisone tablets.\n2025-12-02: prednisone 5 mg, 3 tablets daily (15 mg), 30-day supply.\n2026-01-02: prednisone 5 mg, 3 tablets daily (15 mg), 30-day supply.\n2026-02-10: prednisone 2.5 mg, 5 tablets daily (12.5 mg), 30-day supply.\n2026-03-12: prednisone 2.5 mg, 5 tablets daily (12.5 mg), 40-day supply.\n2026-04-21: prednisone 10 mg, 1 tablet daily, 30-day supply.\n2026-05-21: prednisone 10 mg, 1 tablet daily, 30-day supply.\n2026-06-20: prednisone 10 mg, 1 tablet daily, 30-day supply.\nNo gaps in supply between fills."
+          }
+        ],
+        "prior_claims": [
+          {
+            "claim_id": "MC-2025-0311-0870",
+            "received_date": "2025-03-13",
+            "outcome": "PAID",
+            "carc_code": null,
+            "lines": [
+              {
+                "line_number": 1,
+                "service_date": "2025-03-11",
+                "procedure_code": "77080",
+                "modifiers": [],
+                "diagnosis_pointers": [
+                  1
+                ],
+                "units": 1,
+                "charge_amount": "108.00"
+              }
+            ]
+          }
+        ]
+      },
+      "status": "AWAITING_APPROVAL",
+      "findings": [
+        {
+          "code": "PROCEDURE_CONDITIONS_CLAUSE",
+          "message": "The conditions for procedure code 77080 on line 1 are set by clause MEDICARE-COV-1.2.",
+          "clause_ids": [
+            "MEDICARE-COV-1.2"
+          ],
+          "line_numbers": [
+            1
+          ]
+        },
+        {
+          "code": "CLINICAL_SUPPORT_NEEDS_REVIEW",
+          "message": "The denial turns on whether the service was medically necessary. No rule decides that; it needs evidence from the record.",
+          "clause_ids": [],
+          "line_numbers": [
+            1
+          ]
+        }
+      ],
+      "clauses": [
+        {
+          "clause": {
+            "clause_id": "MEDICARE-COV-1.2",
+            "policy_id": "MEDICARE-COV",
+            "payer_id": "MEDICARE",
+            "policy_title": "Bone Mass Measurements",
+            "section_heading": "42 CFR 410.31(c) Standards on frequency of coverage",
+            "text": "(c) Standards on frequency of coverage —(1) General rule. Except as allowed under paragraph (c)(2) of this section, Medicare may cover a bone mass measurement for a beneficiary if at least 23 months have passed since the month the last bone mass measurement was performed. (2) Exception. If medically necessary, Medicare may cover a bone mass measurement for a beneficiary more frequently than allowed under paragraph (c)(1) of this section. Examples of situations where more frequent bone mass measurement procedures may be medically necessary include, but are not limited to the following medical circumstances: (i) Monitoring beneficiaries on long-term glucocorticoid (steroid) therapy of more than 3 months. (ii) Allowing for a confirmatory baseline measurement to permit monitoring of beneficiaries in the future if the requirements of paragraph (b)(3) of this section are met.",
+            "effective_from": "2007-01-01",
+            "effective_to": null,
+            "source_url": "https://www.ecfr.gov/current/title-42/section-410.31"
+          },
+          "rank": 1,
+          "origin": "RULE"
+        },
+        {
+          "clause": {
+            "clause_id": "MEDICARE-COV-1.3",
+            "policy_id": "MEDICARE-COV",
+            "payer_id": "MEDICARE",
+            "policy_title": "Bone Mass Measurements",
+            "section_heading": "42 CFR 410.31(d) Beneficiaries who may be covered",
+            "text": "(d) Beneficiaries who may be covered. The following categories of beneficiaries may receive Medicare coverage for a medically necessary bone mass measurement: (1) A woman who has been determined by the physician (or a qualified nonphysician practitioner) treating her to be estrogen-deficient and at clinical risk for osteoporosis, based on her medical history and other findings. (2) An individual with vertebral abnormalities as demonstrated by an x-ray to be indicative of osteoporosis, osteopenia, or vertebral fracture. (3) An individual receiving (or expecting to receive) glucocorticoid (steroid) therapy equivalent to an average of 5.0 mg of prednisone, or greater, per day for more than 3 months. (4) An individual with primary hyperparathyroidism. (5) An individual being monitored to assess the response to or efficacy of an FDA-approved osteoporosis drug therapy.",
+            "effective_from": "2007-01-01",
+            "effective_to": null,
+            "source_url": "https://www.ecfr.gov/current/title-42/section-410.31"
+          },
+          "rank": 2,
+          "origin": "SEARCH"
+        },
+        {
+          "clause": {
+            "clause_id": "MEDICARE-COV-2.1",
+            "policy_id": "MEDICARE-COV",
+            "payer_id": "MEDICARE",
+            "policy_title": "Bone Mass Measurements",
+            "section_heading": "Medicare Benefit Policy Manual, Chapter 15, §80.5.5 Frequency Standards",
+            "text": "Medicare pays for a screening BMM once every 2 years (at least 23 months have passed since the month the last covered BMM was performed).\nWhen medically necessary, Medicare may pay for more frequent BMMs. Examples include, but are not limited to, the following medical circumstances:\n• Monitoring beneficiaries on long-term glucocorticoid (steroid) therapy of more than 3 months.\n• Confirming baseline BMMs to permit monitoring of beneficiaries in the future.",
+            "effective_from": "2007-01-01",
+            "effective_to": null,
+            "source_url": "https://www.cms.gov/Regulations-and-Guidance/Guidance/Manuals/downloads/bp102c15.pdf"
+          },
+          "rank": 3,
+          "origin": "SEARCH"
+        },
+        {
+          "clause": {
+            "clause_id": "MEDICARE-COV-1.1",
+            "policy_id": "MEDICARE-COV",
+            "payer_id": "MEDICARE",
+            "policy_title": "Bone Mass Measurements",
+            "section_heading": "42 CFR 410.31(b)(1) Conditions for coverage",
+            "text": "(b) Conditions for coverage. (1) Medicare covers a medically necessary bone mass measurement if the following conditions are met: (i) Following an evaluation of the beneficiary's need for the measurement, including a determination as to the medically appropriate procedure to be used for the beneficiary, it is ordered by the physician or a qualified nonphysician practitioner (as these terms are defined in § 410.32(a)) treating the beneficiary. (ii) It is performed under the appropriate level of supervision of a physician (as set forth in § 410.32(b)). (iii) It is reasonable and necessary for diagnosing and treating the Condition of a beneficiary who meets the conditions described in paragraph (d) of this section.",
+            "effective_from": "2007-01-01",
+            "effective_to": null,
+            "source_url": "https://www.ecfr.gov/current/title-42/section-410.31"
+          },
+          "rank": 4,
+          "origin": "SEARCH"
+        },
+        {
+          "clause": {
+            "clause_id": "MEDICARE-APL-1.1",
+            "policy_id": "MEDICARE-APL",
+            "payer_id": "MEDICARE",
+            "policy_title": "Appeals and Reopenings of Initial Determinations",
+            "section_heading": "42 CFR 405.942(a) Time frame for filing a request for a redetermination",
+            "text": "(a) Time frame for filing a request. Except as provided in paragraph (b) of this section, any request for redetermination must be filed within 120 calendar days from the date a party receives the notice of the initial determination. (1) For purposes of this section, the date of receipt of the initial determination will be presumed to be 5 calendar days after the date of the notice of initial determination, unless there is evidence to the contrary. (2) The request is considered as filed on the date it is received by the contractor.",
+            "effective_from": "2005-05-01",
+            "effective_to": null,
+            "source_url": "https://www.ecfr.gov/current/title-42/section-405.942"
+          },
+          "rank": 5,
+          "origin": "DOCUMENT"
+        }
+      ],
+      "note_facts": [
+        {
+          "statement": "The patient has taken prednisone daily since 2025-12-02, now 10 mg.",
+          "document_id": "NOTE",
+          "line_number": 4,
+          "quote": "she remains on 10 mg daily today",
+          "hedged": false
+        },
+        {
+          "statement": "The pharmacy record shows continuous prednisone fills without gaps.",
+          "document_id": "RX-HISTORY",
+          "line_number": 9,
+          "quote": "No gaps in supply between fills.",
+          "hedged": false
+        },
+        {
+          "statement": "Lumbar spine density fell 5.9% since the last scan.",
+          "document_id": "DXA-REPORT",
+          "line_number": 5,
+          "quote": "lumbar spine bone mineral density down 5.9%",
+          "hedged": false
+        }
+      ],
+      "triage": {
+        "action": "APPEAL_WITH_EVIDENCE",
+        "confidence": 0.81,
+        "reasons": [
+          "The scan was within 23 months of the last one, which the general frequency rule does not cover.",
+          "Medicare allows more frequent scans to monitor long-term glucocorticoid therapy of more than 3 months.",
+          "The note and pharmacy record document more than seven months of prednisone at 10 mg or more."
+        ]
+      },
+      "draft": {
+        "action": "APPEAL_WITH_EVIDENCE",
+        "summary": "File a redetermination request within 120 days of the notice. The repeat DXA falls under the frequency exception for monitoring long-term glucocorticoid therapy: the patient has taken prednisone at 10 mg or more daily since 2025-12-02, and the scan shows significant bone loss.",
+        "assertions": [
+          {
+            "text": "Medicare may cover a bone density scan more often than every 23 months when medically necessary, including to monitor long-term steroid therapy.",
+            "citations": [
+              {
+                "kind": "CLAUSE",
+                "source_id": "MEDICARE-COV-1.2",
+                "quote": "Monitoring beneficiaries on long-term glucocorticoid (steroid) therapy of more than 3 months."
+              }
+            ]
+          },
+          {
+            "text": "The patient qualifies as an individual on glucocorticoid therapy of 5 mg of prednisone or more a day for more than 3 months.",
+            "citations": [
+              {
+                "kind": "CLAUSE",
+                "source_id": "MEDICARE-COV-1.3",
+                "quote": "glucocorticoid (steroid) therapy equivalent to an average of 5.0 mg of prednisone, or greater, per day for more than 3 months"
+              },
+              {
+                "kind": "DOCUMENT",
+                "source_id": "RX-HISTORY",
+                "quote": "2025-12-02: prednisone 5 mg, 3 tablets daily (15 mg), 30-day supply."
+              }
+            ]
+          },
+          {
+            "text": "Medicare covers a scan every 12 months for patients on steroids.",
+            "citations": [
+              {
+                "kind": "CLAUSE",
+                "source_id": "MEDICARE-COV-2.1",
+                "quote": "covered every 12 months for patients on steroids"
+              }
+            ]
+          },
+          {
+            "text": "A redetermination must be requested within 120 days of receiving the notice.",
+            "citations": [
+              {
+                "kind": "CLAUSE",
+                "source_id": "MEDICARE-APL-1.1",
+                "quote": "any request for redetermination must be filed within 120 calendar days from the date a party receives the notice of the initial determination"
+              }
+            ]
+          }
+        ],
+        "correction": null,
+        "missing_evidence": [
+          "A signed order for the repeat scan, if the payer asks for it."
+        ]
+      },
+      "verification": {
+        "verdicts": [
+          {
+            "assertion_index": 0,
+            "supported": true,
+            "problems": []
+          },
+          {
+            "assertion_index": 1,
+            "supported": true,
+            "problems": []
+          },
+          {
+            "assertion_index": 2,
+            "supported": false,
+            "problems": [
+              "Quote not found in MEDICARE-COV-2.1: \"covered every 12 months for patients on steroids\""
+            ]
+          },
+          {
+            "assertion_index": 3,
+            "supported": true,
+            "problems": []
+          }
+        ]
+      },
+      "writer_attempts": 3,
+      "human_decision": null,
+      "audit": [
+        {
+          "step": "rules",
+          "at": "2026-10-16T14:02:11Z",
+          "summary": "Rule findings: PROCEDURE_CONDITIONS_CLAUSE, CLINICAL_SUPPORT_NEEDS_REVIEW.",
+          "llm_call": null
+        },
+        {
+          "step": "retrieval",
+          "at": "2026-10-16T14:02:12Z",
+          "summary": "Selected 4 clauses.",
+          "llm_call": null
+        },
+        {
+          "step": "intake",
+          "at": "2026-10-16T14:02:21Z",
+          "summary": "Extracted 3 facts from the record.",
+          "llm_call": {
+            "provider": "groq",
+            "model": "openai/gpt-oss-120b",
+            "input_tokens": 3420,
+            "output_tokens": 701,
+            "latency_ms": 8102.0,
+            "cached": false,
+            "attempts": 1
+          }
+        },
+        {
+          "step": "record_checks",
+          "at": "2026-10-16T14:02:21Z",
+          "summary": "No contradiction in the record that code can see.",
+          "llm_call": null
+        },
+        {
+          "step": "document_retrieval",
+          "at": "2026-10-16T14:02:21Z",
+          "summary": "Added MEDICARE-APL-1.1 from the supporting documents.",
+          "llm_call": null
+        },
+        {
+          "step": "triage",
+          "at": "2026-10-16T14:02:26Z",
+          "summary": "Action: APPEAL_WITH_EVIDENCE (confidence 0.81).",
+          "llm_call": {
+            "provider": "groq",
+            "model": "openai/gpt-oss-120b",
+            "input_tokens": 3990,
+            "output_tokens": 455,
+            "latency_ms": 5320.0,
+            "cached": false,
+            "attempts": 1
+          }
+        },
+        {
+          "step": "writer",
+          "at": "2026-10-16T14:02:39Z",
+          "summary": "Draft 1 with 4 assertions.",
+          "llm_call": {
+            "provider": "groq",
+            "model": "openai/gpt-oss-120b",
+            "input_tokens": 5110,
+            "output_tokens": 1320,
+            "latency_ms": 12010.0,
+            "cached": false,
+            "attempts": 1
+          }
+        },
+        {
+          "step": "verifier",
+          "at": "2026-10-16T14:02:42Z",
+          "summary": "1 of 4 assertions failed: 2.",
+          "llm_call": null
+        },
+        {
+          "step": "writer",
+          "at": "2026-10-16T14:02:55Z",
+          "summary": "Draft 2 with 4 assertions.",
+          "llm_call": {
+            "provider": "groq",
+            "model": "openai/gpt-oss-120b",
+            "input_tokens": 5920,
+            "output_tokens": 1290,
+            "latency_ms": 11880.0,
+            "cached": false,
+            "attempts": 1
+          }
+        },
+        {
+          "step": "verifier",
+          "at": "2026-10-16T14:02:58Z",
+          "summary": "1 of 4 assertions failed: 2.",
+          "llm_call": null
+        },
+        {
+          "step": "writer",
+          "at": "2026-10-16T14:03:11Z",
+          "summary": "Draft 3 with 4 assertions.",
+          "llm_call": {
+            "provider": "groq",
+            "model": "openai/gpt-oss-120b",
+            "input_tokens": 6010,
+            "output_tokens": 1301,
+            "latency_ms": 12200.0,
+            "cached": false,
+            "attempts": 1
+          }
+        },
+        {
+          "step": "verifier",
+          "at": "2026-10-16T14:03:14Z",
+          "summary": "1 of 4 assertions failed: 2.",
+          "llm_call": null
+        },
+        {
+          "step": "review",
+          "at": "2026-10-16T14:03:14Z",
+          "summary": "Sent for approval UNVERIFIED after 3 drafts; the failing assertions are flagged.",
+          "llm_call": null
+        }
+      ]
+    }
+  },
+  {
+    "summary": {
+      "case_id": "case-timely-running",
+      "claim_id": "MC-2025-0805-0312",
+      "payer_id": "MEDICARE",
+      "carc_code": "29",
+      "as_of": "2026-10-16",
+      "status": "RUNNING",
+      "action": null,
+      "verified": null,
+      "created_at": "2026-10-16T13:48:11Z",
+      "updated_at": "2026-10-16T13:48:51Z"
+    },
+    "state": {
+      "case_id": "case-timely-running",
+      "as_of": "2026-10-16",
+      "case_input": {
+        "claim": {
+          "claim_id": "MC-2025-0805-0312",
+          "payer_id": "MEDICARE",
+          "member_id": "8VF9XJ4KP27",
+          "patient_id": "PT-552907",
+          "patient_date_of_birth": "1948-06-30",
+          "billing_provider_npi": "1935258339",
+          "place_of_service": "11",
+          "submitted_date": "2026-09-01",
+          "prior_authorization_number": null,
+          "original_claim_id": null,
+          "diagnosis_codes": [
+            "J44.1",
+            "I10"
+          ],
+          "lines": [
+            {
+              "line_number": 1,
+              "service_date": "2025-08-05",
+              "procedure_code": "99213",
+              "modifiers": [],
+              "diagnosis_pointers": [
+                1,
+                2
+              ],
+              "units": 1,
+              "charge_amount": "112.00"
+            }
+          ],
+          "total_charge": "112.00"
+        },
+        "denial": {
+          "claim_id": "MC-2025-0805-0312",
+          "payer_id": "MEDICARE",
+          "group_code": "CO",
+          "carc_code": "29",
+          "rarc_codes": [
+            "N211"
+          ],
+          "denial_date": "2026-09-15",
+          "denied_line_numbers": [],
+          "denied_amount": "112.00",
+          "payer_remark": null
+        },
+        "visit_note": {
+          "encounter_date": "2025-08-05",
+          "text": "Date of visit: 2025-08-05\nPatient: 77-year-old man, established patient.\nReason for visit: four days of increased breathlessness and cough with more sputum, now yellow.\nHistory: COPD, former smoker (40 pack-years, quit 2015). Uses tiotropium daily and albuterol as needed, now four times a day.\nExamination: temperature 37.6 C, respiratory rate 22, oxygen saturation 92% on room air. Scattered wheeze, no focal crackles. Blood pressure 138/84.\nAssessment: acute exacerbation of COPD; hypertension controlled on lisinopril.\nPlan: prednisone 40 mg daily for 5 days; doxycycline 100 mg twice daily for 5 days; continue tiotropium. Return or go to the emergency department if breathing worsens. Review in two weeks.\nSigned: treating physician. 2025-08-05."
+        },
+        "supporting_documents": [
+          {
+            "document_id": "BILLING-LOG",
+            "kind": "BILLING_NOTE",
+            "document_date": "2026-09-16",
+            "text": "Billing review for the visit of 2025-08-05.\nThe charge was found on the unbilled-encounters report during the month-end review on 2026-08-28. It had been held since 2025-08-06 by a practice-management edit for a missing diagnosis pointer, and the edit was never worked.\nClearinghouse acceptance report: first and only submission on 2026-09-01. No earlier submission of this claim is on file with the clearinghouse or the Medicare contractor.\nEligibility check on 2026-09-01: Medicare Part B entitlement effective 2013-07-01, with no retroactive change. No Medicare Advantage enrollment during 2025.\nNo correspondence from the Medicare contractor about this claim before the denial."
+          }
+        ],
+        "prior_claims": []
+      },
+      "status": "RUNNING",
+      "findings": [
+        {
+          "code": "FILING_LIMIT_EXCEEDED",
+          "message": "The claim's submission date is 392 days after the service; the filing limit is 365 days.",
+          "clause_ids": [
+            "MEDICARE-TF-1.1"
+          ],
+          "line_numbers": []
+        }
+      ],
+      "clauses": [
+        {
+          "clause": {
+            "clause_id": "MEDICARE-TF-1.1",
+            "policy_id": "MEDICARE-TF",
+            "payer_id": "MEDICARE",
+            "policy_title": "Time Limits for Filing Claims",
+            "section_heading": "42 CFR 424.44(a)(1) Time limits",
+            "text": "(1) Except as provided in paragraphs (b) and (e) of this section, for services furnished on or after January 1, 2010, the claim must be filed no later than the close of the period ending 1 calendar year after the date of service.",
+            "effective_from": "2010-01-01",
+            "effective_to": null,
+            "source_url": "https://www.ecfr.gov/current/title-42/section-424.44"
+          },
+          "rank": 1,
+          "origin": "RULE"
+        },
+        {
+          "clause": {
+            "clause_id": "MEDICARE-TF-1.2",
+            "policy_id": "MEDICARE-TF",
+            "payer_id": "MEDICARE",
+            "policy_title": "Time Limits for Filing Claims",
+            "section_heading": "Medicare Claims Processing Manual, Chapter 1, §70 Time Limitations for Filing Part A and Part B Claims",
+            "text": "Medicare regulations at 42 CFR 424.44 define the timely filing period for Medicare fee for service claims. In general, such claims must be filed to the appropriate Medicare claims processing contractor no later than 12 months, or 1 calendar year, after the date the services were furnished. (See section §70.7 below for details of the exceptions to the 12 month timely filing limit.)",
+            "effective_from": "2010-01-01",
+            "effective_to": null,
+            "source_url": "https://www.cms.gov/Regulations-and-Guidance/Guidance/Manuals/downloads/clm104c01.pdf"
+          },
+          "rank": 2,
+          "origin": "SEARCH"
+        },
+        {
+          "clause": {
+            "clause_id": "MEDICARE-TF-2.1",
+            "policy_id": "MEDICARE-TF",
+            "payer_id": "MEDICARE",
+            "policy_title": "Time Limits for Filing Claims",
+            "section_heading": "Medicare Claims Processing Manual, Chapter 1, §70.4 Determination of Untimely Filing and Resulting Actions",
+            "text": "Medicare denies a claim for untimely filing if the receipt date applied to the claim exceeds 12 months or 1 calendar year from the date the services were furnished (i.e., generally, the \"From\" date, with the exception of the \"Through\" date for institutional claims that have span dates of services, as specified in §70.1). When a claim is denied for having been filed after the timely filing period, such denial does not constitute an \"initial determination\". As such, the determination that a claim was not filed timely is not subject to appeal.\nWhere the beneficiary request for payment was filed timely (or would have been filed timely had the provider taken action to obtain a request from the patient whom the provider knew or had reason to believe might be a beneficiary) but the provider is responsible for not filing a timely claim, the provider may not charge the beneficiary for the services except for such deductible and/or coinsurance amounts as would have been appropriate if Medicare payment had been made. In appropriate cases, such claims should be processed because of the spell-of-illness implications and/or in order to record the days, visits, cash and blood deductibles. The beneficiary is charged utilization days, if applicable for the type of services received.",
+            "effective_from": "2010-01-01",
+            "effective_to": null,
+            "source_url": "https://www.cms.gov/Regulations-and-Guidance/Guidance/Manuals/downloads/clm104c01.pdf"
+          },
+          "rank": 3,
+          "origin": "SEARCH"
+        }
+      ],
+      "note_facts": [],
+      "triage": null,
+      "draft": null,
+      "verification": null,
+      "writer_attempts": 0,
+      "human_decision": null,
+      "audit": [
+        {
+          "step": "rules",
+          "at": "2026-10-16T14:02:11Z",
+          "summary": "Rule findings: FILING_LIMIT_EXCEEDED.",
+          "llm_call": null
+        },
+        {
+          "step": "retrieval",
+          "at": "2026-10-16T14:02:12Z",
+          "summary": "Selected 3 clauses: MEDICARE-TF-1.1, MEDICARE-TF-1.2, MEDICARE-TF-2.1.",
+          "llm_call": null
+        }
+      ]
+    }
+  },
+  {
+    "summary": {
+      "case_id": "case-timely-filing",
+      "claim_id": "MC-2025-0805-0312",
+      "payer_id": "MEDICARE",
+      "carc_code": "29",
+      "as_of": "2026-10-16",
+      "status": "FAILED",
+      "action": null,
+      "verified": null,
+      "created_at": "2026-10-16T13:41:11Z",
+      "updated_at": "2026-10-16T13:41:51Z"
+    },
+    "state": {
+      "case_id": "case-timely-filing",
+      "as_of": "2026-10-16",
+      "case_input": {
+        "claim": {
+          "claim_id": "MC-2025-0805-0312",
+          "payer_id": "MEDICARE",
+          "member_id": "8VF9XJ4KP27",
+          "patient_id": "PT-552907",
+          "patient_date_of_birth": "1948-06-30",
+          "billing_provider_npi": "1935258339",
+          "place_of_service": "11",
+          "submitted_date": "2026-09-01",
+          "prior_authorization_number": null,
+          "original_claim_id": null,
+          "diagnosis_codes": [
+            "J44.1",
+            "I10"
+          ],
+          "lines": [
+            {
+              "line_number": 1,
+              "service_date": "2025-08-05",
+              "procedure_code": "99213",
+              "modifiers": [],
+              "diagnosis_pointers": [
+                1,
+                2
+              ],
+              "units": 1,
+              "charge_amount": "112.00"
+            }
+          ],
+          "total_charge": "112.00"
+        },
+        "denial": {
+          "claim_id": "MC-2025-0805-0312",
+          "payer_id": "MEDICARE",
+          "group_code": "CO",
+          "carc_code": "29",
+          "rarc_codes": [
+            "N211"
+          ],
+          "denial_date": "2026-09-15",
+          "denied_line_numbers": [],
+          "denied_amount": "112.00",
+          "payer_remark": null
+        },
+        "visit_note": {
+          "encounter_date": "2025-08-05",
+          "text": "Date of visit: 2025-08-05\nPatient: 77-year-old man, established patient.\nReason for visit: four days of increased breathlessness and cough with more sputum, now yellow.\nHistory: COPD, former smoker (40 pack-years, quit 2015). Uses tiotropium daily and albuterol as needed, now four times a day.\nExamination: temperature 37.6 C, respiratory rate 22, oxygen saturation 92% on room air. Scattered wheeze, no focal crackles. Blood pressure 138/84.\nAssessment: acute exacerbation of COPD; hypertension controlled on lisinopril.\nPlan: prednisone 40 mg daily for 5 days; doxycycline 100 mg twice daily for 5 days; continue tiotropium. Return or go to the emergency department if breathing worsens. Review in two weeks.\nSigned: treating physician. 2025-08-05."
+        },
+        "supporting_documents": [
+          {
+            "document_id": "BILLING-LOG",
+            "kind": "BILLING_NOTE",
+            "document_date": "2026-09-16",
+            "text": "Billing review for the visit of 2025-08-05.\nThe charge was found on the unbilled-encounters report during the month-end review on 2026-08-28. It had been held since 2025-08-06 by a practice-management edit for a missing diagnosis pointer, and the edit was never worked.\nClearinghouse acceptance report: first and only submission on 2026-09-01. No earlier submission of this claim is on file with the clearinghouse or the Medicare contractor.\nEligibility check on 2026-09-01: Medicare Part B entitlement effective 2013-07-01, with no retroactive change. No Medicare Advantage enrollment during 2025.\nNo correspondence from the Medicare contractor about this claim before the denial."
+          }
+        ],
+        "prior_claims": []
+      },
+      "status": "FAILED",
+      "findings": [
+        {
+          "code": "FILING_LIMIT_EXCEEDED",
+          "message": "The claim's submission date is 392 days after the service; the filing limit is 365 days.",
+          "clause_ids": [
+            "MEDICARE-TF-1.1"
+          ],
+          "line_numbers": []
+        }
+      ],
+      "clauses": [
+        {
+          "clause": {
+            "clause_id": "MEDICARE-TF-1.1",
+            "policy_id": "MEDICARE-TF",
+            "payer_id": "MEDICARE",
+            "policy_title": "Time Limits for Filing Claims",
+            "section_heading": "42 CFR 424.44(a)(1) Time limits",
+            "text": "(1) Except as provided in paragraphs (b) and (e) of this section, for services furnished on or after January 1, 2010, the claim must be filed no later than the close of the period ending 1 calendar year after the date of service.",
+            "effective_from": "2010-01-01",
+            "effective_to": null,
+            "source_url": "https://www.ecfr.gov/current/title-42/section-424.44"
+          },
+          "rank": 1,
+          "origin": "RULE"
+        },
+        {
+          "clause": {
+            "clause_id": "MEDICARE-TF-1.2",
+            "policy_id": "MEDICARE-TF",
+            "payer_id": "MEDICARE",
+            "policy_title": "Time Limits for Filing Claims",
+            "section_heading": "Medicare Claims Processing Manual, Chapter 1, §70 Time Limitations for Filing Part A and Part B Claims",
+            "text": "Medicare regulations at 42 CFR 424.44 define the timely filing period for Medicare fee for service claims. In general, such claims must be filed to the appropriate Medicare claims processing contractor no later than 12 months, or 1 calendar year, after the date the services were furnished. (See section §70.7 below for details of the exceptions to the 12 month timely filing limit.)",
+            "effective_from": "2010-01-01",
+            "effective_to": null,
+            "source_url": "https://www.cms.gov/Regulations-and-Guidance/Guidance/Manuals/downloads/clm104c01.pdf"
+          },
+          "rank": 2,
+          "origin": "SEARCH"
+        },
+        {
+          "clause": {
+            "clause_id": "MEDICARE-TF-2.1",
+            "policy_id": "MEDICARE-TF",
+            "payer_id": "MEDICARE",
+            "policy_title": "Time Limits for Filing Claims",
+            "section_heading": "Medicare Claims Processing Manual, Chapter 1, §70.4 Determination of Untimely Filing and Resulting Actions",
+            "text": "Medicare denies a claim for untimely filing if the receipt date applied to the claim exceeds 12 months or 1 calendar year from the date the services were furnished (i.e., generally, the \"From\" date, with the exception of the \"Through\" date for institutional claims that have span dates of services, as specified in §70.1). When a claim is denied for having been filed after the timely filing period, such denial does not constitute an \"initial determination\". As such, the determination that a claim was not filed timely is not subject to appeal.\nWhere the beneficiary request for payment was filed timely (or would have been filed timely had the provider taken action to obtain a request from the patient whom the provider knew or had reason to believe might be a beneficiary) but the provider is responsible for not filing a timely claim, the provider may not charge the beneficiary for the services except for such deductible and/or coinsurance amounts as would have been appropriate if Medicare payment had been made. In appropriate cases, such claims should be processed because of the spell-of-illness implications and/or in order to record the days, visits, cash and blood deductibles. The beneficiary is charged utilization days, if applicable for the type of services received.",
+            "effective_from": "2010-01-01",
+            "effective_to": null,
+            "source_url": "https://www.cms.gov/Regulations-and-Guidance/Guidance/Manuals/downloads/clm104c01.pdf"
+          },
+          "rank": 3,
+          "origin": "SEARCH"
+        }
+      ],
+      "note_facts": [],
+      "triage": null,
+      "draft": null,
+      "verification": null,
+      "writer_attempts": 0,
+      "human_decision": null,
+      "audit": [
+        {
+          "step": "rules",
+          "at": "2026-10-16T14:02:11Z",
+          "summary": "Rule findings: FILING_LIMIT_EXCEEDED.",
+          "llm_call": null
+        },
+        {
+          "step": "retrieval",
+          "at": "2026-10-16T14:02:12Z",
+          "summary": "Selected 3 clauses: MEDICARE-TF-1.1, MEDICARE-TF-1.2, MEDICARE-TF-2.1.",
+          "llm_call": null
+        }
+      ]
+    }
+  },
+  {
+    "summary": {
+      "case_id": "case-bone-density-approved",
+      "claim_id": "MC-2026-0714-1123",
+      "payer_id": "MEDICARE",
+      "carc_code": "151",
+      "as_of": "2026-10-16",
+      "status": "APPROVED",
+      "action": "APPEAL_WITH_EVIDENCE",
+      "verified": true,
+      "created_at": "2026-10-16T13:34:11Z",
+      "updated_at": "2026-10-16T13:34:51Z"
+    },
+    "state": {
+      "case_id": "case-bone-density-approved",
+      "as_of": "2026-10-16",
+      "case_input": {
+        "claim": {
+          "claim_id": "MC-2026-0714-1123",
+          "payer_id": "MEDICARE",
+          "member_id": "5QR2GE8MA61",
+          "patient_id": "PT-318640",
+          "patient_date_of_birth": "1950-11-09",
+          "billing_provider_npi": "1686505383",
+          "place_of_service": "11",
+          "submitted_date": "2026-07-16",
+          "prior_authorization_number": null,
+          "original_claim_id": null,
+          "diagnosis_codes": [
+            "Z79.52",
+            "M35.3"
+          ],
+          "lines": [
+            {
+              "line_number": 1,
+              "service_date": "2026-07-14",
+              "procedure_code": "77080",
+              "modifiers": [],
+              "diagnosis_pointers": [
+                1,
+                2
+              ],
+              "units": 1,
+              "charge_amount": "112.00"
+            }
+          ],
+          "total_charge": "112.00"
+        },
+        "denial": {
+          "claim_id": "MC-2026-0714-1123",
+          "payer_id": "MEDICARE",
+          "group_code": "CO",
+          "carc_code": "151",
+          "rarc_codes": [
+            "N386"
+          ],
+          "denial_date": "2026-08-04",
+          "denied_line_numbers": [],
+          "denied_amount": "112.00",
+          "payer_remark": "Bone mass measurement billed less than 23 months after the last covered measurement."
+        },
+        "visit_note": {
+          "encounter_date": "2026-07-14",
+          "text": "Date of visit: 2026-07-14\nPatient: 75-year-old woman, established patient of the rheumatology clinic.\nReason for visit: bone density measurement ordered to monitor bone loss on long-term glucocorticoid therapy.\nHistory: polymyalgia rheumatica diagnosed 2025-12-02. Prednisone 15 mg daily started 2025-12-02, reduced to 12.5 mg daily on 2026-02-10 and to 10 mg daily on 2026-04-21; she remains on 10 mg daily today. Continuous glucocorticoid therapy for more than seven months, with every daily dose 10 mg or more.\nPrior testing: baseline DXA on 2025-03-11 showed a lumbar spine T-score of -1.8 and a left femoral neck T-score of -1.6 (osteopenia). That scan was done before steroids were started.\nIndication: glucocorticoid therapy of more than 3 months at 5 mg or more of prednisone a day raises fracture risk and requires monitoring of bone density, whatever the interval since the last scan.\nProcedure: DXA of the lumbar spine and left hip, axial skeleton. Performed and interpreted by the treating physician.\nPlan: review the result with the patient; start calcium and vitamin D; consider osteoporosis drug therapy if the T-score has fallen.\nSigned: treating physician. 2026-07-14."
+        },
+        "supporting_documents": [
+          {
+            "document_id": "DXA-REPORT",
+            "kind": "DIAGNOSTIC_REPORT",
+            "document_date": "2026-07-14",
+            "text": "Bone densitometry report. Date of study: 2026-07-14.\nIndication: long-term glucocorticoid therapy (prednisone 10 mg daily since 2025-12-02, previously 15 mg and 12.5 mg); polymyalgia rheumatica.\nTechnique: dual-energy X-ray absorptiometry, axial skeleton, same scanner as the prior study.\nResults: lumbar spine L1-L4 T-score -2.6; left femoral neck T-score -2.1; left total hip T-score -1.9.\nComparison with 2025-03-11: lumbar spine bone mineral density down 5.9%, femoral neck down 4.2%. Both changes exceed the least significant change for this scanner.\nImpression: osteoporosis of the lumbar spine with significant bone loss since starting glucocorticoids."
+          },
+          {
+            "document_id": "RX-HISTORY",
+            "kind": "OTHER",
+            "document_date": "2026-07-14",
+            "text": "Pharmacy fill history, prednisone tablets.\n2025-12-02: prednisone 5 mg, 3 tablets daily (15 mg), 30-day supply.\n2026-01-02: prednisone 5 mg, 3 tablets daily (15 mg), 30-day supply.\n2026-02-10: prednisone 2.5 mg, 5 tablets daily (12.5 mg), 30-day supply.\n2026-03-12: prednisone 2.5 mg, 5 tablets daily (12.5 mg), 40-day supply.\n2026-04-21: prednisone 10 mg, 1 tablet daily, 30-day supply.\n2026-05-21: prednisone 10 mg, 1 tablet daily, 30-day supply.\n2026-06-20: prednisone 10 mg, 1 tablet daily, 30-day supply.\nNo gaps in supply between fills."
+          }
+        ],
+        "prior_claims": [
+          {
+            "claim_id": "MC-2025-0311-0870",
+            "received_date": "2025-03-13",
+            "outcome": "PAID",
+            "carc_code": null,
+            "lines": [
+              {
+                "line_number": 1,
+                "service_date": "2025-03-11",
+                "procedure_code": "77080",
+                "modifiers": [],
+                "diagnosis_pointers": [
+                  1
+                ],
+                "units": 1,
+                "charge_amount": "108.00"
+              }
+            ]
+          }
+        ]
+      },
+      "status": "APPROVED",
+      "findings": [
+        {
+          "code": "PROCEDURE_CONDITIONS_CLAUSE",
+          "message": "The conditions for procedure code 77080 on line 1 are set by clause MEDICARE-COV-1.2.",
+          "clause_ids": [
+            "MEDICARE-COV-1.2"
+          ],
+          "line_numbers": [
+            1
+          ]
+        },
+        {
+          "code": "CLINICAL_SUPPORT_NEEDS_REVIEW",
+          "message": "The denial turns on whether the service was medically necessary. No rule decides that; it needs evidence from the record.",
+          "clause_ids": [],
+          "line_numbers": [
+            1
+          ]
+        }
+      ],
+      "clauses": [
+        {
+          "clause": {
+            "clause_id": "MEDICARE-COV-1.2",
+            "policy_id": "MEDICARE-COV",
+            "payer_id": "MEDICARE",
+            "policy_title": "Bone Mass Measurements",
+            "section_heading": "42 CFR 410.31(c) Standards on frequency of coverage",
+            "text": "(c) Standards on frequency of coverage —(1) General rule. Except as allowed under paragraph (c)(2) of this section, Medicare may cover a bone mass measurement for a beneficiary if at least 23 months have passed since the month the last bone mass measurement was performed. (2) Exception. If medically necessary, Medicare may cover a bone mass measurement for a beneficiary more frequently than allowed under paragraph (c)(1) of this section. Examples of situations where more frequent bone mass measurement procedures may be medically necessary include, but are not limited to the following medical circumstances: (i) Monitoring beneficiaries on long-term glucocorticoid (steroid) therapy of more than 3 months. (ii) Allowing for a confirmatory baseline measurement to permit monitoring of beneficiaries in the future if the requirements of paragraph (b)(3) of this section are met.",
+            "effective_from": "2007-01-01",
+            "effective_to": null,
+            "source_url": "https://www.ecfr.gov/current/title-42/section-410.31"
+          },
+          "rank": 1,
+          "origin": "RULE"
+        },
+        {
+          "clause": {
+            "clause_id": "MEDICARE-COV-1.3",
+            "policy_id": "MEDICARE-COV",
+            "payer_id": "MEDICARE",
+            "policy_title": "Bone Mass Measurements",
+            "section_heading": "42 CFR 410.31(d) Beneficiaries who may be covered",
+            "text": "(d) Beneficiaries who may be covered. The following categories of beneficiaries may receive Medicare coverage for a medically necessary bone mass measurement: (1) A woman who has been determined by the physician (or a qualified nonphysician practitioner) treating her to be estrogen-deficient and at clinical risk for osteoporosis, based on her medical history and other findings. (2) An individual with vertebral abnormalities as demonstrated by an x-ray to be indicative of osteoporosis, osteopenia, or vertebral fracture. (3) An individual receiving (or expecting to receive) glucocorticoid (steroid) therapy equivalent to an average of 5.0 mg of prednisone, or greater, per day for more than 3 months. (4) An individual with primary hyperparathyroidism. (5) An individual being monitored to assess the response to or efficacy of an FDA-approved osteoporosis drug therapy.",
+            "effective_from": "2007-01-01",
+            "effective_to": null,
+            "source_url": "https://www.ecfr.gov/current/title-42/section-410.31"
+          },
+          "rank": 2,
+          "origin": "SEARCH"
+        },
+        {
+          "clause": {
+            "clause_id": "MEDICARE-COV-2.1",
+            "policy_id": "MEDICARE-COV",
+            "payer_id": "MEDICARE",
+            "policy_title": "Bone Mass Measurements",
+            "section_heading": "Medicare Benefit Policy Manual, Chapter 15, §80.5.5 Frequency Standards",
+            "text": "Medicare pays for a screening BMM once every 2 years (at least 23 months have passed since the month the last covered BMM was performed).\nWhen medically necessary, Medicare may pay for more frequent BMMs. Examples include, but are not limited to, the following medical circumstances:\n• Monitoring beneficiaries on long-term glucocorticoid (steroid) therapy of more than 3 months.\n• Confirming baseline BMMs to permit monitoring of beneficiaries in the future.",
+            "effective_from": "2007-01-01",
+            "effective_to": null,
+            "source_url": "https://www.cms.gov/Regulations-and-Guidance/Guidance/Manuals/downloads/bp102c15.pdf"
+          },
+          "rank": 3,
+          "origin": "SEARCH"
+        },
+        {
+          "clause": {
+            "clause_id": "MEDICARE-COV-1.1",
+            "policy_id": "MEDICARE-COV",
+            "payer_id": "MEDICARE",
+            "policy_title": "Bone Mass Measurements",
+            "section_heading": "42 CFR 410.31(b)(1) Conditions for coverage",
+            "text": "(b) Conditions for coverage. (1) Medicare covers a medically necessary bone mass measurement if the following conditions are met: (i) Following an evaluation of the beneficiary's need for the measurement, including a determination as to the medically appropriate procedure to be used for the beneficiary, it is ordered by the physician or a qualified nonphysician practitioner (as these terms are defined in § 410.32(a)) treating the beneficiary. (ii) It is performed under the appropriate level of supervision of a physician (as set forth in § 410.32(b)). (iii) It is reasonable and necessary for diagnosing and treating the Condition of a beneficiary who meets the conditions described in paragraph (d) of this section.",
+            "effective_from": "2007-01-01",
+            "effective_to": null,
+            "source_url": "https://www.ecfr.gov/current/title-42/section-410.31"
+          },
+          "rank": 4,
+          "origin": "SEARCH"
+        },
+        {
+          "clause": {
+            "clause_id": "MEDICARE-APL-1.1",
+            "policy_id": "MEDICARE-APL",
+            "payer_id": "MEDICARE",
+            "policy_title": "Appeals and Reopenings of Initial Determinations",
+            "section_heading": "42 CFR 405.942(a) Time frame for filing a request for a redetermination",
+            "text": "(a) Time frame for filing a request. Except as provided in paragraph (b) of this section, any request for redetermination must be filed within 120 calendar days from the date a party receives the notice of the initial determination. (1) For purposes of this section, the date of receipt of the initial determination will be presumed to be 5 calendar days after the date of the notice of initial determination, unless there is evidence to the contrary. (2) The request is considered as filed on the date it is received by the contractor.",
+            "effective_from": "2005-05-01",
+            "effective_to": null,
+            "source_url": "https://www.ecfr.gov/current/title-42/section-405.942"
+          },
+          "rank": 5,
+          "origin": "DOCUMENT"
+        }
+      ],
+      "note_facts": [
+        {
+          "statement": "The patient has taken prednisone daily since 2025-12-02, now 10 mg.",
+          "document_id": "NOTE",
+          "line_number": 4,
+          "quote": "she remains on 10 mg daily today",
+          "hedged": false
+        },
+        {
+          "statement": "The pharmacy record shows continuous prednisone fills without gaps.",
+          "document_id": "RX-HISTORY",
+          "line_number": 9,
+          "quote": "No gaps in supply between fills.",
+          "hedged": false
+        },
+        {
+          "statement": "Lumbar spine density fell 5.9% since the last scan.",
+          "document_id": "DXA-REPORT",
+          "line_number": 5,
+          "quote": "lumbar spine bone mineral density down 5.9%",
+          "hedged": false
+        }
+      ],
+      "triage": {
+        "action": "APPEAL_WITH_EVIDENCE",
+        "confidence": 0.81,
+        "reasons": [
+          "The scan was within 23 months of the last one, which the general frequency rule does not cover.",
+          "Medicare allows more frequent scans to monitor long-term glucocorticoid therapy of more than 3 months.",
+          "The note and pharmacy record document more than seven months of prednisone at 10 mg or more."
+        ]
+      },
+      "draft": {
+        "action": "APPEAL_WITH_EVIDENCE",
+        "summary": "File a redetermination request within 120 days of the notice. The repeat DXA falls under the frequency exception for monitoring long-term glucocorticoid therapy: the patient has taken prednisone at 10 mg or more daily since 2025-12-02, and the scan shows significant bone loss.",
+        "assertions": [
+          {
+            "text": "Medicare may cover a bone density scan more often than every 23 months when medically necessary, including to monitor long-term steroid therapy.",
+            "citations": [
+              {
+                "kind": "CLAUSE",
+                "source_id": "MEDICARE-COV-1.2",
+                "quote": "Monitoring beneficiaries on long-term glucocorticoid (steroid) therapy of more than 3 months."
+              }
+            ]
+          },
+          {
+            "text": "The patient qualifies as an individual on glucocorticoid therapy of 5 mg of prednisone or more a day for more than 3 months.",
+            "citations": [
+              {
+                "kind": "CLAUSE",
+                "source_id": "MEDICARE-COV-1.3",
+                "quote": "glucocorticoid (steroid) therapy equivalent to an average of 5.0 mg of prednisone, or greater, per day for more than 3 months"
+              },
+              {
+                "kind": "DOCUMENT",
+                "source_id": "RX-HISTORY",
+                "quote": "2025-12-02: prednisone 5 mg, 3 tablets daily (15 mg), 30-day supply."
+              }
+            ]
+          },
+          {
+            "text": "The scan found significant bone loss since the previous study.",
+            "citations": [
+              {
+                "kind": "DOCUMENT",
+                "source_id": "DXA-REPORT",
+                "quote": "Both changes exceed the least significant change for this scanner."
+              }
+            ]
+          },
+          {
+            "text": "A redetermination must be requested within 120 days of receiving the notice.",
+            "citations": [
+              {
+                "kind": "CLAUSE",
+                "source_id": "MEDICARE-APL-1.1",
+                "quote": "any request for redetermination must be filed within 120 calendar days from the date a party receives the notice of the initial determination"
+              }
+            ]
+          }
+        ],
+        "correction": null,
+        "missing_evidence": [
+          "A signed order for the repeat scan, if the payer asks for it."
+        ]
+      },
+      "verification": {
+        "verdicts": [
+          {
+            "assertion_index": 0,
+            "supported": true,
+            "problems": []
+          },
+          {
+            "assertion_index": 1,
+            "supported": true,
+            "problems": []
+          },
+          {
+            "assertion_index": 2,
+            "supported": true,
+            "problems": []
+          },
+          {
+            "assertion_index": 3,
+            "supported": true,
+            "problems": []
+          }
+        ]
+      },
+      "writer_attempts": 1,
+      "human_decision": {
+        "kind": "APPROVE",
+        "reason": null,
+        "edited_summary": null
+      },
+      "audit": [
+        {
+          "step": "rules",
+          "at": "2026-10-16T14:02:11Z",
+          "summary": "Rule findings: PROCEDURE_CONDITIONS_CLAUSE, CLINICAL_SUPPORT_NEEDS_REVIEW.",
+          "llm_call": null
+        },
+        {
+          "step": "retrieval",
+          "at": "2026-10-16T14:02:12Z",
+          "summary": "Selected 4 clauses.",
+          "llm_call": null
+        },
+        {
+          "step": "intake",
+          "at": "2026-10-16T14:02:21Z",
+          "summary": "Extracted 3 facts from the record.",
+          "llm_call": {
+            "provider": "groq",
+            "model": "openai/gpt-oss-120b",
+            "input_tokens": 3420,
+            "output_tokens": 701,
+            "latency_ms": 8102.0,
+            "cached": false,
+            "attempts": 1
+          }
+        },
+        {
+          "step": "record_checks",
+          "at": "2026-10-16T14:02:21Z",
+          "summary": "No contradiction in the record that code can see.",
+          "llm_call": null
+        },
+        {
+          "step": "document_retrieval",
+          "at": "2026-10-16T14:02:21Z",
+          "summary": "Added MEDICARE-APL-1.1 from the supporting documents.",
+          "llm_call": null
+        },
+        {
+          "step": "triage",
+          "at": "2026-10-16T14:02:26Z",
+          "summary": "Action: APPEAL_WITH_EVIDENCE (confidence 0.81).",
+          "llm_call": {
+            "provider": "groq",
+            "model": "openai/gpt-oss-120b",
+            "input_tokens": 3990,
+            "output_tokens": 455,
+            "latency_ms": 5320.0,
+            "cached": false,
+            "attempts": 1
+          }
+        },
+        {
+          "step": "writer",
+          "at": "2026-10-16T14:02:39Z",
+          "summary": "Draft 1 with 4 assertions.",
+          "llm_call": {
+            "provider": "groq",
+            "model": "openai/gpt-oss-120b",
+            "input_tokens": 5110,
+            "output_tokens": 1320,
+            "latency_ms": 12010.0,
+            "cached": false,
+            "attempts": 1
+          }
+        },
+        {
+          "step": "verifier",
+          "at": "2026-10-16T14:02:44Z",
+          "summary": "All 4 assertions verified.",
+          "llm_call": {
+            "provider": "gemini",
+            "model": "gemini-3.1-flash-lite",
+            "input_tokens": 2640,
+            "output_tokens": 380,
+            "latency_ms": 4710.0,
+            "cached": false,
+            "attempts": 1
+          }
+        },
+        {
+          "step": "review",
+          "at": "2026-10-16T14:02:44Z",
+          "summary": "Sent for approval with a verified draft.",
+          "llm_call": null
+        },
+        {
+          "step": "approval",
+          "at": "2026-10-16T14:07:11Z",
+          "summary": "Reviewer decision: APPROVE.",
+          "llm_call": null
+        }
+      ]
+    }
+  },
+  {
+    "summary": {
+      "case_id": "case-modifier-25-rejected",
+      "claim_id": "MC-2026-0818-0457",
+      "payer_id": "MEDICARE",
+      "carc_code": "97",
+      "as_of": "2026-10-16",
+      "status": "REJECTED",
+      "action": "CORRECT_AND_RESUBMIT",
+      "verified": true,
+      "created_at": "2026-10-16T13:27:11Z",
+      "updated_at": "2026-10-16T13:27:51Z"
+    },
+    "state": {
+      "case_id": "case-modifier-25-rejected",
+      "as_of": "2026-10-16",
+      "case_input": {
+        "claim": {
+          "claim_id": "MC-2026-0818-0457",
+          "payer_id": "MEDICARE",
+          "member_id": "3TK7WN2HD48",
+          "patient_id": "PT-204871",
+          "patient_date_of_birth": "1953-04-22",
+          "billing_provider_npi": "1494594405",
+          "place_of_service": "11",
+          "submitted_date": "2026-08-20",
+          "prior_authorization_number": null,
+          "original_claim_id": null,
+          "diagnosis_codes": [
+            "M17.11",
+            "E11.65",
+            "I10"
+          ],
+          "lines": [
+            {
+              "line_number": 1,
+              "service_date": "2026-08-18",
+              "procedure_code": "99214",
+              "modifiers": [],
+              "diagnosis_pointers": [
+                2,
+                3,
+                1
+              ],
+              "units": 1,
+              "charge_amount": "168.00"
+            },
+            {
+              "line_number": 2,
+              "service_date": "2026-08-18",
+              "procedure_code": "20610",
+              "modifiers": [
+                "RT"
+              ],
+              "diagnosis_pointers": [
+                1
+              ],
+              "units": 1,
+              "charge_amount": "126.00"
+            },
+            {
+              "line_number": 3,
+              "service_date": "2026-08-18",
+              "procedure_code": "J3301",
+              "modifiers": [],
+              "diagnosis_pointers": [
+                1
+              ],
+              "units": 4,
+              "charge_amount": "22.00"
+            }
+          ],
+          "total_charge": "316.00"
+        },
+        "denial": {
+          "claim_id": "MC-2026-0818-0457",
+          "payer_id": "MEDICARE",
+          "group_code": "CO",
+          "carc_code": "97",
+          "rarc_codes": [
+            "M144"
+          ],
+          "denial_date": "2026-09-03",
+          "denied_line_numbers": [
+            1
+          ],
+          "denied_amount": "168.00",
+          "payer_remark": null
+        },
+        "visit_note": {
+          "encounter_date": "2026-08-18",
+          "text": "Date of visit: 2026-08-18\nPatient: 73-year-old man, established patient.\nReason for visit: follow-up of type 2 diabetes and hypertension; right knee pain for three months.\nDiabetes: home glucose readings 180-240 mg/dL before breakfast. HbA1c 8.4% today, up from 7.6% in 2026-04. Taking metformin 1000 mg twice daily; no hypoglycemia.\nHypertension: blood pressure 152/94 and 148/92 on repeat. Taking lisinopril 20 mg daily. No chest pain or headache.\nRight knee: medial joint line tenderness, crepitus, small effusion, no warmth. Standing X-ray on 2026-05-20 showed medial joint space narrowing and osteophytes. Pain 7/10 despite acetaminophen and a home exercise program.\nAssessment and plan:\n1. Type 2 diabetes with hyperglycemia, above target. Start empagliflozin 10 mg daily; reviewed genital hygiene and hydration. Basic metabolic panel and urine albumin-to-creatinine ratio ordered. Recheck HbA1c in three months.\n2. Essential hypertension, not at goal. Add amlodipine 5 mg daily. Home blood pressure log; recheck in four weeks.\n3. Primary osteoarthritis of the right knee. Intra-articular corticosteroid injection performed today.\nProcedure: right knee intra-articular injection. Consent obtained. Sterile preparation, lateral suprapatellar approach. Triamcinolone acetonide 40 mg with 1% lidocaine 4 mL injected. No complications; patient tolerated well.\nSigned: treating physician. 2026-08-18."
+        },
+        "supporting_documents": [],
+        "prior_claims": []
+      },
+      "status": "REJECTED",
+      "findings": [
+        {
+          "code": "VISIT_WITHOUT_MODIFIER_25",
+          "message": "A visit is billed on the same day as a procedure without modifier 25. Whether the record supports the modifier needs review.",
+          "clause_ids": [
+            "MEDICARE-MOD-1.1"
+          ],
+          "line_numbers": [
+            1
+          ]
+        }
+      ],
+      "clauses": [
+        {
+          "clause": {
+            "clause_id": "MEDICARE-MOD-1.1",
+            "policy_id": "MEDICARE-MOD",
+            "payer_id": "MEDICARE",
+            "policy_title": "Evaluation and Management Services on the Day of a Procedure",
+            "section_heading": "Medicare Claims Processing Manual, Chapter 12, §30.6.6.B CPT Modifier -25: Significant Evaluation and Management Service by Same Physician on Date of Global Procedure",
+            "text": "Medicare requires that Current Procedural Terminology (CPT) modifier -25 should only be used on claims for evaluation and management (E/M) services, and only when these services are provided by the same physician (or same qualified nonphysician practitioner) to the same patient on the same day as another procedure or other service. A/B MACs (B) pay for an E/M service provided on the day of a procedure with a global fee period if the physician indicates that the service is for a significant, separately identifiable E/M service that is above and beyond the usual pre- and post-operative work of the procedure. Different diagnoses are not required for reporting the E/M service on the same date as the procedure or other service. Modifier -25 is added to the E/M code on the claim.\nBoth the medically necessary E/M service and the procedure must be appropriately and sufficiently documented by the physician or qualified nonphysician practitioner in the patient's medical record to support the claim for these services, even though the documentation is not required to be submitted with the claim.\nIf the physician bills the service with the CPT modifier \"-25,\" A/B MACs (B) pay for the service in addition to the global fee without any other requirement for documentation unless one of the following conditions is met:\n• When inpatient dialysis services are billed (CPT codes 90935, 90945, 90947, and 93937), the physician must document that the service was unrelated to the dialysis and could not be performed during the dialysis procedure;\n• When preoperative critical care codes are being billed on the date of the procedure, the diagnosis must support that the service is unrelated to the performance of the procedure; or\n• When an A/B MAC (B) has conducted a specific medical review process and determined, after reviewing the data, that an individual or a group has high use of modifier \"-25\" compared to other physicians, has done a case-by-case review of the records to verify that the use of modifier was inappropriate, and has educated the individual or group, the A/B MAC (B) may impose prepayment screens or documentation requirements for that provider or group. When a A/B MAC (B) has completed a review and determined that a high usage rate of modifier \"-57,\" the A/B MAC (B) must complete a case-by-case review of the records. Based upon this review, the A/B MAC (B) will educate providers regarding the appropriate use of modifier \"-57.\" If high usage rates continue, the A/B MAC (B) may impose prepayment screens or documentation requirements for that provider or group.\nA/B MACs (B) may not permit the use of CPT modifier \"-25\" to generate payment for multiple evaluation and management services on the same day by the same physician, notwithstanding the CPT definition of the modifier.",
+            "effective_from": "2006-06-01",
+            "effective_to": null,
+            "source_url": "https://www.cms.gov/Regulations-and-Guidance/Guidance/Manuals/downloads/clm104c12.pdf"
+          },
+          "rank": 1,
+          "origin": "RULE"
+        },
+        {
+          "clause": {
+            "clause_id": "MEDICARE-MOD-1.2",
+            "policy_id": "MEDICARE-MOD",
+            "payer_id": "MEDICARE",
+            "policy_title": "Evaluation and Management Services on the Day of a Procedure",
+            "section_heading": "Medicare Claims Processing Manual, Chapter 12, §40.1.C Minor Surgeries and Endoscopies",
+            "text": "Visits by the same physician on the same day as a minor surgery or endoscopy are included in the payment for the procedure, unless a significant, separately identifiable service is also performed. For example, a visit on the same day could be properly billed in addition to suturing a scalp wound if a full neurological examination is made for a patient with head trauma. Billing for a visit would not be appropriate if the physician only identified the need for sutures and confirmed allergy and immunization status.",
+            "effective_from": "2006-06-01",
+            "effective_to": null,
+            "source_url": "https://www.cms.gov/Regulations-and-Guidance/Guidance/Manuals/downloads/clm104c12.pdf"
+          },
+          "rank": 2,
+          "origin": "SEARCH"
+        },
+        {
+          "clause": {
+            "clause_id": "MEDICARE-APL-2.1",
+            "policy_id": "MEDICARE-APL",
+            "payer_id": "MEDICARE",
+            "policy_title": "Appeals and Reopenings of Initial Determinations",
+            "section_heading": "42 CFR 405.980(a)(3) Clerical errors are processed as reopenings",
+            "text": "(3) Notwithstanding paragraph (a)(4) of this section, a contractor must process clerical errors (which includes minor errors and omissions) as reopenings, instead of as redeterminations as specified in § 405.940. If the contractor receives a request for reopening and disagrees that the issue is a clerical error, the contractor must dismiss the reopening request and advise the party of any appeal rights, provided the timeframe to request an appeal on the original denial has not expired. For purposes of this section, clerical error includes human or mechanical errors on the part of the party or the contractor such as— (i) Mathematical or computational mistakes; (ii) Inaccurate data entry; or (iii) Denials of claims as duplicates.",
+            "effective_from": "2005-05-01",
+            "effective_to": null,
+            "source_url": "https://www.ecfr.gov/current/title-42/section-405.980"
+          },
+          "rank": 3,
+          "origin": "SEARCH"
+        },
+        {
+          "clause": {
+            "clause_id": "MEDICARE-APL-2.2",
+            "policy_id": "MEDICARE-APL",
+            "payer_id": "MEDICARE",
+            "policy_title": "Appeals and Reopenings of Initial Determinations",
+            "section_heading": "42 CFR 405.980(c) Reopening of initial determinations requested by a party",
+            "text": "(c) Time frame and requirements for reopening initial determinations and redeterminations requested by a party. (1) A party may request that a contractor reopen its initial determination or redetermination within 1 year from the date of the initial determination or redetermination for any reason. (2) A party may request that a contractor reopen its initial determination or redetermination within 4 years from the date of the initial determination or redetermination for good cause in accordance with § 405.986. (3) A party may request that a contractor reopen its initial determination at any time if the initial determination is unfavorable, in whole or in part, to the party thereto, but only for the purpose of correcting a clerical error on which that determination was based. Third party payer error does not constitute clerical error. See § 405.986(c).",
+            "effective_from": "2005-05-01",
+            "effective_to": null,
+            "source_url": "https://www.ecfr.gov/current/title-42/section-405.980"
+          },
+          "rank": 4,
+          "origin": "NEIGHBOUR"
+        }
+      ],
+      "note_facts": [
+        {
+          "statement": "HbA1c rose to 8.4% and empagliflozin was started.",
+          "document_id": "NOTE",
+          "line_number": 4,
+          "quote": "HbA1c 8.4% today, up from 7.6% in 2026-04.",
+          "hedged": false
+        },
+        {
+          "statement": "Blood pressure was above goal and amlodipine was added.",
+          "document_id": "NOTE",
+          "line_number": 11,
+          "quote": "Essential hypertension, not at goal. Add amlodipine 5 mg daily.",
+          "hedged": false
+        },
+        {
+          "statement": "A corticosteroid injection was given into the right knee.",
+          "document_id": "NOTE",
+          "line_number": 13,
+          "quote": "Procedure: right knee intra-articular injection.",
+          "hedged": false
+        }
+      ],
+      "triage": {
+        "action": "CORRECT_AND_RESUBMIT",
+        "confidence": 0.86,
+        "reasons": [
+          "The visit line lacks modifier 25, which Medicare requires for a separate evaluation on the day of a procedure.",
+          "The note documents diabetes and hypertension management beyond the injection, so the modifier is supported.",
+          "A missing modifier is a clerical omission, corrected by reopening."
+        ]
+      },
+      "draft": {
+        "action": "CORRECT_AND_RESUBMIT",
+        "summary": "Request a reopening of the initial determination to add modifier 25 to line 1 (99214). The visit managed uncontrolled type 2 diabetes and hypertension, with medication changes, separately from the right knee injection billed on line 2.",
+        "assertions": [
+          {
+            "text": "Medicare pays for a same-day visit when it is a significant, separately identifiable service and modifier 25 is on the visit code.",
+            "citations": [
+              {
+                "kind": "CLAUSE",
+                "source_id": "MEDICARE-MOD-1.1",
+                "quote": "Modifier -25 is added to the E/M code on the claim."
+              }
+            ]
+          },
+          {
+            "text": "The visit adjusted diabetes treatment after a raised HbA1c.",
+            "citations": [
+              {
+                "kind": "DOCUMENT",
+                "source_id": "NOTE",
+                "quote": "Start empagliflozin 10 mg daily"
+              }
+            ]
+          },
+          {
+            "text": "The visit adjusted blood pressure treatment.",
+            "citations": [
+              {
+                "kind": "DOCUMENT",
+                "source_id": "NOTE",
+                "quote": "Add amlodipine 5 mg daily."
+              }
+            ]
+          },
+          {
+            "text": "A visit on the day of a minor procedure is separately payable when it is separately identifiable.",
+            "citations": [
+              {
+                "kind": "CLAUSE",
+                "source_id": "MEDICARE-MOD-1.2",
+                "quote": "unless a significant, separately identifiable service is also performed"
+              }
+            ]
+          },
+          {
+            "text": "A missing modifier is corrected through a reopening, not a redetermination.",
+            "citations": [
+              {
+                "kind": "CLAUSE",
+                "source_id": "MEDICARE-APL-2.1",
+                "quote": "a contractor must process clerical errors (which includes minor errors and omissions) as reopenings"
+              }
+            ]
+          }
+        ],
+        "correction": "Line 1: 99214 → 99214-25. No other line changes.",
+        "missing_evidence": []
+      },
+      "verification": {
+        "verdicts": [
+          {
+            "assertion_index": 0,
+            "supported": true,
+            "problems": []
+          },
+          {
+            "assertion_index": 1,
+            "supported": true,
+            "problems": []
+          },
+          {
+            "assertion_index": 2,
+            "supported": true,
+            "problems": []
+          },
+          {
+            "assertion_index": 3,
+            "supported": true,
+            "problems": []
+          },
+          {
+            "assertion_index": 4,
+            "supported": true,
+            "problems": []
+          }
+        ]
+      },
+      "writer_attempts": 1,
+      "human_decision": {
+        "kind": "REJECT",
+        "reason": "The diabetes review was routine follow-up only.",
+        "edited_summary": null
+      },
+      "audit": [
+        {
+          "step": "rules",
+          "at": "2026-10-16T14:02:11Z",
+          "summary": "Rule findings: VISIT_WITHOUT_MODIFIER_25.",
+          "llm_call": null
+        },
+        {
+          "step": "retrieval",
+          "at": "2026-10-16T14:02:12Z",
+          "summary": "Selected 4 clauses: MEDICARE-MOD-1.1, MEDICARE-MOD-1.2, MEDICARE-APL-2.1, MEDICARE-APL-2.2.",
+          "llm_call": null
+        },
+        {
+          "step": "intake",
+          "at": "2026-10-16T14:02:20Z",
+          "summary": "Extracted 3 facts from the record.",
+          "llm_call": {
+            "provider": "groq",
+            "model": "openai/gpt-oss-120b",
+            "input_tokens": 2794,
+            "output_tokens": 612,
+            "latency_ms": 7380.0,
+            "cached": false,
+            "attempts": 1
+          }
+        },
+        {
+          "step": "record_checks",
+          "at": "2026-10-16T14:02:20Z",
+          "summary": "No contradiction in the record that code can see.",
+          "llm_call": null
+        },
+        {
+          "step": "document_retrieval",
+          "at": "2026-10-16T14:02:20Z",
+          "summary": "No supporting documents; nothing added.",
+          "llm_call": null
+        },
+        {
+          "step": "triage",
+          "at": "2026-10-16T14:02:25Z",
+          "summary": "Action: CORRECT_AND_RESUBMIT (confidence 0.86).",
+          "llm_call": {
+            "provider": "groq",
+            "model": "openai/gpt-oss-120b",
+            "input_tokens": 3311,
+            "output_tokens": 402,
+            "latency_ms": 4912.0,
+            "cached": false,
+            "attempts": 1
+          }
+        },
+        {
+          "step": "writer",
+          "at": "2026-10-16T14:02:37Z",
+          "summary": "Draft 1 with 5 assertions.",
+          "llm_call": {
+            "provider": "groq",
+            "model": "openai/gpt-oss-120b",
+            "input_tokens": 4120,
+            "output_tokens": 1180,
+            "latency_ms": 11204.0,
+            "cached": false,
+            "attempts": 2
+          }
+        },
+        {
+          "step": "verifier",
+          "at": "2026-10-16T14:02:42Z",
+          "summary": "All 5 assertions verified.",
+          "llm_call": {
+            "provider": "gemini",
+            "model": "gemini-3.1-flash-lite",
+            "input_tokens": 2210,
+            "output_tokens": 310,
+            "latency_ms": 4420.0,
+            "cached": false,
+            "attempts": 1
+          }
+        },
+        {
+          "step": "review",
+          "at": "2026-10-16T14:02:42Z",
+          "summary": "Sent for approval with a verified draft.",
+          "llm_call": null
+        },
+        {
+          "step": "approval",
+          "at": "2026-10-16T14:07:11Z",
+          "summary": "Reviewer decision: REJECT.",
+          "llm_call": null
+        }
+      ]
+    }
+  },
+  {
+    "summary": {
+      "case_id": "case-bone-density",
+      "claim_id": "MC-2026-0714-1123",
+      "payer_id": "MEDICARE",
+      "carc_code": "151",
+      "as_of": "2026-10-16",
+      "status": "AWAITING_APPROVAL",
+      "action": "APPEAL_WITH_EVIDENCE",
+      "verified": true,
+      "created_at": "2026-10-16T13:20:11Z",
+      "updated_at": "2026-10-16T13:20:51Z"
+    },
+    "state": {
+      "case_id": "case-bone-density",
+      "as_of": "2026-10-16",
+      "case_input": {
+        "claim": {
+          "claim_id": "MC-2026-0714-1123",
+          "payer_id": "MEDICARE",
+          "member_id": "5QR2GE8MA61",
+          "patient_id": "PT-318640",
+          "patient_date_of_birth": "1950-11-09",
+          "billing_provider_npi": "1686505383",
+          "place_of_service": "11",
+          "submitted_date": "2026-07-16",
+          "prior_authorization_number": null,
+          "original_claim_id": null,
+          "diagnosis_codes": [
+            "Z79.52",
+            "M35.3"
+          ],
+          "lines": [
+            {
+              "line_number": 1,
+              "service_date": "2026-07-14",
+              "procedure_code": "77080",
+              "modifiers": [],
+              "diagnosis_pointers": [
+                1,
+                2
+              ],
+              "units": 1,
+              "charge_amount": "112.00"
+            }
+          ],
+          "total_charge": "112.00"
+        },
+        "denial": {
+          "claim_id": "MC-2026-0714-1123",
+          "payer_id": "MEDICARE",
+          "group_code": "CO",
+          "carc_code": "151",
+          "rarc_codes": [
+            "N386"
+          ],
+          "denial_date": "2026-08-04",
+          "denied_line_numbers": [],
+          "denied_amount": "112.00",
+          "payer_remark": "Bone mass measurement billed less than 23 months after the last covered measurement."
+        },
+        "visit_note": {
+          "encounter_date": "2026-07-14",
+          "text": "Date of visit: 2026-07-14\nPatient: 75-year-old woman, established patient of the rheumatology clinic.\nReason for visit: bone density measurement ordered to monitor bone loss on long-term glucocorticoid therapy.\nHistory: polymyalgia rheumatica diagnosed 2025-12-02. Prednisone 15 mg daily started 2025-12-02, reduced to 12.5 mg daily on 2026-02-10 and to 10 mg daily on 2026-04-21; she remains on 10 mg daily today. Continuous glucocorticoid therapy for more than seven months, with every daily dose 10 mg or more.\nPrior testing: baseline DXA on 2025-03-11 showed a lumbar spine T-score of -1.8 and a left femoral neck T-score of -1.6 (osteopenia). That scan was done before steroids were started.\nIndication: glucocorticoid therapy of more than 3 months at 5 mg or more of prednisone a day raises fracture risk and requires monitoring of bone density, whatever the interval since the last scan.\nProcedure: DXA of the lumbar spine and left hip, axial skeleton. Performed and interpreted by the treating physician.\nPlan: review the result with the patient; start calcium and vitamin D; consider osteoporosis drug therapy if the T-score has fallen.\nSigned: treating physician. 2026-07-14."
+        },
+        "supporting_documents": [
+          {
+            "document_id": "DXA-REPORT",
+            "kind": "DIAGNOSTIC_REPORT",
+            "document_date": "2026-07-14",
+            "text": "Bone densitometry report. Date of study: 2026-07-14.\nIndication: long-term glucocorticoid therapy (prednisone 10 mg daily since 2025-12-02, previously 15 mg and 12.5 mg); polymyalgia rheumatica.\nTechnique: dual-energy X-ray absorptiometry, axial skeleton, same scanner as the prior study.\nResults: lumbar spine L1-L4 T-score -2.6; left femoral neck T-score -2.1; left total hip T-score -1.9.\nComparison with 2025-03-11: lumbar spine bone mineral density down 5.9%, femoral neck down 4.2%. Both changes exceed the least significant change for this scanner.\nImpression: osteoporosis of the lumbar spine with significant bone loss since starting glucocorticoids."
+          },
+          {
+            "document_id": "RX-HISTORY",
+            "kind": "OTHER",
+            "document_date": "2026-07-14",
+            "text": "Pharmacy fill history, prednisone tablets.\n2025-12-02: prednisone 5 mg, 3 tablets daily (15 mg), 30-day supply.\n2026-01-02: prednisone 5 mg, 3 tablets daily (15 mg), 30-day supply.\n2026-02-10: prednisone 2.5 mg, 5 tablets daily (12.5 mg), 30-day supply.\n2026-03-12: prednisone 2.5 mg, 5 tablets daily (12.5 mg), 40-day supply.\n2026-04-21: prednisone 10 mg, 1 tablet daily, 30-day supply.\n2026-05-21: prednisone 10 mg, 1 tablet daily, 30-day supply.\n2026-06-20: prednisone 10 mg, 1 tablet daily, 30-day supply.\nNo gaps in supply between fills."
+          }
+        ],
+        "prior_claims": [
+          {
+            "claim_id": "MC-2025-0311-0870",
+            "received_date": "2025-03-13",
+            "outcome": "PAID",
+            "carc_code": null,
+            "lines": [
+              {
+                "line_number": 1,
+                "service_date": "2025-03-11",
+                "procedure_code": "77080",
+                "modifiers": [],
+                "diagnosis_pointers": [
+                  1
+                ],
+                "units": 1,
+                "charge_amount": "108.00"
+              }
+            ]
+          }
+        ]
+      },
+      "status": "AWAITING_APPROVAL",
+      "findings": [
+        {
+          "code": "PROCEDURE_CONDITIONS_CLAUSE",
+          "message": "The conditions for procedure code 77080 on line 1 are set by clause MEDICARE-COV-1.2.",
+          "clause_ids": [
+            "MEDICARE-COV-1.2"
+          ],
+          "line_numbers": [
+            1
+          ]
+        },
+        {
+          "code": "CLINICAL_SUPPORT_NEEDS_REVIEW",
+          "message": "The denial turns on whether the service was medically necessary. No rule decides that; it needs evidence from the record.",
+          "clause_ids": [],
+          "line_numbers": [
+            1
+          ]
+        }
+      ],
+      "clauses": [
+        {
+          "clause": {
+            "clause_id": "MEDICARE-COV-1.2",
+            "policy_id": "MEDICARE-COV",
+            "payer_id": "MEDICARE",
+            "policy_title": "Bone Mass Measurements",
+            "section_heading": "42 CFR 410.31(c) Standards on frequency of coverage",
+            "text": "(c) Standards on frequency of coverage —(1) General rule. Except as allowed under paragraph (c)(2) of this section, Medicare may cover a bone mass measurement for a beneficiary if at least 23 months have passed since the month the last bone mass measurement was performed. (2) Exception. If medically necessary, Medicare may cover a bone mass measurement for a beneficiary more frequently than allowed under paragraph (c)(1) of this section. Examples of situations where more frequent bone mass measurement procedures may be medically necessary include, but are not limited to the following medical circumstances: (i) Monitoring beneficiaries on long-term glucocorticoid (steroid) therapy of more than 3 months. (ii) Allowing for a confirmatory baseline measurement to permit monitoring of beneficiaries in the future if the requirements of paragraph (b)(3) of this section are met.",
+            "effective_from": "2007-01-01",
+            "effective_to": null,
+            "source_url": "https://www.ecfr.gov/current/title-42/section-410.31"
+          },
+          "rank": 1,
+          "origin": "RULE"
+        },
+        {
+          "clause": {
+            "clause_id": "MEDICARE-COV-1.3",
+            "policy_id": "MEDICARE-COV",
+            "payer_id": "MEDICARE",
+            "policy_title": "Bone Mass Measurements",
+            "section_heading": "42 CFR 410.31(d) Beneficiaries who may be covered",
+            "text": "(d) Beneficiaries who may be covered. The following categories of beneficiaries may receive Medicare coverage for a medically necessary bone mass measurement: (1) A woman who has been determined by the physician (or a qualified nonphysician practitioner) treating her to be estrogen-deficient and at clinical risk for osteoporosis, based on her medical history and other findings. (2) An individual with vertebral abnormalities as demonstrated by an x-ray to be indicative of osteoporosis, osteopenia, or vertebral fracture. (3) An individual receiving (or expecting to receive) glucocorticoid (steroid) therapy equivalent to an average of 5.0 mg of prednisone, or greater, per day for more than 3 months. (4) An individual with primary hyperparathyroidism. (5) An individual being monitored to assess the response to or efficacy of an FDA-approved osteoporosis drug therapy.",
+            "effective_from": "2007-01-01",
+            "effective_to": null,
+            "source_url": "https://www.ecfr.gov/current/title-42/section-410.31"
+          },
+          "rank": 2,
+          "origin": "SEARCH"
+        },
+        {
+          "clause": {
+            "clause_id": "MEDICARE-COV-2.1",
+            "policy_id": "MEDICARE-COV",
+            "payer_id": "MEDICARE",
+            "policy_title": "Bone Mass Measurements",
+            "section_heading": "Medicare Benefit Policy Manual, Chapter 15, §80.5.5 Frequency Standards",
+            "text": "Medicare pays for a screening BMM once every 2 years (at least 23 months have passed since the month the last covered BMM was performed).\nWhen medically necessary, Medicare may pay for more frequent BMMs. Examples include, but are not limited to, the following medical circumstances:\n• Monitoring beneficiaries on long-term glucocorticoid (steroid) therapy of more than 3 months.\n• Confirming baseline BMMs to permit monitoring of beneficiaries in the future.",
+            "effective_from": "2007-01-01",
+            "effective_to": null,
+            "source_url": "https://www.cms.gov/Regulations-and-Guidance/Guidance/Manuals/downloads/bp102c15.pdf"
+          },
+          "rank": 3,
+          "origin": "SEARCH"
+        },
+        {
+          "clause": {
+            "clause_id": "MEDICARE-COV-1.1",
+            "policy_id": "MEDICARE-COV",
+            "payer_id": "MEDICARE",
+            "policy_title": "Bone Mass Measurements",
+            "section_heading": "42 CFR 410.31(b)(1) Conditions for coverage",
+            "text": "(b) Conditions for coverage. (1) Medicare covers a medically necessary bone mass measurement if the following conditions are met: (i) Following an evaluation of the beneficiary's need for the measurement, including a determination as to the medically appropriate procedure to be used for the beneficiary, it is ordered by the physician or a qualified nonphysician practitioner (as these terms are defined in § 410.32(a)) treating the beneficiary. (ii) It is performed under the appropriate level of supervision of a physician (as set forth in § 410.32(b)). (iii) It is reasonable and necessary for diagnosing and treating the Condition of a beneficiary who meets the conditions described in paragraph (d) of this section.",
+            "effective_from": "2007-01-01",
+            "effective_to": null,
+            "source_url": "https://www.ecfr.gov/current/title-42/section-410.31"
+          },
+          "rank": 4,
+          "origin": "SEARCH"
+        },
+        {
+          "clause": {
+            "clause_id": "MEDICARE-APL-1.1",
+            "policy_id": "MEDICARE-APL",
+            "payer_id": "MEDICARE",
+            "policy_title": "Appeals and Reopenings of Initial Determinations",
+            "section_heading": "42 CFR 405.942(a) Time frame for filing a request for a redetermination",
+            "text": "(a) Time frame for filing a request. Except as provided in paragraph (b) of this section, any request for redetermination must be filed within 120 calendar days from the date a party receives the notice of the initial determination. (1) For purposes of this section, the date of receipt of the initial determination will be presumed to be 5 calendar days after the date of the notice of initial determination, unless there is evidence to the contrary. (2) The request is considered as filed on the date it is received by the contractor.",
+            "effective_from": "2005-05-01",
+            "effective_to": null,
+            "source_url": "https://www.ecfr.gov/current/title-42/section-405.942"
+          },
+          "rank": 5,
+          "origin": "DOCUMENT"
+        }
+      ],
+      "note_facts": [
+        {
+          "statement": "The patient has taken prednisone daily since 2025-12-02, now 10 mg.",
+          "document_id": "NOTE",
+          "line_number": 4,
+          "quote": "she remains on 10 mg daily today",
+          "hedged": false
+        },
+        {
+          "statement": "The pharmacy record shows continuous prednisone fills without gaps.",
+          "document_id": "RX-HISTORY",
+          "line_number": 9,
+          "quote": "No gaps in supply between fills.",
+          "hedged": false
+        },
+        {
+          "statement": "Lumbar spine density fell 5.9% since the last scan.",
+          "document_id": "DXA-REPORT",
+          "line_number": 5,
+          "quote": "lumbar spine bone mineral density down 5.9%",
+          "hedged": false
+        }
+      ],
+      "triage": {
+        "action": "APPEAL_WITH_EVIDENCE",
+        "confidence": 0.81,
+        "reasons": [
+          "The scan was within 23 months of the last one, which the general frequency rule does not cover.",
+          "Medicare allows more frequent scans to monitor long-term glucocorticoid therapy of more than 3 months.",
+          "The note and pharmacy record document more than seven months of prednisone at 10 mg or more."
+        ]
+      },
+      "draft": {
+        "action": "APPEAL_WITH_EVIDENCE",
+        "summary": "File a redetermination request within 120 days of the notice. The repeat DXA falls under the frequency exception for monitoring long-term glucocorticoid therapy: the patient has taken prednisone at 10 mg or more daily since 2025-12-02, and the scan shows significant bone loss.",
+        "assertions": [
+          {
+            "text": "Medicare may cover a bone density scan more often than every 23 months when medically necessary, including to monitor long-term steroid therapy.",
+            "citations": [
+              {
+                "kind": "CLAUSE",
+                "source_id": "MEDICARE-COV-1.2",
+                "quote": "Monitoring beneficiaries on long-term glucocorticoid (steroid) therapy of more than 3 months."
+              }
+            ]
+          },
+          {
+            "text": "The patient qualifies as an individual on glucocorticoid therapy of 5 mg of prednisone or more a day for more than 3 months.",
+            "citations": [
+              {
+                "kind": "CLAUSE",
+                "source_id": "MEDICARE-COV-1.3",
+                "quote": "glucocorticoid (steroid) therapy equivalent to an average of 5.0 mg of prednisone, or greater, per day for more than 3 months"
+              },
+              {
+                "kind": "DOCUMENT",
+                "source_id": "RX-HISTORY",
+                "quote": "2025-12-02: prednisone 5 mg, 3 tablets daily (15 mg), 30-day supply."
+              }
+            ]
+          },
+          {
+            "text": "The scan found significant bone loss since the previous study.",
+            "citations": [
+              {
+                "kind": "DOCUMENT",
+                "source_id": "DXA-REPORT",
+                "quote": "Both changes exceed the least significant change for this scanner."
+              }
+            ]
+          },
+          {
+            "text": "A redetermination must be requested within 120 days of receiving the notice.",
+            "citations": [
+              {
+                "kind": "CLAUSE",
+                "source_id": "MEDICARE-APL-1.1",
+                "quote": "any request for redetermination must be filed within 120 calendar days from the date a party receives the notice of the initial determination"
+              }
+            ]
+          }
+        ],
+        "correction": null,
+        "missing_evidence": [
+          "A signed order for the repeat scan, if the payer asks for it."
+        ]
+      },
+      "verification": {
+        "verdicts": [
+          {
+            "assertion_index": 0,
+            "supported": true,
+            "problems": []
+          },
+          {
+            "assertion_index": 1,
+            "supported": true,
+            "problems": []
+          },
+          {
+            "assertion_index": 2,
+            "supported": true,
+            "problems": []
+          },
+          {
+            "assertion_index": 3,
+            "supported": true,
+            "problems": []
+          }
+        ]
+      },
+      "writer_attempts": 1,
+      "human_decision": null,
+      "audit": [
+        {
+          "step": "rules",
+          "at": "2026-10-16T14:02:11Z",
+          "summary": "Rule findings: PROCEDURE_CONDITIONS_CLAUSE, CLINICAL_SUPPORT_NEEDS_REVIEW.",
+          "llm_call": null
+        },
+        {
+          "step": "retrieval",
+          "at": "2026-10-16T14:02:12Z",
+          "summary": "Selected 4 clauses.",
+          "llm_call": null
+        },
+        {
+          "step": "intake",
+          "at": "2026-10-16T14:02:21Z",
+          "summary": "Extracted 3 facts from the record.",
+          "llm_call": {
+            "provider": "groq",
+            "model": "openai/gpt-oss-120b",
+            "input_tokens": 3420,
+            "output_tokens": 701,
+            "latency_ms": 8102.0,
+            "cached": false,
+            "attempts": 1
+          }
+        },
+        {
+          "step": "record_checks",
+          "at": "2026-10-16T14:02:21Z",
+          "summary": "No contradiction in the record that code can see.",
+          "llm_call": null
+        },
+        {
+          "step": "document_retrieval",
+          "at": "2026-10-16T14:02:21Z",
+          "summary": "Added MEDICARE-APL-1.1 from the supporting documents.",
+          "llm_call": null
+        },
+        {
+          "step": "triage",
+          "at": "2026-10-16T14:02:26Z",
+          "summary": "Action: APPEAL_WITH_EVIDENCE (confidence 0.81).",
+          "llm_call": {
+            "provider": "groq",
+            "model": "openai/gpt-oss-120b",
+            "input_tokens": 3990,
+            "output_tokens": 455,
+            "latency_ms": 5320.0,
+            "cached": false,
+            "attempts": 1
+          }
+        },
+        {
+          "step": "writer",
+          "at": "2026-10-16T14:02:39Z",
+          "summary": "Draft 1 with 4 assertions.",
+          "llm_call": {
+            "provider": "groq",
+            "model": "openai/gpt-oss-120b",
+            "input_tokens": 5110,
+            "output_tokens": 1320,
+            "latency_ms": 12010.0,
+            "cached": false,
+            "attempts": 1
+          }
+        },
+        {
+          "step": "verifier",
+          "at": "2026-10-16T14:02:44Z",
+          "summary": "All 4 assertions verified.",
+          "llm_call": {
+            "provider": "gemini",
+            "model": "gemini-3.1-flash-lite",
+            "input_tokens": 2640,
+            "output_tokens": 380,
+            "latency_ms": 4710.0,
+            "cached": false,
+            "attempts": 1
+          }
+        },
+        {
+          "step": "review",
+          "at": "2026-10-16T14:02:44Z",
+          "summary": "Sent for approval with a verified draft.",
+          "llm_call": null
+        }
+      ]
+    }
+  },
+  {
+    "summary": {
+      "case_id": "case-without-state",
+      "claim_id": "CLM-TEST-0001",
+      "payer_id": "MEDICARE",
+      "carc_code": "97",
+      "as_of": "2026-10-16",
+      "status": "AWAITING_APPROVAL",
+      "action": "CORRECT_AND_RESUBMIT",
+      "verified": true,
+      "created_at": "2026-10-16T13:13:11Z",
+      "updated_at": "2026-10-16T13:13:51Z"
+    },
+    "state": null
+  }
+]

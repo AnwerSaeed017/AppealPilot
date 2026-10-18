@@ -1,0 +1,76 @@
+{
+  "case_id": "DEV-030",
+  "split": "dev",
+  "scenario": "pa-never-requested-2",
+  "tags": [],
+  "as_of_date": "2026-03-16",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-648857",
+      "payer_id": "QUIL",
+      "member_id": "QUIL-55550572",
+      "patient_id": "PT-461044",
+      "patient_date_of_birth": "1978-01-30",
+      "billing_provider_npi": "1257262588",
+      "place_of_service": "11",
+      "submitted_date": "2026-02-20",
+      "diagnosis_codes": [
+        "M54.16"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-02-10",
+          "procedure_code": "72148",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "710.00"
+        }
+      ],
+      "total_charge": "710.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-648857",
+      "payer_id": "QUIL",
+      "group_code": "CO",
+      "carc_code": "197",
+      "rarc_codes": [],
+      "denial_date": "2026-03-09",
+      "denied_line_numbers": [],
+      "denied_amount": "710.00",
+      "payer_remark": "Authorization or precertification absent."
+    },
+    "visit_note": {
+      "encounter_date": "2026-02-10",
+      "text": "Date of visit: 2026-02-10\nPatient: 48-year-old woman, established patient.\nChief complaint: low back pain radiating to the leg\nHistory: low back pain for 8 weeks, radiating below the knee. Naproxen and a home exercise programme for 7 weeks without improvement.\nExamination: straight-leg raise positive; ankle reflex reduced on the affected side.\nAssessment: lumbar radiculopathy.\nPlan: MRI of the lumbar spine without contrast.\nSigned: treating clinician. 2026-02-10."
+    },
+    "supporting_documents": [
+      {
+        "document_id": "BILL",
+        "kind": "BILLING_NOTE",
+        "document_date": "2026-03-16",
+        "text": "Billing note, 2026-03-16\nNo authorization request is on file for this service.\nThe service was scheduled without going through the authorization desk."
+      }
+    ]
+  },
+  "expected": {
+    "action": "NO_ACTION",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "QUIL-PA-1.1",
+      "QUIL-PA-3.2"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "BILL",
+        "line_number": 2
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "The service is on the payer's authorization list, none was requested, and nothing in the record suggests it was urgent. The policy says the denial stands, however reasonable the service was clinically."
+  }
+}

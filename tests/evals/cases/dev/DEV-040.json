@@ -1,0 +1,69 @@
+{
+  "case_id": "DEV-040",
+  "split": "dev",
+  "scenario": "side-missing-2",
+  "tags": [],
+  "as_of_date": "2026-05-14",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-610716",
+      "payer_id": "QUIL",
+      "member_id": "QUIL-36763964",
+      "patient_id": "PT-945845",
+      "patient_date_of_birth": "1990-01-10",
+      "billing_provider_npi": "1760355713",
+      "place_of_service": "11",
+      "submitted_date": "2026-04-25",
+      "diagnosis_codes": [
+        "M17.12"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-04-21",
+          "procedure_code": "20610",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "140.00"
+        }
+      ],
+      "total_charge": "140.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-610716",
+      "payer_id": "QUIL",
+      "group_code": "CO",
+      "carc_code": "4",
+      "rarc_codes": [],
+      "denial_date": "2026-05-09",
+      "denied_line_numbers": [],
+      "denied_amount": "140.00",
+      "payer_remark": "Required modifier missing, or modifier inconsistent with the procedure."
+    },
+    "visit_note": {
+      "encounter_date": "2026-04-21",
+      "text": "Date of visit: 2026-04-21\nPatient: 36-year-old man, established patient.\nChief complaint: left knee pain\nHistory: osteoarthritis of the left knee; pain wakes the patient at night.\nExamination: crepitus and a small effusion.\nProcedure: corticosteroid injection into the left knee joint after aspiration.\nPlan: review in six weeks.\nSigned: treating clinician. 2026-04-21."
+    }
+  },
+  "expected": {
+    "action": "CORRECT_AND_RESUBMIT",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "QUIL-MOD-2.1",
+      "QUIL-MOD-2.2",
+      "QUIL-MOD-3.1"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "NOTE",
+        "line_number": 6
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": "Add modifier LT to line 1 and send a corrected claim.",
+    "rationale": "The note for the date of service says the left knee was injected, and the corrected claim is still inside the 60-day limit."
+  }
+}

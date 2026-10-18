@@ -1,0 +1,83 @@
+{
+  "case_id": "DEV-027",
+  "split": "dev",
+  "scenario": "filing-exceeded-1",
+  "tags": [
+    "threshold",
+    "payer_difference"
+  ],
+  "as_of_date": "2027-01-20",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-143290",
+      "payer_id": "TESS",
+      "member_id": "TESS-89567901",
+      "patient_id": "PT-264406",
+      "patient_date_of_birth": "1991-08-21",
+      "billing_provider_npi": "1149198685",
+      "place_of_service": "11",
+      "submitted_date": "2026-12-29",
+      "diagnosis_codes": [
+        "I10"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-06-17",
+          "procedure_code": "99213",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "135.00"
+        }
+      ],
+      "total_charge": "135.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-143290",
+      "payer_id": "TESS",
+      "group_code": "CO",
+      "carc_code": "29",
+      "rarc_codes": [],
+      "denial_date": "2027-01-13",
+      "denied_line_numbers": [],
+      "denied_amount": "135.00",
+      "payer_remark": "The time limit for filing has expired."
+    },
+    "visit_note": {
+      "encounter_date": "2026-06-17",
+      "text": "Date of visit: 2026-06-17\nPatient: 34-year-old man, established patient.\nChief complaint: blood pressure follow-up\nHistory: hypertension, taking lisinopril daily. No headaches.\nExamination: blood pressure 130/85.\nAssessment: essential hypertension.\nPlan: continue current dose; review in three months.\nSigned: treating clinician. 2026-06-17."
+    },
+    "supporting_documents": [
+      {
+        "document_id": "BILL",
+        "kind": "BILLING_NOTE",
+        "document_date": "2027-01-20",
+        "text": "Billing note, 2027-01-20\nFirst submission of this claim: 2026-12-29.\nThe charge was entered late after a coding backlog.\nThe patient has no other insurance on file."
+      }
+    ]
+  },
+  "expected": {
+    "action": "NO_ACTION",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "TESS-TF-1.1",
+      "TESS-TF-3.1"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "BILL",
+        "line_number": 2
+      },
+      {
+        "document_id": "BILL",
+        "line_number": 3
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "The claim was first submitted 195 days after the service and this payer's limit is 180. The delay was the practice's own, no listed exception applies, and there is no earlier filing to prove."
+  }
+}

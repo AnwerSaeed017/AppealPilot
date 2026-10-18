@@ -1,0 +1,68 @@
+{
+  "planted_id": "PLANT-012",
+  "case_id": "DEV-014",
+  "selected_clause_ids": [
+    "TESS-COV-2.1",
+    "TESS-DOC-1.2"
+  ],
+  "draft": {
+    "action": "ESCALATE_TO_HUMAN",
+    "summary": "Draft for DEV-014.",
+    "assertions": [
+      {
+        "text": "The policy states: MRI of the knee (73751) is supported by a suspected meniscal or ligament tear with a positive examination finding, such as joint-line tenderness with a positive McMurray test, locking or instability; or by knee pain that has persisted after at least 6 weeks of conservative treatment.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-COV-2.1",
+            "quote": "MRI of the knee (73751) is supported by a suspected meniscal or ligament tear with a positive examination finding, such as joint-line tenderness with a positive McMurray test, locking or instability; or by knee pain that has persisted after at least 6 weeks of conservative treatment."
+          }
+        ]
+      },
+      {
+        "text": "The policy states: Documentation must have been created at or near the time of service, be dated, and identify the clinician.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-DOC-1.2",
+            "quote": "Documentation must have been created at or near the time of service, be dated, and identify the clinician."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Examination: mild tenderness. Ligaments stable.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Examination: mild tenderness. Ligaments stable."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Late entry, added 2026-05-26.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "ADD",
+            "quote": "Late entry, added 2026-05-26."
+          }
+        ]
+      },
+      {
+        "text": "The record states: At the visit on 2026-05-03 the McMurray test was positive.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "ADD",
+            "quote": "At the visit on 2026-05-03 the McMurray test was positive."
+          }
+        ]
+      }
+    ],
+    "correction": null,
+    "missing_evidence": []
+  },
+  "error": "NUMBER_CHANGED_IN_QUOTE",
+  "planted_assertion_index": 0
+}

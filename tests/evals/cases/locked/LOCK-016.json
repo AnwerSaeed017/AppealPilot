@@ -1,0 +1,92 @@
+{
+  "case_id": "LOCK-016",
+  "split": "locked",
+  "scenario": "pa-conflict-2",
+  "tags": [
+    "conflicting_clauses"
+  ],
+  "as_of_date": "2026-04-26",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-810431",
+      "payer_id": "QUIL",
+      "member_id": "QUIL-82459288",
+      "patient_id": "PT-010396",
+      "patient_date_of_birth": "1947-08-14",
+      "billing_provider_npi": "1161165166",
+      "place_of_service": "11",
+      "submitted_date": "2026-03-28",
+      "diagnosis_codes": [
+        "S83.242A"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-03-22",
+          "procedure_code": "29881",
+          "modifiers": [
+            "LT"
+          ],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "2400.00"
+        }
+      ],
+      "total_charge": "2400.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-810431",
+      "payer_id": "QUIL",
+      "group_code": "CO",
+      "carc_code": "197",
+      "rarc_codes": [],
+      "denial_date": "2026-04-12",
+      "denied_line_numbers": [],
+      "denied_amount": "2400.00",
+      "payer_remark": "Authorization or precertification absent."
+    },
+    "visit_note": {
+      "encounter_date": "2026-03-22",
+      "text": "Date of visit: 2026-03-22\nPatient: 78-year-old woman, established patient.\nChief complaint: locked left knee\nHistory: left knee locked in flexion since a twisting injury; unable to straighten it or bear weight.\nExamination: knee held at 30 degrees, block to extension.\nAssessment: displaced medial meniscal tear with a locked knee.\nProcedure: arthroscopic partial medial meniscectomy, left knee.\nThe procedure was carried out the same day because the knee could not be left locked.\nSigned: treating clinician. 2026-03-22."
+    },
+    "supporting_documents": [
+      {
+        "document_id": "BILL",
+        "kind": "BILLING_NOTE",
+        "document_date": "2026-04-26",
+        "text": "Billing note, 2026-04-26\nClaim submitted 2026-03-28.\nAuthorization request for the urgent service sent 2026-04-02, with the clinic note.\nThe plan declined to accept the request because a claim was already on file."
+      }
+    ]
+  },
+  "expected": {
+    "action": "ESCALATE_TO_HUMAN",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "QUIL-PA-3.1",
+      "QUIL-APL-2.2"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "NOTE",
+        "line_number": 8
+      },
+      {
+        "document_id": "BILL",
+        "line_number": 2
+      },
+      {
+        "document_id": "BILL",
+        "line_number": 3
+      },
+      {
+        "document_id": "BILL",
+        "line_number": 4
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "One clause allows a request within 14 days of an urgent service, and this one was made in time. Another refuses any request once a claim is on file, and the claim went in first. The policies do not say which prevails, so a person decides."
+  }
+}

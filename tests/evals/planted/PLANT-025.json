@@ -1,0 +1,68 @@
+{
+  "planted_id": "PLANT-025",
+  "case_id": "DEV-050",
+  "selected_clause_ids": [
+    "TESS-MOD-1.1",
+    "TESS-MOD-1.2"
+  ],
+  "draft": {
+    "action": "CORRECT_AND_RESUBMIT",
+    "summary": "Draft for DEV-050.",
+    "assertions": [
+      {
+        "text": "The policy states: An evaluation and management visit billed on the same day as a minor procedure by the same provider is paid only when modifier 25 is appended to the visit code and the record documents a significant, separately identifiable evaluation.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-MOD-99.9",
+            "quote": "An evaluation and management visit billed on the same day as a minor procedure by the same provider is paid only when modifier 25 is appended to the visit code and the record documents a significant, separately identifiable evaluation."
+          }
+        ]
+      },
+      {
+        "text": "The policy states: The evaluation is separately identifiable when the record shows work beyond the assessment that is a routine part of the procedure: for example, evaluation of a different problem, or of a new problem that required a history, an examination and a treatment decision before the procedure was chosen.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-MOD-1.2",
+            "quote": "The evaluation is separately identifiable when the record shows work beyond the assessment that is a routine part of the procedure: for example, evaluation of a different problem, or of a new problem that required a history, an examination and a treatment decision before the procedure was chosen."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Blood pressure review: home readings have been running 150 to 160 systolic for a month, with morning headaches.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Blood pressure review: home readings have been running 150 to 160 systolic for a month, with morning headaches."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Examination: blood pressure 162/95, repeated after rest; heart sounds normal; no ankle swelling.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Examination: blood pressure 162/95, repeated after rest; heart sounds normal; no ankle swelling."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Decision: lisinopril increased from 10 mg to 20 mg; kidney function to be checked in two weeks.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Decision: lisinopril increased from 10 mg to 20 mg; kidney function to be checked in two weeks."
+          }
+        ]
+      }
+    ],
+    "correction": "Add modifier 25 to line 1 and send a corrected claim.",
+    "missing_evidence": []
+  },
+  "error": "INVENTED_CLAUSE",
+  "planted_assertion_index": 0
+}

@@ -1,0 +1,78 @@
+{
+  "planted_id": "PLANT-051",
+  "case_id": "DEV-001",
+  "selected_clause_ids": [
+    "QUIL-PA-3.1",
+    "QUIL-APL-2.2"
+  ],
+  "draft": {
+    "action": "ESCALATE_TO_HUMAN",
+    "summary": "Draft for DEV-001.",
+    "assertions": [
+      {
+        "text": "The policy states: For an urgent service, the provider may request authorization after the service, within 14 calendar days of the date of service.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "QUIL-PA-3.1",
+            "quote": "For an urgent service, the provider may request authorization after the service, within 14 calendar days of the date of service."
+          }
+        ]
+      },
+      {
+        "text": "The policy states: Once a claim for a service has been submitted, the plan does not accept a request for authorization of that service.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "QUIL-APL-2.2",
+            "quote": "Once a claim for a service has been submitted, the plan does not accept a request for authorization of that service."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Plan: MRI of the lumbar spine this afternoon. Because the weakness is progressing, imaging could not be delayed.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Plan: MRI of the lumbar spine this afternoon. Because the weakness is progressing, imaging could not be delayed."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Claim submitted 2026-03-26.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "BILL",
+            "quote": "Claim submitted 2026-03-26."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Authorization request for the urgent service sent 2026-04-02, with the clinic note.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "BILL",
+            "quote": "Authorization request for the urgent service sent 2026-04-02, with the clinic note."
+          }
+        ]
+      },
+      {
+        "text": "The record states: The plan declined to accept the request because a claim was already on file.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "BILL",
+            "quote": "The plan declined to accept the request because a claim was already on file."
+          }
+        ]
+      }
+    ],
+    "correction": null,
+    "missing_evidence": []
+  },
+  "error": null,
+  "planted_assertion_index": null
+}

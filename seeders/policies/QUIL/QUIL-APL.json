@@ -1,0 +1,33 @@
+{
+  "policy_id": "QUIL-APL",
+  "payer_id": "QUIL",
+  "title": "Appeals and Reconsideration",
+  "effective_from": "2026-01-01",
+  "clauses": [
+    {
+      "clause_id": "QUIL-APL-1.1",
+      "section_heading": "Time limit",
+      "text": "An appeal must be received within 120 days of the denial date."
+    },
+    {
+      "clause_id": "QUIL-APL-1.2",
+      "section_heading": "Contents of an appeal",
+      "text": "An appeal must name the claim and the denial reason, cite the policy clause relied on, and attach the record entries that support each point made."
+    },
+    {
+      "clause_id": "QUIL-APL-2.1",
+      "section_heading": "Corrections are not appeals",
+      "text": "A change to a modifier, a diagnosis pointer or an authorization number is made by corrected claim under policy QUIL-TF, not by appeal."
+    },
+    {
+      "clause_id": "QUIL-APL-2.2",
+      "section_heading": "Authorization requests after a claim",
+      "text": "Once a claim for a service has been submitted, the plan does not accept a request for authorization of that service. The provider must use the appeal process instead."
+    },
+    {
+      "clause_id": "QUIL-APL-3.1",
+      "section_heading": "Medical necessity appeals",
+      "text": "An appeal of a denial with reason code 50 is decided by a plan clinician. The treating clinician may ask for a peer-to-peer discussion within 10 days of the denial date."
+    }
+  ]
+}

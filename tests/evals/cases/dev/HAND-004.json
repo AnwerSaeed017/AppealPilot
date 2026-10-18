@@ -1,0 +1,66 @@
+{
+  "case_id": "HAND-004",
+  "split": "dev",
+  "scenario": "retroactive-eligibility-timely-filing",
+  "tags": ["hard_appeal", "eligibility_exception", "date_arithmetic"],
+  "as_of_date": "2026-06-25",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-911004",
+      "payer_id": "QUIL",
+      "member_id": "QUIL-3381920",
+      "patient_id": "PT-441209",
+      "patient_date_of_birth": "1983-05-12",
+      "billing_provider_npi": "1592637486",
+      "place_of_service": "11",
+      "submitted_date": "2026-05-20",
+      "diagnosis_codes": ["M17.11"],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-01-15",
+          "procedure_code": "20610",
+          "modifiers": ["RT"],
+          "diagnosis_pointers": [1],
+          "units": 1,
+          "charge_amount": "140.00"
+        }
+      ],
+      "total_charge": "140.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-911004",
+      "payer_id": "QUIL",
+      "group_code": "CO",
+      "carc_code": "29",
+      "rarc_codes": [],
+      "denial_date": "2026-06-05",
+      "denied_line_numbers": [1],
+      "denied_amount": "140.00",
+      "payer_remark": "Time limit for filing has expired. Claim submitted 125 days after service."
+    },
+    "visit_note": {
+      "encounter_date": "2026-01-15",
+      "text": "Date of encounter: 2026-01-15\nPatient evaluated for acute exacerbation of right knee osteoarthritis.\nArthrocentesis and corticosteroid injection completed.\nSigned: Attending Physician."
+    },
+    "supporting_documents": [
+      {
+        "document_id": "DOC-RETRO-ELIG",
+        "kind": "OTHER",
+        "document_date": "2026-05-02",
+        "text": "Quillon Mutual Enrollment Services\nNotice of Retroactive Member Coverage\nMember: PT-441209 (QUIL-3381920)\nNotice Date: 2026-05-02\nThis notice confirms that member coverage has been reinstated retroactively effective 2026-01-01. Providers have 90 days from the notice date to submit claims for services rendered during the retro-coverage period."
+      }
+    ]
+  },
+  "expected": {
+    "action": "APPEAL_WITH_EVIDENCE",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": ["QUIL-TF-2.1", "QUIL-TF-1.1", "QUIL-APL-1.2"],
+    "supporting_evidence": [
+      {"document_id": "DOC-RETRO-ELIG", "line_number": 4},
+      {"document_id": "DOC-RETRO-ELIG", "line_number": 5}
+    ],
+    "missing_evidence": [],
+    "rationale": "The claim was submitted 125 days after the service, past the 90 days in QUIL-TF-1.1. QUIL-TF-2.1(a) extends the limit when coverage was added retroactively, allowing 90 days from the date the provider was notified. The plan's notice is dated 2026-05-02 and the claim was submitted on 2026-05-20, 18 days later."
+  }
+}

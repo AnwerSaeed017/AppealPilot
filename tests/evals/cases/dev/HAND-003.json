@@ -1,0 +1,67 @@
+{
+  "case_id": "HAND-003",
+  "split": "dev",
+  "scenario": "pap-borderline-ahi-comorbid",
+  "tags": ["hard_appeal", "criteria_combination"],
+  "as_of_date": "2026-06-01",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-911003",
+      "payer_id": "TESS",
+      "member_id": "TESS-1928374",
+      "patient_id": "PT-552410",
+      "patient_date_of_birth": "1972-08-19",
+      "billing_provider_npi": "1987654328",
+      "place_of_service": "12",
+      "submitted_date": "2026-05-02",
+      "diagnosis_codes": ["G47.33", "I10"],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-04-20",
+          "procedure_code": "E0601",
+          "modifiers": [],
+          "diagnosis_pointers": [1, 2],
+          "units": 1,
+          "charge_amount": "950.00"
+        }
+      ],
+      "total_charge": "950.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-911003",
+      "payer_id": "TESS",
+      "group_code": "CO",
+      "carc_code": "252",
+      "rarc_codes": [],
+      "denial_date": "2026-05-18",
+      "denied_line_numbers": [1],
+      "denied_amount": "950.00",
+      "payer_remark": "Documentation required: Sleep study report demonstrating medical necessity per policy criteria."
+    },
+    "visit_note": {
+      "encounter_date": "2026-03-10",
+      "text": "Date of visit: 2026-03-10\nInitial clinical sleep evaluation prior to diagnostic testing.\nPatient reports severe nonrestorative sleep, daytime fatigue, and loud snoring.\nComorbidities: Refractory essential hypertension managed on lisinopril and amlodipine.\nOrder: Diagnostic polysomnography ordered.\nClinician: Arthur Pendelton, MD."
+    },
+    "supporting_documents": [
+      {
+        "document_id": "DOC-SLEEP-STUDY",
+        "kind": "DIAGNOSTIC_REPORT",
+        "document_date": "2026-04-05",
+        "text": "Study Date: 2026-04-05\nFacility: Metro Sleep Diagnostic Center\nTotal recording time: 380 min. Total sleep time: 320 min.\nApnea-Hypopnea Index (AHI): 11.4 events/hour.\nOxygen saturation nadir: 88%.\nDiagnosis: Mild obstructive sleep apnea."
+      }
+    ]
+  },
+  "expected": {
+    "action": "APPEAL_WITH_EVIDENCE",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": ["TESS-DOC-2.1", "TESS-DOC-1.1"],
+    "supporting_evidence": [
+      {"document_id": "NOTE", "line_number": 2},
+      {"document_id": "NOTE", "line_number": 4},
+      {"document_id": "DOC-SLEEP-STUDY", "line_number": 4}
+    ],
+    "missing_evidence": [],
+    "rationale": "TESS-DOC-2.1 covers the device for an index from 5 to 14 when hypertension is documented and the clinician evaluated the patient before the study. The report gives an index of 11.4, the note records hypertension, and the evaluation on 2026-03-10 came before the study on 2026-04-05. The note is dated on the evaluation, not on the day the device was supplied."
+  }
+}

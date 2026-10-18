@@ -1,0 +1,77 @@
+{
+  "case_id": "DEV-044",
+  "split": "dev",
+  "scenario": "hyaluronan-undated-2",
+  "tags": [],
+  "as_of_date": "2026-07-23",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-631407",
+      "payer_id": "QUIL",
+      "member_id": "QUIL-45212804",
+      "patient_id": "PT-398516",
+      "patient_date_of_birth": "1960-05-15",
+      "billing_provider_npi": "1258939283",
+      "place_of_service": "11",
+      "submitted_date": "2026-06-26",
+      "diagnosis_codes": [
+        "M17.12"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-06-21",
+          "procedure_code": "J7325",
+          "modifiers": [
+            "LT"
+          ],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "480.00"
+        }
+      ],
+      "total_charge": "480.00",
+      "prior_authorization_number": "AU-711074"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-631407",
+      "payer_id": "QUIL",
+      "group_code": "CO",
+      "carc_code": "252",
+      "rarc_codes": [],
+      "denial_date": "2026-07-11",
+      "denied_line_numbers": [],
+      "denied_amount": "480.00",
+      "payer_remark": "Records of conservative treatment are required."
+    },
+    "visit_note": {
+      "encounter_date": "2026-06-21",
+      "text": "Date of visit: 2026-06-21\nPatient: 66-year-old woman, established patient.\nChief complaint: left knee pain from osteoarthritis\nRadiograph of the left knee, 2025-12-03: joint-space narrowing and osteophytes, consistent with osteoarthritis.\nHas tried anti-inflammatory tablets and physiotherapy in the past without lasting benefit.\nExamination: crepitus, small effusion, flexion limited to 100 degrees.\nProcedure: hyaluronan injected into the left knee.\nElectronically signed by the treating clinician, 2026-06-21."
+    }
+  },
+  "expected": {
+    "action": "REQUEST_DOCUMENTATION",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "QUIL-DOC-2.2"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "NOTE",
+        "line_number": 4
+      },
+      {
+        "document_id": "NOTE",
+        "line_number": 5
+      }
+    ],
+    "missing_evidence": [
+      "start date and duration of analgesic treatment",
+      "physical therapy records with session dates"
+    ],
+    "expected_correction": null,
+    "rationale": "The radiograph requirement is met, but the note says only that treatment was tried 'in the past'. The policy sets a minimum duration, and no duration can be stated from this note without inventing it."
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "case_id": "DEV-045",
+  "split": "dev",
+  "scenario": "note-other-patient-1",
+  "tags": [
+    "wrong_document"
+  ],
+  "as_of_date": "2026-03-13",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-768681",
+      "payer_id": "TESS",
+      "member_id": "TESS-86899022",
+      "patient_id": "PT-703042",
+      "patient_date_of_birth": "1953-09-17",
+      "billing_provider_npi": "1112474873",
+      "place_of_service": "11",
+      "submitted_date": "2026-02-19",
+      "diagnosis_codes": [
+        "M17.12"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-02-16",
+          "procedure_code": "20610",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "140.00"
+        }
+      ],
+      "total_charge": "140.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-768681",
+      "payer_id": "TESS",
+      "group_code": "CO",
+      "carc_code": "4",
+      "rarc_codes": [],
+      "denial_date": "2026-03-05",
+      "denied_line_numbers": [],
+      "denied_amount": "140.00",
+      "payer_remark": "Required modifier missing, or modifier inconsistent with the procedure."
+    },
+    "visit_note": {
+      "encounter_date": "2026-02-16",
+      "text": "Date of visit: 2026-02-16\nPatient: 7-year-old boy, new patient.\nChief complaint: ear pain and fever for two days.\nExamination: right tympanic membrane red and bulging.\nAssessment: acute otitis media.\nPlan: amoxicillin for seven days.\nElectronically signed by the treating clinician, 2026-02-16."
+    }
+  },
+  "expected": {
+    "action": "ESCALATE_TO_HUMAN",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "TESS-MOD-2.2"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "NOTE",
+        "line_number": 2
+      },
+      {
+        "document_id": "NOTE",
+        "line_number": 3
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "The claim is for a knee injection in a 72-year-old, but the note describes a child with an ear infection. Nothing in it can support a correction, and the mix-up itself needs a person to look at it."
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "planted_id": "PLANT-020",
+  "case_id": "DEV-040",
+  "selected_clause_ids": [
+    "QUIL-MOD-2.1",
+    "QUIL-MOD-2.2",
+    "QUIL-MOD-3.1"
+  ],
+  "draft": {
+    "action": "CORRECT_AND_RESUBMIT",
+    "summary": "Draft for DEV-040.",
+    "assertions": [
+      {
+        "text": "The policy states: The plan will pay such claims in full when the provider asks.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "QUIL-MOD-2.1",
+            "quote": "The plan will pay such claims in full when the provider asks."
+          }
+        ]
+      },
+      {
+        "text": "The policy states: A line denied under clause QUIL-MOD-2.1 may be corrected and resubmitted when the record for the date of service names the side.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "QUIL-MOD-2.2",
+            "quote": "A line denied under clause QUIL-MOD-2.1 may be corrected and resubmitted when the record for the date of service names the side."
+          }
+        ]
+      },
+      {
+        "text": "The policy states: A corrected claim must be received within 60 days of the remittance date of the denial.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "QUIL-MOD-3.1",
+            "quote": "A corrected claim must be received within 60 days of the remittance date of the denial."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Procedure: corticosteroid injection into the left knee joint after aspiration.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Procedure: corticosteroid injection into the left knee joint after aspiration."
+          }
+        ]
+      }
+    ],
+    "correction": "Add modifier LT to line 1 and send a corrected claim.",
+    "missing_evidence": []
+  },
+  "error": "FABRICATED_QUOTE",
+  "planted_assertion_index": 0
+}

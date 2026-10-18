@@ -1,0 +1,27 @@
+{
+  "planted_id": "PLANT-029",
+  "case_id": "DEV-037",
+  "selected_clause_ids": [
+    "TESS-TF-1.2"
+  ],
+  "draft": {
+    "action": "APPEAL_WITH_EVIDENCE",
+    "summary": "Draft for DEV-037.",
+    "assertions": [
+      {
+        "text": "The policy states: For dates of service before 1 January 2026, a claim must be received by the plan within 365 days of the date of service.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-TF-1.2",
+            "quote": "For dates of service before 1 January 2026, a claim must be received by the plan within 365 days of the date of service."
+          }
+        ]
+      }
+    ],
+    "correction": null,
+    "missing_evidence": []
+  },
+  "error": null,
+  "planted_assertion_index": null
+}

@@ -1,0 +1,39 @@
+{
+  "planted_id": "PLANT-013",
+  "case_id": "DEV-035",
+  "selected_clause_ids": [
+    "QUIL-DOC-2.1"
+  ],
+  "draft": {
+    "action": "REQUEST_DOCUMENTATION",
+    "summary": "Draft for DEV-035.",
+    "assertions": [
+      {
+        "text": "The policy states: The plan will pay such claims in full when the provider asks.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "QUIL-DOC-2.1",
+            "quote": "The plan will pay such claims in full when the provider asks."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Sleep study 2026-03-06: positive for obstructive sleep apnea.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Sleep study 2026-03-06: positive for obstructive sleep apnea."
+          }
+        ]
+      }
+    ],
+    "correction": null,
+    "missing_evidence": [
+      "sleep study report showing the apnea-hypopnea index"
+    ]
+  },
+  "error": "FABRICATED_QUOTE",
+  "planted_assertion_index": 0
+}

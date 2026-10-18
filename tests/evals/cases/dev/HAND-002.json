@@ -1,0 +1,65 @@
+{
+  "case_id": "HAND-002",
+  "split": "dev",
+  "scenario": "secondary-payer-cob-timely-filing",
+  "tags": ["hard_appeal", "date_arithmetic", "cob_exception"],
+  "as_of_date": "2026-08-15",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-911002",
+      "payer_id": "TESS",
+      "member_id": "TESS-4491022",
+      "patient_id": "PT-771822",
+      "patient_date_of_birth": "1960-03-22",
+      "billing_provider_npi": "1357924681",
+      "place_of_service": "11",
+      "submitted_date": "2026-07-20",
+      "diagnosis_codes": ["M17.11"],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-01-10",
+          "procedure_code": "20610",
+          "modifiers": ["RT"],
+          "diagnosis_pointers": [1],
+          "units": 1,
+          "charge_amount": "140.00"
+        }
+      ],
+      "total_charge": "140.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-911002",
+      "payer_id": "TESS",
+      "group_code": "CO",
+      "carc_code": "29",
+      "rarc_codes": [],
+      "denial_date": "2026-08-01",
+      "denied_line_numbers": [1],
+      "denied_amount": "140.00",
+      "payer_remark": "Filing deadline expired. Claim submitted 191 days after service."
+    },
+    "visit_note": {
+      "encounter_date": "2026-01-10",
+      "text": "Date of visit: 2026-01-10\nEvaluation of chronic right knee osteoarthritis.\nArthrocentesis and corticosteroid injection completed under sterile technique.\nSigned: Sarah Chen, MD."
+    },
+    "supporting_documents": [
+      {
+        "document_id": "DOC-PRIMARY-EOB",
+        "kind": "PRIMARY_PAYER_EOB",
+        "document_date": "2026-06-15",
+        "text": "Payer: primary insurer\nClaim ID: PRI-2026-019942\nMember: PT-771822\nDate of Service: 2026-01-10\nAdjudication / Remittance Date: 2026-06-15\nAllowed Amount: $100.00; Paid: $80.00; Patient Responsibility: $20.00 crossover to secondary."
+      }
+    ]
+  },
+  "expected": {
+    "action": "APPEAL_WITH_EVIDENCE",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": ["TESS-TF-2.1", "TESS-TF-1.1", "TESS-APL-1.2"],
+    "supporting_evidence": [
+      {"document_id": "DOC-PRIMARY-EOB", "line_number": 5}
+    ],
+    "missing_evidence": [],
+    "rationale": "The claim was submitted 191 days after the service, past the 180 days in TESS-TF-1.1. TESS-TF-2.1(c) extends the limit when another payer was billed first, allowing 90 days from the date on the primary payer's explanation of benefits. That statement is dated 2026-06-15 and the claim was received on 2026-07-20, 35 days later."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "policy_id": "QUIL-MOD",
+  "payer_id": "QUIL",
+  "title": "Modifier Requirements",
+  "effective_from": "2026-01-01",
+  "clauses": [
+    {
+      "clause_id": "QUIL-MOD-1.1",
+      "section_heading": "Visit and minor procedure on the same day",
+      "text": "When a visit and a minor procedure are billed for the same day by the same provider, the visit is paid only if modifier 25 is on the visit code and the record supports a significant evaluation that is separate from the procedure."
+    },
+    {
+      "clause_id": "QUIL-MOD-1.2",
+      "section_heading": "Record requirements for modifier 25",
+      "text": "The record must describe the evaluation separately from the procedure. When the visit and the procedure share a single diagnosis, the note must still show a history, an examination and a decision that went beyond deciding to carry out the procedure. A visit whose only content is the procedure itself does not qualify, and modifier 25 must not be added to it."
+    },
+    {
+      "clause_id": "QUIL-MOD-2.1",
+      "section_heading": "Side modifiers",
+      "text": "A procedure on a paired joint or limb must be billed with modifier RT or LT. A line with no side modifier, or with a side that differs from the record, is denied with reason code 4."
+    },
+    {
+      "clause_id": "QUIL-MOD-2.2",
+      "section_heading": "Correcting a side modifier",
+      "text": "A line denied under clause QUIL-MOD-2.1 may be corrected and resubmitted when the record for the date of service names the side. Where the record is silent on the side, the claim must not be corrected until the treating clinician has added a dated addendum."
+    },
+    {
+      "clause_id": "QUIL-MOD-3.1",
+      "section_heading": "Time limit for corrected claims",
+      "text": "A corrected claim must be received within 60 days of the remittance date of the denial."
+    }
+  ]
+}

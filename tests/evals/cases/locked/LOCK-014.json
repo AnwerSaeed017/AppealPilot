@@ -1,0 +1,76 @@
+{
+  "case_id": "LOCK-014",
+  "split": "locked",
+  "scenario": "knee-mri-osteoarthritis-1",
+  "tags": [],
+  "as_of_date": "2026-05-05",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-606787",
+      "payer_id": "TESS",
+      "member_id": "TESS-49132477",
+      "patient_id": "PT-630032",
+      "patient_date_of_birth": "1970-08-14",
+      "billing_provider_npi": "1824078707",
+      "place_of_service": "11",
+      "submitted_date": "2026-04-06",
+      "diagnosis_codes": [
+        "M25.561"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-03-27",
+          "procedure_code": "73721",
+          "modifiers": [
+            "RT"
+          ],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "620.00"
+        }
+      ],
+      "total_charge": "620.00",
+      "prior_authorization_number": "AU-208053"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-606787",
+      "payer_id": "TESS",
+      "group_code": "CO",
+      "carc_code": "50",
+      "rarc_codes": [],
+      "denial_date": "2026-04-25",
+      "denied_line_numbers": [],
+      "denied_amount": "620.00",
+      "payer_remark": "Service not deemed medically necessary on the information submitted."
+    },
+    "visit_note": {
+      "encounter_date": "2026-03-27",
+      "text": "Date of visit: 2026-03-27\nPatient: 55-year-old man, established patient.\nChief complaint: right knee pain\nHistory: known osteoarthritis of the right knee; pain for 2 weeks after gardening. No locking or giving way.\nExamination: crepitus; no joint-line tenderness; ligaments stable; McMurray test negative.\nAssessment: flare of osteoarthritis.\nPlan: MRI of the right knee at the patient's request.\nSigned: treating clinician. 2026-03-27."
+    }
+  },
+  "expected": {
+    "action": "NO_ACTION",
+    "acceptable_alternatives": [
+      "ESCALATE_TO_HUMAN"
+    ],
+    "relevant_clause_ids": [
+      "TESS-COV-2.1"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "NOTE",
+        "line_number": 4
+      },
+      {
+        "document_id": "NOTE",
+        "line_number": 5
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "The note records osteoarthritis, two weeks of pain, a negative McMurray test and no locking. The policy says osteoarthritis alone does not support the scan, and no honest appeal can be built from this record."
+  }
+}

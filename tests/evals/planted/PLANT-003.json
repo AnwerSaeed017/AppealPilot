@@ -1,0 +1,69 @@
+{
+  "planted_id": "PLANT-003",
+  "case_id": "DEV-051",
+  "selected_clause_ids": [
+    "TESS-MOD-1.1",
+    "TESS-MOD-1.2",
+    "TESS-MOD-1.3"
+  ],
+  "draft": {
+    "action": "ESCALATE_TO_HUMAN",
+    "summary": "Draft for DEV-051.",
+    "assertions": [
+      {
+        "text": "The policy states: An evaluation and management visit billed on the same day as a minor procedure by the same provider is paid only when modifier 25 is appended to the visit code and the record documents a significant, separately identifiable evaluation.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-MOD-1.1",
+            "quote": "An evaluation and management visit billed on the same day as a minor procedure by the same provider is paid only when modifier 25 is appended to the visit code and the record documents a significant, separately identifiable evaluation."
+          }
+        ]
+      },
+      {
+        "text": "The policy states: The evaluation is separately identifiable when the record shows work beyond the assessment that is a routine part of the procedure: for example, evaluation of a different problem, or of a new problem that required a history, an examination and a treatment decision before the procedure was chosen.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-MOD-1.2",
+            "quote": "The evaluation is separately identifiable when the record shows work beyond the assessment that is a routine part of the procedure: for example, evaluation of a different problem, or of a new problem that required a history, an examination and a treatment decision before the procedure was chosen."
+          }
+        ]
+      },
+      {
+        "text": "The policy states: Modifier 25 must not be added when the visit consisted only of the decision to perform a procedure that had already been planned, or of the usual care before and after the procedure.",
+        "citations": [
+          {
+            "kind": "CLAUSE",
+            "source_id": "TESS-MOD-1.3",
+            "quote": "Modifier 25 must not be added when the visit consisted only of the decision to perform a procedure that had already been planned, or of the usual care before and after the procedure."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Returns for the knee injection arranged at the last visit.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Returns for the knee injection arranged at the last visit."
+          }
+        ]
+      },
+      {
+        "text": "The record states: Also mentions occasional heartburn after meals; advised to try an antacid.",
+        "citations": [
+          {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Also mentions occasional heartburn after meals; advised to try an antacid."
+          }
+        ]
+      }
+    ],
+    "correction": null,
+    "missing_evidence": []
+  },
+  "error": null,
+  "planted_assertion_index": null
+}

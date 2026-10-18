@@ -1,0 +1,83 @@
+{
+  "case_id": "DEV-029",
+  "split": "dev",
+  "scenario": "duplicate-paid-1",
+  "tags": [],
+  "as_of_date": "2026-08-27",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-780341",
+      "payer_id": "TESS",
+      "member_id": "TESS-96651758",
+      "patient_id": "PT-237137",
+      "patient_date_of_birth": "1955-09-15",
+      "billing_provider_npi": "1793160742",
+      "place_of_service": "11",
+      "submitted_date": "2026-07-23",
+      "diagnosis_codes": [
+        "I10"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-06-22",
+          "procedure_code": "99213",
+          "modifiers": [],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "135.00"
+        }
+      ],
+      "total_charge": "135.00"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-780341",
+      "payer_id": "TESS",
+      "group_code": "CO",
+      "carc_code": "18",
+      "rarc_codes": [],
+      "denial_date": "2026-08-12",
+      "denied_line_numbers": [],
+      "denied_amount": "135.00",
+      "payer_remark": "Exact duplicate of a claim or service already processed."
+    },
+    "visit_note": {
+      "encounter_date": "2026-06-22",
+      "text": "Date of visit: 2026-06-22\nPatient: 70-year-old man, established patient.\nChief complaint: blood pressure follow-up\nHistory: hypertension, taking lisinopril daily. No headaches.\nExamination: blood pressure 131/83.\nAssessment: essential hypertension.\nPlan: continue current dose; review in three months.\nSigned: treating clinician. 2026-06-22."
+    },
+    "prior_claims": [
+      {
+        "claim_id": "CLM-2026-808059",
+        "received_date": "2026-07-03",
+        "outcome": "PAID",
+        "lines": [
+          {
+            "line_number": 1,
+            "service_date": "2026-06-22",
+            "procedure_code": "99213",
+            "modifiers": [],
+            "diagnosis_pointers": [
+              1
+            ],
+            "units": 1,
+            "charge_amount": "135.00"
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "action": "NO_ACTION",
+    "acceptable_alternatives": [],
+    "relevant_clause_ids": [
+      "TESS-DUP-1.1",
+      "TESS-DUP-1.2"
+    ],
+    "supporting_evidence": [],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "Prior claim CLM-2026-808059 has the same date of service, procedure, modifiers and units, and it was paid. The duplicate denial is correct and sending the claim again would only repeat it."
+  }
+}
