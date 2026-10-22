@@ -103,6 +103,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/evaluations": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Evaluations
+         * @description The published comparison of the workflow with a single-prompt baseline.
+         */
+        get: operations["get_evaluations_evaluations_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/health/live": {
         parameters: {
             query?: never;
@@ -161,6 +181,16 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        /**
+         * ActionResult
+         * @description How often each system was right on the cases labelled with one action.
+         */
+        ActionResult: {
+            baseline: components["schemas"]["Tally"];
+            /** Expected */
+            expected: string;
+            workflow: components["schemas"]["Tally"];
+        };
         /** ApiError */
         ApiError: {
             /** Code */
@@ -184,6 +214,14 @@ export interface components {
         /** ApiResponse[CaseView] */
         ApiResponse_CaseView_: {
             data?: components["schemas"]["CaseView"] | null;
+            error?: components["schemas"]["ApiError"] | null;
+            meta: components["schemas"]["ResponseMeta"];
+            /** Success */
+            success: boolean;
+        };
+        /** ApiResponse[EvaluationBenchmarks] */
+        ApiResponse_EvaluationBenchmarks_: {
+            data?: components["schemas"]["EvaluationBenchmarks"] | null;
             error?: components["schemas"]["ApiError"] | null;
             meta: components["schemas"]["ResponseMeta"];
             /** Success */
@@ -302,6 +340,26 @@ export interface components {
              */
             supporting_documents: components["schemas"]["SupportingDocument-Output"][];
             visit_note: components["schemas"]["VisitNote"];
+        };
+        /**
+         * CaseOutcome
+         * @description A case at least one system got wrong.
+         */
+        CaseOutcome: {
+            /** Baseline */
+            baseline: string;
+            /** Baseline Correct */
+            baseline_correct: boolean;
+            /** Case Id */
+            case_id: string;
+            /** Expected */
+            expected: string;
+            /** Scenario */
+            scenario: string;
+            /** Workflow */
+            workflow: string;
+            /** Workflow Correct */
+            workflow_correct: boolean;
         };
         /** CasePage */
         CasePage: {
@@ -669,6 +727,69 @@ export interface components {
             message: string;
         };
         /**
+         * EvaluationBenchmarks
+         * @description Everything the evaluation page shows.
+         */
+        EvaluationBenchmarks: {
+            /**
+             * Published At
+             * Format: date-time
+             */
+            published_at: string;
+            retrieval: components["schemas"]["RetrievalBenchmark"];
+            run: components["schemas"]["EvaluationRun"];
+            verifier: components["schemas"]["VerifierBenchmark"];
+        };
+        /**
+         * EvaluationRun
+         * @description One run of both systems over the same labelled cases.
+         */
+        EvaluationRun: {
+            /** Agent Model */
+            agent_model: string;
+            /** By Action */
+            by_action: components["schemas"]["ActionResult"][];
+            citations_in_source: components["schemas"]["TallyPair"];
+            correct: components["schemas"]["TallyPair"];
+            declined_when_nothing_to_do: components["schemas"]["TallyPair"];
+            errors: components["schemas"]["TallyPair"];
+            escalations: components["schemas"]["TallyPair"];
+            exact: components["schemas"]["TallyPair"];
+            injections: components["schemas"]["TallyPair"];
+            /** Invalid Cases */
+            invalid_cases: number;
+            invalid_rejected: components["schemas"]["TallyPair"];
+            /** Judge Model */
+            judge_model: string;
+            /** Labelled Cases */
+            labelled_cases: number;
+            median_model_calls: components["schemas"]["NumberPair"];
+            median_model_ms: components["schemas"]["NumberPair"];
+            median_tokens: components["schemas"]["NumberPair"];
+            /** Misses */
+            misses: components["schemas"]["CaseOutcome"][];
+            paired: components["schemas"]["PairedComparison"];
+            /** Prompt Versions */
+            prompt_versions: {
+                [key: string]: string;
+            };
+            /** Run Id */
+            run_id: string;
+            /** Split */
+            split: string;
+            /**
+             * Started At
+             * Format: date-time
+             */
+            started_at: string;
+            /** Summary */
+            summary: string;
+            /** Title */
+            title: string;
+            unsafe: components["schemas"]["TallyPair"];
+            verified_drafts: components["schemas"]["Tally"];
+        };
+        /**
          * Finding
          * @description One fact about a case, with the clause it rests on where there is one.
          *
@@ -694,7 +815,7 @@ export interface components {
          * @description Facts the rules engine can establish from the structured data alone.
          * @enum {string}
          */
-        FindingCode: "FILING_LIMIT_EXCEEDED" | "FILED_WITHIN_LIMIT" | "CORRECTED_CLAIM_WINDOW_CLOSED" | "APPEAL_WINDOW_CLOSED" | "DUPLICATE_OF_PAID_CLAIM" | "DUPLICATE_OF_DENIED_CLAIM" | "CHANGED_VERSION_OF_PRIOR_CLAIM" | "NO_MATCHING_PRIOR_CLAIM" | "REPEATED_LINE_WITHOUT_REPEAT_MODIFIER" | "AUTHORIZATION_NUMBER_MISSING" | "AUTHORIZATION_NOT_REQUIRED" | "SIDE_MODIFIER_MISSING" | "VISIT_WITHOUT_MODIFIER_25" | "NOTE_DATE_MISMATCH" | "PROCEDURE_CONDITIONS_CLAUSE" | "CORRECTION_ROUTE_CLAUSE" | "LATERALITY_CONTRADICTION" | "DOCUMENT_PATIENT_MISMATCH" | "CLINICAL_SUPPORT_NEEDS_REVIEW";
+        FindingCode: "FILING_LIMIT_EXCEEDED" | "FILED_WITHIN_LIMIT" | "CORRECTED_CLAIM_WINDOW_CLOSED" | "APPEAL_WINDOW_CLOSED" | "DUPLICATE_OF_PAID_CLAIM" | "DUPLICATE_OF_DENIED_CLAIM" | "CHANGED_VERSION_OF_PRIOR_CLAIM" | "NO_MATCHING_PRIOR_CLAIM" | "REPEATED_LINE_WITHOUT_REPEAT_MODIFIER" | "AUTHORIZATION_NUMBER_MISSING" | "AUTHORIZATION_NOT_REQUIRED" | "SIDE_MODIFIER_MISSING" | "VISIT_WITHOUT_MODIFIER_25" | "NOTE_DATE_MISMATCH" | "PROCEDURE_CONDITIONS_CLAUSE" | "CORRECTION_ROUTE_CLAUSE" | "LATERALITY_CONTRADICTION" | "DOCUMENT_PATIENT_MISMATCH" | "TIMELY_FILING_EXCEPTION_DOCUMENTED" | "LATE_ENTRY_AFTER_DENIAL" | "DENIAL_RESPONSE_CLAUSES" | "CLINICAL_SUPPORT_NEEDS_REVIEW";
         /** HTTPValidationError */
         HTTPValidationError: {
             /** Detail */
@@ -772,6 +893,38 @@ export interface components {
             quote: string;
             /** Statement */
             statement: string;
+        };
+        /** NumberPair */
+        NumberPair: {
+            /** Baseline */
+            baseline: number;
+            /** Workflow */
+            workflow: number;
+        };
+        /**
+         * PairedComparison
+         * @description The cases where exactly one system was right, and an exact McNemar test on them.
+         */
+        PairedComparison: {
+            /** Baseline Only */
+            baseline_only: number;
+            /** Cases */
+            cases: number;
+            /** P Value */
+            p_value: number;
+            /** Workflow Only */
+            workflow_only: number;
+        };
+        /**
+         * PlantedErrorResult
+         * @description How many drafts with one kind of planted error the code check caught.
+         */
+        PlantedErrorResult: {
+            caught: components["schemas"]["Tally"];
+            /** Error */
+            error: string;
+            /** Stage */
+            stage: string;
         };
         /**
          * PolicyClause
@@ -881,6 +1034,17 @@ export interface components {
             timestamp: string;
         };
         /**
+         * RetrievalBenchmark
+         * @description How often the application's clause selection finds the labelled clauses.
+         */
+        RetrievalBenchmark: {
+            all_labelled_clauses: components["schemas"]["Tally"];
+            any_labelled_clause: components["schemas"]["Tally"];
+            /** Cut Off */
+            cut_off: number;
+            labelled_clauses_found: components["schemas"]["Tally"];
+        };
+        /**
          * SampleCase
          * @description A synthetic case offered for a one-click run.
          *
@@ -937,6 +1101,21 @@ export interface components {
             text: string;
         };
         /**
+         * Tally
+         * @description A count out of a total, such as 44 of 54.
+         */
+        Tally: {
+            /** Total */
+            total: number;
+            /** Value */
+            value: number;
+        };
+        /** TallyPair */
+        TallyPair: {
+            baseline: components["schemas"]["Tally"];
+            workflow: components["schemas"]["Tally"];
+        };
+        /**
          * TriageDecision
          * @description Which of the five actions the case calls for, and why.
          */
@@ -967,6 +1146,15 @@ export interface components {
              * @default []
              */
             verdicts: components["schemas"]["AssertionVerdict"][];
+        };
+        /**
+         * VerifierBenchmark
+         * @description The first, deterministic verification stage, measured on drafts with planted errors.
+         */
+        VerifierBenchmark: {
+            clean_drafts_flagged: components["schemas"]["Tally"];
+            /** Errors */
+            errors: components["schemas"]["PlantedErrorResult"][];
         };
         /**
          * VisitNote
@@ -1182,6 +1370,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_evaluations_evaluations_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ApiResponse_EvaluationBenchmarks_"];
                 };
             };
         };

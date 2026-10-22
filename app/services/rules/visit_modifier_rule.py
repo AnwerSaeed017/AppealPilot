@@ -33,7 +33,14 @@ class VisitModifierRule(IRule):
                     "A visit is billed on the same day as a procedure without modifier "
                     "25. Whether the record supports the modifier needs review."
                 ),
-                clause_ids=(context.payer_rules.modifier_25_clause,),
+                clause_ids=tuple(
+                    clause_id
+                    for clause_id in (
+                        context.payer_rules.modifier_25_clause,
+                        context.payer_rules.modifier_25_unsupported_clause,
+                    )
+                    if clause_id
+                ),
                 line_numbers=unmarked,
             ),
         )

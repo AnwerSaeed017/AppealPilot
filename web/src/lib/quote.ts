@@ -1,8 +1,8 @@
 /**
  * Locates a citation's quote inside its source text.
  *
- * Matching follows the API's citation check: case, runs of whitespace and typography
- * (dashes, curly quotes) are ignored, so a quote that spans a line break, or that a model
+ * Matching follows the API's citation check: case, runs of whitespace, commas and
+ * typography (dashes, curly quotes) are ignored, so a quote that spans a line break, or that a model
  * wrote with a non-breaking hyphen, is still found. The result is a range in the original
  * text, ready to highlight.
  */
@@ -32,7 +32,8 @@ function normalise(source: string): Normalised {
   let pendingSpace = false;
   for (let index = 0; index < source.length; index += 1) {
     const character = source[index];
-    if (/\s/.test(character)) {
+    // A comma counts as a space, as in the API: adding or dropping one changes no word.
+    if (/\s/.test(character) || character === ",") {
       pendingSpace = text.length > 0;
       continue;
     }

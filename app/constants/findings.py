@@ -12,11 +12,20 @@ CORRECTABLE_FINDINGS: frozenset[FindingCode] = frozenset(
     }
 )
 
+# Findings that show the payer's stated reason does not hold for this claim.
+PAYER_ERROR_FINDINGS: frozenset[FindingCode] = frozenset(
+    {
+        FindingCode.AUTHORIZATION_NOT_REQUIRED,
+        FindingCode.FILED_WITHIN_LIMIT,
+    }
+)
+
 # Findings that put a case beyond what the workflow may decide. When one is present the
 # case goes to a person, whatever triage chose.
 ESCALATION_FINDINGS: frozenset[FindingCode] = frozenset(
     {
         FindingCode.LATERALITY_CONTRADICTION,
         FindingCode.DOCUMENT_PATIENT_MISMATCH,
+        FindingCode.LATE_ENTRY_AFTER_DENIAL,
     }
 )

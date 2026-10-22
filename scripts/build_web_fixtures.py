@@ -24,6 +24,7 @@ from app.schemas.case_input import CaseInput
 from app.schemas.case_status import CaseStatus
 from app.schemas.case_summary import CaseEvent, CaseSnapshot, CaseSummary, CaseView
 from app.schemas.draft import Assertion, Citation, CitationKind, Draft
+from app.schemas.evaluation import EvaluationBenchmarks
 from app.schemas.finding import Finding, FindingCode
 from app.schemas.human_decision import HumanDecision, HumanDecisionKind
 from app.schemas.note_fact import NoteFact
@@ -35,6 +36,7 @@ from app.schemas.verification_report import AssertionVerdict, VerificationReport
 TARGET = Path("web/tests/fixtures")
 SAMPLES = Path("seeders/samples")
 POLICIES = Path("seeders/policies")
+EVALUATIONS = Path("seeders/evaluations/benchmarks.json")
 AS_OF = date(2026, 10, 16)
 STARTED = datetime(2026, 10, 16, 14, 2, 11, tzinfo=UTC)
 
@@ -620,6 +622,11 @@ async def build_states() -> list[CaseState]:
     return [awaiting, unverified, running, failed, approved, rejected, bone]
 
 
+def evaluations() -> EvaluationBenchmarks:
+    """The published results, as the API serves them."""
+    return EvaluationBenchmarks.model_validate_json(EVALUATIONS.read_text(encoding="utf-8"))
+
+
 def main() -> None:
     TARGET.mkdir(parents=True, exist_ok=True)
     states = asyncio.run(build_states())
@@ -648,6 +655,8 @@ def main() -> None:
             for index, step in enumerate(steps, start=1)
         ],
     )
+    dump("evaluations.json", evaluations().model_dump(mode="json"))
+
     # The submission check the API applies, so the mock can reject what the API would.
     CaseInput.model_validate(samples[0].input.model_dump(mode="json"))
 

@@ -24,7 +24,7 @@ class SideModifierRule(IRule):
             Finding(
                 code=FindingCode.SIDE_MODIFIER_MISSING,
                 message="A procedure that requires a side modifier is billed without one.",
-                clause_ids=(rules.side_modifier_clause,),
+                clause_ids=(rules.side_modifier_clause, *rules.side_modifier_fix_clauses),
                 line_numbers=missing,
             ),
         )

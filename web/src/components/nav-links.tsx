@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 const LINKS = [
   { href: "/cases", label: "Cases" },
   { href: "/cases/new", label: "New case" },
+  { href: "/evaluation", label: "Evaluation" },
 ] as const;
 
 /** The links with the current page marked. Reads the URL, so it renders behind Suspense. */
@@ -30,7 +31,7 @@ export function NavLinkList({ pathname }: { pathname: string | null }) {
             href={link.href}
             aria-current={active ? "page" : undefined}
             className={cn(
-              "rounded-md px-3 py-1.5 text-sm font-medium text-brand-muted transition-colors hover:bg-white/10 hover:text-brand-foreground focus-visible:outline-2 focus-visible:outline-brand-foreground",
+              "rounded-md px-2 py-1.5 text-sm font-medium whitespace-nowrap sm:px-3 text-brand-muted transition-colors hover:bg-white/10 hover:text-brand-foreground focus-visible:outline-2 focus-visible:outline-brand-foreground",
               active && "bg-white/15 text-brand-foreground",
             )}
           >

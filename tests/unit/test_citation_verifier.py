@@ -140,3 +140,61 @@ async def test_typography_never_excuses_a_changed_word() -> None:
     report = CitationVerifierService(QuoteMatcher()).check(draft, TYPED_NOTE, SELECTED)
 
     assert not report.passed
+
+
+async def test_a_quote_joining_separate_sentences_is_explained() -> None:
+    # Both sentences are in the note, but not next to each other.
+    joined = "Established patient seen for right knee pain. Authorization obtained by phone"
+
+    report = await check({"kind": "DOCUMENT", "source_id": "NOTE", "quote": joined})
+
+    assert not report.passed
+    assert "joins passages that are not next to each other" in report.verdicts[0].problems[0]
+
+
+async def test_a_quote_shortened_with_an_ellipsis_is_explained() -> None:
+    shortened = "A claim denied for absent authorization ... issued before the date of service."
+
+    report = await check({"kind": "CLAUSE", "source_id": "ACME-PA-4.2", "quote": shortened})
+
+    assert "in its own citation" in report.verdicts[0].problems[0]
+
+
+async def test_an_invented_passage_gets_the_plain_message() -> None:
+    invented = (
+        "Established patient seen for right knee pain. The injection was medically necessary."
+    )
+
+    report = await check({"kind": "DOCUMENT", "source_id": "NOTE", "quote": invented})
+
+    assert report.verdicts[0].problems[0].endswith("is not in NOTE")
+
+
+async def test_an_added_or_dropped_comma_changes_no_word() -> None:
+    # The clause has "may be reconsidered when the provider supplies"; a model adds a comma.
+    report = await check(
+        {
+            "kind": "CLAUSE",
+            "source_id": "ACME-PA-4.2",
+            "quote": "may be reconsidered, when the provider supplies",
+        }
+    )
+
+    assert report.passed
+
+
+async def test_a_comma_never_excuses_a_changed_word_or_number() -> None:
+    report = await check(
+        {
+            "kind": "CLAUSE",
+            "source_id": "ACME-PA-4.2",
+            "quote": "may be reconsidered, when the provider requests",
+        },
+        {
+            "kind": "DOCUMENT",
+            "source_id": "NOTE",
+            "quote": "Authorization obtained by phone on 2026-05-30",
+        },
+    )
+
+    assert [verdict.supported for verdict in report.verdicts] == [False]

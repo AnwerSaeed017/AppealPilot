@@ -8,6 +8,8 @@ const root = fileURLToPath(new URL(".", import.meta.url));
 
 const nextConfig: NextConfig = {
   cacheComponents: true,
+  // A self-contained server in .next/standalone, which the Docker image runs.
+  output: "standalone",
   partialPrefetching: true,
   poweredByHeader: false,
   outputFileTracingRoot: root,

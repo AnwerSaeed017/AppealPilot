@@ -16,11 +16,13 @@ class RecordCheckNode(ICaseNode):
         self._clock = clock
 
     async def run(self, state: CaseState) -> dict[str, Any]:
-        found = self._record_check_service.check(state.case_input, state.note_facts)
+        found = await self._record_check_service.check(
+            state.case_input, state.note_facts, state.findings
+        )
         summary = (
             f"Found in the record: {', '.join(finding.code.value for finding in found)}."
             if found
-            else "No contradiction in the record that code can see."
+            else "Nothing in the record that code can see changes the rule findings."
         )
         return {
             "findings": (*state.findings, *found),

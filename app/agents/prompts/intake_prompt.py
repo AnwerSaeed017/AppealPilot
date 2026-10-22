@@ -32,3 +32,16 @@ USER = """Claim, denial and prior claims:
 
 Documents:
 {documents}"""
+
+# A second reading, of supporting documents the first took no fact from. It has its own
+# version, so changing it leaves the first reading's cached answers valid.
+UNREAD_VERSION = "1"
+
+UNREAD_USER = """Claim, denial and prior claims:
+{structured_data}
+
+The facts already taken came only from other documents. Read each of these documents in
+full and take every fact from them that could matter to the denial: {document_ids}.
+
+Documents:
+{documents}"""

@@ -10,6 +10,7 @@ import type {
   CasePage,
   CaseStatus,
   CaseView,
+  EvaluationBenchmarks,
   HumanDecision,
   SampleCase,
 } from "./types";
@@ -69,6 +70,11 @@ export function getCase(caseId: string): Promise<CaseView | null> {
   return orNotFound(
     call(() => client().GET("/cases/{case_id}", { params: { path: { case_id: caseId } } })),
   );
+}
+
+/** The published evaluation results, or null when none have been published. */
+export function getEvaluations(): Promise<EvaluationBenchmarks | null> {
+  return orNotFound(call(() => client().GET("/evaluations")));
 }
 
 export function listSamples(): Promise<SampleCase[]> {

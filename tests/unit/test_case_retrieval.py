@@ -160,7 +160,7 @@ async def selected_then_extended(
     """Select clauses with one search result, then extend with the facts given."""
     retrieval = service(found)
     first = await retrieval.retrieve(CASE, [finding("ACME-PA-1.1")])
-    extended = await retrieval.extend(CASE, first, facts)
+    extended = await retrieval.extend(CASE, first, facts, [])
     return [(c.clause.clause_id, c.origin) for c in extended]
 
 
@@ -179,7 +179,7 @@ async def test_only_new_clauses_are_added_and_they_are_marked_as_from_documents(
     retrieval = service(["ACME-PA-2.1", "ACME-PA-2.2"])
     first = (await retrieval.retrieve(CASE, []))[:1]
 
-    extended = await retrieval.extend(CASE, first, [fact("CLR")])
+    extended = await retrieval.extend(CASE, first, [fact("CLR")], [])
 
     assert [(c.clause.clause_id, c.origin, c.rank) for c in extended] == [
         ("ACME-PA-2.1", ClauseOrigin.SEARCH, 1),
@@ -191,5 +191,26 @@ async def test_facts_from_the_visit_note_alone_add_nothing() -> None:
     retrieval = service(["ACME-PA-2.1", "ACME-PA-2.2"])
     first = (await retrieval.retrieve(CASE, []))[:1]
 
-    assert await retrieval.extend(CASE, first, [fact("NOTE")]) == first
-    assert await retrieval.extend(CASE, first, []) == first
+    assert await retrieval.extend(CASE, first, [fact("NOTE")], []) == first
+    assert await retrieval.extend(CASE, first, [], []) == first
+
+
+async def test_clauses_cited_by_later_findings_are_added_once_as_rule_clauses() -> None:
+    retrieval = service(["ACME-PA-2.1"])
+    first = (await retrieval.retrieve(CASE, []))[:1]
+
+    extended = await retrieval.extend(
+        CASE, first, [], [finding("ACME-PA-1.2"), finding("ACME-PA-1.2", "ACME-PA-2.1")]
+    )
+
+    assert [(c.clause.clause_id, c.origin, c.rank) for c in extended] == [
+        ("ACME-PA-2.1", ClauseOrigin.SEARCH, 1),
+        ("ACME-PA-1.2", ClauseOrigin.RULE, 2),
+    ]
+
+
+async def test_a_later_finding_cannot_bring_in_another_payers_clause() -> None:
+    retrieval = service(["ACME-PA-2.1"])
+    first = (await retrieval.retrieve(CASE, []))[:1]
+
+    assert await retrieval.extend(CASE, first, [], [finding("OTHER-PA-1.1")]) == first

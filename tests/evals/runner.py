@@ -54,6 +54,8 @@ RESULTS_DIR = Path("tests/evals/results")
 RUN_FILE = "run.json"
 # Extra time after a rate limit's stated wait, so the retry lands after the window reopens.
 QUOTA_WAIT_MARGIN_SECONDS = 30
+# A quota wait is slept in steps of this length, checked against the wall clock.
+QUOTA_WAIT_STEP_SECONDS = 30
 
 logger = logging.getLogger("evals")
 
@@ -332,7 +334,19 @@ async def _run_waiting(
             if wait is None or wait > wait_for_quota_minutes * 60:
                 raise
             print(f"Rate limit reached; waiting {wait / 60:.1f} min before retrying.", flush=True)
-            await asyncio.sleep(wait + QUOTA_WAIT_MARGIN_SECONDS)
+            await _sleep_until(time.time() + wait + QUOTA_WAIT_MARGIN_SECONDS)
+
+
+async def _sleep_until(deadline: float) -> None:
+    """Sleep until a wall-clock time, in short steps.
+
+    One long sleep is measured on the event loop's clock, which does not reliably move on
+    across a machine's sleep: a run once stayed asleep for hours. Short steps checked
+    against the wall clock resume within one step of the deadline whatever happened.
+    """
+    # Polling is the point here: there is no event to wait for, only the wall clock.
+    while (remaining := deadline - time.time()) > 0:  # noqa: ASYNC110
+        await asyncio.sleep(min(remaining, QUOTA_WAIT_STEP_SECONDS))
 
 
 def _progress(case: EvalCase, system: System, outcome: SystemResult) -> str:

@@ -1,0 +1,19 @@
+# Only what the API image needs is copied; this keeps secrets and local state out of the
+# build context entirely.
+.git
+.github
+.venv
+.cache
+.mypy_cache
+.pytest_cache
+.ruff_cache
+**/__pycache__
+env
+docs
+web
+tests
+scripts
+*.db
+CLAUDE.md
+AGENTS.md
+.claude

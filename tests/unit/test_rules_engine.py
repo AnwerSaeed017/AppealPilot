@@ -6,7 +6,7 @@ Only the development cases are used here. The locked cases are for release runs.
 
 import copy
 import json
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -89,6 +89,15 @@ def base_case() -> dict[str, Any]:
 
 
 async def findings_for(
+    engine: IRulesEngineService, payload: dict[str, Any], as_of: date = AS_OF
+) -> tuple[Finding, ...]:
+    """The findings of the rules under test. The response clauses named for a reason code
+    are left out here: they have their own tests, which call the engine directly."""
+    found = await engine.evaluate(CaseInput.model_validate(payload), as_of)
+    return tuple(finding for finding in found if finding.code is not F.DENIAL_RESPONSE_CLAUSES)
+
+
+async def all_findings_for(
     engine: IRulesEngineService, payload: dict[str, Any], as_of: date = AS_OF
 ) -> tuple[Finding, ...]:
     return await engine.evaluate(CaseInput.model_validate(payload), as_of)
@@ -364,6 +373,123 @@ async def test_procedure_conditions_clause_is_not_named_for_other_denials(
     assert await findings_for(engine, base_case()) == ()
 
 
+# --- What follows from a denial ------------------------------------------------
+
+
+async def test_the_payers_response_clauses_are_named_for_a_mapped_reason_code(
+    engine: IRulesEngineService,
+) -> None:
+    payload = base_case()
+    payload["denial"]["carc_code"] = "29"
+
+    found = await all_findings_for(engine, payload)
+
+    response = [f for f in found if f.code is F.DENIAL_RESPONSE_CLAUSES]
+    assert len(response) == 1
+    assert response[0].clause_ids == ("TESS-TF-2.1", "TESS-TF-2.2", "TESS-TF-3.1")
+
+
+async def test_no_response_clauses_are_named_for_an_unmapped_reason_code(
+    engine: IRulesEngineService,
+) -> None:
+    # The base case is denied with reason code 4, which no payer maps.
+    assert F.DENIAL_RESPONSE_CLAUSES not in codes(await all_findings_for(engine, base_case()))
+
+
+async def test_medicare_names_no_response_clauses_yet(engine: IRulesEngineService) -> None:
+    case_input, as_of = medicare_sample("claim-filed-after-one-year")
+
+    assert F.DENIAL_RESPONSE_CLAUSES not in codes(await engine.evaluate(case_input, as_of))
+
+
+async def test_a_missing_side_cites_how_and_by_when_to_correct_it(
+    engine: IRulesEngineService,
+) -> None:
+    payload = base_case()
+    payload["claim"]["lines"][0]["modifiers"] = []
+
+    found = await all_findings_for(engine, payload)
+
+    side = next(f for f in found if f.code is F.SIDE_MODIFIER_MISSING)
+    assert side.clause_ids == ("TESS-MOD-2.1", "TESS-MOD-2.2", "TESS-MOD-4.1")
+
+
+async def test_a_visit_without_modifier_25_cites_when_the_record_does_not_support_it(
+    engine: IRulesEngineService,
+) -> None:
+    found = await all_findings_for(engine, with_visit(base_case(), []))
+
+    visit = next(f for f in found if f.code is F.VISIT_WITHOUT_MODIFIER_25)
+    assert visit.clause_ids == ("TESS-MOD-1.1", "TESS-MOD-1.3")
+
+
+# --- Late entries -------------------------------------------------------------
+
+
+def with_document(payload: dict[str, Any], kind: str, document_date: str) -> dict[str, Any]:
+    payload["supporting_documents"] = [
+        {
+            "document_id": "DOC1",
+            "kind": kind,
+            "document_date": document_date,
+            "text": "Late entry. At the visit the McMurray test was positive.",
+        }
+    ]
+    return payload
+
+
+async def test_an_addendum_dated_after_the_denial_is_a_late_entry(
+    engine: IRulesEngineService,
+) -> None:
+    # The base case is denied on 2026-06-20.
+    found = await findings_for(engine, with_document(base_case(), "ADDENDUM", "2026-06-23"))
+
+    late = [finding for finding in found if finding.code is F.LATE_ENTRY_AFTER_DENIAL]
+    assert len(late) == 1
+    assert late[0].clause_ids == ("TESS-DOC-1.2",)
+    assert "DOC1 (2026-06-23)" in late[0].message
+
+
+@pytest.mark.parametrize("document_date", ["2026-06-05", "2026-06-20"])
+async def test_an_addendum_written_by_the_denial_date_is_not_flagged(
+    engine: IRulesEngineService, document_date: str
+) -> None:
+    payload = with_document(base_case(), "ADDENDUM", document_date)
+
+    assert F.LATE_ENTRY_AFTER_DENIAL not in codes(await findings_for(engine, payload))
+
+
+@pytest.mark.parametrize("kind", ["CLEARINGHOUSE_REPORT", "PRIMARY_PAYER_EOB", "DIAGNOSTIC_REPORT"])
+async def test_other_documents_dated_after_the_denial_are_not_late_entries(
+    engine: IRulesEngineService, kind: str
+) -> None:
+    payload = with_document(base_case(), kind, "2026-06-23")
+
+    assert F.LATE_ENTRY_AFTER_DENIAL not in codes(await findings_for(engine, payload))
+
+
+async def test_a_medicare_late_entry_cites_the_program_integrity_manual(
+    engine: IRulesEngineService,
+) -> None:
+    case_input, as_of = medicare_sample("bone-density-repeat-on-steroids")
+    payload = case_input.model_dump(mode="json")
+    denied = date.fromisoformat(payload["denial"]["denial_date"])
+    payload["supporting_documents"].append(
+        {
+            "document_id": "ADD1",
+            "kind": "ADDENDUM",
+            "document_date": (denied + timedelta(days=2)).isoformat(),
+            "text": "Late entry.",
+        }
+    )
+
+    found = await findings_for(engine, payload, as_of + timedelta(days=2))
+
+    late = [finding for finding in found if finding.code is F.LATE_ENTRY_AFTER_DENIAL]
+    assert len(late) == 1
+    assert late[0].clause_ids == ("MEDICARE-DOC-1.1",)
+
+
 # --- The development cases ----------------------------------------------------
 
 # For each scenario, the exact set of findings the rules must produce. Scenarios the
@@ -398,13 +524,23 @@ EXPECTED_BY_SCENARIO: dict[str, set[F]] = {
     "diagnosis-denial-wrong": {F.CLINICAL_SUPPORT_NEEDS_REVIEW, F.PROCEDURE_CONDITIONS_CLAUSE},
     "knee-mri-findings": {F.CLINICAL_SUPPORT_NEEDS_REVIEW, F.PROCEDURE_CONDITIONS_CLAUSE},
     "knee-mri-undated": {F.CLINICAL_SUPPORT_NEEDS_REVIEW, F.PROCEDURE_CONDITIONS_CLAUSE},
-    "knee-mri-late-addendum": {F.CLINICAL_SUPPORT_NEEDS_REVIEW, F.PROCEDURE_CONDITIONS_CLAUSE},
+    "knee-mri-late-addendum": {
+        F.CLINICAL_SUPPORT_NEEDS_REVIEW,
+        F.PROCEDURE_CONDITIONS_CLAUSE,
+        F.LATE_ENTRY_AFTER_DENIAL,
+    },
     "lumbar-mri-equivocal": {F.CLINICAL_SUPPORT_NEEDS_REVIEW, F.PROCEDURE_CONDITIONS_CLAUSE},
     "cosmetic-removal": {F.CLINICAL_SUPPORT_NEEDS_REVIEW, F.PROCEDURE_CONDITIONS_CLAUSE},
     "hyaluronan-met": {F.PROCEDURE_CONDITIONS_CLAUSE},
     "hyaluronan-undated": {F.PROCEDURE_CONDITIONS_CLAUSE},
     "airway-pressure-no-report": {F.PROCEDURE_CONDITIONS_CLAUSE},
     "therapy-progress": {F.PROCEDURE_CONDITIONS_CLAUSE},
+}
+
+# The reason codes each payer maps to the clauses on what follows from the denial.
+RESPONSE_CODES: dict[str, set[str]] = {
+    payer["payer_id"]: set(payer["rules"].get("denial_response_clauses", {}))
+    for payer in json.loads(Path("seeders/policies/payers.json").read_text(encoding="utf-8"))
 }
 
 DEV_CASES = [
@@ -428,7 +564,11 @@ async def test_rules_find_exactly_the_expected_facts(
 ) -> None:
     found = await engine.evaluate(case.case_input(), case.as_of_date)
 
-    assert codes(found) == EXPECTED_BY_SCENARIO[scenario_family(case)]
+    # The response clauses are named exactly when the payer maps the denial's reason code.
+    expected = set(EXPECTED_BY_SCENARIO[scenario_family(case)])
+    if case.input["denial"]["carc_code"] in RESPONSE_CODES[case.input["claim"]["payer_id"]]:
+        expected.add(F.DENIAL_RESPONSE_CLAUSES)
+    assert codes(found) == expected
 
 
 @pytest.mark.parametrize("case", DEV_CASES, ids=lambda case: case.case_id)

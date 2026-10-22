@@ -23,20 +23,27 @@ class DocumentRetrievalNode(ICaseNode):
 
     async def run(self, state: CaseState) -> dict[str, Any]:
         clauses = await self._case_retrieval_service.extend(
-            state.case_input, state.clauses, state.note_facts
+            state.case_input, state.clauses, state.note_facts, state.findings
         )
-        added = [item.clause.clause_id for item in clauses if item.origin is ClauseOrigin.DOCUMENT]
+        before = {item.clause.clause_id for item in state.clauses}
+        new = [item for item in clauses if item.clause.clause_id not in before]
+        cited = [item.clause.clause_id for item in new if item.origin is ClauseOrigin.RULE]
+        added = [item.clause.clause_id for item in new if item.origin is ClauseOrigin.DOCUMENT]
+        parts = [
+            f"Clauses cited by the record checks: {', '.join(cited)}." if cited else "",
+            (
+                f"Clauses added from the supporting documents: {', '.join(added)}."
+                if added
+                else "No clauses added from the supporting documents."
+            ),
+        ]
         return {
             "clauses": clauses,
             "audit": (
                 AuditEvent(
                     step=STEP_DOCUMENT_RETRIEVAL,
                     at=self._clock.now(),
-                    summary=(
-                        f"Clauses added from the supporting documents: {', '.join(added)}."
-                        if added
-                        else "No clauses added from the supporting documents."
-                    ),
+                    summary=" ".join(part for part in parts if part),
                 ),
             ),
         }

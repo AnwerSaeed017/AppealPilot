@@ -1,7 +1,13 @@
 import json
 from collections.abc import Sequence
 
-from app.constants.agents import DOCUMENT_CLOSE, DOCUMENT_LINE, DOCUMENT_OPEN, NOTHING
+from app.constants.agents import (
+    DOCUMENT_CLOSE,
+    DOCUMENT_LINE,
+    DOCUMENT_OPEN,
+    LINE_NUMBER_MARKER,
+    NOTHING,
+)
 from app.interfaces.utilities.case_renderer import ICaseRenderer
 from app.schemas.case_clause import CaseClause
 from app.schemas.case_input import CaseInput
@@ -16,6 +22,9 @@ class CaseRenderer(ICaseRenderer):
             mode="json", include={"claim", "denial", "prior_claims"}, exclude_none=True
         )
         return json.dumps(data, indent=2)
+
+    def without_line_numbers(self, quote: str) -> str:
+        return LINE_NUMBER_MARKER.sub("", quote).strip()
 
     def documents(self, case_input: CaseInput) -> str:
         documents = [(VISIT_NOTE_DOCUMENT_ID, "VISIT_NOTE", case_input.visit_note.text)]

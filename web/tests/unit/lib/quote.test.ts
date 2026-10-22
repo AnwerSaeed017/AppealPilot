@@ -37,6 +37,17 @@ describe("findQuote", () => {
     expect(findQuote("glucose 180-240 mg/dL", "glucose 180\u2013250 mg/dL")).toBeNull();
   });
 
+  it("ignores a comma a model adds or drops, as the API's citation check does", () => {
+    const source = "include, but are not limited to the following circumstances";
+    const range = findQuote(source, "not limited to, the following");
+
+    expect(source.slice(range!.start, range!.end)).toBe("not limited to the following");
+  });
+
+  it("still rejects a changed number next to a comma", () => {
+    expect(findQuote("a total of 3,000 visits", "a total of 3,500 visits")).toBeNull();
+  });
+
   it("returns null when the words are not in the source", () => {
     expect(findQuote("covered every 23 months", "covered every 12 months")).toBeNull();
   });

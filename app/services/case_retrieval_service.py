@@ -67,7 +67,9 @@ class CaseRetrievalService(ICaseRetrievalService):
         case_input: CaseInput,
         clauses: Sequence[CaseClause],
         note_facts: Sequence[NoteFact],
+        findings: Sequence[Finding],
     ) -> tuple[CaseClause, ...]:
+        clauses = await self._with_cited_clauses(case_input, clauses, findings)
         # A billing note or a report can show that a different clause applies than the
         # denial suggests. The visit note is left out: it describes the care, and the
         # first search already covers the procedure.
@@ -85,6 +87,27 @@ class CaseRetrievalService(ICaseRetrievalService):
             CaseClause(clause=clause, rank=len(clauses) + position, origin=ClauseOrigin.DOCUMENT)
             for position, clause in enumerate(new[: self._document_additions], start=1)
         )
+        return (*clauses, *added)
+
+    async def _with_cited_clauses(
+        self, case_input: CaseInput, clauses: Sequence[CaseClause], findings: Sequence[Finding]
+    ) -> tuple[CaseClause, ...]:
+        """The clauses, plus any of the payer's clauses a finding cites that are missing."""
+        payer_clauses = await self._policy_repository.list_clauses(case_input.claim.payer_id)
+        by_id = {clause.clause_id: clause for clause in payer_clauses}
+        selected = {item.clause.clause_id for item in clauses}
+        added: list[CaseClause] = []
+        for finding in findings:
+            for clause_id in finding.clause_ids:
+                if clause_id in by_id and clause_id not in selected:
+                    selected.add(clause_id)
+                    added.append(
+                        CaseClause(
+                            clause=by_id[clause_id],
+                            rank=len(clauses) + len(added) + 1,
+                            origin=ClauseOrigin.RULE,
+                        )
+                    )
         return (*clauses, *added)
 
     def _with_neighbours(

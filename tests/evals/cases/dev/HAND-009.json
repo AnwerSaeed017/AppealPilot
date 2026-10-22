@@ -1,0 +1,88 @@
+{
+  "case_id": "HAND-009",
+  "split": "dev",
+  "scenario": "addendum-before-denial",
+  "tags": [
+    "addendum",
+    "late_entry_control"
+  ],
+  "as_of_date": "2026-05-25",
+  "input": {
+    "claim": {
+      "claim_id": "CLM-2026-235120",
+      "payer_id": "TESS",
+      "member_id": "TESS-14427335",
+      "patient_id": "PT-188201",
+      "patient_date_of_birth": "1961-11-13",
+      "billing_provider_npi": "1979670514",
+      "place_of_service": "11",
+      "submitted_date": "2026-05-01",
+      "diagnosis_codes": [
+        "M25.562"
+      ],
+      "lines": [
+        {
+          "line_number": 1,
+          "service_date": "2026-04-27",
+          "procedure_code": "73721",
+          "modifiers": [
+            "LT"
+          ],
+          "diagnosis_pointers": [
+            1
+          ],
+          "units": 1,
+          "charge_amount": "620.00"
+        }
+      ],
+      "total_charge": "620.00",
+      "prior_authorization_number": "AU-702238"
+    },
+    "denial": {
+      "claim_id": "CLM-2026-235120",
+      "payer_id": "TESS",
+      "group_code": "CO",
+      "carc_code": "50",
+      "rarc_codes": [],
+      "denial_date": "2026-05-15",
+      "denied_line_numbers": [],
+      "denied_amount": "620.00",
+      "payer_remark": "Service not deemed medically necessary on the information submitted."
+    },
+    "visit_note": {
+      "encounter_date": "2026-04-27",
+      "text": "Date of visit: 2026-04-27\nPatient: 64-year-old man, established patient.\nChief complaint: left knee pain after an injury\nHistory: twisted the left knee 7 days ago; it has locked twice since.\nExamination: medial joint-line tenderness; McMurray test positive.\nAssessment: suspected medial meniscal tear.\nPlan: MRI of the left knee without contrast.\nElectronically signed by the treating clinician, 2026-04-27."
+    },
+    "supporting_documents": [
+      {
+        "document_id": "ADD",
+        "kind": "ADDENDUM",
+        "document_date": "2026-04-29",
+        "text": "Addendum, 2026-04-29, by the treating clinician.\nClarification: the examination recorded on 2026-04-27 was of the left knee only."
+      }
+    ]
+  },
+  "expected": {
+    "action": "APPEAL_WITH_EVIDENCE",
+    "acceptable_alternatives": [
+      "ESCALATE_TO_HUMAN"
+    ],
+    "relevant_clause_ids": [
+      "TESS-COV-2.1",
+      "TESS-APL-3.1"
+    ],
+    "supporting_evidence": [
+      {
+        "document_id": "NOTE",
+        "line_number": 4
+      },
+      {
+        "document_id": "NOTE",
+        "line_number": 5
+      }
+    ],
+    "missing_evidence": [],
+    "expected_correction": null,
+    "rationale": "The visit note itself records locking, joint-line tenderness and a positive McMurray test, which meets the policy's examination criterion. The addendum was written two days after the visit, long before the denial, and adds no finding. Nothing about it is a late entry."
+  }
+}

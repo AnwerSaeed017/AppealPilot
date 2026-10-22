@@ -31,6 +31,15 @@ class FindingCode(StrEnum):
     # a person must decide: the workflow escalates whatever triage would have chosen.
     LATERALITY_CONTRADICTION = "LATERALITY_CONTRADICTION"
     DOCUMENT_PATIENT_MISMATCH = "DOCUMENT_PATIENT_MISMATCH"
+    # A document in the record shows an exception to the filing limit applies: a
+    # secondary claim sent in time after the primary payer's statement, or a report that
+    # the payer accepted the claim within the limit. Found after the record is read.
+    TIMELY_FILING_EXCEPTION_DOCUMENTED = "TIMELY_FILING_EXCEPTION_DOCUMENTED"
+    # A clinical addendum dated after the denial. Whether it may be used is a compliance
+    # question, so the workflow escalates whatever triage would have chosen.
+    LATE_ENTRY_AFTER_DENIAL = "LATE_ENTRY_AFTER_DENIAL"
+    # Names the payer's clauses on what follows from this denial reason code.
+    DENIAL_RESPONSE_CLAUSES = "DENIAL_RESPONSE_CLAUSES"
     # Raised for denials that turn on clinical support, which no rule decides.
     CLINICAL_SUPPORT_NEEDS_REVIEW = "CLINICAL_SUPPORT_NEEDS_REVIEW"
 

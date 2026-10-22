@@ -1,6 +1,6 @@
 import json
 from collections.abc import AsyncIterator
-from datetime import date
+from datetime import UTC, date, datetime
 from pathlib import Path
 from typing import Any
 
@@ -33,7 +33,8 @@ async def test_every_sample_is_listed_dated_today_and_valid(client: httpx.AsyncC
     samples = response.json()["data"]
     assert len(samples) == len(list(SAMPLES_DIR.glob("*.json"))) == 3
     for sample in samples:
-        assert sample["as_of_date"] == date.today().isoformat()
+        # The service's clock is UTC, which near midnight is not the local date.
+        assert sample["as_of_date"] == datetime.now(UTC).date().isoformat()
         CaseInput.model_validate(sample["input"])  # still a valid submission
 
 

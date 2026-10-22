@@ -31,6 +31,13 @@ class ICaseRenderer(ABC):
         """The extracted facts, each with its source line and quote."""
 
     @abstractmethod
+    def without_line_numbers(self, quote: str) -> str:
+        """A quote with any line numbers this renderer added to the documents removed.
+
+        The numbers are not part of the source; a model sometimes copies them.
+        """
+
+    @abstractmethod
     def fact_pointers(self, note_facts: Sequence[NoteFact]) -> str:
         """The extracted facts, each with its source document and line but not its quote.
 

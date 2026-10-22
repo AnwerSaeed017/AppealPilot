@@ -1,0 +1,72 @@
+# The whole stack on one host: PostgreSQL, a one-off migration, the API and the web app.
+#
+#   docker compose up --build
+#
+# Model keys and other settings are read from env/.env when it exists (it is never
+# committed); DATABASE_URL is set here to the compose database. Open http://localhost:3000.
+
+name: appealpilot
+
+x-api-settings: &api-settings
+  env_file:
+    - path: env/.env
+      required: false
+  environment:
+    DATABASE_URL: postgresql://appealpilot:${POSTGRES_PASSWORD:-appealpilot}@db:5432/appealpilot
+    ENVIRONMENT: production
+
+services:
+  db:
+    image: postgres:16.6-alpine
+    environment:
+      POSTGRES_USER: appealpilot
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-appealpilot}
+      POSTGRES_DB: appealpilot
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U appealpilot"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  # Tables are created only by migrations; the API refuses to start on an unmigrated
+  # database. This runs once per deployment, before the API.
+  migrate:
+    build: .
+    image: appealpilot-api
+    <<: *api-settings
+    command: ["alembic", "upgrade", "head"]
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: "no"
+
+  api:
+    image: appealpilot-api
+    <<: *api-settings
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    volumes:
+      - model-cache:/app/.cache
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+  web:
+    build: web
+    image: appealpilot-web
+    environment:
+      API_URL: http://api:8000
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+volumes:
+  db-data:
+  model-cache:

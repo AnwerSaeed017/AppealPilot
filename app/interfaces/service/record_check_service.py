@@ -8,5 +8,7 @@ from app.schemas.note_fact import NoteFact
 
 class IRecordCheckService(ABC):
     @abstractmethod
-    def check(self, case_input: CaseInput, facts: Sequence[NoteFact]) -> tuple[Finding, ...]:
+    async def check(
+        self, case_input: CaseInput, facts: Sequence[NoteFact], findings: Sequence[Finding]
+    ) -> tuple[Finding, ...]:
         """Run every record check on the facts whose quotes are found in their documents."""

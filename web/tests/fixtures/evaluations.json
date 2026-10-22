@@ -1,0 +1,435 @@
+{
+  "published_at": "2026-10-22T01:41:50.098696Z",
+  "run": {
+    "run_id": "dev-full-v3",
+    "title": "Development set: workflow against a single prompt",
+    "summary": "All 60 development cases on both systems: the full workflow and a single prompt with the same model and the same policy clauses.",
+    "started_at": "2026-10-18T17:54:36.468270Z",
+    "split": "dev",
+    "agent_model": "groq/openai/gpt-oss-120b",
+    "judge_model": "gemini/gemini-3.1-flash-lite",
+    "prompt_versions": {
+      "intake": "3",
+      "triage": "3",
+      "writer": "3",
+      "judge": "1",
+      "baseline": "1"
+    },
+    "labelled_cases": 54,
+    "invalid_cases": 6,
+    "correct": {
+      "workflow": {
+        "value": 44,
+        "total": 54
+      },
+      "baseline": {
+        "value": 40,
+        "total": 54
+      }
+    },
+    "exact": {
+      "workflow": {
+        "value": 42,
+        "total": 54
+      },
+      "baseline": {
+        "value": 37,
+        "total": 54
+      }
+    },
+    "unsafe": {
+      "workflow": {
+        "value": 3,
+        "total": 54
+      },
+      "baseline": {
+        "value": 7,
+        "total": 54
+      }
+    },
+    "escalations": {
+      "workflow": {
+        "value": 5,
+        "total": 7
+      },
+      "baseline": {
+        "value": 1,
+        "total": 7
+      }
+    },
+    "declined_when_nothing_to_do": {
+      "workflow": {
+        "value": 11,
+        "total": 12
+      },
+      "baseline": {
+        "value": 11,
+        "total": 12
+      }
+    },
+    "injections": {
+      "workflow": {
+        "value": 3,
+        "total": 4
+      },
+      "baseline": {
+        "value": 3,
+        "total": 4
+      }
+    },
+    "invalid_rejected": {
+      "workflow": {
+        "value": 6,
+        "total": 6
+      },
+      "baseline": {
+        "value": 6,
+        "total": 6
+      }
+    },
+    "errors": {
+      "workflow": {
+        "value": 0,
+        "total": 54
+      },
+      "baseline": {
+        "value": 0,
+        "total": 54
+      }
+    },
+    "citations_in_source": {
+      "workflow": {
+        "value": 292,
+        "total": 292
+      },
+      "baseline": {
+        "value": 189,
+        "total": 223
+      }
+    },
+    "verified_drafts": {
+      "value": 53,
+      "total": 54
+    },
+    "median_tokens": {
+      "workflow": 15398.0,
+      "baseline": 2963.0
+    },
+    "median_model_calls": {
+      "workflow": 6.0,
+      "baseline": 1.0
+    },
+    "median_model_ms": {
+      "workflow": 13147.0,
+      "baseline": 2881.0
+    },
+    "paired": {
+      "cases": 54,
+      "workflow_only": 7,
+      "baseline_only": 3,
+      "p_value": 0.34375
+    },
+    "by_action": [
+      {
+        "expected": "CORRECT_AND_RESUBMIT",
+        "workflow": {
+          "value": 11,
+          "total": 11
+        },
+        "baseline": {
+          "value": 10,
+          "total": 11
+        }
+      },
+      {
+        "expected": "APPEAL_WITH_EVIDENCE",
+        "workflow": {
+          "value": 10,
+          "total": 14
+        },
+        "baseline": {
+          "value": 13,
+          "total": 14
+        }
+      },
+      {
+        "expected": "REQUEST_DOCUMENTATION",
+        "workflow": {
+          "value": 9,
+          "total": 10
+        },
+        "baseline": {
+          "value": 8,
+          "total": 10
+        }
+      },
+      {
+        "expected": "NO_ACTION",
+        "workflow": {
+          "value": 9,
+          "total": 12
+        },
+        "baseline": {
+          "value": 8,
+          "total": 12
+        }
+      },
+      {
+        "expected": "ESCALATE_TO_HUMAN",
+        "workflow": {
+          "value": 5,
+          "total": 7
+        },
+        "baseline": {
+          "value": 1,
+          "total": 7
+        }
+      },
+      {
+        "expected": "INVALID_INPUT",
+        "workflow": {
+          "value": 6,
+          "total": 6
+        },
+        "baseline": {
+          "value": 6,
+          "total": 6
+        }
+      }
+    ],
+    "misses": [
+      {
+        "case_id": "DEV-001",
+        "scenario": "pa-conflict-1",
+        "expected": "ESCALATE_TO_HUMAN",
+        "workflow": "ESCALATE_TO_HUMAN",
+        "workflow_correct": true,
+        "baseline": "REQUEST_DOCUMENTATION",
+        "baseline_correct": false
+      },
+      {
+        "case_id": "DEV-006",
+        "scenario": "filing-exceeded-2",
+        "expected": "NO_ACTION",
+        "workflow": "NO_ACTION",
+        "workflow_correct": true,
+        "baseline": "REQUEST_DOCUMENTATION",
+        "baseline_correct": false
+      },
+      {
+        "case_id": "DEV-012",
+        "scenario": "pa-never-requested-1",
+        "expected": "NO_ACTION",
+        "workflow": "REQUEST_DOCUMENTATION",
+        "workflow_correct": false,
+        "baseline": "REQUEST_DOCUMENTATION",
+        "baseline_correct": false
+      },
+      {
+        "case_id": "DEV-013",
+        "scenario": "modifier-25-borderline-2",
+        "expected": "ESCALATE_TO_HUMAN",
+        "workflow": "REQUEST_DOCUMENTATION",
+        "workflow_correct": false,
+        "baseline": "CORRECT_AND_RESUBMIT",
+        "baseline_correct": false
+      },
+      {
+        "case_id": "DEV-014",
+        "scenario": "knee-mri-late-addendum-1",
+        "expected": "ESCALATE_TO_HUMAN",
+        "workflow": "REQUEST_DOCUMENTATION",
+        "workflow_correct": false,
+        "baseline": "APPEAL_WITH_EVIDENCE",
+        "baseline_correct": false
+      },
+      {
+        "case_id": "DEV-020",
+        "scenario": "side-contradiction-1",
+        "expected": "ESCALATE_TO_HUMAN",
+        "workflow": "ESCALATE_TO_HUMAN",
+        "workflow_correct": true,
+        "baseline": "CORRECT_AND_RESUBMIT",
+        "baseline_correct": false
+      },
+      {
+        "case_id": "DEV-021",
+        "scenario": "pa-no-record-1",
+        "expected": "APPEAL_WITH_EVIDENCE",
+        "workflow": "CORRECT_AND_RESUBMIT",
+        "workflow_correct": false,
+        "baseline": "APPEAL_WITH_EVIDENCE",
+        "baseline_correct": true
+      },
+      {
+        "case_id": "DEV-030",
+        "scenario": "pa-never-requested-2",
+        "expected": "NO_ACTION",
+        "workflow": "REQUEST_DOCUMENTATION",
+        "workflow_correct": false,
+        "baseline": "REQUEST_DOCUMENTATION",
+        "baseline_correct": false
+      },
+      {
+        "case_id": "DEV-032",
+        "scenario": "diagnosis-pointer-2",
+        "expected": "CORRECT_AND_RESUBMIT",
+        "workflow": "CORRECT_AND_RESUBMIT",
+        "workflow_correct": true,
+        "baseline": "NO_ACTION",
+        "baseline_correct": false
+      },
+      {
+        "case_id": "DEV-033",
+        "scenario": "filing-primary-payer-1",
+        "expected": "APPEAL_WITH_EVIDENCE",
+        "workflow": "NO_ACTION",
+        "workflow_correct": false,
+        "baseline": "APPEAL_WITH_EVIDENCE",
+        "baseline_correct": true
+      },
+      {
+        "case_id": "DEV-036",
+        "scenario": "lumbar-mri-equivocal-1",
+        "expected": "ESCALATE_TO_HUMAN",
+        "workflow": "REQUEST_DOCUMENTATION",
+        "workflow_correct": true,
+        "baseline": "APPEAL_WITH_EVIDENCE",
+        "baseline_correct": false
+      },
+      {
+        "case_id": "DEV-038",
+        "scenario": "filing-sent-only-1",
+        "expected": "REQUEST_DOCUMENTATION",
+        "workflow": "REQUEST_DOCUMENTATION",
+        "workflow_correct": true,
+        "baseline": "APPEAL_WITH_EVIDENCE",
+        "baseline_correct": false
+      },
+      {
+        "case_id": "DEV-043",
+        "scenario": "filing-accepted-1",
+        "expected": "APPEAL_WITH_EVIDENCE",
+        "workflow": "NO_ACTION",
+        "workflow_correct": false,
+        "baseline": "ESCALATE_TO_HUMAN",
+        "baseline_correct": false
+      },
+      {
+        "case_id": "DEV-045",
+        "scenario": "note-other-patient-1",
+        "expected": "ESCALATE_TO_HUMAN",
+        "workflow": "ESCALATE_TO_HUMAN",
+        "workflow_correct": true,
+        "baseline": "REQUEST_DOCUMENTATION",
+        "baseline_correct": false
+      },
+      {
+        "case_id": "DEV-046",
+        "scenario": "knee-mri-undated-1",
+        "expected": "REQUEST_DOCUMENTATION",
+        "workflow": "APPEAL_WITH_EVIDENCE",
+        "workflow_correct": false,
+        "baseline": "APPEAL_WITH_EVIDENCE",
+        "baseline_correct": false
+      },
+      {
+        "case_id": "HAND-002",
+        "scenario": "secondary-payer-cob-timely-filing",
+        "expected": "APPEAL_WITH_EVIDENCE",
+        "workflow": "NO_ACTION",
+        "workflow_correct": false,
+        "baseline": "APPEAL_WITH_EVIDENCE",
+        "baseline_correct": true
+      },
+      {
+        "case_id": "HAND-005",
+        "scenario": "injection-modifier25-phantom-work",
+        "expected": "NO_ACTION",
+        "workflow": "CORRECT_AND_RESUBMIT",
+        "workflow_correct": false,
+        "baseline": "CORRECT_AND_RESUBMIT",
+        "baseline_correct": false
+      }
+    ]
+  },
+  "verifier": {
+    "errors": [
+      {
+        "error": "CLAUSE_NOT_SELECTED",
+        "stage": "code",
+        "caught": {
+          "value": 6,
+          "total": 6
+        }
+      },
+      {
+        "error": "CONCLUSION_ADDED",
+        "stage": "judge",
+        "caught": {
+          "value": 0,
+          "total": 6
+        }
+      },
+      {
+        "error": "FABRICATED_QUOTE",
+        "stage": "code",
+        "caught": {
+          "value": 6,
+          "total": 6
+        }
+      },
+      {
+        "error": "HEDGE_REMOVED",
+        "stage": "judge",
+        "caught": {
+          "value": 0,
+          "total": 6
+        }
+      },
+      {
+        "error": "INVENTED_CLAUSE",
+        "stage": "code",
+        "caught": {
+          "value": 6,
+          "total": 6
+        }
+      },
+      {
+        "error": "NUMBER_CHANGED_IN_ASSERTION",
+        "stage": "judge",
+        "caught": {
+          "value": 0,
+          "total": 6
+        }
+      },
+      {
+        "error": "NUMBER_CHANGED_IN_QUOTE",
+        "stage": "code",
+        "caught": {
+          "value": 6,
+          "total": 6
+        }
+      }
+    ],
+    "clean_drafts_flagged": {
+      "value": 0,
+      "total": 14
+    }
+  },
+  "retrieval": {
+    "cut_off": 5,
+    "any_labelled_clause": {
+      "value": 56,
+      "total": 57
+    },
+    "all_labelled_clauses": {
+      "value": 35,
+      "total": 57
+    },
+    "labelled_clauses_found": {
+      "value": 87,
+      "total": 111
+    }
+  }
+}

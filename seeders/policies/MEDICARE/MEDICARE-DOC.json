@@ -1,0 +1,14 @@
+{
+  "policy_id": "MEDICARE-DOC",
+  "payer_id": "MEDICARE",
+  "title": "Amendments, Corrections and Delayed Entries in Medical Documentation",
+  "effective_from": "2024-06-10",
+  "clauses": [
+    {
+      "clause_id": "MEDICARE-DOC-1.1",
+      "section_heading": "Medicare Program Integrity Manual, Chapter 3, §3.3.2.5 Amendments, Corrections and Delayed Entries in Medical Documentation",
+      "text": "All services provided to beneficiaries are expected to be documented in the medical record at the time they are rendered. Occasionally, certain entries related to services provided may not be properly documented. In this scenario, the documentation may need to be amended, corrected, or entered after rendering the service. The date and author of any amendment, correction or delayed entry should be identifiable, and the change/addenda should be clearly and permanently denoted. Contractors shall review any amendment, correction, or delayed entry in accordance with section 3.3.2.4 of this chapter.",
+      "source_url": "https://www.cms.gov/Regulations-and-Guidance/Guidance/Manuals/downloads/pim83c03.pdf"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+# Railway: the API service (root directory "/"). The web app has its own file,
+# web/railway.toml. Settings are service variables; see README "Deployment".
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
+watchPatterns = ["app/**", "alembic/**", "alembic.ini", "seeders/**", "pyproject.toml", "uv.lock", "Dockerfile", "railway.toml"]
+
+[deploy]
+# Tables are created only by migrations, before the new version takes traffic.
+preDeployCommand = ["alembic upgrade head"]
+healthcheckPath = "/health/ready"
+healthcheckTimeout = 120
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 5

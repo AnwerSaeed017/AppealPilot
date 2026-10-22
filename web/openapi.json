@@ -1,6 +1,30 @@
 {
   "components": {
     "schemas": {
+      "ActionResult": {
+        "additionalProperties": false,
+        "description": "How often each system was right on the cases labelled with one action.",
+        "properties": {
+          "baseline": {
+            "$ref": "#/components/schemas/Tally"
+          },
+          "expected": {
+            "minLength": 1,
+            "title": "Expected",
+            "type": "string"
+          },
+          "workflow": {
+            "$ref": "#/components/schemas/Tally"
+          }
+        },
+        "required": [
+          "expected",
+          "workflow",
+          "baseline"
+        ],
+        "title": "ActionResult",
+        "type": "object"
+      },
       "ApiError": {
         "additionalProperties": false,
         "properties": {
@@ -102,6 +126,44 @@
           "meta"
         ],
         "title": "ApiResponse[CaseView]",
+        "type": "object"
+      },
+      "ApiResponse_EvaluationBenchmarks_": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/EvaluationBenchmarks"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "error": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ApiError"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/ResponseMeta"
+          },
+          "success": {
+            "title": "Success",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "success",
+          "meta"
+        ],
+        "title": "ApiResponse[EvaluationBenchmarks]",
         "type": "object"
       },
       "ApiResponse_LivenessStatus_": {
@@ -416,6 +478,56 @@
           "visit_note"
         ],
         "title": "CaseInput",
+        "type": "object"
+      },
+      "CaseOutcome": {
+        "additionalProperties": false,
+        "description": "A case at least one system got wrong.",
+        "properties": {
+          "baseline": {
+            "minLength": 1,
+            "title": "Baseline",
+            "type": "string"
+          },
+          "baseline_correct": {
+            "title": "Baseline Correct",
+            "type": "boolean"
+          },
+          "case_id": {
+            "minLength": 1,
+            "title": "Case Id",
+            "type": "string"
+          },
+          "expected": {
+            "minLength": 1,
+            "title": "Expected",
+            "type": "string"
+          },
+          "scenario": {
+            "minLength": 1,
+            "title": "Scenario",
+            "type": "string"
+          },
+          "workflow": {
+            "minLength": 1,
+            "title": "Workflow",
+            "type": "string"
+          },
+          "workflow_correct": {
+            "title": "Workflow Correct",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "case_id",
+          "scenario",
+          "expected",
+          "workflow",
+          "workflow_correct",
+          "baseline",
+          "baseline_correct"
+        ],
+        "title": "CaseOutcome",
         "type": "object"
       },
       "CasePage": {
@@ -1312,6 +1424,178 @@
         "title": "ErrorDetail",
         "type": "object"
       },
+      "EvaluationBenchmarks": {
+        "additionalProperties": false,
+        "description": "Everything the evaluation page shows.",
+        "properties": {
+          "published_at": {
+            "format": "date-time",
+            "title": "Published At",
+            "type": "string"
+          },
+          "retrieval": {
+            "$ref": "#/components/schemas/RetrievalBenchmark"
+          },
+          "run": {
+            "$ref": "#/components/schemas/EvaluationRun"
+          },
+          "verifier": {
+            "$ref": "#/components/schemas/VerifierBenchmark"
+          }
+        },
+        "required": [
+          "published_at",
+          "run",
+          "verifier",
+          "retrieval"
+        ],
+        "title": "EvaluationBenchmarks",
+        "type": "object"
+      },
+      "EvaluationRun": {
+        "additionalProperties": false,
+        "description": "One run of both systems over the same labelled cases.",
+        "properties": {
+          "agent_model": {
+            "minLength": 1,
+            "title": "Agent Model",
+            "type": "string"
+          },
+          "by_action": {
+            "items": {
+              "$ref": "#/components/schemas/ActionResult"
+            },
+            "title": "By Action",
+            "type": "array"
+          },
+          "citations_in_source": {
+            "$ref": "#/components/schemas/TallyPair"
+          },
+          "correct": {
+            "$ref": "#/components/schemas/TallyPair"
+          },
+          "declined_when_nothing_to_do": {
+            "$ref": "#/components/schemas/TallyPair"
+          },
+          "errors": {
+            "$ref": "#/components/schemas/TallyPair"
+          },
+          "escalations": {
+            "$ref": "#/components/schemas/TallyPair"
+          },
+          "exact": {
+            "$ref": "#/components/schemas/TallyPair"
+          },
+          "injections": {
+            "$ref": "#/components/schemas/TallyPair"
+          },
+          "invalid_cases": {
+            "minimum": 0.0,
+            "title": "Invalid Cases",
+            "type": "integer"
+          },
+          "invalid_rejected": {
+            "$ref": "#/components/schemas/TallyPair"
+          },
+          "judge_model": {
+            "minLength": 1,
+            "title": "Judge Model",
+            "type": "string"
+          },
+          "labelled_cases": {
+            "minimum": 0.0,
+            "title": "Labelled Cases",
+            "type": "integer"
+          },
+          "median_model_calls": {
+            "$ref": "#/components/schemas/NumberPair"
+          },
+          "median_model_ms": {
+            "$ref": "#/components/schemas/NumberPair"
+          },
+          "median_tokens": {
+            "$ref": "#/components/schemas/NumberPair"
+          },
+          "misses": {
+            "items": {
+              "$ref": "#/components/schemas/CaseOutcome"
+            },
+            "title": "Misses",
+            "type": "array"
+          },
+          "paired": {
+            "$ref": "#/components/schemas/PairedComparison"
+          },
+          "prompt_versions": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Prompt Versions",
+            "type": "object"
+          },
+          "run_id": {
+            "minLength": 1,
+            "title": "Run Id",
+            "type": "string"
+          },
+          "split": {
+            "minLength": 1,
+            "title": "Split",
+            "type": "string"
+          },
+          "started_at": {
+            "format": "date-time",
+            "title": "Started At",
+            "type": "string"
+          },
+          "summary": {
+            "minLength": 1,
+            "title": "Summary",
+            "type": "string"
+          },
+          "title": {
+            "minLength": 1,
+            "title": "Title",
+            "type": "string"
+          },
+          "unsafe": {
+            "$ref": "#/components/schemas/TallyPair"
+          },
+          "verified_drafts": {
+            "$ref": "#/components/schemas/Tally"
+          }
+        },
+        "required": [
+          "run_id",
+          "title",
+          "summary",
+          "started_at",
+          "split",
+          "agent_model",
+          "judge_model",
+          "prompt_versions",
+          "labelled_cases",
+          "invalid_cases",
+          "correct",
+          "exact",
+          "unsafe",
+          "escalations",
+          "declined_when_nothing_to_do",
+          "injections",
+          "invalid_rejected",
+          "errors",
+          "citations_in_source",
+          "verified_drafts",
+          "median_tokens",
+          "median_model_calls",
+          "median_model_ms",
+          "paired",
+          "by_action",
+          "misses"
+        ],
+        "title": "EvaluationRun",
+        "type": "object"
+      },
       "Finding": {
         "additionalProperties": false,
         "description": "One fact about a case, with the clause it rests on where there is one.\n\nA finding states what is true of the data. It never recommends an action.",
@@ -1372,6 +1656,9 @@
           "CORRECTION_ROUTE_CLAUSE",
           "LATERALITY_CONTRADICTION",
           "DOCUMENT_PATIENT_MISMATCH",
+          "TIMELY_FILING_EXCEPTION_DOCUMENTED",
+          "LATE_ENTRY_AFTER_DENIAL",
+          "DENIAL_RESPONSE_CLAUSES",
           "CLINICAL_SUPPORT_NEEDS_REVIEW"
         ],
         "title": "FindingCode",
@@ -1557,6 +1844,88 @@
           "quote"
         ],
         "title": "NoteFact",
+        "type": "object"
+      },
+      "NumberPair": {
+        "additionalProperties": false,
+        "properties": {
+          "baseline": {
+            "minimum": 0.0,
+            "title": "Baseline",
+            "type": "number"
+          },
+          "workflow": {
+            "minimum": 0.0,
+            "title": "Workflow",
+            "type": "number"
+          }
+        },
+        "required": [
+          "workflow",
+          "baseline"
+        ],
+        "title": "NumberPair",
+        "type": "object"
+      },
+      "PairedComparison": {
+        "additionalProperties": false,
+        "description": "The cases where exactly one system was right, and an exact McNemar test on them.",
+        "properties": {
+          "baseline_only": {
+            "minimum": 0.0,
+            "title": "Baseline Only",
+            "type": "integer"
+          },
+          "cases": {
+            "minimum": 0.0,
+            "title": "Cases",
+            "type": "integer"
+          },
+          "p_value": {
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "P Value",
+            "type": "number"
+          },
+          "workflow_only": {
+            "minimum": 0.0,
+            "title": "Workflow Only",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "cases",
+          "workflow_only",
+          "baseline_only",
+          "p_value"
+        ],
+        "title": "PairedComparison",
+        "type": "object"
+      },
+      "PlantedErrorResult": {
+        "additionalProperties": false,
+        "description": "How many drafts with one kind of planted error the code check caught.",
+        "properties": {
+          "caught": {
+            "$ref": "#/components/schemas/Tally"
+          },
+          "error": {
+            "minLength": 1,
+            "title": "Error",
+            "type": "string"
+          },
+          "stage": {
+            "minLength": 1,
+            "title": "Stage",
+            "type": "string"
+          }
+        },
+        "required": [
+          "error",
+          "stage",
+          "caught"
+        ],
+        "title": "PlantedErrorResult",
         "type": "object"
       },
       "PolicyClause": {
@@ -1803,6 +2172,34 @@
         "title": "ResponseMeta",
         "type": "object"
       },
+      "RetrievalBenchmark": {
+        "additionalProperties": false,
+        "description": "How often the application's clause selection finds the labelled clauses.",
+        "properties": {
+          "all_labelled_clauses": {
+            "$ref": "#/components/schemas/Tally"
+          },
+          "any_labelled_clause": {
+            "$ref": "#/components/schemas/Tally"
+          },
+          "cut_off": {
+            "minimum": 1.0,
+            "title": "Cut Off",
+            "type": "integer"
+          },
+          "labelled_clauses_found": {
+            "$ref": "#/components/schemas/Tally"
+          }
+        },
+        "required": [
+          "cut_off",
+          "any_labelled_clause",
+          "all_labelled_clauses",
+          "labelled_clauses_found"
+        ],
+        "title": "RetrievalBenchmark",
+        "type": "object"
+      },
       "SampleCase": {
         "additionalProperties": false,
         "description": "A synthetic case offered for a one-click run.\n\n`as_of_date` is the day the case was written for: its deadlines are set against it.",
@@ -1908,6 +2305,45 @@
         "title": "SupportingDocument",
         "type": "object"
       },
+      "Tally": {
+        "additionalProperties": false,
+        "description": "A count out of a total, such as 44 of 54.",
+        "properties": {
+          "total": {
+            "minimum": 0.0,
+            "title": "Total",
+            "type": "integer"
+          },
+          "value": {
+            "minimum": 0.0,
+            "title": "Value",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "value",
+          "total"
+        ],
+        "title": "Tally",
+        "type": "object"
+      },
+      "TallyPair": {
+        "additionalProperties": false,
+        "properties": {
+          "baseline": {
+            "$ref": "#/components/schemas/Tally"
+          },
+          "workflow": {
+            "$ref": "#/components/schemas/Tally"
+          }
+        },
+        "required": [
+          "workflow",
+          "baseline"
+        ],
+        "title": "TallyPair",
+        "type": "object"
+      },
       "TriageDecision": {
         "additionalProperties": false,
         "description": "Which of the five actions the case calls for, and why.",
@@ -1991,6 +2427,28 @@
           }
         },
         "title": "VerificationReport",
+        "type": "object"
+      },
+      "VerifierBenchmark": {
+        "additionalProperties": false,
+        "description": "The first, deterministic verification stage, measured on drafts with planted errors.",
+        "properties": {
+          "clean_drafts_flagged": {
+            "$ref": "#/components/schemas/Tally"
+          },
+          "errors": {
+            "items": {
+              "$ref": "#/components/schemas/PlantedErrorResult"
+            },
+            "title": "Errors",
+            "type": "array"
+          }
+        },
+        "required": [
+          "errors",
+          "clean_drafts_flagged"
+        ],
+        "title": "VerifierBenchmark",
         "type": "object"
       },
       "VisitNote": {
@@ -2313,6 +2771,28 @@
         "summary": "Retry Case",
         "tags": [
           "cases"
+        ]
+      }
+    },
+    "/evaluations": {
+      "get": {
+        "description": "The published comparison of the workflow with a single-prompt baseline.",
+        "operationId": "get_evaluations_evaluations_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse_EvaluationBenchmarks_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Evaluations",
+        "tags": [
+          "evaluations"
         ]
       }
     },

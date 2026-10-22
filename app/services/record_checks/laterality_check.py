@@ -1,10 +1,8 @@
-from collections.abc import Sequence
-
 from app.constants.record_checks import SIDE_WORD
 from app.interfaces.service.record_check import IRecordCheck
-from app.schemas.case_input import CaseInput
 from app.schemas.finding import Finding, FindingCode
 from app.schemas.note_fact import NoteFact
+from app.schemas.record_check_context import RecordCheckContext
 
 
 class LateralityCheck(IRecordCheck):
@@ -16,9 +14,9 @@ class LateralityCheck(IRecordCheck):
     person.
     """
 
-    def check(self, case_input: CaseInput, facts: Sequence[NoteFact]) -> tuple[Finding, ...]:
+    def check(self, context: RecordCheckContext) -> tuple[Finding, ...]:
         first_by_side: dict[str, NoteFact] = {}
-        for fact in facts:
+        for fact in context.facts:
             for side in sorted({match.lower() for match in SIDE_WORD.findall(fact.quote)}):
                 first_by_side.setdefault(side, fact)
         if len(first_by_side) < 2:

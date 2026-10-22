@@ -16,12 +16,14 @@ function load(name) {
 
 let views;
 let samples;
+let evaluations;
 let runSteps;
 let created;
 
 function reset() {
   views = new Map(load("cases.json").map((view) => [view.summary.case_id, view]));
   samples = load("samples.json");
+  evaluations = load("evaluations.json");
   runSteps = load("run-events.json");
   created = 0;
 }
@@ -175,6 +177,9 @@ const server = createServer(async (request, response) => {
     }
     if (request.method === "GET" && url.pathname === "/health/live") {
       return send(response, 200, envelope({ status: "ok" }));
+    }
+    if (request.method === "GET" && url.pathname === "/evaluations") {
+      return send(response, 200, envelope(evaluations));
     }
     if (request.method === "GET" && url.pathname === "/samples") {
       return send(response, 200, envelope(samples));

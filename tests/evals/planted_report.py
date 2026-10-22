@@ -8,6 +8,7 @@ needs a real model to measure.
 
 import json
 from collections import Counter
+from dataclasses import dataclass
 from pathlib import Path
 
 from app.schemas.case_clause import CaseClause, ClauseOrigin
@@ -41,7 +42,19 @@ def code_check_flags(item: PlantedDraft, clauses: dict[str, PolicyClause]) -> se
     return {verdict.assertion_index for verdict in report.failures()}
 
 
-def main() -> None:
+@dataclass(frozen=True)
+class PlantedSummary:
+    caught: dict[str, int]
+    total: dict[str, int]
+    controls: int
+    false_alarms: int
+    stray_flags: int
+
+    def stage(self, error: str) -> str:
+        return "code" if PlantedError(error) in CODE_CATCHABLE else "judge"
+
+
+def measure() -> PlantedSummary:
     clauses = load_clauses()
     caught: Counter[str] = Counter()
     total: Counter[str] = Counter()
@@ -56,15 +69,19 @@ def main() -> None:
         total[item.error.value] += 1
         caught[item.error.value] += item.planted_assertion_index in flagged
         stray_flags += bool(flagged - {item.planted_assertion_index})
+    return PlantedSummary(dict(caught), dict(total), controls, false_alarms, stray_flags)
 
+
+def main() -> None:
+    summary = measure()
     print("| Planted error | Stage that should catch it | Caught by the code check |")
     print("|---|---|---|")
-    for item_error, count in total.items():
-        stage = "code" if PlantedError(item_error) in CODE_CATCHABLE else "judge"
-        print(f"| {item_error} | {stage} | {caught[item_error]} of {count} |")
+    for item_error, count in summary.total.items():
+        caught = summary.caught.get(item_error, 0)
+        print(f"| {item_error} | {summary.stage(item_error)} | {caught} of {count} |")
     print()
-    print(f"Clean controls wrongly flagged: {false_alarms} of {controls}")
-    print(f"Planted drafts with a second, unplanted assertion flagged: {stray_flags}")
+    print(f"Clean controls wrongly flagged: {summary.false_alarms} of {summary.controls}")
+    print(f"Planted drafts with a second, unplanted assertion flagged: {summary.stray_flags}")
 
 
 if __name__ == "__main__":

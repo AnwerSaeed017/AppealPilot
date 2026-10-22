@@ -23,10 +23,12 @@ class ICaseRetrievalService(ABC):
         case_input: CaseInput,
         clauses: Sequence[CaseClause],
         note_facts: Sequence[NoteFact],
+        findings: Sequence[Finding],
     ) -> tuple[CaseClause, ...]:
-        """The clauses already selected, plus a few found from the supporting documents.
+        """The clauses already selected, plus those the record made relevant.
 
-        Searches the payer's clauses with the facts extracted from the supporting
-        documents and appends the best new matches. Returns the clauses unchanged when
-        no fact comes from a supporting document.
+        First appends any clause a finding cites that is not yet selected: findings made
+        after the record was read can cite clauses the first search had no reason to
+        find. Then searches the payer's clauses with the facts extracted from the
+        supporting documents and appends the best new matches.
         """

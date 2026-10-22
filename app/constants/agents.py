@@ -1,5 +1,7 @@
 """Fixed values of the case workflow: step names, model tasks and limits."""
 
+import re
+
 from app.schemas.llm import ReasoningEffort
 
 # Step names. They are the graph's node names and the `step` of each audit event.
@@ -44,10 +46,17 @@ MAX_OUTPUT_TOKENS: dict[str, int] = {
     TASK_JUDGE: 1200,
 }
 
+# A passage split from a joined quote is kept as its own citation only if it has at
+# least this many words; shorter pieces ("(2)", "Exception.") prove nothing alone.
+MIN_WORDS_IN_SPLIT_PASSAGE = 3
+
 # How documents are shown to a model: delimited, with every line numbered.
 DOCUMENT_OPEN = '<document id="{document_id}" kind="{kind}">'
 DOCUMENT_LINE = "{number}| {text}"
 DOCUMENT_CLOSE = "</document>"
+# The line number DOCUMENT_LINE puts before each line, wherever a model copied it into a
+# quote: at the start of the quote or of a line, or after a space where lines were joined.
+LINE_NUMBER_MARKER = re.compile(r"^\d{1,4}\| ?|(?<=\s)\d{1,4}\| ", re.MULTILINE)
 
 # Shown in place of an empty list.
 NOTHING = "(none)"

@@ -1,11 +1,9 @@
-from collections.abc import Sequence
 from datetime import date
 
 from app.constants.record_checks import AGE_TOLERANCE_YEARS, STATED_AGE
 from app.interfaces.service.record_check import IRecordCheck
-from app.schemas.case_input import CaseInput
 from app.schemas.finding import Finding, FindingCode
-from app.schemas.note_fact import NoteFact
+from app.schemas.record_check_context import RecordCheckContext
 
 
 def _age_on(birth: date, day: date) -> int:
@@ -19,9 +17,10 @@ class PatientAgeCheck(IRecordCheck):
     that says otherwise is most likely about someone else.
     """
 
-    def check(self, case_input: CaseInput, facts: Sequence[NoteFact]) -> tuple[Finding, ...]:
+    def check(self, context: RecordCheckContext) -> tuple[Finding, ...]:
+        case_input = context.case_input
         age = _age_on(case_input.claim.patient_date_of_birth, case_input.visit_note.encounter_date)
-        for fact in facts:
+        for fact in context.facts:
             for stated in STATED_AGE.findall(fact.quote):
                 if abs(int(stated) - age) > AGE_TOLERANCE_YEARS:
                     return (

@@ -39,6 +39,13 @@
       "duplicate_paid_clause": "TESS-DUP-1.2",
       "duplicate_replacement_clause": "TESS-DUP-2.2",
       "duplicate_denied_clause": "TESS-DUP-3.1",
+      "primary_payer_filing_days": 90,
+      "primary_payer_filing_clause": "TESS-TF-2.1",
+      "filing_proof_clause": "TESS-TF-2.2",
+      "late_entry_clause": "TESS-DOC-1.2",
+      "side_modifier_fix_clauses": ["TESS-MOD-2.2", "TESS-MOD-4.1"],
+      "modifier_25_unsupported_clause": "TESS-MOD-1.3",
+      "denial_response_clauses": {"29": ["TESS-TF-2.1", "TESS-TF-2.2", "TESS-TF-3.1"], "197": ["TESS-PA-3.1", "TESS-PA-3.2", "TESS-PA-3.3", "TESS-PA-4.1"], "50": ["TESS-APL-3.1"], "11": ["TESS-COV-1.2"], "252": ["TESS-DOC-1.1", "TESS-DOC-3.1"]},
       "procedure_clauses": {
         "73721": "TESS-COV-2.1",
         "72148": "TESS-COV-2.2",
@@ -79,6 +86,13 @@
       "repeat_modifier_clause": "QUIL-DUP-2.1",
       "duplicate_paid_clause": "QUIL-DUP-1.2",
       "duplicate_replacement_clause": "QUIL-DUP-2.2",
+      "primary_payer_filing_days": 60,
+      "primary_payer_filing_clause": "QUIL-TF-2.1",
+      "filing_proof_clause": "QUIL-TF-2.2",
+      "late_entry_clause": "QUIL-DOC-1.2",
+      "side_modifier_fix_clauses": ["QUIL-MOD-2.2", "QUIL-MOD-3.1"],
+      "modifier_25_unsupported_clause": "QUIL-MOD-1.2",
+      "denial_response_clauses": {"29": ["QUIL-TF-2.1", "QUIL-TF-2.2", "QUIL-TF-3.1"], "197": ["QUIL-PA-2.2", "QUIL-PA-3.1", "QUIL-PA-3.2", "QUIL-PA-4.1", "QUIL-APL-2.2"], "50": ["QUIL-APL-3.1"], "11": ["QUIL-COV-1.2"], "252": ["QUIL-DOC-1.1", "QUIL-DOC-3.1"]},
       "procedure_clauses": {
         "73721": "QUIL-COV-2.1",
         "72148": "QUIL-COV-2.2",
@@ -166,6 +180,7 @@
       "duplicate_replacement_clause": "MEDICARE-APL-2.1",
       "duplicate_denied_clause": "MEDICARE-DUP-3.1",
       "correction_route_clause": "MEDICARE-APL-2.3",
+      "late_entry_clause": "MEDICARE-DOC-1.1",
       "procedure_clauses": {
         "77080": "MEDICARE-COV-1.2",
         "77085": "MEDICARE-COV-1.2"

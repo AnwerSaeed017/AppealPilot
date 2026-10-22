@@ -24,7 +24,9 @@ class FilingLimitRule(IRule):
                     code=FindingCode.FILING_LIMIT_EXCEEDED,
                     message=(
                         f"The claim's submission date is {days} days after the service; "
-                        f"the filing limit is {limit} days."
+                        f"the filing limit is {limit} days. The denial stands unless the "
+                        "record documents an exception the payer's policy lists, or proof "
+                        "that an earlier filing was accepted in time."
                     ),
                     clause_ids=(clause_id,),
                 ),

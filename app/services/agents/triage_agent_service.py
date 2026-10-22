@@ -3,16 +3,15 @@ from datetime import date
 
 from app.agents.prompts import triage_prompt
 from app.constants.agents import MAX_OUTPUT_TOKENS, STEP_TRIAGE
-from app.constants.findings import ESCALATION_FINDINGS
 from app.interfaces.service.structured_llm_service import IStructuredLlmService
 from app.interfaces.service.triage_agent_service import ITriageAgentService
+from app.interfaces.service.triage_guard import ITriageGuard
 from app.interfaces.utilities.case_renderer import ICaseRenderer
 from app.schemas.audit_event import AgentResult
 from app.schemas.case_clause import CaseClause
 from app.schemas.case_input import CaseInput
 from app.schemas.finding import Finding
 from app.schemas.note_fact import NoteFact
-from app.schemas.recommended_action import RecommendedAction
 from app.schemas.triage_decision import TriageDecision
 
 
@@ -22,14 +21,21 @@ class TriageAgentService(ITriageAgentService):
     Only the intake step reads the documents directly, so text in a note cannot address
     the step that chooses the action.
 
-    A finding in `ESCALATION_FINDINGS` sends the case to a person whatever the model
-    chose: those are established by code, and a model has been seen to argue its way
-    past a contradiction it was shown.
+    The model's choice is then checked by code against the findings (`ITriageGuard`): a
+    choice that contradicts what code established is replaced, and the model's own
+    choice and reasons are kept after the code's.
     """
 
-    def __init__(self, structured_llm: IStructuredLlmService, renderer: ICaseRenderer) -> None:
+    def __init__(
+        self,
+        structured_llm: IStructuredLlmService,
+        renderer: ICaseRenderer,
+        guards: Sequence[ITriageGuard],
+    ) -> None:
         self._structured_llm = structured_llm
         self._renderer = renderer
+        # In order of priority; the first guard that replaces the decision decides.
+        self._guards = tuple(guards)
 
     async def decide(
         self,
@@ -53,22 +59,8 @@ class TriageAgentService(ITriageAgentService):
             output_type=TriageDecision,
             max_output_tokens=MAX_OUTPUT_TOKENS[STEP_TRIAGE],
         )
-        blocking = [finding for finding in findings if finding.code in ESCALATION_FINDINGS]
-        if not blocking or result.output.action is RecommendedAction.ESCALATE_TO_HUMAN:
-            return result
-        reasons = tuple(
-            f"Escalated by code: {finding.code.value}. {finding.message}" for finding in blocking
-        )
-        return result.model_copy(
-            update={
-                "output": TriageDecision(
-                    action=RecommendedAction.ESCALATE_TO_HUMAN,
-                    confidence=result.output.confidence,
-                    reasons=(
-                        *reasons,
-                        f"The model had chosen {result.output.action.value}:",
-                        *result.output.reasons,
-                    ),
-                )
-            }
-        )
+        for guard in self._guards:
+            replacement = guard.check(findings, result.output)
+            if replacement is not None:
+                return result.model_copy(update={"output": replacement})
+        return result

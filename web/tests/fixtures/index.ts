@@ -3,9 +3,10 @@
  * schemas. Rebuild them after a schema change; never edit the JSON by hand.
  */
 import type { CaseEvent } from "./types";
-import type { CaseState, CaseView, SampleCase } from "@/lib/api/types";
+import type { CaseState, CaseView, EvaluationBenchmarks, SampleCase } from "@/lib/api/types";
 
 import cases from "./cases.json";
+import evaluationData from "./evaluations.json";
 import runEvents from "./run-events.json";
 import samples from "./samples.json";
 
@@ -23,4 +24,8 @@ export function caseState(caseId: string): CaseState {
   const state = caseView(caseId).state;
   if (!state) throw new Error(`Fixture ${caseId} has no state`);
   return state;
+}
+
+export function evaluations(): EvaluationBenchmarks {
+  return evaluationData as unknown as EvaluationBenchmarks;
 }

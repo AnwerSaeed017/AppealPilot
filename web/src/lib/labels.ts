@@ -102,6 +102,9 @@ const FINDING_LABELS: Partial<Record<FindingCode, string>> = {
   CORRECTION_ROUTE_CLAUSE: "How the payer takes a correction",
   LATERALITY_CONTRADICTION: "The record names both sides of the body",
   DOCUMENT_PATIENT_MISMATCH: "A document describes a different patient",
+  LATE_ENTRY_AFTER_DENIAL: "An addendum was written after the denial",
+  TIMELY_FILING_EXCEPTION_DOCUMENTED: "A document shows a filing-limit exception applies",
+  DENIAL_RESPONSE_CLAUSES: "The payer's clauses on what follows from this denial",
   CLINICAL_SUPPORT_NEEDS_REVIEW: "Clinical support needs review",
 };
 

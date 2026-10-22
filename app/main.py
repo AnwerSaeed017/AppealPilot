@@ -13,7 +13,7 @@ from app.containers.container import Container
 from app.core.exception_handlers import register_exception_handlers
 from app.interfaces.service.health_service import IHealthService
 from app.interfaces.utilities.response_builder import IResponseBuilder
-from app.routers import case_router, sample_router
+from app.routers import case_router, evaluation_router, sample_router
 from app.schemas.api_response import ApiResponse
 from app.schemas.health import LivenessStatus, ReadinessStatus
 
@@ -79,8 +79,9 @@ async def ready(
 
 app.include_router(case_router.router)
 app.include_router(sample_router.router)
+app.include_router(evaluation_router.router)
 
-container.wire(modules=[__name__, case_router, sample_router])
+container.wire(modules=[__name__, case_router, sample_router, evaluation_router])
 
 
 if __name__ == "__main__":

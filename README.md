@@ -25,8 +25,9 @@ independently, and stops at a human reviewer before anything is sent.
                           duplicates, modifiers, authorization requirements
  2. Policy retrieval .... selects the payer's applicable clauses (BM25 + rule citations)
  3. Record review ....... extracts facts from the record, each with an exact quote
- 4. Record checks ....... code checks the verified facts for contradictions
-                          (laterality, patient identity) that force escalation
+ 4. Record checks ....... code checks the record once read: contradictions and
+                          wrong-patient documents (forcing escalation), and
+                          documented timely-filing exceptions
  5. Triage .............. chooses one of five actions, with reasons
  6. Drafting ............ writes the response; every assertion carries citations
  7. Verification ........ code confirms each quote exists in its source, then an
@@ -144,6 +145,7 @@ never calls the API directly.
 | `POST` | `/cases/{id}/decision` | Approve, edit and approve, or reject (with a reason) |
 | `POST` | `/cases/{id}/retry` | Resume a failed case from its last completed step |
 | `GET` | `/samples` | Ready-to-run sample cases, re-dated to today |
+| `GET` | `/evaluations` | Published evaluation results: workflow against baseline, per run |
 
 Every response uses one envelope: `{ success, data, error, meta }`.
 
@@ -183,6 +185,26 @@ uv run python -m tests.evals.report --run NAME     # summarise a run
   how many errors the verifier catches.
 - Metrics include action accuracy, unsafe actions, escalation recall, citation accuracy,
   model calls and cost per case.
+
+Results on all 60 development cases (run `dev-full-v3`):
+
+| Measure | Workflow | Baseline |
+|---|---|---|
+| Right action (or an accepted alternative) | 44 of 54 | 40 of 54 |
+| Unsafe actions (a correction or appeal the label does not support) | 3 of 54 | 7 of 54 |
+| Cases needing a person that were escalated | 5 of 7 | 1 of 7 |
+| Quotes found word for word in the cited source | 292 of 292 | 189 of 223 |
+| Median tokens per case | 15,398 | 2,963 |
+
+The accuracy difference alone is not statistically significant at this sample size
+(exact McNemar test, p = 0.34); the safety and citation differences are the point. The
+code stage of the verifier catches 24 of 24 planted citation errors with no false alarms
+on 14 correct drafts. The web app's **Evaluation** page shows every measure, the cases
+either system got wrong, and the history of runs. Results are published with:
+
+```
+uv run python -m scripts.publish_evaluation --run NAME --title "..." --summary "..."
+```
 
 ## Project structure
 

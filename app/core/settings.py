@@ -37,6 +37,7 @@ class Settings(BaseSettings):
 
     policies_dir: Path = Path("seeders/policies")
     samples_dir: Path = Path("seeders/samples")
+    evaluations_file: Path = Path("seeders/evaluations/benchmarks.json")
     retrieval_limit: int = Field(default=5, ge=1, le=20)
     retrieval_include_visit_note: bool = False
     # How many of the top clauses bring the next clause of their section with them.
