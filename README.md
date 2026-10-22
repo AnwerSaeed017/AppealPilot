@@ -108,6 +108,11 @@ GEMINI_API_KEY=...
 GROQ_REQUEST_TOKEN_LIMIT=8000
 ```
 
+Several keys for one provider can be given as a comma-separated list
+(`GROQ_API_KEYS=key1,key2,key3`, likewise `GEMINI_API_KEYS`). Calls stay on the key that
+last worked; when it is rate-limited or rejected, the next key is used at once, and only
+when every key is limited does the service wait. Keys are never logged.
+
 All settings and their defaults are defined in `app/core/settings.py`.
 
 ### 2. Run the API

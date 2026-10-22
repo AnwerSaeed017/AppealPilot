@@ -10,8 +10,19 @@ from app.clients.llm.groq_llm_client import GroqLlmClient
 from app.clients.llm.mock_llm_client import MockLlmClient
 from app.clients.llm.ollama_llm_client import OllamaLlmClient
 from app.clients.llm.retrying_llm_client import RetryingLlmClient
+from app.clients.llm.rotating_llm_client import RotatingLlmClient
 from app.core.settings import Settings
 from app.interfaces.clients.llm_client import ILlmClient
+
+
+def _one_per_key(
+    client_class: type[GroqLlmClient] | type[GeminiLlmClient],
+    keys: tuple[str, ...],
+    **options: Any,
+) -> RotatingLlmClient:
+    """One client per API key, behind a client that moves to the next key when one is
+    rate-limited or rejected."""
+    return RotatingLlmClient([client_class(api_key=key, **options) for key in keys])
 
 
 def _llm_for_role(
@@ -26,7 +37,10 @@ def _llm_for_role(
 
     Real providers are wrapped twice: retries on the inside, the disk cache on the
     outside, so a cached answer never waits and a retried call is cached once it
-    succeeds. The mock is wrapped in neither: its answers are scripted and instant.
+    succeeds. Groq and Gemini sit behind a rotating client inside the retries: a key
+    that is rate-limited or rejected gives way to the next at once, and only when every
+    key is limited does the retrying client wait. The mock is wrapped in neither: its
+    answers are scripted and instant.
     """
 
     def cached(inner: providers.Provider[ILlmClient]) -> providers.Singleton[CachingLlmClient]:
@@ -49,9 +63,10 @@ def _llm_for_role(
         mock=mock_llm,
         groq=cached(
             providers.Singleton(
+                _one_per_key,
                 GroqLlmClient,
+                keys=settings.provided.provider_keys.call("groq"),
                 http_client=http_client,
-                api_key=settings.provided.groq_api_key.get_secret_value.call(),
                 base_url=settings.provided.groq_base_url,
                 model=model,
                 timeout_seconds=timeout_seconds,
@@ -60,9 +75,10 @@ def _llm_for_role(
         ),
         gemini=cached(
             providers.Singleton(
+                _one_per_key,
                 GeminiLlmClient,
+                keys=settings.provided.provider_keys.call("gemini"),
                 http_client=http_client,
-                api_key=settings.provided.gemini_api_key.get_secret_value.call(),
                 base_url=settings.provided.gemini_base_url,
                 model=model,
                 timeout_seconds=timeout_seconds,

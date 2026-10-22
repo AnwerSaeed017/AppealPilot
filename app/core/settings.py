@@ -1,8 +1,8 @@
 from pathlib import Path
-from typing import Literal, Self
+from typing import Annotated, Literal, Self
 
 from pydantic import Field, SecretStr, field_validator, model_validator
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings import BaseSettings, NoDecode, SettingsConfigDict
 from sqlalchemy.engine import make_url
 
 from app.constants.database import POSTGRES_SCHEME, POSTGRES_SQLALCHEMY_DRIVER
@@ -59,6 +59,10 @@ class Settings(BaseSettings):
     # keep the allowance each step asks for.
     groq_request_token_limit: int | None = Field(default=None, gt=0)
     gemini_api_key: SecretStr | None = None
+    # More keys for the same provider, comma-separated. When one is rate-limited or
+    # rejected, the next is used at once; GROQ_API_KEY alone is the single-key setup.
+    groq_api_keys: Annotated[tuple[SecretStr, ...], NoDecode] = ()
+    gemini_api_keys: Annotated[tuple[SecretStr, ...], NoDecode] = ()
     gemini_base_url: str = "https://generativelanguage.googleapis.com/v1beta"
     ollama_base_url: str = "http://localhost:11434"
 
@@ -98,21 +102,38 @@ class Settings(BaseSettings):
             return None
         return value
 
+    @field_validator("groq_api_keys", "gemini_api_keys", mode="before")
+    @classmethod
+    def _comma_separated(cls, value: object) -> object:
+        """`GROQ_API_KEYS=key1,key2,key3`; blanks and repeats are dropped."""
+        if isinstance(value, str):
+            return tuple(dict.fromkeys(part.strip() for part in value.split(",") if part.strip()))
+        return value
+
+    def provider_keys(self, provider: str) -> tuple[str, ...]:
+        """Every key for a provider, the list first, then the single key, no repeats."""
+        listed = {"groq": self.groq_api_keys, "gemini": self.gemini_api_keys}.get(provider, ())
+        single = {"groq": self.groq_api_key, "gemini": self.gemini_api_key}.get(provider)
+        keys = [key.get_secret_value() for key in listed]
+        if single is not None:
+            keys.append(single.get_secret_value())
+        return tuple(dict.fromkeys(keys))
+
     @model_validator(mode="after")
     def _check_llm_roles(self) -> Self:
         roles = (
             ("AGENT", self.agent_llm_provider, self.agent_llm_model),
             ("JUDGE", self.judge_llm_provider, self.judge_llm_model),
         )
-        api_keys = {"groq": self.groq_api_key, "gemini": self.gemini_api_key}
         for role, provider, model in roles:
             if provider == "mock":
                 continue
             if model is None:
                 raise ValueError(f"{role}_LLM_MODEL is required when the provider is {provider}")
-            if provider in api_keys and api_keys[provider] is None:
+            if provider in ("groq", "gemini") and not self.provider_keys(provider):
                 raise ValueError(
-                    f"{provider.upper()}_API_KEY is required when {role}_LLM_PROVIDER is {provider}"
+                    f"{provider.upper()}_API_KEY or {provider.upper()}_API_KEYS is required "
+                    f"when {role}_LLM_PROVIDER is {provider}"
                 )
 
         # A judge on the same provider as the agents grades its own work and

@@ -36,7 +36,7 @@ def test_real_provider_requires_a_model() -> None:
 
 
 def test_hosted_provider_requires_its_api_key() -> None:
-    with pytest.raises(ValidationError, match="GROQ_API_KEY is required"):
+    with pytest.raises(ValidationError, match="GROQ_API_KEY or GROQ_API_KEYS is required"):
         build(agent_llm_provider="groq", agent_llm_model="some-model", judge_llm_provider="mock")
 
 
@@ -71,3 +71,37 @@ def test_api_keys_are_not_exposed_by_repr() -> None:
     )
 
     assert "super-secret-value" not in repr(settings)
+
+
+def test_several_keys_are_read_from_one_comma_separated_setting() -> None:
+    settings = build(
+        agent_llm_provider="groq",
+        agent_llm_model="some-model",
+        judge_llm_provider="mock",
+        groq_api_keys=" key-1, key-2 ,,key-1, key-3 ",
+    )
+
+    assert settings.provider_keys("groq") == ("key-1", "key-2", "key-3")
+
+
+def test_the_single_key_joins_the_list_after_it_without_repeats() -> None:
+    settings = build(
+        agent_llm_provider="groq",
+        agent_llm_model="some-model",
+        judge_llm_provider="mock",
+        groq_api_keys="key-1,key-2",
+        groq_api_key="key-2",
+    )
+
+    assert settings.provider_keys("groq") == ("key-1", "key-2")
+
+
+def test_a_list_of_keys_alone_is_enough() -> None:
+    settings = build(
+        agent_llm_provider="mock",
+        judge_llm_provider="gemini",
+        judge_llm_model="judge",
+        gemini_api_keys="g-1,g-2",
+    )
+
+    assert settings.provider_keys("gemini") == ("g-1", "g-2")

@@ -6,6 +6,7 @@ import httpx
 import pytest
 
 from app.clients.llm.errors import (
+    LlmAuthenticationError,
     LlmRateLimitError,
     LlmRequestError,
     LlmRequestTooLargeError,
@@ -176,6 +177,15 @@ async def test_server_error_is_retryable(build: Callable[[Handler], ILlmClient])
 async def test_client_error_is_not_retryable(build: Callable[[Handler], ILlmClient]) -> None:
     with pytest.raises(LlmRequestError, match="HTTP 400"):
         await build(lambda _: httpx.Response(400, text="bad model")).complete(REQUEST)
+
+
+@pytest.mark.parametrize("build", CLIENTS)
+@pytest.mark.parametrize("status", [401, 403])
+async def test_rejected_credentials_are_an_authentication_error(
+    build: Callable[[Handler], ILlmClient], status: int
+) -> None:
+    with pytest.raises(LlmAuthenticationError, match=f"HTTP {status}"):
+        await build(lambda _: httpx.Response(status, text="invalid key")).complete(REQUEST)
 
 
 @pytest.mark.parametrize("build", CLIENTS)

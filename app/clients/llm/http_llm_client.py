@@ -5,6 +5,7 @@ from typing import Any
 import httpx
 
 from app.clients.llm.errors import (
+    LlmAuthenticationError,
     LlmRateLimitError,
     LlmRequestError,
     LlmResponseError,
@@ -102,6 +103,8 @@ class HttpLlmClient(ILlmClient):
             raise LlmRateLimitError(detail, self._retry_after(http_response))
         if status >= 500:
             raise LlmUnavailableError(detail)
+        if status in (401, 403):
+            raise LlmAuthenticationError(detail)
         raise LlmRequestError(detail)
 
     @staticmethod

@@ -21,6 +21,10 @@ class LlmRequestError(LlmError):
     """The provider rejected the request itself. Retrying unchanged will not help."""
 
 
+class LlmAuthenticationError(LlmRequestError):
+    """The provider rejected the credentials: the key is wrong, revoked or not allowed."""
+
+
 class LlmRequestTooLargeError(LlmRequestError):
     """The prompt plus the reply allowance is more than the provider takes in one call.
 
