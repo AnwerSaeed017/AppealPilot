@@ -1,11 +1,21 @@
 from datetime import date
 
-from app.constants.record_checks import ACCEPTED_WORDING, REJECTED_WORDING
+from app.constants.record_checks import (
+    ACCEPTED_WORDING,
+    COVERAGE_WORDING,
+    REJECTED_WORDING,
+    RETROACTIVE_WORDING,
+)
 from app.interfaces.service.record_check import IRecordCheck
 from app.schemas.finding import Finding, FindingCode
 from app.schemas.payer_rule_set import PayerRuleSet
 from app.schemas.record_check_context import RecordCheckContext
 from app.schemas.supporting_document import DocumentKind, SupportingDocument
+
+# Documents that cannot be a plan's notice of coverage.
+NOT_PLAN_NOTICES = frozenset(
+    {DocumentKind.BILLING_NOTE, DocumentKind.ADDENDUM, DocumentKind.PLAN_OF_CARE}
+)
 
 
 class TimelyFilingExceptionCheck(IRecordCheck):
@@ -18,7 +28,9 @@ class TimelyFilingExceptionCheck(IRecordCheck):
       after the date on that payer's explanation of benefits;
     - a clearinghouse or plan report, dated within the limit, records that the payer
       accepted the claim. A report that also records a rejection is not taken as proof,
-      and the provider's own billing records are never proof.
+      and the provider's own billing records are never proof;
+    - the plan gave notice that coverage was added retroactively, and the claim was
+      received within the payer's allowance after that notice.
 
     It reads the documents' types, dates and wording, never a model's summary of them.
     """
@@ -32,6 +44,8 @@ class TimelyFilingExceptionCheck(IRecordCheck):
 
         for document in documents:
             finding = self._primary_payer(document, claim.submitted_date, rules)
+            if finding is None:
+                finding = self._retroactive_coverage(document, claim.submitted_date, rules)
             if finding is not None:
                 return (finding,)
         service_date = max(line.service_date for line in claim.lines)
@@ -58,6 +72,32 @@ class TimelyFilingExceptionCheck(IRecordCheck):
                 f"{document.document_id} is the primary payer's explanation of benefits, "
                 f"dated {document.document_date.isoformat()}. The claim was received {days} "
                 f"days later, within the {days_allowed} days this payer allows after it."
+            ),
+            clause_ids=(clause_id,) if clause_id else (),
+        )
+
+    @staticmethod
+    def _retroactive_coverage(
+        document: SupportingDocument, received: date, rules: PayerRuleSet
+    ) -> Finding | None:
+        days_allowed = rules.retroactive_coverage_filing_days
+        # The practice's own notes and clinical entries are not a plan's notice.
+        if days_allowed is None or document.kind in NOT_PLAN_NOTICES:
+            return None
+        if not (
+            RETROACTIVE_WORDING.search(document.text) and COVERAGE_WORDING.search(document.text)
+        ):
+            return None
+        days = (received - document.document_date).days
+        if not 0 <= days <= days_allowed:
+            return None
+        clause_id = rules.retroactive_coverage_clause
+        return Finding(
+            code=FindingCode.TIMELY_FILING_EXCEPTION_DOCUMENTED,
+            message=(
+                f"{document.document_id} is a notice of retroactive coverage dated "
+                f"{document.document_date.isoformat()}. The claim was received {days} days "
+                f"later, within the {days_allowed} days this payer allows after such a notice."
             ),
             clause_ids=(clause_id,) if clause_id else (),
         )

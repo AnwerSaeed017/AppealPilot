@@ -17,6 +17,7 @@ PAYER_ERROR_FINDINGS: frozenset[FindingCode] = frozenset(
     {
         FindingCode.AUTHORIZATION_NOT_REQUIRED,
         FindingCode.FILED_WITHIN_LIMIT,
+        FindingCode.TIMELY_FILING_EXCEPTION_DOCUMENTED,
     }
 )
 

@@ -144,11 +144,40 @@ async def test_nothing_is_reported_when_the_claim_was_not_late() -> None:
     assert await found(case_with(report), findings=()) == ()
 
 
+NOTICE_TEXT = (
+    "Notice of Retroactive Member Coverage. Coverage has been reinstated retroactively "
+    "effective 2026-01-01."
+)
+
+
+@pytest.mark.parametrize(("days_before", "expected"), [(10, 1), (180, 1), (181, 0)])
+async def test_a_notice_of_retroactive_coverage_extends_the_limit(
+    days_before: int, expected: int
+) -> None:
+    notice = document("RETRO", "OTHER", RECEIVED - timedelta(days=days_before), NOTICE_TEXT)
+
+    result = await found(case_with(notice))
+
+    assert len(result) == expected
+    if result:
+        assert result[0].clause_ids == ("TESS-TF-2.1",)
+        assert "retroactive coverage" in result[0].message
+
+
+async def test_the_practices_own_note_about_coverage_is_not_a_plan_notice() -> None:
+    note = document("BILL", "BILLING_NOTE", RECEIVED - timedelta(days=10), NOTICE_TEXT)
+
+    assert await found(case_with(note)) == ()
+
+
 # --- The development cases ----------------------------------------------------
 
 # Scenario families whose label rests on a filing exception or on proof of timely filing.
 EXCEPTION_SCENARIOS = {"filing-accepted", "filing-primary-payer"}
-HAND_WRITTEN_EXCEPTIONS = {"secondary-payer-cob-timely-filing"}
+HAND_WRITTEN_EXCEPTIONS = {
+    "secondary-payer-cob-timely-filing",
+    "retroactive-eligibility-timely-filing",
+}
 
 
 def development_cases() -> list[EvalCase]:

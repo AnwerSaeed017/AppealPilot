@@ -1,6 +1,8 @@
 from pathlib import Path
 from typing import Any
 
+import pytest
+
 from app.interfaces.repository.policy_repository import IPolicyRepository
 from app.repositories.file_policy_repository import FilePolicyRepository
 from app.schemas.audit_event import AgentResult, LlmCallRecord
@@ -224,6 +226,26 @@ async def test_escalation_findings_take_priority_over_other_guards() -> None:
     decision = await decide(
         RecommendedAction.CORRECT_AND_RESUBMIT,
         [finding(FindingCode.AUTHORIZATION_NOT_REQUIRED), CONTRADICTION],
+    )
+
+    assert decision.action is RecommendedAction.ESCALATE_TO_HUMAN
+
+
+@pytest.mark.parametrize(
+    "action",
+    [RecommendedAction.REQUEST_DOCUMENTATION, RecommendedAction.NO_ACTION],
+)
+async def test_a_denial_code_shows_to_be_wrong_is_appealed_whatever_else_was_chosen(
+    action: RecommendedAction,
+) -> None:
+    decision = await decide(action, [finding(FindingCode.TIMELY_FILING_EXCEPTION_DOCUMENTED)])
+
+    assert decision.action is RecommendedAction.APPEAL_WITH_EVIDENCE
+
+
+async def test_an_escalation_on_a_payer_error_is_left_to_the_person() -> None:
+    decision = await decide(
+        RecommendedAction.ESCALATE_TO_HUMAN, [finding(FindingCode.FILED_WITHIN_LIMIT)]
     )
 
     assert decision.action is RecommendedAction.ESCALATE_TO_HUMAN

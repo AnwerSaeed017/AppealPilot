@@ -56,6 +56,10 @@ class PayerRuleSet(BaseSchema):
     # when another payer was billed first, and the clause that allows it.
     primary_payer_filing_days: int | None = Field(default=None, gt=0)
     primary_payer_filing_clause: ClauseId | None = None
+    # Days a claim has after the plan's notice that coverage was added retroactively,
+    # and the clause that allows it.
+    retroactive_coverage_filing_days: int | None = Field(default=None, gt=0)
+    retroactive_coverage_clause: ClauseId | None = None
     # The clause that names what proves a claim was filed on time.
     filing_proof_clause: ClauseId | None = None
     # The clause on entries added to the record later, cited when an addendum is dated

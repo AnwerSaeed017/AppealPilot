@@ -13,6 +13,10 @@ STATED_AGE = re.compile(r"\b(\d{1,3})[- ]year[- ]old\b", re.IGNORECASE)
 ACCEPTED_WORDING = re.compile(r"\baccepted\b", re.IGNORECASE)
 REJECTED_WORDING = re.compile(r"\b(rejected|not accepted|denied)\b", re.IGNORECASE)
 
+# A plan notice that coverage was added or reinstated back in time: both words appear.
+RETROACTIVE_WORDING = re.compile(r"\bretro(active(ly)?)?\b", re.IGNORECASE)
+COVERAGE_WORDING = re.compile(r"\b(coverage|eligibility|enrollment)\b", re.IGNORECASE)
+
 # A stated age further than this from the age the claim's date of birth gives is a
 # different person, not a rounding of the same one.
 AGE_TOLERANCE_YEARS = 1
